@@ -1,29 +1,34 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+## Passos para instalação do projeto
 
-### What is this repository for? ###
+Executar comandos dentro do diretório do projeto.
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* npm install -g flow-scripts
+* npm install
 
-### How do I get set up? ###
+## Lista de extensões do Visual Studio Code
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+### Principais 
+* React Native Tools
+* Flow Language Support 
+* ESLint 
+* Prettier — JavaScript formatter 
 
-### Contribution guidelines ###
+### Secundários (para facilitar o desenvolvimento)
 
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+* Auto Close Tag
+* Auto Complete Tag
+* Auto Rename Tag
+* Babel ES6/ES7
+* Color Highlight
+* Copy Relative Path
+* Debugger for Chrome
+* Docker
+* Document This
+* Git Blame
+* Path Intellisense
+* Rainbow Brackets
+* React-Native/React/Redux snippets for es6/es7
+* SVG Viewer
+* TODO Highlight
