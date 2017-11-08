@@ -32,3 +32,13 @@ Executar comandos dentro do diretório do projeto.
 * React-Native/React/Redux snippets for es6/es7
 * SVG Viewer
 * TODO Highlight
+
+### Fluxo do Git
+
+#### Os branches ficarão dividos em:
+* master - nossos arquivo de produção com as versões estáveis
+* staging - arquivos liberados para serem testados
+* develop - branch de desenvolvimento. A partir desse branch deverá ser criado um novo branch temporário com a tarefa a ser executada.
+
+#### Fluxo de commits
+* Toda tarefa finalizada a partir do "branch temporário que foi criado", deverá ser criado um Pull Request no bitbucket e marcar pelo menos 2 desenvolvedores para que o código seja validado e aprovado pelo time.
