@@ -2,18 +2,18 @@
 
 ## Passos para instalação do projeto
 
-Executar comandos dentro do diretório do projeto.
+Executar comandos dentro do diretório do projeto..
 
 * npm install -g flow-scripts
 * npm install
 
 ## Lista de extensões do Visual Studio Code
 
-### Principais 
+### Principais
 * React Native Tools
-* Flow Language Support 
-* ESLint 
-* Prettier — JavaScript formatter 
+* Flow Language Support
+* ESLint
+* Prettier — JavaScript formatter
 
 ### Secundários (para facilitar o desenvolvimento)
 
