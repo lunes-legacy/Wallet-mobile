@@ -2,10 +2,17 @@
 
 ## Passos para instalação do projeto
 
-Executar comandos dentro do diretório do projeto..
+Executar comandos dentro do diretório do projeto.
 
 * npm install -g flow-scripts
+* npm install --save-dev flow-bin@^0.53.0
 * npm install
+
+### Flow
+
+Para inicializar o servidor Flow, execute
+
+* npm run flow start
 
 ## Lista de extensões do Visual Studio Code
 
@@ -32,6 +39,8 @@ Executar comandos dentro do diretório do projeto..
 * React-Native/React/Redux snippets for es6/es7
 * SVG Viewer
 * TODO Highlight
+
+# Inicializando o React Native no VSCode
 
 ### Fluxo do Git
 
