@@ -1,4 +1,4 @@
-package com.luneswallet;
+package com.lunesmobilewallet;
 
 import android.app.Application;
 

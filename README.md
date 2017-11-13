@@ -5,15 +5,22 @@
 Executar comandos dentro do diretório do projeto.
 
 * npm install -g flow-scripts
+* npm install --save-dev flow-bin@^0.53.0
 * npm install
+
+### Flow
+
+Para inicializar o servidor Flow, execute
+
+* npm run flow start
 
 ## Lista de extensões do Visual Studio Code
 
-### Principais 
+### Principais
 * React Native Tools
-* Flow Language Support 
-* ESLint 
-* Prettier — JavaScript formatter 
+* Flow Language Support
+* ESLint
+* Prettier — JavaScript formatter
 
 ### Secundários (para facilitar o desenvolvimento)
 
@@ -32,6 +39,8 @@ Executar comandos dentro do diretório do projeto.
 * React-Native/React/Redux snippets for es6/es7
 * SVG Viewer
 * TODO Highlight
+
+# Inicializando o React Native no VSCode
 
 ### Fluxo do Git
 
