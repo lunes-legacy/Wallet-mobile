@@ -4,8 +4,6 @@
 
 Executar comandos dentro do diretório do projeto.
 
-* npm install -g flow-scripts
-* npm install --save-dev flow-bin@^0.53.0
 * npm install
 
 ### Flow
@@ -17,6 +15,7 @@ Para inicializar o servidor Flow, execute
 ## Lista de extensões do Visual Studio Code
 
 ### Principais
+
 * React Native Tools
 * Flow Language Support
 * ESLint
@@ -40,7 +39,29 @@ Para inicializar o servidor Flow, execute
 * SVG Viewer
 * TODO Highlight
 
-# Inicializando o React Native no VSCode
+### Configurações do VSCode
+
+Para habilitar o Prettier e ESLint no VSCode, é necessário inserir esses valores nas configurações do VSCode:
+
+```json
+  // Enable/disable JavaScript validation. (For Flow)
+  "javascript.validate.enable": false,
+  // Enable/disable default JavaScript formatter (For Prettier)
+  "javascript.format.enable": false,
+  // Support using flow through your node_modules folder,
+  // WARNING: Checking this box is a security risk.
+  // When you open a project we will immediately run code
+  // contained within it.
+  "flow.useNPMPackagedFlow": true,
+  // Use 'prettier-eslint' instead of 'prettier'.
+  // Other settings will only be fallbacks in case
+  // they could not be inferred from eslint rules.
+  "editor.formatOnSave": true,
+  // Use 'prettier-eslint' instead of 'prettier'.
+  // Other settings will only be fallbacks in case
+  // they could not be inferred from eslint rules.
+  "prettier.eslintIntegration": true
+```
 
 ### Fluxo do Git
 
