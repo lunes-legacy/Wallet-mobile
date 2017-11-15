@@ -6,12 +6,9 @@
 
 import React, { Component } from 'react';
 import { Platform, StatusBar } from 'react-native';
-
 import SplashScreen from 'react-native-smart-splash-screen';
 
-import { Base } from './components';
-import { Colors } from './components/theme';
-import { Introduction } from './screen/Introduction';
+import RootNavigator from './config/routes';
 
 const instructions = Platform.select({
   ios: `Press Cmd+R to reload,\n Cmd+D or shake for dev menu`,
@@ -28,11 +25,6 @@ export default class App extends Component {
   }
 
   render() {
-    return (
-      <Base>
-        <StatusBar backgroundColor={Colors.primary} barStyle="light-content" />
-        <Introduction />
-      </Base>
-    );
+    return <RootNavigator />;
   }
 }

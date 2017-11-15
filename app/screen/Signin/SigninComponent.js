@@ -1,13 +1,14 @@
 // @flow
 import React from 'react';
-import { Text } from 'react-native';
+import { View, Text } from 'react-native';
 
-import { Base } from '../../components';
+import { Logo, Base } from '../../components';
+import styles from './styles';
 
 export default class Signin extends React.Component {
   render() {
     return (
-      <Base>
+      <Base style={styles.container}>
         <Text>Signin</Text>
       </Base>
     );

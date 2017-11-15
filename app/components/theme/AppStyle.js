@@ -1,5 +1,5 @@
 // @flow
-
+import { Platform } from 'react-native';
 import Colors from './Colors';
 
 const appStyle = {
@@ -9,6 +9,15 @@ const appStyle = {
       backgroundColor: Colors.background,
       justifyContent: 'center',
       alignItems: 'center',
+    },
+    header: {
+      backgroundColor: Colors.background,
+      flexDirection: 'row',
+      height: 80,
+      marginTop: Platform.OS == 'ios' ? 20 : 0,
+    },
+    headerText: {
+      textAlign: 'center',
     },
     logo: {
       fontSize: 70,
