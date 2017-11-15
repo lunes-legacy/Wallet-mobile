@@ -7,7 +7,7 @@ import styles from './styles';
 export default class Introduction extends React.Component {
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Logo />
         <Text style={styles.instructions}>
           Armazene seus bitcoins, litecoins, ethereum, lunes, etc. Todas as suas
