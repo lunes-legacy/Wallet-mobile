@@ -33,6 +33,20 @@ const appStyle = {
       color: Colors.secondary,
       fontFamily: 'Offside-Regular',
     },
+    logoSmall: {
+      fontSize: 30,
+      textAlign: 'center',
+      margin: 10,
+      color: Colors.white,
+      fontFamily: 'Offside-Regular',
+    },
+    logoGreenSmall: {
+      fontSize: 30,
+      textAlign: 'center',
+      margin: 10,
+      color: Colors.secondary,
+      fontFamily: 'Offside-Regular',
+    },
   },
 };
 
