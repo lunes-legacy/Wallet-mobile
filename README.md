@@ -72,3 +72,10 @@ Para habilitar o Prettier e ESLint no VSCode, é necessário inserir esses valor
 
 #### Fluxo de commits
 * Toda tarefa finalizada a partir do "branch temporário que foi criado", deverá ser criado um Pull Request no bitbucket e marcar pelo menos 2 desenvolvedores para que o código seja validado e aprovado pelo time.
+
+### Adicionando fontes(tipografia) ao projeto
+https://medium.com/@danielskripnik/how-to-add-and-remove-custom-fonts-in-react-native-b2830084b0e4
+
+### Adicionado SplashScreen
+https://github.com/react-native-component/react-native-smart-splash-screen
+
