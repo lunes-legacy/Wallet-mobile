@@ -21,9 +21,7 @@ const tabStyle = {
   tabLinkSelected: {
     borderBottomColor: Colors.secondary,
   },
-  tabContent: {
-    minHeight: 100,
-  },
+  tabContent: {},
   activeLinkStyle: {
     borderBottom: '2px solid #333',
   },

@@ -5,4 +5,5 @@
  */
 
 import Signin from './SigninComponent';
-export { Signin };
+import SigninContainer from './SigninContainer';
+export { Signin, SigninContainer };
