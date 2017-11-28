@@ -3,6 +3,11 @@
 import { Colors } from '../../components/theme';
 
 const signinStyle = {
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   instructions: {
     textAlign: 'center',
     color: Colors.white,
@@ -20,8 +25,6 @@ const signinStyle = {
     fontSize: 30,
     paddingLeft: 20,
     paddingRight: 20,
-    paddingTop: 5,
-    paddingBottom: 5,
   },
 };
 
