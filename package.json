@@ -8,7 +8,10 @@
     "flow start": "flow start",
     "flow stop": "flow stop",
     "flow status": "flow status",
-    "flow coverage": "flow coverage"
+    "flow coverage": "flow coverage",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "clean": "rm -rf node_modules && npm i && watchman watch-del-all && rm -fr $TMPDIR/react-* && rm -rf ios/build/ModuleCache/* && rm -rf ios/build"
   },
   "dependencies": {
     "axios": "^0.17.1",
