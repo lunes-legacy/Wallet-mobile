@@ -1,10 +1,11 @@
-# README #
+# README
 
 ## Passos para instalação do projeto
 
 Executar comandos dentro do diretório do projeto.
 
 * npm install
+* pod install (para iOS)
 
 ### Flow
 
@@ -19,7 +20,7 @@ Para inicializar o servidor Flow, execute
 * React Native Tools
 * Flow Language Support
 * ESLint
-* Prettier — JavaScript formatter
+* Prettier — Code formatter
 
 ### Secundários (para facilitar o desenvolvimento)
 
@@ -33,6 +34,8 @@ Para inicializar o servidor Flow, execute
 * Docker
 * Document This
 * Git Blame
+* gitignore
+* Git Lens
 * Path Intellisense
 * Rainbow Brackets
 * React-Native/React/Redux snippets for es6/es7
@@ -41,7 +44,8 @@ Para inicializar o servidor Flow, execute
 
 ### Configurações do VSCode
 
-Para habilitar o Prettier e ESLint no VSCode, é necessário inserir esses valores nas configurações do VSCode:
+Para habilitar o Prettier e ESLint no VSCode, é necessário inserir esses valores
+nas configurações do VSCode:
 
 ```json
   // Enable/disable JavaScript validation. (For Flow)
@@ -66,16 +70,26 @@ Para habilitar o Prettier e ESLint no VSCode, é necessário inserir esses valor
 ### Fluxo do Git
 
 #### Os branches ficarão dividos em:
+
 * master - nossos arquivo de produção com as versões estáveis
 * staging - arquivos liberados para serem testados
-* develop - branch de desenvolvimento. A partir desse branch deverá ser criado um novo branch temporário com a tarefa a ser executada.
+* develop - branch de desenvolvimento. A partir desse branch deverá ser criado
+  um novo branch temporário com a tarefa a ser executada.
 
 #### Fluxo de commits
-* Toda tarefa finalizada a partir do "branch temporário que foi criado", deverá ser criado um Pull Request no bitbucket e marcar pelo menos 2 desenvolvedores para que o código seja validado e aprovado pelo time.
+
+* Toda tarefa finalizada a partir do "branch temporário que foi criado", deverá
+  ser criado um Pull Request no bitbucket e marcar pelo menos 2 desenvolvedores
+  para que o código seja validado e aprovado pelo time.
 
 ### Adicionando fontes(tipografia) ao projeto
+
 https://medium.com/@danielskripnik/how-to-add-and-remove-custom-fonts-in-react-native-b2830084b0e4
 
 ### Adicionado SplashScreen
+
 https://github.com/react-native-component/react-native-smart-splash-screen
 
+### Adicionado Firebase
+
+https://firebase.google.com/

@@ -4,6 +4,10 @@ import android.app.Application;
 import android.os.Bundle;
 
 import com.facebook.react.ReactApplication;
+import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.auth.RNFirebaseAuthPackage;
+import io.invertase.firebase.firestore.RNFirebaseFirestorePackage;
+import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 import com.reactnativecomponent.splashscreen.RCTSplashScreenPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -12,8 +16,6 @@ import com.facebook.soloader.SoLoader;
 
 import java.util.Arrays;
 import java.util.List;
-
-import com.reactnativecomponent.splashscreen.RCTSplashScreenPackage; 
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -27,6 +29,10 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+          new RNFirebasePackage(),
+          new RNFirebaseAuthPackage(),
+          new RNFirebaseFirestorePackage(),
+          new RNFirebaseMessagingPackage(),
           new RCTSplashScreenPackage()
       );
     }
