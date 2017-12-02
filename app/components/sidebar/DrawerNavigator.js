@@ -1,20 +1,20 @@
 import { DrawerNavigator } from 'react-navigation';
-import SideMenu from './SideMenu'
-import Page1 from './Page1';
-import Page2 from './Page2';
-import Page3 from './Page3';
+import SideMenu from './SideMenu';
+import LunesMarket from '../../screen/LunesMarket';
+import ValuesAlertSystem from '../../screen/ValuesAlertSystem';
+import MultiCoinsSystem from '../../screen/MultiCoinsSystem';
+import CardManager from '../../screen/CardManager';
+import BoletoPayments from '../../screen/BoletoPayments';
+import PhoneRecharges from '../../screen/PhoneRecharges';
 
 export default DrawerNavigator(
   {
-    Page1: {
-      screen: Page1,
-    },
-    Page2: {
-      screen: Page2,
-    },
-    Page3: {
-      screen: Page3,
-    },
+    LunesMarket: { screen: LunesMarket },
+    ValuesAlertSystem: { screen: ValuesAlertSystem },
+    MultiCoinsSystem: { screen: MultiCoinsSystem },
+    CardManager: { screen: CardManager },
+    BoletoPayments: { screen: BoletoPayments },
+    PhoneRecharges: { screen: PhoneRecharges },
   },
   {
     contentComponent: SideMenu,

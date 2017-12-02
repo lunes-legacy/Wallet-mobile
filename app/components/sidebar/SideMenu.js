@@ -4,54 +4,68 @@
  * @flow
  */
 
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import styles from '../styles/SideMenu';
-import { NavigationActions } from 'react-navigation';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
+
+import SideMenuItem from './SideMenuItem';
+import SideMenuFooter from './SideMenuFooter';
 
 class SideMenu extends Component {
-  navigateToScreen = route => () => {
-    const navigateAction = NavigationActions.navigate({
-      routeName: route,
-    });
-    this.props.navigation.dispatch(navigateAction);
-  };
-
   render() {
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <ScrollView>
           <View>
-            <Text
-              style={styles.navItemStyle}
-              onPress={this.navigateToScreen('Page1')}>
-              Page1
-            </Text>
+            <SideMenuItem
+              screen={'LunesMarket'}
+              menuOption={'Mercado Lunes'}
+              navigation={navigation}
+            />
           </View>
           <View>
-            <Text
-              style={styles.navItemStyle}
-              onPress={this.navigateToScreen('Page2')}>
-              Page2
-            </Text>
-            <Text
-              style={styles.navItemStyle}
-              onPress={this.navigateToScreen('Page3')}>
-              Page3
-            </Text>
+            <SideMenuItem
+              screen={'ValuesAlertSystem'}
+              menuOption={'Sistema de Alerta de Valores'}
+              navigation={navigation}
+            />
+          </View>
+          <View>
+            <SideMenuItem
+              screen={'MultiCoinsSystem'}
+              menuOption={'Sistema de Multi-Coins'}
+              navigation={navigation}
+            />
+          </View>
+          <View>
+            <SideMenuItem
+              screen={'CardManager'}
+              menuOption={'Gestão de Gasto de Cartão'}
+              navigation={navigation}
+            />
+          </View>
+          <View>
+            <SideMenuItem
+              screen={'BoletoPayments'}
+              menuOption={'Pagamento de Boletos'}
+              navigation={navigation}
+            />
+          </View>
+          <View>
+            <SideMenuItem
+              screen={'PhoneRecharges'}
+              menuOption={'Recargas de Celular'}
+              navigation={navigation}
+            />
           </View>
         </ScrollView>
         <View style={styles.footerContainer}>
-          <Text>This is my fixed footer</Text>
+          <SideMenuFooter />
         </View>
       </View>
     );
   }
 }
-
-SideMenu.propTypes = {
-  navigation: PropTypes.object,
-};
 
 export default SideMenu;
