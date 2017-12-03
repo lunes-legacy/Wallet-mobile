@@ -1,6 +1,6 @@
 import React from 'react';
-import { StackNavigator, Button } from 'react-navigation';
-import { View } from 'react-native';
+import { StackNavigator } from 'react-navigation';
+import { View, Button } from 'react-native';
 
 import { Header } from '../components';
 
@@ -21,10 +21,12 @@ const RootNavigator = StackNavigator({
         header: <View />,
       },
     }*/
-  Main: { screen: Main,
+  Main: {
+    screen: Main,
     navigationOptions: {
       header: <View />,
-    },},
+    },
+  },
 });
 
 export default RootNavigator;

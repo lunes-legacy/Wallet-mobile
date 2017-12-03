@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
+import styles from '../styles/SideMenu';
 //import {getAmountOfCoins} from 'API COINS'
 
 const FAKE_AMOUNT = 1000;
@@ -15,10 +16,10 @@ const getMyDolarAmount = () => getMyAmount().amount * 3;
 
 class SideMenuFooter extends Component {
   render() {
-    const {amount} = getMyAmount();
+    const { amount } = getMyAmount();
     return (
       <View>
-        <Text>{`${amount} - $ ${getMyDolarAmount(
+        <Text style={styles.footerContainer}>{`${amount} - $ ${getMyDolarAmount(
           amount
         )} - BRL ${getMyBRLAmount(amount)}`}</Text>
       </View>
