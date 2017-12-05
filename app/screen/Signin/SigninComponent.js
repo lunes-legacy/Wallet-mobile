@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { FormStyle } from '../../components/theme';
 
 import {
   LogoSmall,
@@ -12,42 +13,50 @@ import {
 } from '../../components';
 import styles from './styles';
 
-export default class Signin extends React.Component {
-
-  componentDidMount() {
-    if (this.props.auth && this.props.auth.user) {
-      this.props.validateToken(this.props.auth.user.token);
-    }
-  }
-
+export default class Signin extends React.Component<{}> {
   render() {
-    const { user, validToken } = this.props;
-    if (user && validToken) {
+    if (this.props.authorized) {
       return (
-        <Base style={styles.container}>
-          <Text>Usuario LOgado</Text> 
-        </Base>
+        <TouchableOpacity
+          onPress={this.props.requestSignout}
+          style={FormStyle.buttonContainer}>
+          <Text style={FormStyle.buttonText}>Logout</Text>
+        </TouchableOpacity>
       );
     } else {
-      let isTab1 = (this.props.tabSelected === 'tab1') ? true : false;
-      let isTab2 = (this.props.tabSelected === 'tab2') ? true : false;
+      let isTab1 = this.props.tabSelected === 'tab1' ? true : false;
+      let isTab2 = this.props.tabSelected === 'tab2' ? true : false;
       return (
         <Base style={styles.container}>
           <LogoSmall />
           <Tabs>
             <View style={{ flexDirection: 'row' }}>
-              <TabLinkContainer tabId="tab1" title="SIGNIN" isSelected={isTab1} />
-              <TabLinkContainer tabId="tab2" title="SIGNUP" isSelected={isTab2} />
+              <TabLinkContainer
+                tabId="tab1"
+                title="SIGNIN"
+                isSelected={isTab1}
+              />
+              <TabLinkContainer
+                tabId="tab2"
+                title="SIGNUP"
+                isSelected={isTab2}
+              />
             </View>
             <View>
               <TabContent for="tab1" isVisible={isTab1}>
                 <View style={styles.formContainer}>
-                  <LoginForm submit={this.props.requestLogin} modeAuth='SIGNIN' />
+                  <LoginForm
+                    submit={this.props.requestLogin}
+                    modeAuth="SIGNIN"
+                  />
                 </View>
               </TabContent>
               <TabContent for="tab2" isVisible={isTab2}>
                 <View style={styles.formContainer}>
-                  <LoginForm submit={this.props.requestSignup} modeAuth='SIGNUP' />
+                  <LoginForm
+                    submit={this.props.requestSignup}
+                    modeAuth="SIGNUP"
+                  />
                 </View>
               </TabContent>
             </View>
