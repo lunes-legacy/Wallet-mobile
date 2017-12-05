@@ -14,6 +14,11 @@ export default {
     padding: 10,
     paddingLeft: 40,
     color: Colors.white,
+    flexDirection: 'row',
+    divider: {
+      borderBottomColor: Colors.divider,
+      borderBottomWidth: 1,
+    },
   },
   footerContainer: {
     paddingLeft: 40,
