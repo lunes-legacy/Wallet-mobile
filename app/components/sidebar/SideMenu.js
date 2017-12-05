@@ -10,6 +10,7 @@ import { ScrollView, View } from 'react-native';
 
 import SideMenuItem from './SideMenuItem';
 import SideMenuFooter from './SideMenuFooter';
+import SideMenuAvatar from './SideMenuAvatar';
 
 class SideMenu extends Component {
   render() {
@@ -17,6 +18,11 @@ class SideMenu extends Component {
     return (
       <View style={styles.container}>
         <ScrollView>
+          <View>
+            <SideMenuAvatar
+              navigation={navigation}
+            />
+          </View>
           <View>
             <SideMenuItem
               screen={'LunesMarket'}
