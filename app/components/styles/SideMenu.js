@@ -21,10 +21,18 @@ export default {
     },
   },
   footerContainer: {
-    paddingLeft: 40,
-    padding: 10,
+    paddingLeft: 20,
+    paddingBottom: 20,
     color: Colors.white,
-    backgroundColor: Colors.background,
+    coins:{
+      color: Colors.secondary,
+    },
+    dolar:{
+      fontSize: 18
+    },
+    brl:{
+      fontSize: 18
+    },
   },
   hr: {
     color: Colors.white,
