@@ -13,11 +13,15 @@ const appStyle = {
     header: {
       backgroundColor: Colors.background,
       flexDirection: 'row',
-      height: 80,
-      marginTop: Platform.OS == 'ios' ? 20 : 0,
+      height: 50,
+      marginTop: Platform.OS === 'ios' ? 20 : 0,
     },
     headerText: {
       textAlign: 'center',
+      paddingVertical: 10,
+      paddingHorizontal: 60,
+      fontSize: 16,
+      color: Colors.white,
     },
     logo: {
       fontSize: 70,

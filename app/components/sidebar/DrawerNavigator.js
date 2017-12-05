@@ -1,8 +1,6 @@
 import { DrawerNavigator, StackNavigator } from 'react-navigation';
 import React from 'react';
-import { Button, View } from 'react-native';
-import FontAwesome, { Icons } from 'react-native-fontawesome';
-import SideMenuStyle from '../styles/SideMenu';
+import Header from '../Header';
 import SideMenu from './SideMenu';
 import LunesMarket from '../../screen/LunesMarket';
 import ValuesAlertSystem from '../../screen/ValuesAlertSystem';
@@ -13,12 +11,11 @@ import PhoneRecharges from '../../screen/PhoneRecharges';
 
 const generateDrawerHamburger = currentNav => {
   const onPress = () => currentNav.navigation.navigate('DrawerOpen');
-  return <Button title="Menu" onPress={onPress} />;
+  return <Header onPress={onPress} navigation={currentNav.navigation} />;
 };
 
 const getStackNavOption = current => ({
-  headerStyle: SideMenuStyle.hamburguer,
-  headerLeft: generateDrawerHamburger(current),
+  header: generateDrawerHamburger(current),
 });
 
 const LunesMarketStack = StackNavigator({
