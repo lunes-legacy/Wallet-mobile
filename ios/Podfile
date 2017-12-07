@@ -12,7 +12,9 @@ target 'LunesMobileWallet' do
   pod 'Firebase/Messaging'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
-  pod 'Firebase/Firestore'
+  pod 'Firebase/Database'
+
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   target 'LunesMobileWalletTests' do
     inherit! :search_paths

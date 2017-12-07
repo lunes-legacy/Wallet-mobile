@@ -13,6 +13,7 @@ const colors = {
   secondary: _SECONDARY,
   white: _WHITE,
   grey: '#95989A',
+  divider: '#4E3D82',
 };
 
 export default colors;

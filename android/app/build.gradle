@@ -77,6 +77,7 @@ project.ext.react = [
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -149,7 +150,7 @@ dependencies {
     compile "com.google.firebase:firebase-core:11.6.0"
     compile "com.google.firebase:firebase-auth:11.6.0"
     compile "com.google.firebase:firebase-messaging:11.6.0"
-    compile "com.google.firebase:firebase-firestore:11.6.0"
+    compile "com.google.firebase:firebase-database:11.6.0"
 }
 
 // Run this once to be able to run the application with BUCK

@@ -3,7 +3,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { requestLogin, requestSignup, requestValidateToken } from './actions';
+import { requestLogin, requestSignup, requestSignout } from './actions';
 import {
   LogoSmall,
   Base,
@@ -16,10 +16,13 @@ import {
 import styles from './styles';
 import Signin from './SigninComponent';
 
-const mapStateToProps = state => ({ 
+const mapStateToProps = state => ({
   tabSelected: state.tabsReducer.tabSelected,
-  user: state.auth.user
+  user: state.auth.user,
+  authorized: state.auth.authorized,
+  error: state.auth.error,
 });
-const mapDispatchToProps = dispatch => bindActionCreators({ requestLogin, requestSignup, requestValidateToken }, dispatch);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ requestLogin, requestSignup, requestSignout }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signin);

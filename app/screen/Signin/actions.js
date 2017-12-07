@@ -1,41 +1,108 @@
-import axios from 'axios';
-import API from '../../constants/api';
 import types from './types';
 
-export const requestLogin = (values) => {
+import { auth, database } from '../../config/firebase';
+
+export const requestLogin = values => {
   return dispatch => {
-    let request= axios.post(`${API.OPEN_URL}/login`, { 
-      email: values.email, 
-      password: values.password
-    });
-    
-    request.then(response => {
-      dispatch({ type: types.USER_LOGGED, payload: response.data });
-    }, error => {
-      dispatch({ type: types.USER_NOT_LOGGED, payload: error });  
-    });
+    dispatch(signinLoading());
+
+    auth
+      .signInWithEmailAndPassword(values.email, values.password)
+      .then(user => {
+        dispatch(signinSuccess(user));
+      })
+      .catch(error => {
+        console.log(error);
+        dispatch(signinError(error));
+      });
   };
 };
 
-export const requestSignup = (values) => {
+const signinLoading = () => ({
+  type: types.SIGNIN_LOADING,
+});
+
+const signinSuccess = user => ({
+  type: types.SIGNIN_SUCCESS,
+  user: user,
+});
+
+const signinError = error => ({
+  type: types.SIGNIN_ERROR,
+  error: error,
+});
+
+export const requestSignup = values => {
+  const { name, email, password } = values;
+
   return dispatch => {
-    let request = axios.post(`${API.OPEN_URL}/signup`, { 
-      name: values.name, 
-      email: values.email, 
-      password: values.password
-    });
-    request.then(response => {
-      dispatch({ type: types.USER_LOGGED, payload: response.data });
-    }, error => {
-      dispatch({ type: types.USER_NOT_LOGGED, payload: error });  
-    });
+    dispatch(signupLoading());
+
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(user => {
+        if (user !== null) {
+          // console.log(user.uid);
+          database
+            .ref('users')
+            .child(user.uid)
+            .set({
+              fname: name,
+              lname: '',
+            })
+            .then(function() {
+              // console.log('Document successfully written!');
+              dispatch(signupSuccess(user));
+            })
+            .catch(error => {
+              console.error('Error writing document: ', error);
+              dispatch(signupError(error));
+            });
+
+          auth.currentUser.sendEmailVerification();
+        }
+      })
+      .catch(error => dispatch(signupError(error)));
   };
 };
 
-export const requestValidateToken = (token) => {
-  let request= axios.post(`${API.OPEN_URL}/validateToken`, { token });
-  return {
-    type: types.VALIDATE_TOKEN,
-    payload: request
+const signupLoading = () => ({
+  type: types.SIGNUP_LOADING,
+});
+
+const signupSuccess = user => ({
+  type: types.SIGNUP_SUCCESS,
+  user: user,
+});
+
+const signupError = error => ({
+  type: types.SIGNUP_ERROR,
+  error: error,
+});
+
+export const requestSignout = () => {
+  return dispatch => {
+    dispatch(signoutLoading());
+    auth
+      .signOut()
+      .then(() => {
+        dispatch(signoutSuccess());
+      })
+      .catch(error => {
+        dispatch(signoutError(error));
+      });
   };
 };
+
+const signoutLoading = () => ({
+  type: types.SIGNOUT_LOADING,
+});
+
+const signoutSuccess = () => ({
+  type: types.SIGNOUT_SUCCESS,
+});
+
+const signoutError = error => ({
+  type: types.SIGNOUT_ERROR,
+  error: error,
+});
