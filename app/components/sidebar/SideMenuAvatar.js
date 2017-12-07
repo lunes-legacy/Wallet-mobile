@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import UserAvatar from 'react-native-user-avatar';
-import FontAwesome, { Icons } from 'react-native-fontawesome';
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import styles from '../styles/SideMenu';
 
 class SideMenuAvatar extends Component {
@@ -34,7 +34,7 @@ class SideMenuAvatar extends Component {
           <View>
             <Text style={styles.avatar.label.name}>
               {`${user.name}   `}
-              <FontAwesome style={{ fontSize: 10 }}>{Icons.pencil}</FontAwesome>
+              <Icon name="pencil" size={15} color="#fff" />
             </Text>
             <Text style={styles.avatar.label.email}>{user.email}</Text>
           </View>

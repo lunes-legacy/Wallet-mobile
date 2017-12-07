@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
 import styles from '../styles/SideMenu';
-import FontAwesome, { Icons } from 'react-native-fontawesome';
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
 //import {getAmountOfCoins} from 'API COINS'
 
 const FAKE_AMOUNT = 10000;
@@ -22,7 +22,8 @@ class SideMenuFooter extends Component {
       <View>
         <Text style={styles.footerContainer}>
           <Text style={styles.footerContainer.coins}>
-            <FontAwesome>{`${Icons.money}   ${amount}      `}</FontAwesome>
+            <Icon name="money" size={15} color="#fff" />
+            {amount}
           </Text>
           <Text style={styles.footerContainer.dolar}>{`  $ ${getMyDolarAmount(
             amount

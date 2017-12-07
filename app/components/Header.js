@@ -4,7 +4,7 @@ import React from 'react';
 import { View, TouchableOpacity, TouchableHighlight, Text } from 'react-native';
 import { AppStyle } from './theme';
 import MenuButton from './styles/MenuButton';
-import FontAwesome, { Icons } from 'react-native-fontawesome';
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 export default class Header extends React.Component {
   render() {
@@ -16,16 +16,14 @@ export default class Header extends React.Component {
           style={{ padding: MenuButton.padding }}
           onPress={onPress}>
           <Text>
-            <FontAwesome style={MenuButton}>{Icons.bars}</FontAwesome>
+            <Icon name="navicon" size={20} color="#fff" />
           </Text>
         </TouchableHighlight>
         <TouchableOpacity
           style={{ padding: MenuButton.back.padding }}
           onPress={() => navigation.goBack()}>
           <Text>
-            <FontAwesome style={MenuButton.back}>
-              {Icons.chevronLeft}
-            </FontAwesome>
+            <Icon name="chevron-left" size={20} color="#fff" />
           </Text>
         </TouchableOpacity>
         <Text style={AppStyle.screen.headerText}> My Header </Text>
@@ -36,9 +34,7 @@ export default class Header extends React.Component {
           }}
           onPress={() => navigation.goMenu()}>
           <Text>
-            <FontAwesome style={MenuButton.next}>
-              {Icons.chevronRight}
-            </FontAwesome>
+            <Icon name="chevron-right" size={20} color="#fff" />
           </Text>
         </TouchableOpacity>
       </View>

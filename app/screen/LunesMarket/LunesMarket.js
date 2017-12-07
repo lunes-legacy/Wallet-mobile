@@ -1,16 +1,14 @@
-import React, {Component} from 'react';
-import {
-  Text,
-  View
-} from 'react-native';
+import React, { Component } from 'react';
+import { Text, View } from 'react-native';
+
+import { Logo, Base, Button } from '../../components';
 
 class LunesMarket extends Component {
-  render () {
+  render() {
     return (
-      <View style={{padding: 50}}>
-        <Text>
-          Lunes Market
-        </Text>
+      <View style={{ padding: 50 }}>
+        <Text>Lunes Market</Text>
+        <Button text="X" type="rounded-opened" />
       </View>
     );
   }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Text, View } from 'react-native';
 import { NavigationActions } from 'react-navigation';
-import FontAwesome, { Icons } from 'react-native-fontawesome';
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import styles from '../styles/SideMenu';
 
 export default class SideMenuItem extends Component {
@@ -20,12 +20,10 @@ export default class SideMenuItem extends Component {
         <Text
           style={styles.navItemStyle}
           onPress={this.navigateToScreen(screen)}>
-          <FontAwesome>{Icons.chevronDown}</FontAwesome>
+          <Icon name="chevron-down" size={15} color="#fff" />
           {`      ${menuOption}`}
         </Text>
-        <View
-          style={styles.navItemStyle.divider}
-        />
+        <View style={styles.navItemStyle.divider} />
       </View>
     );
   }
