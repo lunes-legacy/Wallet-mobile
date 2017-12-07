@@ -14,13 +14,12 @@ const RootNavigator = StackNavigator({
       navigationOptions: {
         header: <View />,
       },
-    },
-    Introduction: {
+    },Introduction: {
       screen: Introduction,
       navigationOptions: {
         header: <View />,
       },
-    }*/
+    },*/
   Main: {
     screen: Main,
     navigationOptions: {

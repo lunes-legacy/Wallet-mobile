@@ -20,23 +20,23 @@ class SideMenuAvatar extends Component {
           <UserAvatar
             name={user.name}
             src={user.imageSrc}
-            size={styles.avatar.size}
-            color={styles.avatar.color}
+            size={styles.avatarSize}
+            color={styles.avatarColor}
           />
         ) : (
           <UserAvatar
             name={user.name}
-            size={styles.avatar.size}
-            color={styles.avatar.color}
+            size={styles.avatarSize}
+            color={styles.avataColor}
           />
         )}
         <TouchableOpacity onPress={() => console.log('Não implementado')}>
           <View>
-            <Text style={styles.avatar.label.name}>
+            <Text style={styles.label.name}>
               {`${user.name}   `}
               <Icon name="pencil" size={15} color="#fff" />
             </Text>
-            <Text style={styles.avatar.label.email}>{user.email}</Text>
+            <Text style={styles.label.email}>{user.email}</Text>
           </View>
         </TouchableOpacity>
       </View>

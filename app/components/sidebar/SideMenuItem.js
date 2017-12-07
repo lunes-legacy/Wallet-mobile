@@ -23,7 +23,7 @@ export default class SideMenuItem extends Component {
           <Icon name="chevron-down" size={15} color="#fff" />
           {`      ${menuOption}`}
         </Text>
-        <View style={styles.navItemStyle.divider} />
+        <View style={styles.divider} />
       </View>
     );
   }

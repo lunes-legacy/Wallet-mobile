@@ -21,15 +21,15 @@ class SideMenuFooter extends Component {
     return (
       <View>
         <Text style={styles.footerContainer}>
-          <Text style={styles.footerContainer.coins}>
+          <Text style={styles.coins}>
             <Icon name="money" size={15} color="#fff" />
-            {amount}
+            {`   ${amount}`}
           </Text>
-          <Text style={styles.footerContainer.dolar}>{`  $ ${getMyDolarAmount(
+          <Text style={styles.dolar}>{`  $ ${getMyDolarAmount(
             amount
           )}`}</Text>
           <Text
-            style={styles.footerContainer.brl}>{`   |   BRL ${getMyBRLAmount(
+            style={styles.brl}>{`   |   BRL ${getMyBRLAmount(
             amount
           )}`}</Text>
         </Text>
