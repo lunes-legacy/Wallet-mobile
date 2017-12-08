@@ -16,12 +16,9 @@ const appStyle = {
       height: 50,
       marginTop: Platform.OS === 'ios' ? 20 : 0,
     },
-    headerText: {
-      textAlign: 'center',
-      paddingVertical: 10,
-      paddingHorizontal: 60,
-      fontSize: 16,
-      color: Colors.white,
+    headerLogo: {
+      paddingVertical: -20,
+      paddingHorizontal: 50,
     },
     logo: {
       fontSize: 70,

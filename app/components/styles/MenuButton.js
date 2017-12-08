@@ -16,7 +16,7 @@ export default {
     color: Colors.white,
   },
   back: {
-    color: Colors.white,
+    color: Colors.secondary,
     padding,
     fontSize,
   },

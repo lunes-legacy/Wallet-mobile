@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import UserAvatar from 'react-native-user-avatar';
+import Avatar from '../Avatar';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import styles from '../styles/SideMenu';
 
@@ -16,20 +16,12 @@ class SideMenuAvatar extends Component {
 
     return (
       <View style={styles.avatar}>
-        {user.imageSrc ? (
-          <UserAvatar
-            name={user.name}
-            src={user.imageSrc}
-            size={styles.avatarSize}
-            color={styles.avatarColor}
-          />
-        ) : (
-          <UserAvatar
-            name={user.name}
-            size={styles.avatarSize}
-            color={styles.avataColor}
-          />
-        )}
+        <Avatar
+          name={user.name}
+          src={user.imageSrc}
+          size={styles.avatarSize}
+          color={styles.avatarColor}
+        />
         <TouchableOpacity onPress={() => console.log('Não implementado')}>
           <View>
             <Text style={styles.label.name}>

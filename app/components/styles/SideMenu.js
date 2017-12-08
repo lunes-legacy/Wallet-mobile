@@ -20,6 +20,7 @@ export default {
     alignItems: 'center',
   },
   avatarSize: 80,
+  avatarSmallSize: 40,
   label:{
     name:{
       paddingTop: 15,
