@@ -16,6 +16,9 @@ const appStyle = {
       height: 50,
       marginTop: Platform.OS === 'ios' ? 20 : 0,
     },
+    body: {
+      backgroundColor: Colors.background,
+    },
     headerLogo: {
       paddingVertical: -20,
       paddingHorizontal: 50,

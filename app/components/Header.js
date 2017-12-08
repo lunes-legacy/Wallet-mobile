@@ -37,7 +37,10 @@ export default class Header extends React.Component {
         <TouchableOpacity style={AppStyle.screen.headerLogo}>
           <LogoSmall />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.avatar}>
+        <TouchableOpacity
+          style={styles.avatar}
+          onPress={() => navigation.navigate('UserUpdate')}
+        >
           <Avatar
             name={user.name}
             src={user.imageSrc}
