@@ -1,5 +1,5 @@
+import { NavigationActions } from 'react-navigation';
 import types from './types';
-
 import { auth, database } from '../../config/firebase';
 
 export const requestLogin = values => {
@@ -10,6 +10,7 @@ export const requestLogin = values => {
       .signInWithEmailAndPassword(values.email, values.password)
       .then(user => {
         dispatch(signinSuccess(user));
+        dispatch(NavigationActions.navigate({ routeName: 'Main' }));
       })
       .catch(error => {
         console.log(error);
