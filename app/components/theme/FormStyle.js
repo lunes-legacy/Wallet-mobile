@@ -4,16 +4,12 @@ import Colors from './Colors';
 
 const formStyle = {
   container: {
-    padding: 10,
+    borderBottomColor: '#9f90c5',
+    borderBottomWidth: 1,
   },
   input: {
     width: 300,
-    height: 40,
-    marginBottom: 20,
-    paddingHorizontal: 100,
-    flexDirection: 'row',
-    alignItems: 'stretch',
-    borderWidth: 0,
+    color: '#fff',
   },
   buttonContainer: {
     backgroundColor: Colors.secondary,
