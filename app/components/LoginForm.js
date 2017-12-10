@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { FormStyle } from './theme';
+import { ValidateEmail } from '../utils/stringUtils';
 import Button from './button/Button';
 
 export default class LoginForm extends React.Component {
@@ -27,6 +28,10 @@ export default class LoginForm extends React.Component {
     }
     if (this.props.modeAuth === 'SIGNUP' && this.state.name === '') {
       alert('Por favor, preencha todos os campos');
+      return;
+    }
+    if (!ValidateEmail(this.state.email)) {
+      alert('Email inválido');
       return;
     }
     this.props.submit(this.state);
