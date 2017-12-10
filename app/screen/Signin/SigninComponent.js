@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import firebase from 'react-native-firebase';
 import { FormStyle } from '../../components/theme';
 
 import {
@@ -14,6 +15,15 @@ import {
 import styles from './styles';
 
 export default class Signin extends React.Component<{}> {
+  componentWillMount() {
+    const { navigate } = this.props.navigation;
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        navigate('Main');
+      }
+    });
+  }
+
   render() {
     if (this.props.authorized) {
       return (

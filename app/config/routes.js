@@ -21,6 +21,12 @@ const RootNavigator = StackNavigator({
         header: <View />,
       },
     }*/
+  Signin: {
+    screen: SigninContainer,
+    navigationOptions: {
+      header: <View />,
+    },
+  },
   Main: {
     screen: Main,
     navigationOptions: {

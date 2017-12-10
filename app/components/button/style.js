@@ -8,8 +8,9 @@ const buttonStyle = {
     backgroundColor: Colors.white,
     paddingHorizontal: 10,
     paddingVertical: 10,
+    marginTop: 20,
     alignItems: 'center',
-    width: 200,
+    width: '100%',
   },
   primary: {
     borderRadius: 20,
@@ -18,6 +19,8 @@ const buttonStyle = {
     paddingVertical: 10,
     alignItems: 'center',
     width: 200,
+    marginTop: 20,
+    width: '100%',
   },
   roundedPrimary: {
     height: 50,
@@ -26,6 +29,7 @@ const buttonStyle = {
     backgroundColor: Colors.secondary,
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 20,
   },
   roundedOpened: {
     borderRadius: 20,
@@ -50,7 +54,7 @@ const buttonStyle = {
     paddingHorizontal: 10,
     paddingVertical: 10,
     alignItems: 'center',
-    width: 200,
+    width: '100%',
   },
   itemButtonOpened: {
     alignItems: 'center',
