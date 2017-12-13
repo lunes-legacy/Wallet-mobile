@@ -6,17 +6,11 @@ import { AppStyle } from './theme';
 import LogoSmall from './LogoSmall';
 import MenuButton from './styles/MenuButton';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
-import Avatar from './Avatar';
-import styles from './styles/SideMenu';
+import ModalDropdown from 'react-native-modal-dropdown';
 
 export default class Header extends React.Component {
   render() {
     const { navigation, onPress } = this.props;
-    const user = {
-      name: 'User Name',
-      imageSrc: null,
-      email: 'user.lunes@lunes.com',
-    };
 
     return (
       <View style={AppStyle.screen.header}>
@@ -37,17 +31,16 @@ export default class Header extends React.Component {
         <TouchableOpacity style={AppStyle.screen.headerLogo}>
           <LogoSmall />
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.avatar}
-          onPress={() => navigation.navigate('UserUpdate')}
+        <ModalDropdown
+          options={['Logout']}
+          style={{ padding: MenuButton.back.padding, width: 100 }}
+          dropdownStyle={{height: 36, marginTop:14}}
+          onSelect={(index,optionText) => console.log(index,optionText)}
         >
-          <Avatar
-            name={user.name}
-            src={user.imageSrc}
-            size={styles.avatarSmallSize}
-            color={styles.avatarColor}
-          />
-        </TouchableOpacity>
+          <Text>
+            <Icon name="ellipsis-v" size={20} color={MenuButton.back.color} />
+          </Text>
+        </ModalDropdown>
       </View>
     );
   }
