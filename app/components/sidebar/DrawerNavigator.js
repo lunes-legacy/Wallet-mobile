@@ -8,7 +8,6 @@ import MultiCoinsSystem from '../../screen/MultiCoinsSystem';
 import CardManager from '../../screen/CardManager';
 import BoletoPayments from '../../screen/BoletoPayments';
 import PhoneRecharges from '../../screen/PhoneRecharges';
-import { UserUpdate } from '../../screen/User';
 
 const generateDrawerHamburger = currentNav => {
   const onPress = () => currentNav.navigation.navigate('DrawerOpen');
@@ -61,13 +60,6 @@ const PhoneRechargesStack = StackNavigator({
   },
 });
 
-const UserUpdateStack = StackNavigator({
-  UserUpdate: {
-    screen: UserUpdate,
-    navigationOptions: getStackNavOption,
-  },
-});
-
 export default DrawerNavigator(
   {
     LunesMarket: { screen: LunesMarketStack },
@@ -75,8 +67,7 @@ export default DrawerNavigator(
     MultiCoinsSystem: { screen: MultiCoinsSystemStack },
     CardManager: { screen: CardManagerStack },
     BoletoPayments: { screen: BoletoPaymentsStack },
-    PhoneRecharges: { screen: PhoneRechargesStack },
-    UserUpdate: { screen: UserUpdateStack },
+    PhoneRecharges: { screen: PhoneRechargesStack }
   },
   {
     contentComponent: SideMenu,
