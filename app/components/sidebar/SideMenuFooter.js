@@ -19,19 +19,17 @@ class SideMenuFooter extends Component {
   render() {
     const { amount } = getMyAmount();
     return (
-      <View>
+      <View style={{ backgroundColor: styles.footerContainer.backgroundColor }}>
         <Text style={styles.footerContainer}>
-          <Text style={styles.footerContainer.coins}>
-            <Icon name="money" size={15} color="#fff" />
-            {amount}
+          <Text style={styles.coins}>
+            <Icon name="money" size={15} />
+            {`   ${amount}`}
           </Text>
-          <Text style={styles.footerContainer.dolar}>{`  $ ${getMyDolarAmount(
-            amount
-          )}`}</Text>
-          <Text
-            style={styles.footerContainer.brl}>{`   |   BRL ${getMyBRLAmount(
-            amount
-          )}`}</Text>
+          <Text style={styles.footerContainer}>
+            {`         $ ${getMyDolarAmount(amount)}   |   BRL ${getMyBRLAmount(
+              amount
+            )}`}
+          </Text>
         </Text>
       </View>
     );

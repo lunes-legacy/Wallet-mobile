@@ -5,6 +5,8 @@ import { NavigationActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import styles from '../styles/SideMenu';
 
+const getSpace = space => Array.from({length:space}, () => ' ').join().replace(/,/g,'')
+
 export default class SideMenuItem extends Component {
   navigateToScreen = route => () => {
     const navigateAction = NavigationActions.navigate({
@@ -14,16 +16,16 @@ export default class SideMenuItem extends Component {
   };
 
   render() {
-    const { screen, menuOption } = this.props;
+    const { screen, menuOption, space } = this.props;
     return (
       <View>
         <Text
           style={styles.navItemStyle}
           onPress={this.navigateToScreen(screen)}>
-          <Icon name="chevron-down" size={15} color="#fff" />
-          {`      ${menuOption}`}
+          <Text>{`${menuOption}${getSpace(space)}`}</Text>
+          <Text><Icon name="chevron-down" size={15} color="#fff" /></Text>
         </Text>
-        <View style={styles.navItemStyle.divider} />
+        <View style={styles.divider} />
       </View>
     );
   }

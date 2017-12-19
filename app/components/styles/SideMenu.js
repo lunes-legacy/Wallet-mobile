@@ -10,6 +10,7 @@ export default {
     padding: 10,
     backgroundColor: Colors.background,
   },
+  avatarColor: Colors.secondary,
   avatar: {
     flex: 1,
     paddingTop: 20,
@@ -17,18 +18,18 @@ export default {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    color: Colors.secondary,
-    size: 80,
-    label:{
-      name:{
-        paddingTop: 15,
-        color: Colors.white,
-        fontSize: 18,
-      },
-      email:{
-        color: Colors.white,
-        fontSize: 11,
-      },
+  },
+  avatarSize: 80,
+  avatarSmallSize: 40,
+  label:{
+    name:{
+      paddingTop: 15,
+      color: Colors.white,
+      fontSize: 18,
+    },
+    email:{
+      color: Colors.white,
+      fontSize: 11,
     },
   },
   navItemStyle: {
@@ -36,26 +37,32 @@ export default {
     paddingLeft: 40,
     color: Colors.white,
     flexDirection: 'row',
-    divider: {
-      borderBottomColor: Colors.divider,
-      borderBottomWidth: 1,
-    },
+  },
+  divider: {
+    borderBottomColor: Colors.divider,
+    borderBottomWidth: 1,
   },
   footerContainer: {
-    paddingLeft: 20,
-    paddingBottom: 20,
+    textAlignVertical: 'center',
     color: Colors.white,
-    coins: {
-      color: Colors.secondary,
-    },
-    dolar: {
-      fontSize: 18,
-    },
-    brl: {
-      fontSize: 18,
-    },
+    textAlign: 'center',
+    backgroundColor: Colors.secondary,
+    paddingBottom: 15,
+    paddingTop: 15,
+    fontSize: 16,
   },
   hr: {
     color: Colors.white,
+  },
+  coins: {
+    color: Colors.primary,
+    backgroundColor: Colors.secondary,
+    borderWidth: 100
+  },
+  dolar: {
+    fontSize: 15,
+  },
+  brl: {
+    fontSize: 18,
   },
 };

@@ -3,8 +3,10 @@
 import React from 'react';
 import { View, TouchableOpacity, TouchableHighlight, Text } from 'react-native';
 import { AppStyle } from './theme';
+import LogoSmall from './LogoSmall';
 import MenuButton from './styles/MenuButton';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import ModalDropdown from 'react-native-modal-dropdown';
 
 export default class Header extends React.Component {
   render() {
@@ -23,20 +25,22 @@ export default class Header extends React.Component {
           style={{ padding: MenuButton.back.padding }}
           onPress={() => navigation.goBack()}>
           <Text>
-            <Icon name="chevron-left" size={20} color="#fff" />
+            <Icon name="chevron-left" size={20} color={MenuButton.back.color} />
           </Text>
         </TouchableOpacity>
-        <Text style={AppStyle.screen.headerText}> My Header </Text>
-        <TouchableOpacity
-          style={{
-            paddingVertical: MenuButton.next.paddingVertical,
-            paddingHorizontal: MenuButton.next.paddingHorizontal,
-          }}
-          onPress={() => navigation.goMenu()}>
+        <TouchableOpacity style={AppStyle.screen.headerLogo}>
+          <LogoSmall />
+        </TouchableOpacity>
+        <ModalDropdown
+          options={['Logout']}
+          style={{ padding: MenuButton.back.padding, width: 100 }}
+          dropdownStyle={{height: 36, marginTop:14}}
+          onSelect={(index,optionText) => console.log(index,optionText)}
+        >
           <Text>
-            <Icon name="chevron-right" size={20} color="#fff" />
+            <Icon name="ellipsis-v" size={20} color={MenuButton.back.color} />
           </Text>
-        </TouchableOpacity>
+        </ModalDropdown>
       </View>
     );
   }

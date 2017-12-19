@@ -26,6 +26,7 @@ class SideMenu extends Component {
               screen={'LunesMarket'}
               menuOption={'Mercado Lunes'}
               navigation={navigation}
+              space={38}
             />
           </View>
           <View>
@@ -33,6 +34,7 @@ class SideMenu extends Component {
               screen={'ValuesAlertSystem'}
               menuOption={'Sistema de Alerta de Valores'}
               navigation={navigation}
+              space={14}
             />
           </View>
           <View>
@@ -40,6 +42,7 @@ class SideMenu extends Component {
               screen={'MultiCoinsSystem'}
               menuOption={'Sistema de Multi-Coins'}
               navigation={navigation}
+              space={24}
             />
           </View>
           <View>
@@ -47,6 +50,7 @@ class SideMenu extends Component {
               screen={'CardManager'}
               menuOption={'Gestão de Gasto de Cartão'}
               navigation={navigation}
+              space={17}
             />
           </View>
           <View>
@@ -54,6 +58,7 @@ class SideMenu extends Component {
               screen={'BoletoPayments'}
               menuOption={'Pagamento de Boletos'}
               navigation={navigation}
+              space={24}
             />
           </View>
           <View>
@@ -61,6 +66,7 @@ class SideMenu extends Component {
               screen={'PhoneRecharges'}
               menuOption={'Recargas de Celular'}
               navigation={navigation}
+              space={29}
             />
           </View>
         </ScrollView>
