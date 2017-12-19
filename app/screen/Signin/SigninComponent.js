@@ -9,7 +9,6 @@ import LunesLoginForm from '../../native-base-theme/components/LunesLoginForm';
 
 export default class Signin extends React.Component<{}> {
   componentWillMount() {
-    const { navigate } = this.props.navigation;
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         //navigate('Main');

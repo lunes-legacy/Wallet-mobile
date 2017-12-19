@@ -11,7 +11,7 @@ import { StyleProvider } from 'native-base';
 import { Provider } from 'react-redux';
 import SplashScreen from 'react-native-smart-splash-screen';
 
-import RootNavigator from './config/routes';
+import RootNavigator, { setNavigator } from './config/routes';
 import store from './config/store';
 
 //theme native base
