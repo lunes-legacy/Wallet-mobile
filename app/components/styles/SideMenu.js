@@ -43,18 +43,24 @@ export default {
     borderBottomWidth: 1,
   },
   footerContainer: {
-    paddingLeft: 20,
-    paddingBottom: 20,
+    textAlignVertical: 'center',
     color: Colors.white,
+    textAlign: 'center',
+    backgroundColor: Colors.secondary,
+    paddingBottom: 15,
+    paddingTop: 15,
+    fontSize: 16,
   },
   hr: {
     color: Colors.white,
   },
   coins: {
-    color: Colors.secondary,
+    color: Colors.primary,
+    backgroundColor: Colors.secondary,
+    borderWidth: 100
   },
   dolar: {
-    fontSize: 18,
+    fontSize: 15,
   },
   brl: {
     fontSize: 18,
