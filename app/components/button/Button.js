@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { View, Text, TouchableHighlight } from 'react-native';
+import { View, Text, TouchableHighlight, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import IconIon from 'react-native-vector-icons/dist/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
@@ -11,11 +11,11 @@ export default class Button extends React.Component {
   defaultButton() {
     if (this.props.type === 'default') {
       return (
-        <TouchableHighlight onPress={() => this.props.onPress()}>
+        <TouchableOpacity onPress={() => this.props.onPress()}>
           <View style={buttonStyle.default}>
             <Text style={buttonStyle.textDefault}> {this.props.text}</Text>
           </View>
-        </TouchableHighlight>
+        </TouchableOpacity>
       );
     } else {
       return null;
@@ -25,11 +25,11 @@ export default class Button extends React.Component {
   disabledButton() {
     if (this.props.type === 'disabled') {
       return (
-        <TouchableHighlight onPress={() => this.props.onPress()}>
+        <TouchableOpacity onPress={() => this.props.onPress()}>
           <View style={buttonStyle.disabled}>
             <Text style={buttonStyle.textDisabled}> {this.props.text}</Text>
           </View>
-        </TouchableHighlight>
+        </TouchableOpacity>
       );
     } else {
       return null;
@@ -39,11 +39,11 @@ export default class Button extends React.Component {
   primaryButton() {
     if (this.props.type === 'primary') {
       return (
-        <TouchableHighlight onPress={() => this.props.onPress()}>
+        <TouchableOpacity onPress={() => this.props.onPress()}>
           <View style={buttonStyle.primary}>
             <Text style={buttonStyle.textPrimary}> {this.props.text}</Text>
           </View>
-        </TouchableHighlight>
+        </TouchableOpacity>
       );
     } else {
       return null;

@@ -19,9 +19,7 @@ class SideMenu extends Component {
       <View style={styles.container}>
         <ScrollView>
           <View>
-            <SideMenuAvatar
-              navigation={navigation}
-            />
+            <SideMenuAvatar navigation={navigation} />
           </View>
           <View>
             <SideMenuItem
