@@ -93,3 +93,7 @@ https://github.com/react-native-component/react-native-smart-splash-screen
 ### Adicionado Firebase
 
 https://firebase.google.com/
+
+### Icons Vectors
+
+https://github.com/oblador/react-native-vector-icons
