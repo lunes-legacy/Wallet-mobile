@@ -6,11 +6,17 @@
 
 import React, { Component } from 'react';
 import { Platform, StatusBar } from 'react-native';
+import { StyleProvider } from 'native-base';
+
 import { Provider } from 'react-redux';
 import SplashScreen from 'react-native-smart-splash-screen';
 
 import RootNavigator from './config/routes';
 import store from './config/store';
+
+//theme native base
+import getTheme from './native-base-theme/components';
+import commonColor from './native-base-theme/variables/commonColor';
 
 const instructions = Platform.select({
   ios: `Press Cmd+R to reload,\n Cmd+D or shake for dev menu`,
@@ -29,7 +35,9 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <RootNavigator />
+        <StyleProvider style={getTheme(commonColor)}>
+          <RootNavigator />
+        </StyleProvider>
       </Provider>
     );
   }

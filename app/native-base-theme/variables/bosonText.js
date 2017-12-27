@@ -1,6 +1,6 @@
 // @flow
 import { TextDensityConstant, FontFamilyConstant } from '../constants';
-import Colors from './boson-color';
+import Colors from './bosonColor';
 
 /**
  * ===========================================================================

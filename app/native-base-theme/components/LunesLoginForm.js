@@ -5,12 +5,12 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  StyleSheet,
 } from 'react-native';
 import { Button, Text } from 'native-base';
-import { FormStyle } from './theme';
-import { ValidateEmail } from '../utils/stringUtils';
+import { ValidateEmail } from '../../utils/stringUtils';
 
-export default class LoginForm extends React.Component {
+export default class LunesLoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,6 +21,7 @@ export default class LoginForm extends React.Component {
   }
 
   onSubmit() {
+    alert(JSON.stringify(this.state));
     if (this.state.email === '' || this.state.password === '') {
       alert('Por favor, preencha todos os campos');
       return;
@@ -39,10 +40,10 @@ export default class LoginForm extends React.Component {
   renderFieldName() {
     if (this.props.modeAuth === 'SIGNUP') {
       return (
-        <View style={FormStyle.container}>
+        <View style={styles.container}>
           <TextInput
             underlineColorAndroid={'transparent'}
-            style={FormStyle.input}
+            style={styles.input}
             placeholder="Nome"
             placeholderTextColor="rgba(255,255,255,0.7)"
             autoCapitalize="none"
@@ -76,9 +77,9 @@ export default class LoginForm extends React.Component {
       <KeyboardAvoidingView behavior="padding">
         {this.renderFieldName()}
 
-        <View style={FormStyle.container}>
+        <View style={styles.container}>
           <TextInput
-            style={FormStyle.input}
+            style={styles.input}
             underlineColorAndroid={'transparent'}
             placeholder="Email"
             placeholderTextColor="rgba(255,255,255,0.7)"
@@ -93,10 +94,10 @@ export default class LoginForm extends React.Component {
           />
         </View>
 
-        <View style={FormStyle.container}>
+        <View style={styles.container}>
           <TextInput
             underlineColorAndroid={'transparent'}
-            style={FormStyle.input}
+            style={styles.input}
             placeholder="Senha"
             onChangeText={text => this.setState({ password: text })}
             ref={input => (this.passwordInput = input)}
@@ -111,3 +112,14 @@ export default class LoginForm extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    borderBottomColor: '#9f90c5',
+    borderBottomWidth: 1,
+  },
+  input: {
+    width: 300,
+    color: '#fff',
+  },
+});
