@@ -3,13 +3,12 @@ import React from 'react';
 import {
   KeyboardAvoidingView,
   View,
-  Text,
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import { Button, Text } from 'native-base';
 import { FormStyle } from './theme';
 import { ValidateEmail } from '../utils/stringUtils';
-import Button from './button/Button';
 
 export default class LoginForm extends React.Component {
   constructor(props) {
@@ -64,8 +63,10 @@ export default class LoginForm extends React.Component {
     const text = this.props.modeAuth === 'SIGNUP' ? 'Sign Up' : 'Sign In';
 
     return (
-      <View>
-        <Button type="primary" text={text} onPress={() => this.onSubmit()} />
+      <View style={{ marginTop: 90 }}>
+        <Button rounded block success onPress={() => this.onSubmit()}>
+          <Text>{text}</Text>
+        </Button>
       </View>
     );
   }

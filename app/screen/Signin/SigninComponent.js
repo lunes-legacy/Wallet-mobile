@@ -1,25 +1,18 @@
 // @flow
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
+import { Container, Button, Text, Tab, Tabs } from 'native-base';
 import firebase from 'react-native-firebase';
 import { FormStyle } from '../../components/theme';
-
-import {
-  LogoSmall,
-  Base,
-  Tabs,
-  TabLinkContainer,
-  TabContent,
-  LoginForm,
-} from '../../components';
-import styles from './styles';
+import LunesLogo from '../../native-base-theme/components/LunesLogo';
+import LunesLoginForm from '../../native-base-theme/components/LunesLoginForm';
 
 export default class Signin extends React.Component<{}> {
   componentWillMount() {
     const { navigate } = this.props.navigation;
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        navigate('Main');
+        //navigate('Main');
       }
     });
   }
@@ -34,44 +27,29 @@ export default class Signin extends React.Component<{}> {
         </TouchableOpacity>
       );
     } else {
-      let isTab1 = this.props.tabSelected === 'tab1' ? true : false;
-      let isTab2 = this.props.tabSelected === 'tab2' ? true : false;
       return (
-        <Base style={styles.container}>
-          <LogoSmall />
-          <Tabs>
-            <View style={{ flexDirection: 'row' }}>
-              <TabLinkContainer
-                tabId="tab1"
-                title="SIGNIN"
-                isSelected={isTab1}
+        <Container>
+          <LunesLogo size={30} />
+
+          <Tabs initialPage={0}>
+            <Tab heading="SIGN IN">
+              <LunesLoginForm
+                submit={this.props.requestLogin}
+                modeAuth="SIGNIN"
               />
-              <TabLinkContainer
-                tabId="tab2"
-                title="SIGNUP"
-                isSelected={isTab2}
+            </Tab>
+            <Tab heading="SIGN UP">
+              <LunesLoginForm
+                submit={this.props.requestSignup}
+                modeAuth="SIGNUP"
               />
-            </View>
-            <View>
-              <TabContent for="tab1" isVisible={isTab1}>
-                <View style={styles.formContainer}>
-                  <LoginForm
-                    submit={this.props.requestLogin}
-                    modeAuth="SIGNIN"
-                  />
-                </View>
-              </TabContent>
-              <TabContent for="tab2" isVisible={isTab2}>
-                <View style={styles.formContainer}>
-                  <LoginForm
-                    submit={this.props.requestSignup}
-                    modeAuth="SIGNUP"
-                  />
-                </View>
-              </TabContent>
-            </View>
+            </Tab>
           </Tabs>
-        </Base>
+
+          <Button block transparent light>
+            <Text>Redefinir Senha</Text>
+          </Button>
+        </Container>
       );
     }
   }

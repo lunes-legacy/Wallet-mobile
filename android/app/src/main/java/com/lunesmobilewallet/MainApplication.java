@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.facebook.react.ReactApplication;
 import com.reactnativecomponent.splashscreen.RCTSplashScreenPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.auth.RNFirebaseAuthPackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
@@ -29,6 +30,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+          new VectorIconsPackage(),
           new RCTSplashScreenPackage(),
           new RNFirebasePackage(),
           new RNFirebaseAuthPackage(),

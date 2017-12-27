@@ -1,9 +1,16 @@
 import React from 'react';
-import { Text, TextInput, View, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import {
+  Text,
+  TextInput,
+  View,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
+import { Container } from 'native-base';
+import MaterialIcon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import FontAwesomeIcon from 'react-native-vector-icons/dist/FontAwesome';
 
-import { Logo, Base, Button } from '../../components';
-import styles from './styles';
+import { Button } from '../../components';
 
 export default class Confirmation extends React.Component {
   onPress() {
@@ -11,9 +18,17 @@ export default class Confirmation extends React.Component {
   }
   render() {
     return (
-      <Base>
-        <Icon name="email" size={50} color="#fff" />
-        <Text style={styles.instructions}>Confirmação via SMS</Text>
+      <Container>
+        <MaterialIcon name="email" size={30} color="#fff" />
+        <Text style={styles.instructions}>
+          Confirmação via <Text style={styles.textBold}>SMS</Text>
+        </Text>
+
+        <Text style={styles.instructions}>
+          Você receberá um código em seu dispositivo móvel para validar a sua
+          Lunes Wallet
+        </Text>
+
         <Text style={styles.instructions}>
           Aguardando para detectar automaticamente um SMS enviado para +55 83
           987137261
@@ -21,7 +36,7 @@ export default class Confirmation extends React.Component {
         <Text style={styles.instructions}>Número errado?</Text>
 
         <View style={{ flexDirection: 'row', paddingTop: 10 }}>
-          <Icon name="email" size={20} color="#fff" />
+          <FontAwesomeIcon name="phone" size={20} color="#fff" />
           <TextInput
             style={{
               height: 40,
@@ -110,7 +125,25 @@ export default class Confirmation extends React.Component {
           onPress={() => this.onPress()}>
           <Text style={styles.start}>INICIAR</Text>
         </TouchableOpacity>
-      </Base>
+      </Container>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  textBold: {
+    fontWeight: '900',
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  instructions: {
+    width: 220,
+    textAlign: 'center',
+    color: '#fff',
+    marginTop: 10,
+    marginBottom: 20,
+  },
+});
