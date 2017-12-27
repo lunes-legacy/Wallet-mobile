@@ -43,7 +43,6 @@ export const requestSignup = values => {
       .createUserWithEmailAndPassword(email, password)
       .then(user => {
         if (user !== null) {
-          // console.log(user.uid);
           database
             .ref('users')
             .child(user.uid)
@@ -52,15 +51,13 @@ export const requestSignup = values => {
               lname: '',
             })
             .then(function() {
-              // console.log('Document successfully written!');
               dispatch(signupSuccess(user));
+              navigate('Main');
             })
             .catch(error => {
               console.error('Error writing document: ', error);
               dispatch(signupError(error));
             });
-
-          auth.currentUser.sendEmailVerification();
         }
       })
       .catch(error => dispatch(signupError(error)));

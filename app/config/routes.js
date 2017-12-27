@@ -8,14 +8,14 @@ import { SigninContainer } from '../screen/Signin';
 import { Main } from '../screen/Main';
 
 const RootNavigator = StackNavigator({
-  Confirmation: {
-    screen: Confirmation,
+  Signin: {
+    screen: SigninContainer,
     navigationOptions: {
       header: <View />,
     },
   },
-  Signin: {
-    screen: SigninContainer,
+  Confirmation: {
+    screen: Confirmation,
     navigationOptions: {
       header: <View />,
     },
