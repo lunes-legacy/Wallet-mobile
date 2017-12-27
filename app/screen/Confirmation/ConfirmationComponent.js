@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import { Container } from 'native-base';
+import { Container, Item, Input } from 'native-base';
 import MaterialIcon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import FontAwesomeIcon from 'react-native-vector-icons/dist/FontAwesome';
 
@@ -36,22 +36,28 @@ export default class Confirmation extends React.Component {
         <Text style={styles.instructions}>Número errado?</Text>
 
         <View style={{ flexDirection: 'row', paddingTop: 10 }}>
-          <FontAwesomeIcon name="phone" size={20} color="#fff" />
+          <View style={{ paddingTop: 12, paddingRight: 10 }}>
+            <FontAwesomeIcon name="phone" size={20} color="#fff" />
+          </View>
           <TextInput
             style={{
               height: 40,
               borderColor: 'gray',
               borderWidth: 0,
+              borderBottomColor: '#fff',
               color: '#fff',
+              padding: 10,
             }}
             value="85"
           />
+
           <TextInput
             style={{
               height: 40,
               borderColor: 'gray',
               borderWidth: 0,
               color: '#fff',
+              padding: 10,
             }}
             value="98798798789"
           />
