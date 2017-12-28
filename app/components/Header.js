@@ -7,8 +7,11 @@ import LogoSmall from './LogoSmall';
 import MenuButton from './styles/MenuButton';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import ModalDropdown from 'react-native-modal-dropdown';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { requestSignout } from '../screen/Signin/actions';
 
-export default class Header extends React.Component {
+class Header extends React.Component {
   render() {
     const { navigation, onPress } = this.props;
 
@@ -34,9 +37,8 @@ export default class Header extends React.Component {
         <ModalDropdown
           options={['Logout']}
           style={{ padding: MenuButton.back.padding, width: 100 }}
-          dropdownStyle={{height: 36, marginTop:14}}
-          onSelect={(index,optionText) => console.log(index,optionText)}
-        >
+          dropdownStyle={{ height: 36, marginTop: 14 }}
+          onSelect={this.props.requestSignout}>
           <Text>
             <Icon name="ellipsis-v" size={20} color={MenuButton.back.color} />
           </Text>
@@ -45,3 +47,8 @@ export default class Header extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ requestSignout }, dispatch);
+
+export default connect(null, mapDispatchToProps)(Header);

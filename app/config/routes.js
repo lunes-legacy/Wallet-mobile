@@ -1,8 +1,6 @@
 import React from 'react';
-import { StackNavigator } from 'react-navigation';
-import { View, Button } from 'react-native';
-
-import { Header } from '../components';
+import { StackNavigator, NavigationActions } from 'react-navigation';
+import { View } from 'react-native';
 
 import { Introduction } from '../screen/Introduction';
 import { Confirmation } from '../screen/Confirmation';
@@ -10,14 +8,14 @@ import { SigninContainer } from '../screen/Signin';
 import { Main } from '../screen/Main';
 
 const RootNavigator = StackNavigator({
-  Confirmation: {
-    screen: Confirmation,
+  Signin: {
+    screen: SigninContainer,
     navigationOptions: {
       header: <View />,
     },
   },
-  Signin: {
-    screen: SigninContainer,
+  Confirmation: {
+    screen: Confirmation,
     navigationOptions: {
       header: <View />,
     },
@@ -35,5 +33,17 @@ const RootNavigator = StackNavigator({
     },
   },
 });
+
+let navigator;
+
+export function setNavigator(nav) {
+  navigator = nav;
+}
+
+export function navigate(routeName, params) {
+  if (navigator) {
+    navigator.dispatch(NavigationActions.navigate({ routeName, params }));
+  }
+}
 
 export default RootNavigator;
