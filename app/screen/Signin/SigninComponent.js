@@ -19,6 +19,9 @@ export default class Signin extends React.Component<{}> {
               submit={this.props.requestLogin}
               modeAuth="SIGNIN"
             />
+            <Button block transparent light>
+              <Text style={{ fontSize: 12 }}>Redefinir Senha</Text>
+            </Button>
           </Tab>
           <Tab heading="SIGN UP">
             <LunesLoginForm
@@ -27,10 +30,6 @@ export default class Signin extends React.Component<{}> {
             />
           </Tab>
         </Tabs>
-
-        <Button block transparent light>
-          <Text>Redefinir Senha</Text>
-        </Button>
       </Container>
     );
   }

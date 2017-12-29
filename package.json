@@ -11,15 +11,17 @@
     "flow coverage": "flow coverage",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "clean": "rm -rf node_modules && npm i && watchman watch-del-all && rm -fr $TMPDIR/react-* && rm -rf ios/build/ModuleCache/* && rm -rf ios/build"
+    "clean":
+      "rm -rf node_modules && npm i && watchman watch-del-all && rm -fr $TMPDIR/react-* && rm -rf ios/build/ModuleCache/* && rm -rf ios/build"
   },
   "dependencies": {
     "axios": "^0.17.1",
     "native-base": "^2.3.5",
     "prop-types": "^15.6.0",
     "react": "16.0.0",
-    "react-native": "0.50.3",
+    "react-native": "0.50.4",
     "react-native-firebase": "^3.1.1",
+    "react-native-linear-gradient": "^2.4.0",
     "react-native-modal-dropdown": "^0.5.0",
     "react-native-smart-splash-screen": "^2.3.5",
     "react-native-svg": "^6.0.1-rc.1",
@@ -53,8 +55,6 @@
     "preset": "react-native"
   },
   "rnpm": {
-    "assets": [
-      "./app/assets/fonts"
-    ]
+    "assets": ["./app/assets/fonts"]
   }
 }
