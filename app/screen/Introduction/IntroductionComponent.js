@@ -5,37 +5,91 @@ import {
   TouchableOpacity,
   StatusBar,
   StyleSheet,
+  Image,
 } from 'react-native';
-import Swiper from './Swiper';
+import Swiper from './SwiperContainer';
+import { navigate } from '../../config/routes';
+import LunesLoading from '../../native-base-theme/components/LunesLoading';
 
 export default class Introduction extends React.Component {
-  componentDidMount() {
+  componentWillMount() {
     StatusBar.setHidden(true);
+    console.log(this.props);
   }
-  onPress() {
-    this.props.navigation.navigate('Signin');
+
+  componentWillReceiveProps(props) {
+    if (props.isViewedIntroduction) {
+      navigate('Signin');
+    }
   }
+
   render() {
     return (
       <Swiper>
+        <LunesLoading />
         {/* First screen */}
-        <View style={[styles.slide2, { backgroundColor: '#C04DEE' }]}>
-          <Text style={styles.header}>EAT</Text>
+        <View style={[styles.slide2, { backgroundColor: '#4b2c82' }]}>
+          <Image
+            style={{ height: 300, width: 300 }}
+            source={require('../../assets/images/bem-vindo.png')}
+          />
+          <Text style={styles.header}>SEJA BEM-VINDO!</Text>
           <Text style={styles.text}>
-            Good nutrition is an important part of leading a healthy lifestyle
+            Muito obrigado por escolher a Wallet Lunes como sua carteira
+            multicoin. Aproveite da usabilidade e tecnologia desta incrível
+            carteira e armazene suas criptomoedas com um alto nível de
+            segurança.
           </Text>
         </View>
         {/* Second screen */}
-        <View style={[styles.slide2, { backgroundColor: '#4AAFEE' }]}>
-          <Text style={styles.header}>PRAY</Text>
+        <View style={[styles.slide2, { backgroundColor: '#4b2c82' }]}>
+          <Image
+            style={{ height: 300, width: 300 }}
+            source={require('../../assets/images/analytics.png')}
+          />
+          <Text style={styles.header}>ANALYTICS</Text>
           <Text style={styles.text}>
-            Prayer is one of the most important things a Christian can do
+            Acompanhe os movimentos de altas e baixas do mercado de criptomoedas
+            com nossos gráficos modernos e práticos.
           </Text>
         </View>
         {/* Third screen */}
-        <View style={[styles.slide2, { backgroundColor: '#FC515B' }]}>
-          <Text style={styles.header}>LOVE</Text>
-          <Text style={styles.text}>Where there is love there is life</Text>
+        <View style={[styles.slide2, { backgroundColor: '#4b2c82' }]}>
+          <Image
+            style={{ height: 300, width: 300 }}
+            source={require('../../assets/images/faca-backup.png')}
+          />
+          <Text style={styles.header}>FAÇA SEU BACKUP</Text>
+          <Text style={styles.text}>
+            Não armazenamos suas moedas em nossos servidores, elas são de sua
+            propriedade e estão em sua posse, por isso não deixe de salvar as
+            suas chaves privadas e fazer seu backup.
+          </Text>
+        </View>
+        {/* Fourty screen */}
+        <View style={[styles.slide2, { backgroundColor: '#4b2c82' }]}>
+          <Image
+            style={{ height: 300, width: 300 }}
+            source={require('../../assets/images/compre-moedas.png')}
+          />
+          <Text style={styles.header}>COMPRE MOEDAS</Text>
+          <Text style={styles.text}>
+            Compre criptomoedas de forma rápida e segura, sem burocracia.
+            Adicione créditos pagando por boleto bancário ou com o seu cartão de
+            crédito.
+          </Text>
+        </View>
+        {/* Fifty screen */}
+        <View style={[styles.slide2, { backgroundColor: '#4b2c82' }]}>
+          <Image
+            style={{ height: 300, width: 320 }}
+            source={require('../../assets/images/transferencia-moedas.png')}
+          />
+          <Text style={styles.header}>TRANSAÇÕES P2P</Text>
+          <Text style={styles.text}>
+            Receba e envie pagamentos de qualquer lugar do mundo, de forma
+            rápida, segura e barata, direto de pessoa para pessoa.
+          </Text>
         </View>
       </Swiper>
     );
@@ -45,23 +99,23 @@ export default class Introduction extends React.Component {
 const styles = StyleSheet.create({
   // Slide2 styles
   slide2: {
-    flex: 1, // Take up all screen
-    justifyContent: 'center', // Center vertically
+    flex: 2, // Take up all screen
+    justifyContent: 'flex-start', // Center vertically
     alignItems: 'center', // Center horizontally
   },
   // Header styles
   header: {
     color: '#FFFFFF',
-    fontFamily: 'Avenir',
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginVertical: 15,
+    fontFamily: 'Offside-Regular',
+    fontSize: 18,
+    fontWeight: '400',
+    color: '#4CD566',
   },
   // Text below header
   text: {
     color: '#FFFFFF',
-    fontFamily: 'Avenir',
-    fontSize: 18,
+    fontFamily: 'Roboto-Regular',
+    fontSize: 14,
     marginHorizontal: 40,
     textAlign: 'center',
   },

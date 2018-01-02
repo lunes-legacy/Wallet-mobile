@@ -1,9 +1,11 @@
 import types from './types';
 
 const initialState = {
-  authorized: false,
+  authorized: null,
   loading: false,
   error: '',
+  trySignin: false,
+  trySignup: false,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -64,6 +66,11 @@ const authReducer = (state = initialState, action) => {
         loading: false,
         authorized: false,
         user: false,
+      };
+    case types.TRY_SIGNIN:
+      return {
+        ...state,
+        trySignin: true,
       };
     default:
       return state;

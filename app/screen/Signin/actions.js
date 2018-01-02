@@ -4,6 +4,7 @@ import { navigate } from '../../config/routes';
 
 export const requestLogin = values => {
   return dispatch => {
+    dispatch(trySignin());
     dispatch(signinLoading());
 
     auth
@@ -18,6 +19,10 @@ export const requestLogin = values => {
       });
   };
 };
+
+const trySignin = () => ({
+  type: types.TRY_SIGNIN,
+});
 
 const signinLoading = () => ({
   type: types.SIGNIN_LOADING,

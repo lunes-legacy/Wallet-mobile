@@ -11,8 +11,8 @@
     "flow coverage": "flow coverage",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "clean":
-      "rm -rf node_modules && npm i && watchman watch-del-all && rm -fr $TMPDIR/react-* && rm -rf ios/build/ModuleCache/* && rm -rf ios/build"
+    "clean": "rm -rf node_modules && npm i && watchman watch-del-all && rm -fr $TMPDIR/react-* && rm -rf ios/build/ModuleCache/* && rm -rf ios/build",
+    "postinstall": "remotedev-debugger --hostname localhost --port 5678 --injectserver"
   },
   "dependencies": {
     "axios": "^0.17.1",
@@ -31,6 +31,7 @@
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-multi": "^0.1.91",
+    "redux-persist": "^3.5.0",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0"
   },
@@ -49,12 +50,19 @@
     "flow-bin": "^0.56.0",
     "jest": "21.2.1",
     "prettier-eslint": "^8.2.2",
-    "react-test-renderer": "16.0.0"
+    "react-test-renderer": "16.0.0",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-logger": "^3.0.6",
+    "remote-redux-devtools": "^0.5.12",
+    "remotedev-rn-debugger": "^0.8.3"
   },
   "jest": {
     "preset": "react-native"
   },
   "rnpm": {
-    "assets": ["./app/assets/fonts"]
+    "assets": [
+      "./app/assets/fonts",
+      "./app/assets/images"
+    ]
   }
 }

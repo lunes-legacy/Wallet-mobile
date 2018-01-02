@@ -23,7 +23,7 @@ export default class LunesLoginForm extends React.Component {
   }
 
   onSubmit() {
-    alert(JSON.stringify(this.state));
+    //alert(JSON.stringify(this.state));
     if (this.state.email === '' || this.state.password === '') {
       alert('Por favor, preencha todos os campos');
       return;

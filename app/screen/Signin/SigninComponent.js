@@ -8,10 +8,19 @@ import LunesLogo from '../../native-base-theme/components/LunesLogo';
 import LunesLoginForm from '../../native-base-theme/components/LunesLoginForm';
 
 export default class Signin extends React.Component<{}> {
+  renderError() {
+    const { authorized, trySignin } = this.props;
+    if (authorized === false) {
+      alert('Erro');
+    }
+  }
+
   render() {
     return (
       <Container>
         <LunesLogo size={30} />
+
+        {this.renderError()}
 
         <Tabs initialPage={0}>
           <Tab heading="SIGN IN">
