@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   TextInput,
   View,
@@ -6,33 +7,55 @@ import {
   StyleSheet,
   StatusBar,
   Dimensions,
+  ScrollView,
 } from 'react-native';
 import { Container, Item, Input, Button, Text } from 'native-base';
 import MaterialIcon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import FontAwesomeIcon from 'react-native-vector-icons/dist/FontAwesome';
 import LunesContainerPhone from '../../native-base-theme/components/LunesContainerPhone';
 import LunesCodeSMS from '../../native-base-theme/components/LunesCodeSMS';
+import LunesLoading from '../../native-base-theme/components/LunesLoading';
 
 export default class Confirmation extends React.Component {
+  static get propTypes() {
+    return {
+      authSMS: PropTypes.object,
+      auth: PropTypes.object,
+      requestCode: PropTypes.func,
+      confirmCode: PropTypes.func,
+    };
+  }
+
   constructor(props) {
     super(props);
     this.state = {
       isWaitingConfirmation: false,
-      phoneNumber: '',
+      user: this.props.auth.user,
+      message: this.props.authSMS.message,
+      error: this.props.authSMS.error,
+      prefixCountryNumber: this.props.authSMS.prefixCountryNumber,
+      dddNumber: this.props.authSMS.dddNumber,
+      phone: this.props.authSMS.phone,
+      codeInput: this.props.authSMS.codeInput,
+      confirmResult: this.props.authSMS.confirmResult,
+      loading: this.props.authSMS.loading1,
+      code1: '',
+      code2: '',
+      code3: '',
+      code4: '',
+      code5: '',
+      code6: '',
     };
   }
 
-  onPress() {
-    this.setState({ isWaitingConfirmation: true });
-  }
-
   renderWaitingConfirmation() {
+    let confirmResult = this.props.authSMS.confirmResult;
     if (this.state.isWaitingConfirmation) {
       return (
         <View>
           <Text style={styles.waitingText}>
-            Aguardando para detectar automaticamente um SMS enviado para +55 83
-            987137261
+            Aguardando para detectar automaticamente um SMS enviado para{' '}
+            {this.state.phoneNumber}
           </Text>
           <Text style={[styles.textBold, styles.textCenter]}>
             Número errado?
@@ -59,7 +82,13 @@ export default class Confirmation extends React.Component {
 
   renderCodeConfirmation() {
     if (this.state.isWaitingConfirmation) {
-      return <LunesCodeSMS />;
+      return (
+        <LunesCodeSMS
+          changeCode={code => {
+            this.changeCode(code);
+          }}
+        />
+      );
     } else {
       return null;
     }
@@ -79,29 +108,129 @@ export default class Confirmation extends React.Component {
     }
   }
 
+  renderError() {
+    const { error } = this.props.authSMS;
+    if (error && error.code === 'auth/app-not-authorized') {
+      alert('Número invalido ou não autorizado');
+    }
+  }
+
+  changeCode(code) {
+    switch (code.position.toString()) {
+      case '1':
+        this.setState({ code1: code.value });
+        return;
+      case '2':
+        this.setState({ code2: code.value });
+        return;
+      case '3':
+        this.setState({ code3: code.value });
+        return;
+      case '4':
+        this.setState({ code4: code.value });
+        return;
+      case '5':
+        this.setState({ code5: code.value });
+        return;
+      case '6':
+        this.setState({ code6: code.value });
+        return;
+    }
+  }
+
+  onSubmitPhoneNumber() {
+    this.props.requestCode(this.state);
+  }
+
+  onSubmitCode() {
+    let { code1, code2, code3, code4, code5, code6 } = this.state;
+    let finalCodeInput = `${code1}${code2}${code3}${code4}${code5}${code6}`;
+    this.props.confirmCode(
+      finalCodeInput,
+      this.props.authSMS.confirmResult,
+      this.props.auth.user
+    );
+  }
+
+  onPress() {
+    this.setState({
+      isWaitingConfirmation: true,
+    });
+    this.onSubmitPhoneNumber();
+  }
+
+  changePrefixCountry(prefixValue) {
+    this.setState({ prefixCountryNumber: prefixValue });
+  }
+
+  changeCodePhone(ddd) {
+    this.setState({ dddNumber: ddd });
+  }
+
+  changePhone(phone) {
+    this.setState({ phone });
+  }
+
+  renderLoading() {
+    return <LunesLoading />;
+  }
+
+  renderButtonNext() {
+    if (!this.state.isWaitingConfirmation) {
+      return (
+        <Button block rounded light onPress={() => this.onPress()}>
+          <Text>Avançar</Text>
+        </Button>
+      );
+    }
+    return null;
+  }
+
+  renderButtonConfirm() {
+    if (this.state.isWaitingConfirmation) {
+      return (
+        <Button block rounded light onPress={() => this.onSubmitCode()}>
+          <Text>Confirmar</Text>
+        </Button>
+      );
+    }
+    return null;
+  }
+
   render() {
     return (
       <Container>
-        <View style={styles.viewConfirmSMS}>
-          <MaterialIcon name="email" size={45} color="#fff" />
-          <Text style={styles.textConfirmSMS}>
-            Confirmação via <Text style={styles.textBold}>SMS</Text>
-          </Text>
-          {this.renderInputConfirmation()}
-          {this.renderWaitingConfirmation()}
-        </View>
+        <ScrollView style={{ padding: 0 }}>
+          {this.props.authSMS.loading ? this.renderLoading() : null}
+          {this.props.authSMS.error &&
+          this.props.authSMS.error.code === 'auth/app-not-authorized'
+            ? this.renderError()
+            : null}
 
-        <View style={{ flex: 1 }}>
-          <LunesContainerPhone />
-          {this.renderCodeConfirmation()}
-        </View>
+          <View style={styles.viewConfirmSMS}>
+            <MaterialIcon name="email" size={45} color="#fff" />
+            <Text style={styles.textConfirmSMS}>
+              Confirmação via <Text style={styles.textBold}>SMS</Text>
+            </Text>
+            {this.renderInputConfirmation()}
+            {this.renderWaitingConfirmation()}
+          </View>
 
-        <View style={styles.viewBtnNext}>
-          {this.renderButtonResendSMS()}
-          <Button block rounded light onPress={() => this.onPress()}>
-            <Text>Avançar</Text>
-          </Button>
-        </View>
+          <View style={{ flex: 1 }}>
+            <LunesContainerPhone
+              changePrefixCountry={value => this.changePrefixCountry(value)}
+              changeCodePhone={value => this.changeCodePhone(value)}
+              changePhone={value => this.changePhone(value)}
+            />
+            {this.renderCodeConfirmation()}
+          </View>
+
+          <View style={styles.viewBtnNext}>
+            {this.renderButtonResendSMS()}
+            {this.renderButtonNext()}
+            {this.renderButtonConfirm()}
+          </View>
+        </ScrollView>
       </Container>
     );
   }

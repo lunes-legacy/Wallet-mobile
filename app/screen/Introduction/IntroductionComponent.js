@@ -23,10 +23,9 @@ export default class Introduction extends React.Component {
     }
   }
 
-  render() {
+  renderSwiper() {
     return (
       <Swiper>
-        <LunesLoading />
         {/* First screen */}
         <View style={[styles.slide2, { backgroundColor: '#4b2c82' }]}>
           <Image
@@ -93,6 +92,14 @@ export default class Introduction extends React.Component {
         </View>
       </Swiper>
     );
+  }
+
+  renderSpinner() {
+    return <LunesLoading />;
+  }
+
+  render() {
+    return this.renderSwiper();
   }
 }
 

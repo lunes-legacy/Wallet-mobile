@@ -4,5 +4,5 @@
  * @flow
  */
 
-import Confirmation from './ConfirmationComponent';
+import Confirmation from './ConfirmationContainer';
 export { Confirmation };

@@ -11,6 +11,7 @@ const mapStateToProps = state => ({
   user: state.auth.user,
   authorized: state.auth.authorized,
   error: state.auth.error,
+  loading: state.auth.loading,
 });
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ requestLogin, requestSignup, requestSignout }, dispatch);
