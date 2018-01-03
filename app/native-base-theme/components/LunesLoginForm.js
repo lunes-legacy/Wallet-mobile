@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { Button, Text } from 'native-base';
 import { ValidateEmail } from '../../utils/stringUtils';
+import LunesGradientButton from './LunesGradientButton';
 
 export default class LunesLoginForm extends React.Component {
   constructor(props) {
@@ -17,11 +18,12 @@ export default class LunesLoginForm extends React.Component {
       name: '',
       email: '',
       password: '',
+      isDisabled: true,
     };
   }
 
   onSubmit() {
-    alert(JSON.stringify(this.state));
+    //alert(JSON.stringify(this.state));
     if (this.state.email === '' || this.state.password === '') {
       alert('Por favor, preencha todos os campos');
       return;
@@ -60,8 +62,39 @@ export default class LunesLoginForm extends React.Component {
     }
   }
 
+  getTextButton() {
+    return this.props.modeAuth === 'SIGNUP' ? 'Sign Up' : 'Sign In';
+  }
+
+  checkButtonIsDisabled() {
+    if (
+      this.props.modeAuth === 'SIGNUP' &&
+      this.state.email &&
+      this.state.name &&
+      this.state.password
+    ) {
+      return this.renderButtonSubmit();
+    } else if (
+      this.props.modeAuth === 'SIGNIN' &&
+      this.state.email &&
+      this.state.password
+    ) {
+      return this.renderButtonSubmit();
+    }
+    return this.renderDisabledButton();
+  }
+
+  renderDisabledButton() {
+    const text = this.getTextButton();
+    return (
+      <View style={{ marginTop: 90 }}>
+        <LunesGradientButton text={text} />
+      </View>
+    );
+  }
+
   renderButtonSubmit() {
-    const text = this.props.modeAuth === 'SIGNUP' ? 'Sign Up' : 'Sign In';
+    const text = this.getTextButton();
 
     return (
       <View style={{ marginTop: 90 }}>
@@ -107,7 +140,7 @@ export default class LunesLoginForm extends React.Component {
           />
         </View>
 
-        {this.renderButtonSubmit()}
+        {this.checkButtonIsDisabled()}
       </KeyboardAvoidingView>
     );
   }

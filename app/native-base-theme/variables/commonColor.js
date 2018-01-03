@@ -265,7 +265,7 @@ export default {
   noteFontSize: 14,
 
   // Title
-  titleFontfamily: platform === 'ios' ? 'System' : 'Roboto_medium',
+  titleFontfamily: platform === 'ios' ? 'System' : 'Roboto-Medium',
   titleFontSize: platform === 'ios' ? 17 : 19,
   subTitleFontSize: platform === 'ios' ? 12 : 14,
   subtitleColor: '#FFF',

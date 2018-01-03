@@ -8,6 +8,12 @@ import { SigninContainer } from '../screen/Signin';
 import { Main } from '../screen/Main';
 
 const RootNavigator = StackNavigator({
+  Introduction: {
+    screen: Introduction,
+    navigationOptions: {
+      header: <View />,
+    },
+  },
   Signin: {
     screen: SigninContainer,
     navigationOptions: {
@@ -20,12 +26,12 @@ const RootNavigator = StackNavigator({
       header: <View />,
     },
   },
-  Introduction: {
+  /*Introduction: {
     screen: Introduction,
     navigationOptions: {
       header: <View />,
     },
-  },
+  },*/
   Main: {
     screen: Main,
     navigationOptions: {

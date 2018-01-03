@@ -1,13 +1,25 @@
 import types from './types';
 
 const initialState = {
-  authorized: false,
+  authorized: null,
   loading: false,
   error: '',
+  trySignin: false,
+  trySignup: false,
 };
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.REQUEST_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.REQUEST_FINISHED:
+      return {
+        ...state,
+        loading: false,
+      };
     // SIGNIN
     case types.SIGNIN_LOADING:
       return {
@@ -39,7 +51,7 @@ const authReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         authorized: true,
-        user: action.payload,
+        user: action.user,
       };
     case types.SIGNUP_ERROR:
       return {
@@ -47,6 +59,7 @@ const authReducer = (state = initialState, action) => {
         loading: false,
         authorized: false,
         user: false,
+        error: action.error,
       };
     //SIGNOUT
     case types.SIGNOUT_LOADING:
@@ -64,6 +77,11 @@ const authReducer = (state = initialState, action) => {
         loading: false,
         authorized: false,
         user: false,
+      };
+    case types.TRY_SIGNIN:
+      return {
+        ...state,
+        trySignin: true,
       };
     default:
       return state;

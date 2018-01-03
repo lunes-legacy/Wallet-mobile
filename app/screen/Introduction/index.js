@@ -4,5 +4,5 @@
  * @flow
  */
 
-import Introduction from './IntroductionComponent';
+import Introduction from './IntroductionContainer';
 export { Introduction };

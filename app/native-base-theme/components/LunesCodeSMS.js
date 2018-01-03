@@ -9,33 +9,32 @@ export default class LunesCodeSMS extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputs: [
-        { value: '' },
-        { value: '' },
-        { value: '' },
-        { value: '' },
-        { value: '' },
-        { value: '' },
-      ],
+      inputs: [1, 2, 3, 4, 5, 6],
+      code1: '',
+      code2: '',
+      code3: '',
+      code4: '',
+      code5: '',
+      code6: '',
     };
-  }
-
-  onChangeInputValue(index, value) {
-    const newArray = [this.state.inputs];
-    newArray[index].value = value;
-    this.setState({ inputs: newArray });
   }
 
   renderInputs() {
     return this.state.inputs.map((input, index) => {
+      let code = this[`code${index}Input`];
       return (
         <TextInput
-          key={input.value}
+          ref={ref => (code = ref)}
+          key={input}
           keyboardType="numeric"
           maxLength={1}
           style={styles.input}
           onChangeText={text => {
-            this.onChangeInputValue(index, text);
+            this.props.changeCode({ position: input, value: text });
+            this.setState({ [`code${index}`]: text });
+            if (text && text.length == 1) {
+              code.focus();
+            }
           }}
         />
       );

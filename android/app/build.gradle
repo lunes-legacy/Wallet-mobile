@@ -146,6 +146,7 @@ dependencies {
     compile "com.facebook.react:react-native:+"  // From node_modules
     compile project(':react-native-smart-splashscreen')
     compile project(':react-native-vector-icons')
+    compile project(':react-native-linear-gradient')
     // Firebase dependencies
     compile "com.google.android.gms:play-services-base:11.6.0"
     compile "com.google.firebase:firebase-core:11.6.0"

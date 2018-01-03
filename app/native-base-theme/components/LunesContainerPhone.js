@@ -22,6 +22,7 @@ export default class LunesContainerPhone extends React.Component {
   }
 
   onValueChange(value) {
+    this.props.changePrefixCountry(value);
     this.setState({
       countrySelected: value,
     });
@@ -68,13 +69,17 @@ export default class LunesContainerPhone extends React.Component {
             styles={styles.inputDDD}
             maxLength={2}
             placeholder="XX"
-            onChange={() => {}}
+            onChangeText={code => {
+              this.props.changeCodePhone(code);
+            }}
           />
           <LunesInputPhone
             styles={styles.inputPhone}
             maxLength={9}
             placeholder="000000000"
-            onChange={() => {}}
+            onChangeText={phone => {
+              this.props.changePhone(phone);
+            }}
           />
         </View>
       </View>

@@ -22,6 +22,7 @@ export default class LunesInputPhone extends React.Component {
         underlineColorAndroid={BosonColors.$bosonWhite}
         keyboardType="numeric"
         placeholder={this.props.placeholder || ''}
+        onChangeText={text => this.props.onChangeText(text)}
       />
     );
   }

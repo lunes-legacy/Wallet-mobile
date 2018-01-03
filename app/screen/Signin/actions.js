@@ -1,9 +1,11 @@
 import types from './types';
 import { auth, database } from '../../config/firebase';
 import { navigate } from '../../config/routes';
+import { Keyboard } from 'react-native';
 
 export const requestLogin = values => {
   return dispatch => {
+    dispatch(trySignin());
     dispatch(signinLoading());
 
     auth
@@ -19,6 +21,10 @@ export const requestLogin = values => {
   };
 };
 
+const trySignin = () => ({
+  type: types.TRY_SIGNIN,
+});
+
 const signinLoading = () => ({
   type: types.SIGNIN_LOADING,
 });
@@ -33,34 +39,52 @@ const signinError = error => ({
   error: error,
 });
 
+const requestLoading = () => ({
+  type: types.REQUEST_LOADING,
+});
+
+const requestFinished = () => ({
+  type: types.REQUEST_FINISHED,
+});
+
 export const requestSignup = values => {
   const { name, email, password } = values;
+  let userData = {
+    fname: '',
+    lname: '',
+    email: '',
+    photoUrl: '',
+  };
 
   return dispatch => {
-    dispatch(signupLoading());
+    dispatch(requestLoading());
 
     auth
       .createUserWithEmailAndPassword(email, password)
       .then(user => {
         if (user !== null) {
+          userData.fname = name;
+          userData.email = email;
+
+          let userPath = '/users/' + user.uid;
           database
-            .ref('users')
-            .child(user.uid)
-            .set({
-              fname: name,
-              lname: '',
-            })
+            .ref(userPath)
+            .set(userData)
             .then(function() {
-              dispatch(signupSuccess(user));
-              navigate('Main');
+              dispatch(requestFinished());
+              dispatch(signupSuccess(user._user));
+              navigate('Confirmation');
             })
             .catch(error => {
+              dispatch(requestFinished());
               console.error('Error writing document: ', error);
               dispatch(signupError(error));
             });
         }
       })
-      .catch(error => dispatch(signupError(error)));
+      .catch(error => {
+        dispatch(signupError(error));
+      });
   };
 };
 
