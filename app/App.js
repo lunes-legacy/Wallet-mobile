@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react';
+import { View, Platform, StatusBar } from 'react-native';
 import { StyleProvider } from 'native-base';
 
 import { Provider } from 'react-redux';
