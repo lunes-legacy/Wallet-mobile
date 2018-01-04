@@ -4,6 +4,7 @@ import { View } from 'react-native';
 
 import { Introduction } from '../screen/Introduction';
 import { Confirmation } from '../screen/Confirmation';
+import { PIN } from '../screen/PIN';
 import { SigninContainer } from '../screen/Signin';
 import { Main } from '../screen/Main';
 
@@ -22,6 +23,12 @@ const RootNavigator = StackNavigator({
   },
   Confirmation: {
     screen: Confirmation,
+    navigationOptions: {
+      header: <View />,
+    },
+  },
+  PIN: {
+    screen: PIN,
     navigationOptions: {
       header: <View />,
     },

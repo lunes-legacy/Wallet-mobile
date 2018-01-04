@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: BosonColors.$bosonLightGreen,
+    backgroundColor: BosonColors.$bosonDarkGreen,
     position: 'absolute',
     opacity: 0.9,
     top: 0,
