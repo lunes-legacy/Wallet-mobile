@@ -35,11 +35,17 @@ const confirmationReducer = (state = initialState, action) => {
         error: action.error,
       };
     case types.CONFIRM_CODE_SUCCESS:
+      console.log('CONFIRM_CODE_SUCCESS: ' + action);
       return {
         ...state,
         user: action.user,
       };
     case types.CONFIRM_CODE_ERROR:
+      return {
+        ...state,
+        error: action.error,
+      };
+    case types.CLEAR_INVALID_PHONENUMBER:
       return {
         ...state,
         error: action.error,

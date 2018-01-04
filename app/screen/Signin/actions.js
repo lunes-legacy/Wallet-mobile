@@ -5,24 +5,25 @@ import { Keyboard } from 'react-native';
 
 export const requestLogin = values => {
   return dispatch => {
-    dispatch(trySignin());
-    dispatch(signinLoading());
+    dispatch(requestLoading());
 
     auth
       .signInWithEmailAndPassword(values.email, values.password)
       .then(user => {
+        dispatch(requestFinished());
+        Keyboard.dismiss();
         dispatch(signinSuccess(user));
         navigate('Main');
       })
       .catch(error => {
-        console.log(error);
         dispatch(signinError(error));
       });
   };
 };
 
-const trySignin = () => ({
-  type: types.TRY_SIGNIN,
+export const clearError = () => ({
+  type: types.CLEAR_ERROR,
+  error: {},
 });
 
 const signinLoading = () => ({
@@ -45,6 +46,11 @@ const requestLoading = () => ({
 
 const requestFinished = () => ({
   type: types.REQUEST_FINISHED,
+});
+
+const storeUser = user => ({
+  type: types.STORE_USER,
+  user: user,
 });
 
 export const requestSignup = values => {
@@ -72,7 +78,8 @@ export const requestSignup = values => {
             .set(userData)
             .then(function() {
               dispatch(requestFinished());
-              dispatch(signupSuccess(user._user));
+              dispatch(signupSuccess(user));
+              //dispatch(storeUser(user._user));
               navigate('Confirmation');
             })
             .catch(error => {

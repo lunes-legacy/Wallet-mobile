@@ -12,10 +12,6 @@ import Button from './Button';
 const { width, height } = Dimensions.get('window');
 
 export default class Swiper extends Component {
-  componentWillReceiveProps() {
-    console.log(this.props.isViewedIntroduction);
-  }
-
   // Props for ScrollView component
   static defaultProps = {
     // Arrange screens horizontally

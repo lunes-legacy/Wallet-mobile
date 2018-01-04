@@ -58,6 +58,11 @@ export const confirmCode = (codeInput, confirmResult, currentUser) => {
   };
 };
 
+export const clearErrorNumberInvalid = error => ({
+  type: types.CLEAR_INVALID_PHONENUMBER,
+  error: {},
+});
+
 const requestCodeSuccess = confirmResult => ({
   type: types.REQUEST_CODE_SUCCESS,
   confirmResult: confirmResult,

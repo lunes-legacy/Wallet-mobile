@@ -67,10 +67,13 @@ export default DrawerNavigator(
     MultiCoinsSystem: { screen: MultiCoinsSystemStack },
     CardManager: { screen: CardManagerStack },
     BoletoPayments: { screen: BoletoPaymentsStack },
-    PhoneRecharges: { screen: PhoneRechargesStack }
+    PhoneRecharges: { screen: PhoneRechargesStack },
   },
   {
     contentComponent: SideMenu,
     drawerWidth: 300,
+    drawerOpenRoute: 'DrawerOpen',
+    drawerCloseRoute: 'DrawerClose',
+    drawerToggleRoute: 'DrawerToggle',
   }
 );

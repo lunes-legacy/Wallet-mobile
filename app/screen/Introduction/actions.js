@@ -8,6 +8,5 @@ export const persistIntroductionViewedAction = () => ({
 export const redirectToAuthAction = () => {
   return dispatch => {
     dispatch(persistIntroductionViewedAction());
-    navigate('Signin');
   };
 };

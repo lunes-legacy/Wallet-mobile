@@ -6,15 +6,17 @@ import {
   StatusBar,
   StyleSheet,
   Image,
+  ScrollView,
 } from 'react-native';
+import { Container } from 'native-base';
 import Swiper from './SwiperContainer';
 import { navigate } from '../../config/routes';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
+import LunesCodeSMS from '../../native-base-theme/components/LunesCodeSMS';
 
 export default class Introduction extends React.Component {
   componentWillMount() {
     StatusBar.setHidden(true);
-    console.log(this.props);
   }
 
   componentWillReceiveProps(props) {
@@ -30,7 +32,10 @@ export default class Introduction extends React.Component {
         <View style={[styles.slide2, { backgroundColor: '#4b2c82' }]}>
           <Image
             style={{ height: 300, width: 300 }}
-            source={require('../../assets/images/bem-vindo.png')}
+            source={{
+              uri:
+                'http://res.cloudinary.com/luneswallet/image/upload/c_scale,w_397/v1515019717/bem-vindo.png',
+            }}
           />
           <Text style={styles.header}>SEJA BEM-VINDO!</Text>
           <Text style={styles.text}>
@@ -44,7 +49,10 @@ export default class Introduction extends React.Component {
         <View style={[styles.slide2, { backgroundColor: '#4b2c82' }]}>
           <Image
             style={{ height: 300, width: 300 }}
-            source={require('../../assets/images/analytics.png')}
+            source={{
+              uri:
+                'http://res.cloudinary.com/luneswallet/image/upload/c_scale,w_397/v1515019717/analytics.png',
+            }}
           />
           <Text style={styles.header}>ANALYTICS</Text>
           <Text style={styles.text}>
@@ -55,8 +63,11 @@ export default class Introduction extends React.Component {
         {/* Third screen */}
         <View style={[styles.slide2, { backgroundColor: '#4b2c82' }]}>
           <Image
-            style={{ height: 300, width: 300 }}
-            source={require('../../assets/images/faca-backup.png')}
+            style={{ height: 300, width: 320 }}
+            source={{
+              uri:
+                'http://res.cloudinary.com/luneswallet/image/upload/c_scale,w_300/v1515019717/faca-backup.png',
+            }}
           />
           <Text style={styles.header}>FAÇA SEU BACKUP</Text>
           <Text style={styles.text}>
@@ -69,7 +80,10 @@ export default class Introduction extends React.Component {
         <View style={[styles.slide2, { backgroundColor: '#4b2c82' }]}>
           <Image
             style={{ height: 300, width: 300 }}
-            source={require('../../assets/images/compre-moedas.png')}
+            source={{
+              uri:
+                'http://res.cloudinary.com/luneswallet/image/upload/c_scale,w_397/v1515019717/compre-moedas.png',
+            }}
           />
           <Text style={styles.header}>COMPRE MOEDAS</Text>
           <Text style={styles.text}>
@@ -82,7 +96,10 @@ export default class Introduction extends React.Component {
         <View style={[styles.slide2, { backgroundColor: '#4b2c82' }]}>
           <Image
             style={{ height: 300, width: 320 }}
-            source={require('../../assets/images/transferencia-moedas.png')}
+            source={{
+              uri:
+                'http://res.cloudinary.com/luneswallet/image/upload/c_scale,w_397/v1515019717/transferencia-moedas.png',
+            }}
           />
           <Text style={styles.header}>TRANSAÇÕES P2P</Text>
           <Text style={styles.text}>
