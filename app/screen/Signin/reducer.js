@@ -39,6 +39,7 @@ const authReducer = (state = initialState, action) => {
         loading: false,
         authorized: false,
         user: false,
+        error: action.error,
       };
     //SIGNUP
     case types.SIGNUP_LOADING:
@@ -61,6 +62,11 @@ const authReducer = (state = initialState, action) => {
         user: false,
         error: action.error,
       };
+    case types.STORE_USER:
+      return {
+        ...state,
+        user: action.user,
+      };
     //SIGNOUT
     case types.SIGNOUT_LOADING:
       return { ...state, loading: true };
@@ -78,10 +84,10 @@ const authReducer = (state = initialState, action) => {
         authorized: false,
         user: false,
       };
-    case types.TRY_SIGNIN:
+    case types.CLEAR_ERROR:
       return {
         ...state,
-        trySignin: true,
+        error: action.error,
       };
     default:
       return state;

@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Button } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import DrawerNavigation from '../../components/sidebar';
+import DrawerNavigator from '../../components/sidebar';
 
 const Main = StackNavigator({
   DrawerStack: {
-    screen: DrawerNavigation,
+    screen: DrawerNavigator,
     navigationOptions: {
       header: <View />,
     },

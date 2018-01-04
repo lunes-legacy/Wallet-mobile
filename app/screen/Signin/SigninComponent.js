@@ -13,7 +13,12 @@ export default class Signin extends React.Component<{}> {
     const { authorized, error } = this.props;
     if (error && error.code === 'auth/email-already-in-use') {
       alert('Email já existe');
+      this.props.clearError();
+    } else if (error && error.code === 'auth/wrong-password') {
+      alert('Erro ao tentar autenticar-se');
+      this.props.clearError();
     }
+    return null;
   }
 
   renderLoading() {

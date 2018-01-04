@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  TextInput,
   View,
   TouchableOpacity,
   StyleSheet,
@@ -112,6 +111,7 @@ export default class Confirmation extends React.Component {
     const { error } = this.props.authSMS;
     if (error && error.code === 'auth/app-not-authorized') {
       alert('Número invalido ou não autorizado');
+      this.props.clearErrorNumberInvalid();
     }
   }
 
@@ -148,7 +148,7 @@ export default class Confirmation extends React.Component {
     this.props.confirmCode(
       finalCodeInput,
       this.props.authSMS.confirmResult,
-      this.props.auth.user
+      this.props.user
     );
   }
 
