@@ -1,2 +1,2 @@
-import PIN from './PIN';
+import PIN from './PINContainer';
 export { PIN };

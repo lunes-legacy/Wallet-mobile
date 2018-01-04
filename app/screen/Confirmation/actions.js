@@ -45,7 +45,7 @@ export const confirmCode = (codeInput, confirmResult, currentUser) => {
       function(user) {
         dispatch(requestFinished());
         dispatch(confirmCodeSuccess(user));
-        navigate('Main');
+        navigate('PIN');
       },
       function(error) {
         dispatch(requestFinished());

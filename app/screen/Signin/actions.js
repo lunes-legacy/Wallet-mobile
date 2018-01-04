@@ -1,7 +1,7 @@
+import { Keyboard } from 'react-native';
 import types from './types';
 import { auth, database } from '../../config/firebase';
 import { navigate } from '../../config/routes';
-import { Keyboard } from 'react-native';
 
 export const requestLogin = values => {
   return dispatch => {
@@ -13,7 +13,7 @@ export const requestLogin = values => {
         dispatch(requestFinished());
         Keyboard.dismiss();
         dispatch(signinSuccess(user));
-        navigate('Main');
+        navigate('PIN');
       })
       .catch(error => {
         dispatch(signinError(error));

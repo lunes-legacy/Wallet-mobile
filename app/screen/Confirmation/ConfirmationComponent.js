@@ -14,6 +14,7 @@ import FontAwesomeIcon from 'react-native-vector-icons/dist/FontAwesome';
 import LunesContainerPhone from '../../native-base-theme/components/LunesContainerPhone';
 import LunesCodeSMS from '../../native-base-theme/components/LunesCodeSMS';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
+import LunesGradientButton from '../../native-base-theme/components/LunesGradientButton';
 
 export default class Confirmation extends React.Component {
   static get propTypes() {
@@ -187,12 +188,26 @@ export default class Confirmation extends React.Component {
   }
 
   renderButtonConfirm() {
-    if (this.state.isWaitingConfirmation) {
+    let { code1, code2, code3, code4, code5, code6 } = this.state;
+    if (
+      this.state.isWaitingConfirmation &&
+      code1 &&
+      code2 &&
+      code3 &&
+      code4 &&
+      code5 &&
+      code6
+    ) {
       return (
         <Button block rounded light onPress={() => this.onSubmitCode()}>
           <Text>Confirmar</Text>
         </Button>
       );
+    } else if (
+      this.state.isWaitingConfirmation &&
+      (!code1 || !code2 || !code3 || !code4 || !code5 || !code6)
+    ) {
+      return <LunesGradientButton text="Confirmar" />;
     }
     return null;
   }
@@ -200,37 +215,35 @@ export default class Confirmation extends React.Component {
   render() {
     return (
       <Container>
-        <ScrollView style={{ padding: 0 }}>
-          {this.props.authSMS.loading ? this.renderLoading() : null}
-          {this.props.authSMS.error &&
-          this.props.authSMS.error.code === 'auth/app-not-authorized'
-            ? this.renderError()
-            : null}
+        {this.props.authSMS.loading ? this.renderLoading() : null}
+        {this.props.authSMS.error &&
+        this.props.authSMS.error.code === 'auth/app-not-authorized'
+          ? this.renderError()
+          : null}
 
-          <View style={styles.viewConfirmSMS}>
-            <MaterialIcon name="email" size={45} color="#fff" />
-            <Text style={styles.textConfirmSMS}>
-              Confirmação via <Text style={styles.textBold}>SMS</Text>
-            </Text>
-            {this.renderInputConfirmation()}
-            {this.renderWaitingConfirmation()}
-          </View>
+        <View style={styles.viewConfirmSMS}>
+          <MaterialIcon name="email" size={45} color="#fff" />
+          <Text style={styles.textConfirmSMS}>
+            Confirmação via <Text style={styles.textBold}>SMS</Text>
+          </Text>
+          {this.renderInputConfirmation()}
+          {this.renderWaitingConfirmation()}
+        </View>
 
-          <View style={{ flex: 1 }}>
-            <LunesContainerPhone
-              changePrefixCountry={value => this.changePrefixCountry(value)}
-              changeCodePhone={value => this.changeCodePhone(value)}
-              changePhone={value => this.changePhone(value)}
-            />
-            {this.renderCodeConfirmation()}
-          </View>
+        <View style={{ flex: 1 }}>
+          <LunesContainerPhone
+            changePrefixCountry={value => this.changePrefixCountry(value)}
+            changeCodePhone={value => this.changeCodePhone(value)}
+            changePhone={value => this.changePhone(value)}
+          />
+          {this.renderCodeConfirmation()}
+        </View>
 
-          <View style={styles.viewBtnNext}>
-            {this.renderButtonResendSMS()}
-            {this.renderButtonNext()}
-            {this.renderButtonConfirm()}
-          </View>
-        </ScrollView>
+        <View style={styles.viewBtnNext}>
+          {this.renderButtonResendSMS()}
+          {this.renderButtonNext()}
+          {this.renderButtonConfirm()}
+        </View>
       </Container>
     );
   }
