@@ -11,8 +11,10 @@
     "flow coverage": "flow coverage",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "clean": "rm -rf node_modules && npm i && watchman watch-del-all && rm -fr $TMPDIR/react-* && rm -rf ios/build/ModuleCache/* && rm -rf ios/build",
-    "postinstall": "remotedev-debugger --hostname localhost --port 5678 --injectserver"
+    "clean":
+      "rm -rf node_modules && npm i && watchman watch-del-all && rm -fr $TMPDIR/react-* && rm -rf ios/build/ModuleCache/* && rm -rf ios/build",
+    "postinstall":
+      "remotedev-debugger --hostname localhost --port 5678 --injectserver"
   },
   "dependencies": {
     "axios": "^0.17.1",
@@ -28,7 +30,7 @@
     "react-native-svg": "^6.0.1-rc.1",
     "react-native-user-avatar": "^1.0.3",
     "react-native-vector-icons": "^4.4.2",
-    "react-navigation": "^1.0.0-beta.21",
+    "react-navigation": "^1.0.0-beta.22",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-multi": "^0.1.91",
@@ -61,9 +63,6 @@
     "preset": "react-native"
   },
   "rnpm": {
-    "assets": [
-      "./app/assets/fonts",
-      "./app/assets/images"
-    ]
+    "assets": ["./app/assets/fonts", "./app/assets/images"]
   }
 }

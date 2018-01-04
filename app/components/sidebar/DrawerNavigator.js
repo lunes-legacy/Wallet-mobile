@@ -72,5 +72,8 @@ export default DrawerNavigator(
   {
     contentComponent: SideMenu,
     drawerWidth: 300,
+    drawerOpenRoute: 'DrawerOpen',
+    drawerCloseRoute: 'DrawerClose',
+    drawerToggleRoute: 'DrawerToggle',
   }
 );
