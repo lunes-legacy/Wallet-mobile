@@ -77,6 +77,11 @@
 		075E1352333A4BEF9D57EC16 /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4EEA5A8905EF40BE97B28FFA /* rubicon-icon-font.ttf */; };
 		1E5C9DC841D04D09BA3126E6 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C06948D1B9CD42B983816CCC /* SimpleLineIcons.ttf */; };
 		78A8C251C79A4920BA6E24A2 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 14295809C8DA4E6EB7B444C4 /* Zocial.ttf */; };
+		E1997DF97C694FAFBE0D61DB /* analytics.png in Resources */ = {isa = PBXBuildFile; fileRef = C780877BAFE7494A8AC07250 /* analytics.png */; };
+		0CA3EB18463E47D88B5A3086 /* bem-vindo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4893D61618C2403CB02C8A11 /* bem-vindo.png */; };
+		07D701E51A28472882625968 /* compre-moedas.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E553AEA03B456E9CBCB90A /* compre-moedas.png */; };
+		22E5679071BB45D681854B78 /* faca-backup.png in Resources */ = {isa = PBXBuildFile; fileRef = DECF0D1B4FA6423992B222B9 /* faca-backup.png */; };
+		F45CF0C2810F4092B32AF55F /* transferencia-moedas.png in Resources */ = {isa = PBXBuildFile; fileRef = F985695F18FA433BAB4503B1 /* transferencia-moedas.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -428,6 +433,11 @@
 		4EEA5A8905EF40BE97B28FFA /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		C06948D1B9CD42B983816CCC /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		14295809C8DA4E6EB7B444C4 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C780877BAFE7494A8AC07250 /* analytics.png */ = {isa = PBXFileReference; name = "analytics.png"; path = "../app/assets/images/analytics.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4893D61618C2403CB02C8A11 /* bem-vindo.png */ = {isa = PBXFileReference; name = "bem-vindo.png"; path = "../app/assets/images/bem-vindo.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		00E553AEA03B456E9CBCB90A /* compre-moedas.png */ = {isa = PBXFileReference; name = "compre-moedas.png"; path = "../app/assets/images/compre-moedas.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DECF0D1B4FA6423992B222B9 /* faca-backup.png */ = {isa = PBXFileReference; name = "faca-backup.png"; path = "../app/assets/images/faca-backup.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F985695F18FA433BAB4503B1 /* transferencia-moedas.png */ = {isa = PBXFileReference; name = "transferencia-moedas.png"; path = "../app/assets/images/transferencia-moedas.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -717,6 +727,11 @@
 				4EEA5A8905EF40BE97B28FFA /* rubicon-icon-font.ttf */,
 				C06948D1B9CD42B983816CCC /* SimpleLineIcons.ttf */,
 				14295809C8DA4E6EB7B444C4 /* Zocial.ttf */,
+				C780877BAFE7494A8AC07250 /* analytics.png */,
+				4893D61618C2403CB02C8A11 /* bem-vindo.png */,
+				00E553AEA03B456E9CBCB90A /* compre-moedas.png */,
+				DECF0D1B4FA6423992B222B9 /* faca-backup.png */,
+				F985695F18FA433BAB4503B1 /* transferencia-moedas.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1263,6 +1278,11 @@
 				075E1352333A4BEF9D57EC16 /* rubicon-icon-font.ttf in Resources */,
 				1E5C9DC841D04D09BA3126E6 /* SimpleLineIcons.ttf in Resources */,
 				78A8C251C79A4920BA6E24A2 /* Zocial.ttf in Resources */,
+				E1997DF97C694FAFBE0D61DB /* analytics.png in Resources */,
+				0CA3EB18463E47D88B5A3086 /* bem-vindo.png in Resources */,
+				07D701E51A28472882625968 /* compre-moedas.png in Resources */,
+				22E5679071BB45D681854B78 /* faca-backup.png in Resources */,
+				F45CF0C2810F4092B32AF55F /* transferencia-moedas.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

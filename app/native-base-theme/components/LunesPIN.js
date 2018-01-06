@@ -23,30 +23,34 @@ export default class LunesPIN extends React.Component {
       inputValue2: '',
       inputValue3: '',
       inputValue4: '',
+      mask1: '',
+      mask2: '',
+      mask3: '',
+      mask4: '',
     };
   }
 
   onChangeInputValue(index) {
     if (this.state.inputValue1 === '') {
-      this.setState({ inputValue1: index.toString() });
+      this.setState({ inputValue1: index.toString(), mask1: '*' });
     } else if (this.state.inputValue2 === '') {
-      this.setState({ inputValue2: index.toString() });
+      this.setState({ inputValue2: index.toString(), mask2: '*' });
     } else if (this.state.inputValue3 === '') {
-      this.setState({ inputValue3: index.toString() });
+      this.setState({ inputValue3: index.toString(), mask3: '*' });
     } else if (this.state.inputValue4 === '') {
-      this.setState({ inputValue4: index.toString() });
+      this.setState({ inputValue4: index.toString(), mask4: '*' });
     }
   }
 
   onDeleteInputValue() {
     if (this.state.inputValue4 !== '') {
-      this.setState({ inputValue4: '' });
+      this.setState({ inputValue4: '', mask4: '' });
     } else if (this.state.inputValue3 !== '') {
-      this.setState({ inputValue3: '' });
+      this.setState({ inputValue3: '', mask3: '' });
     } else if (this.state.inputValue2 !== '') {
-      this.setState({ inputValue2: '' });
+      this.setState({ inputValue2: '', mask2: '' });
     } else if (this.state.inputValue1 !== '') {
-      this.setState({ inputValue1: '' });
+      this.setState({ inputValue1: '', mask1: '' });
     }
   }
 
@@ -67,23 +71,121 @@ export default class LunesPIN extends React.Component {
     }
   }
 
+  //DEPRECATED - tem um probleminha na hora de renderizar os numeros com a securyENtry
   renderInputs() {
     return ['1', '2', '3', '4'].map((input, index) => {
       return (
         <TextInput
           key={input}
-          keyboardType="numeric"
+          maxLength={1}
+          style={styles.input}
+          editable={false}
+          secureTextEntry={true}
+          underlineColorAndroid={BosonColors.$bosonWhite}
+          value={this.state[`inputValue${input}`]}
+        />
+      );
+    });
+  }
+
+  renderInput1() {
+    if (this.state.mask1 !== '') {
+      return (
+        <TextInput
+          key="01"
           maxLength={1}
           style={styles.input}
           editable={false}
           underlineColorAndroid={BosonColors.$bosonWhite}
-          value={this.state[`inputValue${input}`]}
-          onChangeText={text => {
-            this.onChangeInputValue(text);
-          }}
+          value={'*'}
         />
       );
-    });
+    }
+    return (
+      <TextInput
+        key="01"
+        maxLength={1}
+        style={styles.input}
+        editable={false}
+        underlineColorAndroid={BosonColors.$bosonWhite}
+        value={''}
+      />
+    );
+  }
+
+  renderInput2() {
+    if (this.state.mask2 !== '') {
+      return (
+        <TextInput
+          key="02"
+          maxLength={1}
+          style={styles.input}
+          editable={false}
+          underlineColorAndroid={BosonColors.$bosonWhite}
+          value={'*'}
+        />
+      );
+    }
+    return (
+      <TextInput
+        key="02"
+        maxLength={1}
+        style={styles.input}
+        editable={false}
+        underlineColorAndroid={BosonColors.$bosonWhite}
+        value={''}
+      />
+    );
+  }
+
+  renderInput3() {
+    if (this.state.mask3 !== '') {
+      return (
+        <TextInput
+          key="03"
+          maxLength={1}
+          style={styles.input}
+          editable={false}
+          underlineColorAndroid={BosonColors.$bosonWhite}
+          value={'*'}
+        />
+      );
+    }
+    return (
+      <TextInput
+        key="03"
+        maxLength={1}
+        style={styles.input}
+        editable={false}
+        underlineColorAndroid={BosonColors.$bosonWhite}
+        value={''}
+      />
+    );
+  }
+
+  renderInput4() {
+    if (this.state.mask4 !== '') {
+      return (
+        <TextInput
+          key="04"
+          maxLength={1}
+          style={styles.input}
+          editable={false}
+          underlineColorAndroid={BosonColors.$bosonWhite}
+          value={'*'}
+        />
+      );
+    }
+    return (
+      <TextInput
+        key="04"
+        maxLength={1}
+        style={styles.input}
+        editable={false}
+        underlineColorAndroid={BosonColors.$bosonWhite}
+        value={''}
+      />
+    );
   }
 
   renderKeyboardInput(position) {
@@ -114,7 +216,12 @@ export default class LunesPIN extends React.Component {
           <Text style={styles.instructions}>
             Insira um código de 04 dígitos para cadastrar seu PIN
           </Text>
-          <View style={{ flexDirection: 'row' }}>{this.renderInputs()}</View>
+          <View style={{ flexDirection: 'row' }}>
+            {this.renderInput1()}
+            {this.renderInput2()}
+            {this.renderInput3()}
+            {this.renderInput4()}
+          </View>
         </View>
 
         <View style={styles.container}>

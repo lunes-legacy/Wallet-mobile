@@ -24,9 +24,6 @@ export default class SideMenuItem extends Component {
           style={styles.navItemStyle}
           onPress={this.navigateToScreen(screen)}>
           <Text>{`${menuOption}${getSpace(space)}`}</Text>
-          <Text>
-            <Icon name="chevron-down" size={15} color="#fff" />
-          </Text>
         </Text>
         <View style={styles.divider} />
       </View>

@@ -11,13 +11,12 @@
     "flow coverage": "flow coverage",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "clean":
-      "rm -rf node_modules && npm i && watchman watch-del-all && rm -fr $TMPDIR/react-* && rm -rf ios/build/ModuleCache/* && rm -rf ios/build",
-    "postinstall":
-      "remotedev-debugger --hostname localhost --port 5678 --injectserver"
+    "clean": "rm -rf node_modules && npm i && watchman watch-del-all && rm -fr $TMPDIR/react-* && rm -rf ios/build/ModuleCache/* && rm -rf ios/build",
+    "postinstall": "remotedev-debugger --hostname localhost --port 5678 --injectserver"
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "lunes-core": "0.0.16",
     "native-base": "^2.3.5",
     "prop-types": "^15.6.0",
@@ -39,10 +38,15 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.3",
     "babel-jest": "21.2.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react-native": "4.0.0",
+    "babel-preset-stage-2": "^6.24.1",
     "eslint": "^4.12.1",
     "eslint-config-prettier": "^2.2.0",
     "eslint-plugin-babel": "^4.1.1",
@@ -63,6 +67,9 @@
     "preset": "react-native"
   },
   "rnpm": {
-    "assets": ["./app/assets/fonts", "./app/assets/images"]
+    "assets": [
+      "./app/assets/fonts",
+      "./app/assets/images"
+    ]
   }
 }

@@ -95,10 +95,10 @@ export default class Introduction extends React.Component {
         {/* Fifty screen */}
         <View style={[styles.slide2, { backgroundColor: '#4b2c82' }]}>
           <Image
-            style={{ height: 300, width: 320 }}
+            style={{ height: 300, width: 300 }}
             source={{
               uri:
-                'http://res.cloudinary.com/luneswallet/image/upload/c_scale,w_397/v1515019717/transferencia-moedas.png',
+                'http://res.cloudinary.com/luneswallet/image/upload/c_scale,w_390/v1515019717/transferencia-moedas.png',
             }}
           />
           <Text style={styles.header}>TRANSAÇÕES P2P</Text>
@@ -126,6 +126,7 @@ const styles = StyleSheet.create({
     flex: 2, // Take up all screen
     justifyContent: 'flex-start', // Center vertically
     alignItems: 'center', // Center horizontally
+    paddingTop: 15,
   },
   // Header styles
   header: {
@@ -134,6 +135,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '400',
     color: '#4CD566',
+    marginTop: 5,
+    marginBottom: 5,
   },
   // Text below header
   text: {

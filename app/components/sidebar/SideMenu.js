@@ -69,6 +69,14 @@ class SideMenu extends Component {
               space={29}
             />
           </View>
+          <View>
+            <SideMenuItem
+              screen={'InviteFriends'}
+              menuOption={'Convidar Amigos'}
+              navigation={navigation}
+              space={29}
+            />
+          </View>
         </ScrollView>
         <View>
           <SideMenuFooter />
