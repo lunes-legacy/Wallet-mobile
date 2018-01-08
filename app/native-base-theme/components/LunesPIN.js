@@ -7,6 +7,7 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import FontAwesomeIcon from 'react-native-vector-icons/dist/FontAwesome';
@@ -62,30 +63,17 @@ export default class LunesPIN extends React.Component {
     if (typeof this.props.onSavePIN === 'function') {
       const { inputValue1, inputValue2, inputValue3, inputValue4 } = this.state;
       let PIN = `${inputValue1}${inputValue2}${inputValue3}${inputValue4}`;
-      if (isNaN(parseInt(PIN))) {
-        console.error('PIN convertido é invalido');
+      if (PIN === '') {
+        console.log('PIN vazio');
+        alert('Por favor, digite seu PIN');
+        return;
+      } else if (isNaN(parseInt(PIN))) {
+        console.log('PIN convertido é invalido');
         alert('Ocorreu algo errado ao tentar salvar o PIN');
         return;
       }
       this.props.onSavePIN(PIN);
     }
-  }
-
-  //DEPRECATED - tem um probleminha na hora de renderizar os numeros com a securyENtry
-  renderInputs() {
-    return ['1', '2', '3', '4'].map((input, index) => {
-      return (
-        <TextInput
-          key={input}
-          maxLength={1}
-          style={styles.input}
-          editable={false}
-          secureTextEntry={true}
-          underlineColorAndroid={BosonColors.$bosonWhite}
-          value={this.state[`inputValue${input}`]}
-        />
-      );
-    });
   }
 
   renderInput1() {
@@ -188,6 +176,18 @@ export default class LunesPIN extends React.Component {
     );
   }
 
+  renderKeyboardGreen() {
+    if (
+      this.state.inputValue1 &&
+      this.state.inputValue2 &&
+      this.state.inputValue3 &&
+      this.state.inputValue4
+    ) {
+      return { color: BosonColors.$bosonLightGreen };
+    }
+    return {};
+  }
+
   renderKeyboardInput(position) {
     return (
       <TouchableOpacity
@@ -196,7 +196,9 @@ export default class LunesPIN extends React.Component {
         onPress={() => {
           this.onChangeInputValue(position);
         }}>
-        <Text style={styles.keyboardInput}>{position}</Text>
+        <Text style={[styles.keyboardInput, this.renderKeyboardGreen()]}>
+          {position}
+        </Text>
       </TouchableOpacity>
     );
   }
@@ -213,9 +215,12 @@ export default class LunesPIN extends React.Component {
           <View style={{ marginTop: 10, marginBottom: 10 }}>
             <MaterialCommunityIcons name="key-variant" size={45} color="#fff" />
           </View>
-          <Text style={styles.instructions}>
-            Insira um código de 04 dígitos para cadastrar seu PIN
-          </Text>
+          <View>
+            <Text style={styles.instructions}>
+              Insira um código de 04 dígitos para{' '}
+              {this.props.toValidate ? 'validar' : 'cadastrar'} seu PIN
+            </Text>
+          </View>
           <View style={{ flexDirection: 'row' }}>
             {this.renderInput1()}
             {this.renderInput2()}
@@ -224,7 +229,11 @@ export default class LunesPIN extends React.Component {
           </View>
         </View>
 
-        <View style={styles.container}>
+        <View
+          style={[
+            styles.container,
+            { width: Dimensions.get('window').width - 50 },
+          ]}>
           <View style={styles.row}>
             <View style={[styles.box]}>{this.renderKeyboardInput(1)}</View>
             <View style={[styles.box]}>{this.renderKeyboardInput(2)}</View>
@@ -264,7 +273,7 @@ export default class LunesPIN extends React.Component {
                 }}>
                 <Ionicons
                   name="ios-arrow-dropright-circle"
-                  size={25}
+                  size={35}
                   color={BosonColors.$bosonLightGreen}
                 />
               </TouchableOpacity>
@@ -282,6 +291,7 @@ const styles = StyleSheet.create({
     padding: 40,
   },
   instructions: {
+    width: 200,
     alignItems: 'center',
     textAlign: 'center',
     lineHeight: 25,
@@ -315,7 +325,7 @@ const styles = StyleSheet.create({
   },
   box: {
     height: 40,
-    width: 40,
+    width: 45,
     alignItems: 'center',
     justifyContent: 'center',
   },

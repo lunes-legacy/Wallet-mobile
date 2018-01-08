@@ -5,7 +5,7 @@ const REDUX_PERSIST = {
   reducerVersion: '4',
   storeConfig: {
     storage: AsyncStorage,
-    blacklist: ['authSMS', 'tabsReducer', 'pinReducer', 'auth'],
+    blacklist: ['tabsReducer', 'pinReducer', 'auth'],
   },
 };
 

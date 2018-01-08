@@ -1,11 +1,19 @@
 // @flow
 
 import React from 'react';
-import { View, Text, TouchableHighlight, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableHighlight,
+  TouchableOpacity,
+  StyleSheet,
+  Dimensions,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import IconIon from 'react-native-vector-icons/dist/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import buttonStyle from './style';
+import BosonColors from '../../native-base-theme/variables/bosonColor';
 
 export default class Button extends React.Component {
   defaultButton() {
@@ -115,6 +123,77 @@ export default class Button extends React.Component {
     }
   }
 
+  renderTest() {
+    const SIZE_ICON = 15;
+    return (
+      <View style={styles.container}>
+        <View
+          style={[
+            styles.openedCircle,
+            { flexDirection: 'row', justifyContent: 'space-between' },
+          ]}>
+          <TouchableOpacity onPress={() => alert('enviar')}>
+            <View style={styles.iconButtonOpened}>
+              <MaterialIcons
+                name="arrow-upward"
+                size={SIZE_ICON}
+                color={BosonColors.$bosonWhite}
+              />
+              <Text style={styles.textItemIcons}>Enviar</Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => alert('receber')}>
+            <View style={[styles.iconButtonOpened, { paddingLeft: 13 }]}>
+              <MaterialIcons
+                name="arrow-downward"
+                size={SIZE_ICON}
+                color={BosonColors.$bosonWhite}
+              />
+              <Text style={styles.textItemIcons}>Receber</Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => alert('comprar')}>
+            <View style={[styles.iconButtonOpened, { paddingLeft: 70 }]}>
+              <Icon
+                name="money"
+                size={SIZE_ICON}
+                color={BosonColors.$bosonWhite}
+              />
+              <Text style={styles.textItemIcons}>Comprar</Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => alert('vender')}>
+            <View style={[styles.iconButtonOpened, { paddingRight: 10 }]}>
+              <Icon
+                name="line-chart"
+                size={SIZE_ICON}
+                color={BosonColors.$bosonWhite}
+              />
+              <Text style={styles.textItemIcons}>Vender</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+
+        <TouchableOpacity
+          style={styles.centralizedBtn}
+          onPress={() => alert('close')}>
+          <View>
+            <Text style={styles.text}>
+              <IconIon
+                name="md-close"
+                size={30}
+                color={BosonColors.$bosonWhite}
+              />
+            </Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
   render() {
     return (
       <View>
@@ -122,8 +201,53 @@ export default class Button extends React.Component {
         {this.disabledButton()}
         {this.primaryButton()}
         {this.roundedPrimaryButton()}
-        {this.roundedButtonOpened()}
+        {/*this.roundedButtonOpened()*/}
+        {this.renderTest()}
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: Dimensions.get('window').width - 60,
+  },
+  openedCircle: {
+    position: 'absolute',
+    bottom: 10,
+    left: 0,
+    width: '100%',
+    height: 55,
+    backgroundColor: BosonColors.$bosonLightGreen,
+    borderRadius: 30,
+    elevation: 3,
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  centralizedBtn: {
+    position: 'absolute',
+    bottom: 5,
+    left: Dimensions.get('window').width / 2 - 65,
+    backgroundColor: BosonColors.$bosonLightGreen,
+    height: 65,
+    width: 65,
+    borderRadius: 35,
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 15,
+  },
+  iconButtonOpened: {
+    alignItems: 'center',
+    paddingHorizontal: 5,
+    paddingVertical: 10,
+  },
+  textItemIcons: {
+    fontSize: 12,
+    color: BosonColors.$bosonWhite,
+  },
+  text: {
+    color: '#ffffff',
+    fontSize: 20,
+  },
+});
