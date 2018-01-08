@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { requestAddPIN } from './actions';
+import { requestAddPIN, requestValidPIN } from './actions';
 import PIN from './PINComponent';
 
 const mapStateToProps = state => {
@@ -12,6 +12,6 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ requestAddPIN }, dispatch);
+  bindActionCreators({ requestAddPIN, requestValidPIN }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(PIN);

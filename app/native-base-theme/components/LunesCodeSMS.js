@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Keyboard } from 'react-native';
 import commonColor from './../variables/commonColor';
 import BosonColors from './../variables/bosonColor';
 
@@ -22,6 +22,8 @@ export default class LunesCodeSMS extends React.Component {
             if (text && text.length == 1) {
               if (code[index + 1]) {
                 code[index + 1].focus();
+              } else {
+                Keyboard.dismiss();
               }
             }
           }}

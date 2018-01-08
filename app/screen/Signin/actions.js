@@ -11,11 +11,16 @@ export const requestLogin = values => {
       .signInWithEmailAndPassword(values.email, values.password)
       .then(user => {
         dispatch(requestFinished());
-        Keyboard.dismiss();
         dispatch(signinSuccess(user));
-        navigate('PIN');
+        Keyboard.dismiss();
+        if (user && user._user && user._user.phoneNumber) {
+          navigate('PIN', { isLogged: true });
+        } else {
+          navigate('Confirmation');
+        }
       })
       .catch(error => {
+        dispatch(requestFinished());
         dispatch(signinError(error));
       });
   };

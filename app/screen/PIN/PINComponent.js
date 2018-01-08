@@ -14,16 +14,23 @@ import LunesLoading from '../../native-base-theme/components/LunesLoading';
 
 export default class PIN extends React.Component {
   renderLoading() {
-    return <LunesLoading />;
+    return <LunesLoading text="Verificando o PIN para validação" />;
   }
 
   render() {
+    const { state } = this.props.navigation;
+    const isLogged = state.params ? state.params.isLogged : null;
     return (
       <Container>
         {this.props.loading ? this.renderLoading() : null}
         <LunesPIN
+          toValidate={isLogged}
           onSavePIN={PIN => {
-            this.props.requestAddPIN(PIN);
+            if (isLogged) {
+              this.props.requestValidPIN(PIN);
+            } else {
+              this.props.requestAddPIN(PIN);
+            }
           }}
         />
       </Container>

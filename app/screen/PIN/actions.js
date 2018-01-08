@@ -12,6 +12,17 @@ export const requestAddPIN = () => {
   };
 };
 
+export const requestValidPIN = () => {
+  return dispatch => {
+    dispatch(requestLoading());
+
+    setTimeout(() => {
+      dispatch(requestFinished());
+      navigate('Main');
+    }, 5000);
+  };
+};
+
 const requestLoading = () => ({
   type: types.REQUEST_LOADING,
 });

@@ -11,6 +11,9 @@ export default class LunesLoading extends React.Component {
     return (
       <View style={styles.container}>
         <Spinner color="#fff" />
+        <Text style={{ color: '#fff', alignItems: 'center' }}>
+          {this.props.text || ''}
+        </Text>
       </View>
     );
   }
