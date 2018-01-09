@@ -4,6 +4,7 @@ import { Text, View } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import styles from '../styles/SideMenu';
+import BosonColors from '../../native-base-theme/variables/bosonColor';
 import { navigate } from '../../config/routes';
 
 const getSpace = space =>
@@ -16,15 +17,29 @@ export default class SideMenuItem extends Component {
     navigate(route);
   };
 
+  renderMenuItem() {
+    const { screen, menuOption, space, disabled } = this.props;
+    if (disabled) {
+      return (
+        <Text style={styles.navItemStyle}>
+          <Text
+            style={{
+              color: BosonColors.$bosonDarkPurple,
+            }}>{`${menuOption}${getSpace(space)}`}</Text>
+        </Text>
+      );
+    }
+    return (
+      <Text style={styles.navItemStyle} onPress={this.navigateToScreen(screen)}>
+        <Text>{`${menuOption}${getSpace(space)}`}</Text>
+      </Text>
+    );
+  }
+
   render() {
-    const { screen, menuOption, space } = this.props;
     return (
       <View>
-        <Text
-          style={styles.navItemStyle}
-          onPress={this.navigateToScreen(screen)}>
-          <Text>{`${menuOption}${getSpace(space)}`}</Text>
-        </Text>
+        {this.renderMenuItem()}
         <View style={styles.divider} />
       </View>
     );

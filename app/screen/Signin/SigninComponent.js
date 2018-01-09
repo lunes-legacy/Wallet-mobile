@@ -7,16 +7,39 @@ import { FormStyle } from '../../components/theme';
 import LunesLogo from '../../native-base-theme/components/LunesLogo';
 import LunesLoginForm from '../../native-base-theme/components/LunesLoginForm';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
+import LunesAlert from '../../native-base-theme/components/LunesAlert';
 
 export default class Signin extends React.Component<{}> {
+  alertError(message, isShow) {
+    return (
+      <LunesAlert
+        isShow={isShow}
+        type="error"
+        onClose={() => {
+          this.props.clearError();
+        }}
+        onPressConfirmation={() => {
+          this.props.clearError();
+        }}
+        titleHeader="Acesso Negado"
+        message={message}
+        textConfirmation="Repetir"
+      />
+    );
+  }
+
+  componentDidMount() {
+    const { authorized, error } = this.props;
+  }
+
   renderError() {
     const { authorized, error } = this.props;
     if (error && error.code === 'auth/email-already-in-use') {
-      alert('Email já existe');
-      this.props.clearError();
+      return this.alertError('Email já existe', true);
     } else if (error && error.code === 'auth/wrong-password') {
-      alert('Erro ao tentar autenticar-se');
-      this.props.clearError();
+      return this.alertError('Erro ao tentar autenticar-se', true);
+    } else if (error && error.code === 'auth/user-not-found') {
+      return this.alertError('Usuário não encontrado', true);
     }
     return null;
   }

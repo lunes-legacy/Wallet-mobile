@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import styles from '../styles/SideMenu';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import BosonColors from '../../native-base-theme/variables/bosonColor';
 //import {getAmountOfCoins} from 'API COINS'
 
 const FAKE_AMOUNT = 10000;
@@ -16,24 +17,73 @@ const getMyBRLAmount = () => getMyAmount().amount * 0.3;
 const getMyDolarAmount = () => getMyAmount().amount * 3;
 
 class SideMenuFooter extends Component {
+  bkp() {
+    return (
+      <Text style={styles.footerContainer}>
+        <Text style={styles.coins}>
+          <Icon name="money" size={15} />
+          {`   ${amount}`}
+        </Text>
+
+        <Text style={styles.footerContainer}>
+          {`         $ ${getMyDolarAmount(amount)}   |   BRL ${getMyBRLAmount(
+            amount
+          )}`}
+        </Text>
+      </Text>
+    );
+  }
+
   render() {
     const { amount } = getMyAmount();
     return (
-      <View style={{ backgroundColor: styles.footerContainer.backgroundColor }}>
-        <Text style={styles.footerContainer}>
-          <Text style={styles.coins}>
-            <Icon name="money" size={15} />
-            {`   ${amount}`}
-          </Text>
-          <Text style={styles.footerContainer}>
-            {`         $ ${getMyDolarAmount(amount)}   |   BRL ${getMyBRLAmount(
-              amount
-            )}`}
-          </Text>
-        </Text>
+      <View>
+        <View style={styles2.footerContainer}>
+          <View>
+            <Text style={styles2.leftBalance}>
+              <Image
+                width={30}
+                height={30}
+                source={require('../../assets/images/lunes-token-coin.png')}
+              />{' '}
+              {` ${amount}`}
+            </Text>
+          </View>
+
+          <View>
+            <Text style={styles2.rightBalance}>
+              {`    $ ${getMyDolarAmount(amount)} | BRL ${getMyBRLAmount(
+                amount
+              )}`}
+            </Text>
+          </View>
+        </View>
       </View>
     );
   }
 }
+
+const styles2 = StyleSheet.create({
+  footerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    height: 50,
+  },
+  rightBalance: {
+    backgroundColor: BosonColors.$bosonLightGreen,
+    paddingHorizontal: 10,
+    paddingBottom: 15,
+    paddingTop: 15,
+    fontSize: 16,
+    color: BosonColors.$bosonWhite,
+    borderTopLeftRadius: 30,
+    borderBottomLeftRadius: 30,
+  },
+  leftBalance: {
+    color: BosonColors.$bosonWhite,
+    paddingHorizontal: 10,
+  },
+});
 
 export default connect(null, null)(SideMenuFooter);
