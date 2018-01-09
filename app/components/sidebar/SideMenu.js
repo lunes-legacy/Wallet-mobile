@@ -34,6 +34,7 @@ class SideMenu extends Component {
               screen={'ValuesAlertSystem'}
               menuOption={'Sistema de Alerta de Valores'}
               navigation={navigation}
+              disabled="true"
               space={14}
             />
           </View>
@@ -42,6 +43,7 @@ class SideMenu extends Component {
               screen={'MultiCoinsSystem'}
               menuOption={'Sistema de Multi-Coins'}
               navigation={navigation}
+              disabled="true"
               space={24}
             />
           </View>
@@ -50,6 +52,7 @@ class SideMenu extends Component {
               screen={'CardManager'}
               menuOption={'Gestão de Gasto de Cartão'}
               navigation={navigation}
+              disabled="true"
               space={17}
             />
           </View>
@@ -58,6 +61,7 @@ class SideMenu extends Component {
               screen={'BoletoPayments'}
               menuOption={'Pagamento de Boletos'}
               navigation={navigation}
+              disabled="true"
               space={24}
             />
           </View>
@@ -66,6 +70,7 @@ class SideMenu extends Component {
               screen={'PhoneRecharges'}
               menuOption={'Recargas de Celular'}
               navigation={navigation}
+              disabled="true"
               space={29}
             />
           </View>
@@ -74,6 +79,7 @@ class SideMenu extends Component {
               screen={'InviteFriends'}
               menuOption={'Convidar Amigos'}
               navigation={navigation}
+              disabled="true"
               space={29}
             />
           </View>

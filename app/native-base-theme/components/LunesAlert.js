@@ -26,6 +26,14 @@ export default class LunesAlert extends React.Component {
     };
   }
 
+  componentWillMount() {
+    if (!this.props.onClose) {
+      console.error(
+        'Você precisa passar via props o metodo onClose no LunesAlert'
+      );
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     this.setState({ isVisible: true });
   }
@@ -35,8 +43,8 @@ export default class LunesAlert extends React.Component {
       <TouchableOpacity
         onPress={() => {
           this.setState({ isVisible: false });
-          if (this.props.onPress && typeof this.props.onPress === 'function') {
-            this.props.onPress();
+          if (this.props.onClose && typeof this.props.onClose === 'function') {
+            this.props.onClose();
           }
         }}>
         <MaterialCommunityIcons name="close" size={20} color={'#fff'} />

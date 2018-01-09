@@ -10,44 +10,19 @@ import LunesLoading from '../../native-base-theme/components/LunesLoading';
 import LunesAlert from '../../native-base-theme/components/LunesAlert';
 
 export default class Signin extends React.Component<{}> {
-  alertWarning() {
-    return (
-      <LunesAlert
-        type="warning"
-        onPressConfirmation={() => {
-          alert('backup');
-        }}
-        titleHeader="Acesso Negado"
-        message="Senha ou usuário incorreto"
-        textConfirmation="Repetir"
-      />
-    );
-  }
-
   alertError(message, isShow) {
     return (
       <LunesAlert
         isShow={isShow}
         type="error"
+        onClose={() => {
+          this.props.clearError();
+        }}
         onPressConfirmation={() => {
           this.props.clearError();
         }}
         titleHeader="Acesso Negado"
         message={message}
-        textConfirmation="Repetir"
-      />
-    );
-  }
-
-  alertSuccess() {
-    return (
-      <LunesAlert
-        type="success"
-        onPressConfirmation={() => {
-          alert('backup');
-        }}
-        titleHeader="Atenção"
-        message="Usuário logado com sucesso..."
         textConfirmation="Repetir"
       />
     );
@@ -60,14 +35,10 @@ export default class Signin extends React.Component<{}> {
   renderError() {
     const { authorized, error } = this.props;
     if (error && error.code === 'auth/email-already-in-use') {
-      //this.props.clearError();
       return this.alertError('Email já existe', true);
-      //alert('Email já existe');
     } else if (error && error.code === 'auth/wrong-password') {
-      //this.props.clearError();
       return this.alertError('Erro ao tentar autenticar-se', true);
     } else if (error && error.code === 'auth/user-not-found') {
-      //this.props.clearError();
       return this.alertError('Usuário não encontrado', true);
     }
     return null;
