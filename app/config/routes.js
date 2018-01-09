@@ -9,6 +9,12 @@ import { SigninContainer } from '../screen/Signin';
 import { Main } from '../screen/Main';
 
 const RootNavigator = StackNavigator({
+  Signin: {
+    screen: SigninContainer,
+    navigationOptions: {
+      header: <View />,
+    },
+  },
   Introduction: {
     screen: Introduction,
     navigationOptions: {

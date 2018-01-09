@@ -36,7 +36,7 @@ const $bosonDarkYellow = '#F79E1B'; //amarelo escuro
 
 //pink color
 const $bosonLightPink = '#FF4A60'; //rosa claro
-const $bosonMediumPink = '#C74A69'; //rosa médio
+const $bosonMediumPink = '#FF4A60'; //rosa médio
 const $bosonDarkPink = '#C74A69'; //rosa escuro
 
 //blue color
