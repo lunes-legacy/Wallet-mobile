@@ -47,10 +47,7 @@ export default class LunesAlert extends React.Component {
   renderConfirmBtn() {
     if (this.state.isVisible) {
       return (
-        <View
-          style={{
-            flex: 1,
-          }}>
+        <View>
           <Button
             rounded
             success
@@ -261,12 +258,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonsContainer: {
-    position: 'absolute',
     width: width,
     zIndex: 93,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 320,
+    marginTop: 210,
   },
   dialogHeader: {
     width: '100%',

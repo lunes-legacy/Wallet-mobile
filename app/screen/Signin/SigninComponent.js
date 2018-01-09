@@ -30,7 +30,7 @@ export default class Signin extends React.Component<{}> {
         isShow={isShow}
         type="error"
         onPressConfirmation={() => {
-          alert('backup');
+          this.props.clearError();
         }}
         titleHeader="Acesso Negado"
         message={message}
@@ -53,6 +53,10 @@ export default class Signin extends React.Component<{}> {
     );
   }
 
+  componentDidMount() {
+    const { authorized, error } = this.props;
+  }
+
   renderError() {
     const { authorized, error } = this.props;
     if (error && error.code === 'auth/email-already-in-use') {
@@ -61,7 +65,7 @@ export default class Signin extends React.Component<{}> {
       //alert('Email já existe');
     } else if (error && error.code === 'auth/wrong-password') {
       //this.props.clearError();
-      alert('Erro ao tentar autenticar-se');
+      return this.alertError('Erro ao tentar autenticar-se', true);
     } else if (error && error.code === 'auth/user-not-found') {
       //this.props.clearError();
       return this.alertError('Usuário não encontrado', true);
