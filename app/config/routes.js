@@ -6,9 +6,16 @@ import { Introduction } from '../screen/Introduction';
 import { Confirmation } from '../screen/Confirmation';
 import { PIN } from '../screen/PIN';
 import { SigninContainer } from '../screen/Signin';
+import { ReceivePayment } from '../screen/ReceivePayment';
 import { Main } from '../screen/Main';
 
 const RootNavigator = StackNavigator({
+  ReceivePayment: {
+    screen: ReceivePayment,
+    navigationOptions: {
+      header: <View />,
+    },
+  },
   Introduction: {
     screen: Introduction,
     navigationOptions: {
@@ -35,6 +42,12 @@ const RootNavigator = StackNavigator({
   },
   Main: {
     screen: Main,
+    navigationOptions: {
+      header: <View />,
+    },
+  },
+  ReceivePayment: {
+    screen: ReceivePayment,
     navigationOptions: {
       header: <View />,
     },

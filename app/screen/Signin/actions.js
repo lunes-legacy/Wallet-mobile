@@ -12,6 +12,7 @@ export const requestLogin = values => {
       .then(user => {
         dispatch(requestFinished());
         dispatch(signinSuccess(user));
+        dispatch(storeUser(user));
         Keyboard.dismiss();
         if (user && user._user && user._user.phoneNumber) {
           navigate('PIN', { isLogged: true });
@@ -84,7 +85,7 @@ export const requestSignup = values => {
             .then(function() {
               dispatch(requestFinished());
               dispatch(signupSuccess(user));
-              //dispatch(storeUser(user._user));
+              dispatch(storeUser(user));
               navigate('Confirmation');
             })
             .catch(error => {

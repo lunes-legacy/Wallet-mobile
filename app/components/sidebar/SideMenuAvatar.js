@@ -6,12 +6,12 @@ import styles from '../styles/SideMenu';
 
 class SideMenuAvatar extends Component {
   render() {
-    const { navigation } = this.props;
+    const { navigation, userInfo } = this.props;
 
     const user = {
-      name: 'User Name',
+      name: userInfo.name || ' ',
       imageSrc: null,
-      email: 'user.lunes@lunes.com',
+      email: userInfo.email,
     };
 
     return (
