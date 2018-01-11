@@ -24,7 +24,7 @@ export default class SideMenuItem extends Component {
         <Text style={styles.navItemStyle}>
           <Text
             style={{
-              color: BosonColors.$bosonDarkPurple,
+              color: '#7c69bcff',
             }}>{`${menuOption}${getSpace(space)}`}</Text>
         </Text>
       );

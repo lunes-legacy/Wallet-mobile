@@ -18,6 +18,7 @@ const mapStateToProps = state => {
     authorized: state.auth.authorized,
     error: state.auth.error,
     loading: state.auth.loading,
+    userInfo: state.userReducer.userInfo || {},
   };
 };
 const mapDispatchToProps = dispatch =>

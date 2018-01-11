@@ -62,11 +62,6 @@ const authReducer = (state = initialState, action) => {
         user: false,
         error: action.error,
       };
-    case types.STORE_USER:
-      return {
-        ...state,
-        user: action.user,
-      };
     //SIGNOUT
     case types.SIGNOUT_LOADING:
       return { ...state, loading: true };
