@@ -7,9 +7,10 @@ import {
   StyleSheet,
   Clipboard,
 } from 'react-native';
-import { Container, Item, Input, Toast } from 'native-base';
+import { Container, Item, Input, Toast, Root } from 'native-base';
 import QRCode from 'react-native-qrcode';
 import BosonColors from '../../native-base-theme/variables/bosonColor';
+import LunesPaymentButton from '../../native-base-theme/components/LunesPaymentButton';
 
 export default class ReceivePayment extends React.Component {
   constructor(props) {
@@ -27,42 +28,40 @@ export default class ReceivePayment extends React.Component {
   render() {
     return (
       <Container>
-        <View style={styles.container}>
-          <Toast
-            showToast={this.state.showToast}
-            buttonText="Okay"
-            buttonPress={() =>
-              this.setState({
-                showToast: !this.state.showToast,
-              })
-            }
-            position="bottom">
-            <Text>Copiado!!!</Text>
-          </Toast>
-          <Text style={styles.titleReceivePayment}>Receber Pagamentos</Text>
-          <View style={styles.wrapperQRCode}>
-            <QRCode
-              value={this.state.text}
-              size={200}
-              bgColor="black"
-              fgColor="white"
-            />
+        <Root>
+          <View style={styles.container}>
+            <Text style={styles.titleReceivePayment}>Receber Pagamentos</Text>
+            <View style={styles.wrapperQRCode}>
+              <QRCode
+                value={this.state.text}
+                size={200}
+                bgColor="black"
+                fgColor="white"
+              />
+            </View>
+
+            <Text style={styles.input} selectable={true}>
+              {this.state.text}
+            </Text>
+
+            <Text
+              style={styles.textCopy}
+              selectable={true}
+              onPress={() => {
+                this.setState({ showToast: true });
+                this.setClipboardContent();
+                Toast.show({
+                  text: 'link copiado',
+                  position: 'top',
+                  buttonText: '',
+                });
+              }}>
+              Clique aqui para copiar e enviar
+            </Text>
+
+            <LunesPaymentButton />
           </View>
-          <TextInput
-            style={styles.input}
-            onChangeText={text => this.setState({ text: text })}
-            value={this.state.text}
-          />
-          <Text
-            style={styles.textCopy}
-            selectable={true}
-            onPress={() => {
-              this.setState({ showToast: true });
-              this.setClipboardContent();
-            }}>
-            Clique aqui para copiar e enviar
-          </Text>
-        </View>
+        </Root>
       </Container>
     );
   }

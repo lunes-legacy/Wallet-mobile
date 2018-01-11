@@ -10,12 +10,6 @@ import { ReceivePayment } from '../screen/ReceivePayment';
 import { Main } from '../screen/Main';
 
 const RootNavigator = StackNavigator({
-  ReceivePayment: {
-    screen: ReceivePayment,
-    navigationOptions: {
-      header: <View />,
-    },
-  },
   Introduction: {
     screen: Introduction,
     navigationOptions: {
