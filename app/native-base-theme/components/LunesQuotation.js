@@ -9,10 +9,11 @@ import {
   Easing,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import {
+  LunesIconSendPayment,
+  LunesIconReceivePayment,
+} from './LunesCustomIcon';
 import BosonColors from '../variables/bosonColor';
-
-const remote =
-  'https://res.cloudinary.com/luneswallet/image/upload/v1515200280/circle.png';
 
 export default class LunesQuotation extends React.Component {
   constructor() {
@@ -22,6 +23,20 @@ export default class LunesQuotation extends React.Component {
 
   componentDidMount() {
     this.spin();
+  }
+
+  renderImage() {
+    const imageSourceURIDefault =
+      'https://res.cloudinary.com/luneswallet/image/upload/v1515200280/circle.png';
+    const imageSourceURIYellow =
+      'https://res.cloudinary.com/luneswallet/image/upload/v1515200280/circle-yellow.png';
+    if (this.props.type && this.props.type === 'success') {
+      return imageSourceURIDefault;
+    }
+    if (this.props.type && this.props.type === 'success') {
+      return imageSourceURIYellow;
+    }
+    return imageSourceURIDefault;
   }
 
   spin() {
@@ -35,6 +50,40 @@ export default class LunesQuotation extends React.Component {
 
   stopSpin() {
     this.spinValue.setValue(0);
+  }
+
+  renderContent() {
+    if (!this.props.icon) {
+      return (
+        <View>
+          <Text style={styles.textQuotation}>COTAÇÃO</Text>
+          <Text style={styles.textQuotationPrice}>$17,500.90 | BRL 0.20</Text>
+        </View>
+      );
+    }
+    if (this.props.type === 'success') {
+      return (
+        <View style={{ alignItems: 'center' }}>
+          <LunesIconReceivePayment
+            color={BosonColors.$bosonLightGreen}
+            size={60}
+          />
+          <Text style={styles.textPayment}>{this.props.title}</Text>
+        </View>
+      );
+    }
+
+    if (this.props.type === 'warning') {
+      return (
+        <View style={{ alignItems: 'center' }}>
+          <LunesIconSendPayment
+            color={BosonColors.$bosonMediumYellow}
+            size={60}
+          />
+          <Text style={styles.textPayment}>{this.props.title}</Text>
+        </View>
+      );
+    }
   }
 
   render() {
@@ -54,17 +103,14 @@ export default class LunesQuotation extends React.Component {
             flex: 1,
             resizeMode: 'contain',
             position: 'absolute',
-            width: '100%',
-            height: '100%',
+            width: Dimensions.get('window').width - 50,
+            height: Dimensions.get('window').width - 50,
             justifyContent: 'center',
             transform: [{ rotate: spin }],
           }}
-          source={{ uri: remote }}
+          source={{ uri: this.renderImage() }}
         />
-        <View style={{ padding: 80 }}>
-          <Text style={styles.textQuotation}>COTAÇÃO</Text>
-          <Text style={styles.textQuotationPrice}>$17,500.90 | BRL 0.20</Text>
-        </View>
+        <View style={{ padding: 80 }}>{this.renderContent()}</View>
       </View>
     );
   }
@@ -85,8 +131,14 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     textAlign: 'center',
     fontSize: 18,
-    color: '#fff',
+    color: BosonColors.$bosonWhite,
     marginBottom: 10,
+  },
+  textPayment: {
+    fontSize: 24,
+    fontWeight: '700',
+    color: BosonColors.$bosonWhite,
+    paddingTop: 10,
   },
   textQuotationPrice: {
     backgroundColor: 'transparent',

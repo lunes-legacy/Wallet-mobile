@@ -33,3 +33,23 @@ export const LunesIconWarning = ({ size, color }) => {
     />
   );
 };
+
+export const LunesIconSendPayment = ({ size, color }) => {
+  return (
+    <Icon
+      name="lunes-send"
+      size={size || 12}
+      color={color || BosonColors.$bosonMediumYellow}
+    />
+  );
+};
+
+export const LunesIconReceivePayment = ({ size, color }) => {
+  return (
+    <Icon
+      name="lunes-receive"
+      size={size || 12}
+      color={color || BosonColors.$bosonMediumYellow}
+    />
+  );
+};

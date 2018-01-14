@@ -9,6 +9,7 @@
     "flow stop": "flow stop",
     "flow status": "flow status",
     "flow coverage": "flow coverage",
+    "android-linux": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "clean": "rm -rf node_modules && npm i && watchman watch-del-all && rm -fr $TMPDIR/react-* && rm -rf ios/build/ModuleCache/* && rm -rf ios/build",
@@ -33,7 +34,6 @@
     "react-navigation": "^1.0.0-beta.22",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
-    "redux-multi": "^0.1.91",
     "redux-persist": "^3.5.0",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0"
