@@ -6,6 +6,7 @@ import LunesTabCoins from '../../native-base-theme/components/LunesTabCoins';
 import LunesBalanceText from '../../native-base-theme/components/LunesBalanceText';
 import LunesQuotation from '../../native-base-theme/components/LunesQuotation';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
+import LunesPaymentButton from '../../native-base-theme/components/LunesPaymentButton';
 
 class LunesMarket extends Component {
   render() {
@@ -26,7 +27,7 @@ class LunesMarket extends Component {
           style={{
             flex: 1,
           }}>
-          <Button text="X" type="rounded-opened" />
+          <LunesPaymentButton />
         </View>
       </Container>
     );

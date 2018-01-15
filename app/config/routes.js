@@ -12,6 +12,12 @@ import { NoticeNotification } from '../screen/NoticeNotification';
 import { Main } from '../screen/Main';
 
 const RootNavigator = StackNavigator({
+  SendPayment: {
+    screen: SendPayment,
+    navigationOptions: {
+      header: <View />,
+    },
+  },
   Introduction: {
     screen: Introduction,
     navigationOptions: {
