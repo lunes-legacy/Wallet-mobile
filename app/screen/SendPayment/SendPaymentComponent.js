@@ -21,6 +21,7 @@ import LunesTabCoins from '../../native-base-theme/components/LunesTabCoins';
 import LunesPickerCountry from '../../native-base-theme/components/LunesPickerCountry';
 import { navigate } from '../../config/routes';
 import { CHOOSE_COINS } from './types';
+import I18n from '../../i18n/i18n';
 
 export default class SendPayment extends React.Component {
   constructor(props) {
@@ -49,7 +50,7 @@ export default class SendPayment extends React.Component {
             <View style={styles.container}>
               {/* CHOOSE COINS */}
               <View style={{ flexDirection: 'row' }}>
-                <Text style={styles.text}>Escolha a moeda</Text>
+                <Text style={styles.text}>{I18n.t('chooseCoin')}</Text>
                 <FontAwesomeIcon
                   style={{ paddingLeft: 10 }}
                   name={'chevron-down'}
@@ -66,7 +67,7 @@ export default class SendPayment extends React.Component {
               {/* AMOUNT AVAIALABLE */}
               <View style={styles.containerInner}>
                 <View>
-                  <Text style={styles.text}>Saldo</Text>
+                  <Text style={styles.text}>{I18n.t('balance')}</Text>
                 </View>
                 <View style={styles.containerAmountAvailable}>
                   <View style={styles.amount}>
@@ -87,11 +88,11 @@ export default class SendPayment extends React.Component {
               {/* AMOUNT COIN to TYPE */}
               <View style={styles.containerInner}>
                 <Text style={styles.textAmountToType}>
-                  Digite a quantidade de moedas
+                  {I18n.t('typeYourAmountCoin')}
                 </Text>
                 <TextInput
                   style={styles.inputText}
-                  placeholder="digite aqui"
+                  placeholder={I18n.t('typeHere')}
                   underlineColorAndroid={'transparent'}
                   placeholderTextColor="rgba(255,255,255,0.7)"
                 />
@@ -101,6 +102,10 @@ export default class SendPayment extends React.Component {
               <View style={styles.containerInner}>
                 <View style={{ flexDirection: 'row' }}>
                   <LunesPickerCountry />
+                  <View style={styles.quotationAmount}>
+                    <Text style={styles.textAmountToType}>Valor USD</Text>
+                    <Text style={styles.textQuotationAmount}>$ 6.977</Text>
+                  </View>
                 </View>
               </View>
 
@@ -109,8 +114,14 @@ export default class SendPayment extends React.Component {
                   styles.containerInner,
                   { width: Dimensions.get('window').width - 50 },
                 ]}>
-                <Button rounded block success onPress={() => {}}>
-                  <Text>Formas de Envio</Text>
+                <Button
+                  rounded
+                  block
+                  success
+                  onPress={() => {
+                    this.redirectToQRCodeScreen();
+                  }}>
+                  <Text style={styles.text}>{I18n.t('optionsSent')}</Text>
                 </Button>
               </View>
             </View>
@@ -127,6 +138,14 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  quotationAmount: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textQuotationAmount: {
+    fontSize: 18,
+    color: BosonColors.$bosonMediumYellow,
   },
   amount: {
     flexDirection: 'row',

@@ -45,12 +45,7 @@ export default class PaymentOptions extends React.Component {
           <Root>
             <View style={styles.container}>
               <View style={{ flexDirection: 'row' }}>
-                <Text style={styles.text}>Escolha a moeda</Text>
-                <FontAwesomeIcon
-                  name={'chevron-down'}
-                  size={14}
-                  color={'#fff'}
-                />
+                <Text style={styles.text}>Selecione a forma de envio</Text>
               </View>
 
               <View style={styles.containerInner}>

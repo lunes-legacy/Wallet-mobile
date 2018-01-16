@@ -160,6 +160,7 @@ dependencies {
     compile project(':react-native-linear-gradient')
     compile project(':react-native-svg')
     compile project(':react-native-camera')
+    compile project(':react-native-i18n')
     // Firebase dependencies
     compile "com.google.android.gms:play-services-base:11.6.0"
     compile "com.google.firebase:firebase-core:11.6.0"

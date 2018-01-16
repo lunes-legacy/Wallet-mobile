@@ -97,3 +97,11 @@ https://firebase.google.com/
 ### Icons Vectors
 
 https://github.com/oblador/react-native-vector-icons
+
+### QRCode Scanner
+
+https://github.com/moaazsidat/react-native-qrcode-scanner
+
+### I18N
+
+https://github.com/AlexanderZaytsev/react-native-i18n

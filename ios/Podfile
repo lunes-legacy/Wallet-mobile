@@ -20,6 +20,8 @@ target 'LunesMobileWallet' do
 
   pod 'react-native-camera', :path => '../node_modules/react-native-camera'
 
+  pod 'RNI18n', :path => '../node_modules/react-native-i18n'
+
   target 'LunesMobileWalletTests' do
     inherit! :search_paths
     # Pods for testing

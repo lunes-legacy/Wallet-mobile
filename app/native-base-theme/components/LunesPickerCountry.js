@@ -6,6 +6,7 @@ import { Container, Item, Input, Button, Text, Picker } from 'native-base';
 import FontAwesomeIcon from 'react-native-vector-icons/dist/FontAwesome';
 import commonColor from './../variables/commonColor';
 import BosonColors from './../variables/bosonColor';
+import I18n from '../../i18n/i18n';
 
 export default class LunesPickerCountry extends React.Component {
   constructor(props) {
@@ -71,7 +72,7 @@ export default class LunesPickerCountry extends React.Component {
         {this.renderFlag()}
         <Picker
           style={styles.picker}
-          iosHeader="Selecionar código"
+          iosHeader={I18n.t('selectCode')}
           mode="dropdown"
           selectedValue={this.state.countrySelected.value}
           onValueChange={this.onValueChange.bind(this)}>
