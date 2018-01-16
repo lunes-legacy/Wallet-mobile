@@ -2,7 +2,6 @@ import types from './types';
 const initialState = {
   loading: false,
   address: '',
-  coinChosed: 'BTC',
 };
 
 const sendPaymentReducer = (state = initialState, action) => {
@@ -13,8 +12,6 @@ const sendPaymentReducer = (state = initialState, action) => {
       return { ...state, loading: false };
     case types.COPY_ADDRESS:
       return { ...state, address: action.address };
-    case types.CHOOSE_COINS:
-      return { ...state, coinChosed: action.coinChosed };
     default:
       return state;
   }

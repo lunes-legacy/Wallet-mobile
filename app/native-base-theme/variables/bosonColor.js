@@ -42,7 +42,7 @@ const $bosonDarkPink = '#C74A69'; //rosa escuro
 //blue color
 const $bosonLightBlue = '#4A90E2'; //azul claro
 const $bosonMediumBlue = '#4A90E2'; //azul médio
-const $bosonDarkBlue = '#007ECD'; //azul escuro
+const $bosonDarkBlue = '#19577e'; //azul escuro
 
 //grey color
 const $bosonLightGrey = '#D8D8D8'; //cinza claro

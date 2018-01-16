@@ -1,11 +1,10 @@
 import types from './types';
 const initialState = {
   loading: false,
-  address: '',
-  coinChosed: 'BTC',
+  qrcodeAdressToSend: '',
 };
 
-const sendPaymentReducer = (state = initialState, action) => {
+const qrCodeReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.REQUEST_LOADING:
       return { ...state, loading: true };
@@ -13,11 +12,9 @@ const sendPaymentReducer = (state = initialState, action) => {
       return { ...state, loading: false };
     case types.COPY_ADDRESS:
       return { ...state, address: action.address };
-    case types.CHOOSE_COINS:
-      return { ...state, coinChosed: action.coinChosed };
     default:
       return state;
   }
 };
 
-export default sendPaymentReducer;
+export default qrCodeReducer;

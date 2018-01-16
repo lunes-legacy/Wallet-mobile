@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, Animated } from 'react-native';
+import { View, Text, Image, Animated, TouchableOpacity } from 'react-native';
 import Entypo from 'react-native-vector-icons/dist/Entypo';
 import { LunesTabCoinsConstant } from '../constants';
 import BosonColors from '../variables/bosonColor';
@@ -41,12 +41,19 @@ export default class LunesTabCoin extends React.Component {
               { paddingLeft: 10, paddingRight: 10 },
               this.renderBorder(index),
             ]}>
-            <View>
-              <LunesTabCoinsKPI kpi={tabCoin} />
-            </View>
-            <View>
-              <LunesTabCoinsPrice tabCoinPrice={tabCoin} />
-            </View>
+            <TouchableOpacity
+              onPress={() => {
+                if (this.props.doAction) {
+                  this.props.doAction(tabCoin);
+                }
+              }}>
+              <View>
+                <LunesTabCoinsKPI kpi={tabCoin} />
+              </View>
+              <View>
+                <LunesTabCoinsPrice tabCoinPrice={tabCoin} />
+              </View>
+            </TouchableOpacity>
           </View>
         );
       } else {

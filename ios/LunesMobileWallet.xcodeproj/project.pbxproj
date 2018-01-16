@@ -82,6 +82,13 @@
 		07D701E51A28472882625968 /* compre-moedas.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E553AEA03B456E9CBCB90A /* compre-moedas.png */; };
 		22E5679071BB45D681854B78 /* faca-backup.png in Resources */ = {isa = PBXBuildFile; fileRef = DECF0D1B4FA6423992B222B9 /* faca-backup.png */; };
 		F45CF0C2810F4092B32AF55F /* transferencia-moedas.png in Resources */ = {isa = PBXBuildFile; fileRef = F985695F18FA433BAB4503B1 /* transferencia-moedas.png */; };
+		35E2C9CBE58D4A23A7AE2A31 /* fontello.svg in Resources */ = {isa = PBXBuildFile; fileRef = 9B11999D34A44E02B99E2D9E /* fontello.svg */; };
+		012204C6997E4A9B9BF9C87F /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = D9E8222C5E3740ACB1345DD3 /* circle.png */; };
+		C60EC2DF295D4A21AA084F54 /* lunes-token-coin.png in Resources */ = {isa = PBXBuildFile; fileRef = FD311F2A5AC44636907062F4 /* lunes-token-coin.png */; };
+		9764E0079366474BA29B3A42 /* success.svg in Resources */ = {isa = PBXBuildFile; fileRef = 372A808D506B4539A277FC3F /* success.svg */; };
+		CA3CA8799AC543A6937328C5 /* fontello.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22C53346EFCF46229C71A8F6 /* fontello.ttf */; };
+		B4DAA656A11046269BAEF0D3 /* fontello.woff in Resources */ = {isa = PBXBuildFile; fileRef = E4BCBDDE4BBD4EB395011376 /* fontello.woff */; };
+		54CDD703DB7B4F3E81BF6983 /* fontello.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 4A0A72C07DF143498631BF81 /* fontello.woff2 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -438,6 +445,13 @@
 		00E553AEA03B456E9CBCB90A /* compre-moedas.png */ = {isa = PBXFileReference; name = "compre-moedas.png"; path = "../app/assets/images/compre-moedas.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		DECF0D1B4FA6423992B222B9 /* faca-backup.png */ = {isa = PBXFileReference; name = "faca-backup.png"; path = "../app/assets/images/faca-backup.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		F985695F18FA433BAB4503B1 /* transferencia-moedas.png */ = {isa = PBXFileReference; name = "transferencia-moedas.png"; path = "../app/assets/images/transferencia-moedas.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9B11999D34A44E02B99E2D9E /* fontello.svg */ = {isa = PBXFileReference; name = "fontello.svg"; path = "../app/assets/fonts/fontello.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D9E8222C5E3740ACB1345DD3 /* circle.png */ = {isa = PBXFileReference; name = "circle.png"; path = "../app/assets/images/circle.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FD311F2A5AC44636907062F4 /* lunes-token-coin.png */ = {isa = PBXFileReference; name = "lunes-token-coin.png"; path = "../app/assets/images/lunes-token-coin.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		372A808D506B4539A277FC3F /* success.svg */ = {isa = PBXFileReference; name = "success.svg"; path = "../app/assets/images/success.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		22C53346EFCF46229C71A8F6 /* fontello.ttf */ = {isa = PBXFileReference; name = "fontello.ttf"; path = "../app/assets/fonts/fontello.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E4BCBDDE4BBD4EB395011376 /* fontello.woff */ = {isa = PBXFileReference; name = "fontello.woff"; path = "../app/assets/fonts/fontello.woff"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4A0A72C07DF143498631BF81 /* fontello.woff2 */ = {isa = PBXFileReference; name = "fontello.woff2"; path = "../app/assets/fonts/fontello.woff2"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -732,6 +746,13 @@
 				00E553AEA03B456E9CBCB90A /* compre-moedas.png */,
 				DECF0D1B4FA6423992B222B9 /* faca-backup.png */,
 				F985695F18FA433BAB4503B1 /* transferencia-moedas.png */,
+				9B11999D34A44E02B99E2D9E /* fontello.svg */,
+				D9E8222C5E3740ACB1345DD3 /* circle.png */,
+				FD311F2A5AC44636907062F4 /* lunes-token-coin.png */,
+				372A808D506B4539A277FC3F /* success.svg */,
+				22C53346EFCF46229C71A8F6 /* fontello.ttf */,
+				E4BCBDDE4BBD4EB395011376 /* fontello.woff */,
+				4A0A72C07DF143498631BF81 /* fontello.woff2 */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1283,6 +1304,13 @@
 				07D701E51A28472882625968 /* compre-moedas.png in Resources */,
 				22E5679071BB45D681854B78 /* faca-backup.png in Resources */,
 				F45CF0C2810F4092B32AF55F /* transferencia-moedas.png in Resources */,
+				35E2C9CBE58D4A23A7AE2A31 /* fontello.svg in Resources */,
+				012204C6997E4A9B9BF9C87F /* circle.png in Resources */,
+				C60EC2DF295D4A21AA084F54 /* lunes-token-coin.png in Resources */,
+				9764E0079366474BA29B3A42 /* success.svg in Resources */,
+				CA3CA8799AC543A6937328C5 /* fontello.ttf in Resources */,
+				B4DAA656A11046269BAEF0D3 /* fontello.woff in Resources */,
+				54CDD703DB7B4F3E81BF6983 /* fontello.woff2 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

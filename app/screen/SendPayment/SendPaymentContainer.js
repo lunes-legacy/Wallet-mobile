@@ -2,16 +2,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { requestAddPIN, requestValidPIN } from './actions';
+import { chooseCoinAction } from './actions';
 import SendPayment from './SendPaymentComponent';
 
 const mapStateToProps = state => {
   return {
     loading: state.sendPaymentReducer.loading,
+    coinChosed: state.sendPaymentReducer.coinChosed,
   };
 };
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ requestAddPIN, requestValidPIN }, dispatch);
+  bindActionCreators({ chooseCoinAction }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SendPayment);

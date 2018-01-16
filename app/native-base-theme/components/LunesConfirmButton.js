@@ -17,7 +17,7 @@ import commonColor from './../variables/commonColor';
 import BosonColors from './../variables/bosonColor';
 import { navigate } from '../../config/routes';
 
-export default class LunesPaymentButton extends React.Component {
+export default class LunesConfirmButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,6 +40,12 @@ export default class LunesPaymentButton extends React.Component {
       const SIZE_ICON = 15;
       return (
         <View style={styles.container}>
+          <LinearGradient
+            colors={['green', 'red']}
+            style={styles.linearGradient}>
+            <Text style={styles.buttonText}>Sign in with Facebook</Text>
+          </LinearGradient>
+
           <View
             style={[
               styles.openedCircle,
@@ -52,29 +58,7 @@ export default class LunesPaymentButton extends React.Component {
                   size={SIZE_ICON}
                   color={BosonColors.$bosonWhite}
                 />
-                <Text style={styles.textItemIcons}>Enviar</Text>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => this.redirect('ReceivePayment')}>
-              <View style={[styles.iconButtonOpened, { paddingLeft: 13 }]}>
-                <MaterialIcons
-                  name="arrow-downward"
-                  size={SIZE_ICON}
-                  color={BosonColors.$bosonWhite}
-                />
-                <Text style={styles.textItemIcons}>Receber</Text>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => this.redirect('BuyCoins')}>
-              <View style={[styles.iconButtonOpened, { paddingLeft: 70 }]}>
-                <Icon
-                  name="money"
-                  size={SIZE_ICON}
-                  color={BosonColors.$bosonWhite}
-                />
-                <Text style={styles.textItemIcons}>Comprar</Text>
+                <Text style={styles.textItemIcons}>SIM</Text>
               </View>
             </TouchableOpacity>
 
@@ -85,7 +69,7 @@ export default class LunesPaymentButton extends React.Component {
                   size={SIZE_ICON}
                   color={BosonColors.$bosonWhite}
                 />
-                <Text style={styles.textItemIcons}>Vender</Text>
+                <Text style={styles.textItemIcons}>NÂO</Text>
               </View>
             </TouchableOpacity>
           </View>

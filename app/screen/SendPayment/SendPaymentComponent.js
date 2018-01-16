@@ -5,64 +5,118 @@ import {
   View,
   TouchableOpacity,
   StyleSheet,
-  Clipboard,
+  Dimensions,
+  Linking,
+  StatusBar,
 } from 'react-native';
-import { Container, Item, Input, Toast, Root } from 'native-base';
+import { Container, Item, Input, Toast, Root, Button } from 'native-base';
 import QRCode from 'react-native-qrcode';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import QRCodeScanner from 'react-native-qrcode-scanner';
+import FontAwesomeIcon from 'react-native-vector-icons/dist/FontAwesome';
+import SimpleLineIcon from 'react-native-vector-icons/dist/SimpleLineIcons';
 import BosonColors from '../../native-base-theme/variables/bosonColor';
-import LunesPaymentButton from '../../native-base-theme/components/LunesPaymentButton';
+import LunesConfirmButton from '../../native-base-theme/components/LunesConfirmButton';
+import LunesTabCoins from '../../native-base-theme/components/LunesTabCoins';
+import LunesPickerCountry from '../../native-base-theme/components/LunesPickerCountry';
+import { navigate } from '../../config/routes';
+import { CHOOSE_COINS } from './types';
 
 export default class SendPayment extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: '1BoatSLRHtKNngkdXEeobR76b53LETtpyT',
       showToast: false,
     };
   }
 
-  setClipboardContent = msg => {
-    Clipboard.setString(this.state.text);
-  };
+  redirectToQRCodeScreen() {
+    navigate('PaymentOptions');
+  }
 
   render() {
     return (
-      <Container>
-        <Root>
-          <View style={styles.container}>
-            <Text style={styles.titleReceivePayment}>Receber Pagamentos</Text>
-            <View style={styles.wrapperQRCode}>
-              <QRCode
-                value={this.state.text}
-                size={200}
-                bgColor="black"
-                fgColor="white"
-              />
+      <KeyboardAwareScrollView
+        style={styles.keyboardContainer}
+        resetScrollToCoords={{ x: 0, y: 0 }}
+        scrollEnabled={false}>
+        <Container>
+          <StatusBar
+            backgroundColor={BosonColors.$bosonPrimary}
+            barStyle="light-content"
+          />
+          <Root>
+            <View style={styles.container}>
+              {/* CHOOSE COINS */}
+              <View style={{ flexDirection: 'row' }}>
+                <Text style={styles.text}>Escolha a moeda</Text>
+                <FontAwesomeIcon
+                  style={{ paddingLeft: 10 }}
+                  name={'chevron-down'}
+                  size={14}
+                  color={BosonColors.$bosonLightGreen}
+                />
+              </View>
+
+              {/* TAB COINS */}
+              <View style={{ flexDirection: 'row' }}>
+                <LunesTabCoins doAction={this.props.chooseCoinAction} />
+              </View>
+
+              {/* AMOUNT AVAIALABLE */}
+              <View style={styles.containerInner}>
+                <View>
+                  <Text style={styles.text}>Saldo</Text>
+                </View>
+                <View style={styles.containerAmountAvailable}>
+                  <View style={styles.amount}>
+                    <SimpleLineIcon
+                      name={'wallet'}
+                      size={10}
+                      color={BosonColors.$bosonLightGreen}
+                      style={{ paddingRight: 10 }}
+                    />
+                    <Text style={styles.textAmount}>4.02293793</Text>
+                  </View>
+                  <View>
+                    <Text style={styles.text}>$ 30850.00</Text>
+                  </View>
+                </View>
+              </View>
+
+              {/* AMOUNT COIN to TYPE */}
+              <View style={styles.containerInner}>
+                <Text style={styles.textAmountToType}>
+                  Digite a quantidade de moedas
+                </Text>
+                <TextInput
+                  style={styles.inputText}
+                  placeholder="digite aqui"
+                  underlineColorAndroid={'transparent'}
+                  placeholderTextColor="rgba(255,255,255,0.7)"
+                />
+              </View>
+
+              {/* AMOUNT COIN to TYPE */}
+              <View style={styles.containerInner}>
+                <View style={{ flexDirection: 'row' }}>
+                  <LunesPickerCountry />
+                </View>
+              </View>
+
+              <View
+                style={[
+                  styles.containerInner,
+                  { width: Dimensions.get('window').width - 50 },
+                ]}>
+                <Button rounded block success onPress={() => {}}>
+                  <Text>Formas de Envio</Text>
+                </Button>
+              </View>
             </View>
-
-            <Text style={styles.input} selectable={true}>
-              {this.state.text}
-            </Text>
-
-            <Text
-              style={styles.textCopy}
-              selectable={true}
-              onPress={() => {
-                this.setState({ showToast: true });
-                this.setClipboardContent();
-                Toast.show({
-                  text: 'link copiado',
-                  position: 'top',
-                  buttonText: '',
-                });
-              }}>
-              Clique aqui para copiar e enviar
-            </Text>
-
-            <LunesPaymentButton />
-          </View>
-        </Root>
-      </Container>
+          </Root>
+        </Container>
+      </KeyboardAwareScrollView>
     );
   }
 }
@@ -70,31 +124,55 @@ export default class SendPayment extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  amount: {
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  titleReceivePayment: {
-    padding: 10,
-    color: BosonColors.$bosonWhite,
-    fontFamily: 'Roboto-Medium',
-    fontSize: 14,
-  },
-  wrapperQRCode: {
-    backgroundColor: BosonColors.$bosonWhite,
-    padding: 20,
-  },
-  input: {
+  containerAmountAvailable: {
     height: 40,
-    borderColor: BosonColors.$bosonWhite,
-    borderWidth: 0,
-    margin: 10,
-    borderRadius: 5,
-    padding: 5,
-    color: BosonColors.$bosonWhite,
-    fontSize: 12,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10,
+    backgroundColor: BosonColors.$bosonDarkPurple,
+    width: Dimensions.get('window').width,
   },
-  textCopy: {
+  containerInner: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  inputText: {
+    width: Dimensions.get('window').width,
+    borderBottomColor: BosonColors.$bosonLightGreen,
+    borderBottomWidth: 1,
+    color: BosonColors.$bosonWhite,
+    textAlign: 'center',
+    fontFamily: 'Roboto-Medium',
+    fontSize: 16,
+  },
+  text: {
+    color: BosonColors.$bosonWhite,
+    fontSize: 14,
+    fontFamily: 'Roboto-Medium',
+  },
+  textAmountToType: {
+    color: BosonColors.$bosonWhite,
+    fontSize: 11,
+    fontFamily: 'Roboto-Light',
+  },
+  textAmount: {
     color: BosonColors.$bosonLightGreen,
-    fontSize: 12,
+    fontSize: 13,
+    fontFamily: 'Roboto-Medium',
+  },
+  touchable: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
