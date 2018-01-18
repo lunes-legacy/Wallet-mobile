@@ -7,8 +7,8 @@ import redirectToAuthReducer from '../screen/Introduction/reducer';
 import confirmationReducer from '../screen/Confirmation/reducer';
 import receivePaymentReducer from '../screen/ReceivePayment/reducer';
 import sendPaymentReducer from '../screen/SendPayment/reducer';
+import changePasswordReducer from '../screen/ChangePassword/reducer';
 import pinReducer from '../screen/PIN/reducer';
-import routes from './routes';
 
 const reducers = combineReducers({
   tabsReducer,
@@ -19,6 +19,7 @@ const reducers = combineReducers({
   pinReducer,
   receivePaymentReducer,
   sendPaymentReducer,
+  changePasswordReducer,
 });
 
 export default reducers;

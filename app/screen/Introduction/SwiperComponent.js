@@ -6,6 +6,7 @@ import {
   StyleSheet, // CSS-like styles
   View, // Container component
 } from 'react-native';
+import I18N from '../../i18n/i18n';
 import Button from './Button';
 
 // Detect screen width and height
@@ -237,12 +238,12 @@ export default class Swiper extends Component {
           // Show this button on the last screen
           // TODO: Add a handler that would send a user to your app after onboarding is complete
           <Button
-            text="Começar"
+            text={I18N.t('START')}
             onPress={() => this.props.redirectToAuthAction()}
           />
         ) : (
           // Or this one otherwise
-          <Button text="Continue" onPress={() => this.swipe()} />
+          <Button text={I18N.t('CONTINUE')} onPress={() => this.swipe()} />
         )}
       </View>
     );

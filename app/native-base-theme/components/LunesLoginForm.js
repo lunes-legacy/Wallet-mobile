@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+import I18N from '../../i18n/i18n';
 import { Button, Text } from 'native-base';
 import { ValidateEmail } from '../../utils/stringUtils';
 import LunesGradientButton from './LunesGradientButton';
@@ -33,7 +34,7 @@ export default class LunesLoginForm extends React.Component {
       return;
     }
     if (!ValidateEmail(this.state.email)) {
-      alert('Email inválido');
+      alert(I18N.t('INVALID_EMAIL'));
       return;
     }
     this.props.submit(this.state);
@@ -46,7 +47,7 @@ export default class LunesLoginForm extends React.Component {
           <TextInput
             underlineColorAndroid={'transparent'}
             style={styles.input}
-            placeholder="Nome"
+            placeholder={I18N.t('NAME')}
             placeholderTextColor="rgba(255,255,255,0.7)"
             autoCapitalize="none"
             onChangeText={text => this.setState({ name: text })}
@@ -63,7 +64,9 @@ export default class LunesLoginForm extends React.Component {
   }
 
   getTextButton() {
-    return this.props.modeAuth === 'SIGNUP' ? 'Sign Up' : 'Sign In';
+    return this.props.modeAuth === 'SIGNUP'
+      ? I18N.t('SIGNUP')
+      : I18N.t('SIGNIN');
   }
 
   checkButtonIsDisabled() {
@@ -114,7 +117,7 @@ export default class LunesLoginForm extends React.Component {
           <TextInput
             style={styles.input}
             underlineColorAndroid={'transparent'}
-            placeholder="Email"
+            placeholder={I18N.t('EMAIL')}
             placeholderTextColor="rgba(255,255,255,0.7)"
             keyboardType="email-address"
             onChangeText={text => this.setState({ email: text })}
@@ -131,7 +134,7 @@ export default class LunesLoginForm extends React.Component {
           <TextInput
             underlineColorAndroid={'transparent'}
             style={styles.input}
-            placeholder="Senha"
+            placeholder={I18N.t('PASSWORD')}
             onChangeText={text => this.setState({ password: text })}
             ref={input => (this.passwordInput = input)}
             value={this.state.password}

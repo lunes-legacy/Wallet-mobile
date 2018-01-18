@@ -9,6 +9,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { Container } from 'native-base';
+import I18N from '../../i18n/i18n';
 import Swiper from './SwiperContainer';
 import { navigate } from '../../config/routes';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
@@ -37,13 +38,8 @@ export default class Introduction extends React.Component {
                 'http://res.cloudinary.com/luneswallet/image/upload/c_scale,w_397/v1515019717/bem-vindo.png',
             }}
           />
-          <Text style={styles.header}>SEJA BEM-VINDO!</Text>
-          <Text style={styles.text}>
-            Muito obrigado por escolher a Wallet Lunes como sua carteira
-            multicoin. Aproveite da usabilidade e tecnologia desta incrível
-            carteira e armazene suas criptomoedas com um alto nível de
-            segurança.
-          </Text>
+          <Text style={styles.header}>{I18N.t('WELCOME')}</Text>
+          <Text style={styles.text}>{I18N.t('WELCOME_MSG')}</Text>
         </View>
         {/* Second screen */}
         <View style={[styles.slide2, { backgroundColor: '#4b2c82' }]}>
@@ -54,11 +50,8 @@ export default class Introduction extends React.Component {
                 'http://res.cloudinary.com/luneswallet/image/upload/c_scale,w_397/v1515019717/analytics.png',
             }}
           />
-          <Text style={styles.header}>ANALYTICS</Text>
-          <Text style={styles.text}>
-            Acompanhe os movimentos de altas e baixas do mercado de criptomoedas
-            com nossos gráficos modernos e práticos.
-          </Text>
+          <Text style={styles.header}>{I18N.t('ANALYTICS')}</Text>
+          <Text style={styles.text}>{I18N.t('ANALYTICS_MSG')}</Text>
         </View>
         {/* Third screen */}
         <View style={[styles.slide2, { backgroundColor: '#4b2c82' }]}>
@@ -69,12 +62,8 @@ export default class Introduction extends React.Component {
                 'http://res.cloudinary.com/luneswallet/image/upload/c_scale,w_300/v1515019717/faca-backup.png',
             }}
           />
-          <Text style={styles.header}>FAÇA SEU BACKUP</Text>
-          <Text style={styles.text}>
-            Não armazenamos suas moedas em nossos servidores, elas são de sua
-            propriedade e estão em sua posse, por isso não deixe de salvar as
-            suas chaves privadas e fazer seu backup.
-          </Text>
+          <Text style={styles.header}>{I18N.t('DO_YOUR_BACKUP')}</Text>
+          <Text style={styles.text}>{I18N.t('DO_YOUR_BACKUP_MSG')}</Text>
         </View>
         {/* Fourty screen */}
         <View style={[styles.slide2, { backgroundColor: '#4b2c82' }]}>
@@ -85,12 +74,8 @@ export default class Introduction extends React.Component {
                 'http://res.cloudinary.com/luneswallet/image/upload/c_scale,w_397/v1515019717/compre-moedas.png',
             }}
           />
-          <Text style={styles.header}>COMPRE MOEDAS</Text>
-          <Text style={styles.text}>
-            Compre criptomoedas de forma rápida e segura, sem burocracia.
-            Adicione créditos pagando por boleto bancário ou com o seu cartão de
-            crédito.
-          </Text>
+          <Text style={styles.header}>{I18N.t('BUY_COINS')}</Text>
+          <Text style={styles.text}>{I18N.t('BUY_COINS_MSG')}</Text>
         </View>
         {/* Fifty screen */}
         <View style={[styles.slide2, { backgroundColor: '#4b2c82' }]}>
@@ -101,11 +86,8 @@ export default class Introduction extends React.Component {
                 'http://res.cloudinary.com/luneswallet/image/upload/c_scale,w_390/v1515019717/transferencia-moedas.png',
             }}
           />
-          <Text style={styles.header}>TRANSAÇÕES P2P</Text>
-          <Text style={styles.text}>
-            Receba e envie pagamentos de qualquer lugar do mundo, de forma
-            rápida, segura e barata, direto de pessoa para pessoa.
-          </Text>
+          <Text style={styles.header}>{I18N.t('TRANSACTIONS_P2P')}</Text>
+          <Text style={styles.text}>{I18N.t('TRANSACTIONS_P2P_MSG')}</Text>
         </View>
       </Swiper>
     );

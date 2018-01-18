@@ -18,8 +18,24 @@ import { NoticeNotification } from '../screen/NoticeNotification';
 import { Main } from '../screen/Main';
 import { QRCode } from '../screen/QRCodeScreen';
 import { PaymentOptions } from '../screen/PaymentOptions';
+import { ChangePassword } from '../screen/ChangePassword';
 import BosonColors from '../native-base-theme/variables/bosonColor';
-import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
+import I18N from '../i18n/i18n';
+
+const customHeader = navigation => {
+  return (
+    <View style={{ padding: 10 }}>
+      <FontAwesomeIcon
+        color={'#fff'}
+        size={20}
+        name={'arrow-left'}
+        onPress={() => {
+          navigation.goBack();
+        }}
+      />
+    </View>
+  );
+};
 
 const RootNavigator = StackNavigator(
   {
@@ -62,7 +78,7 @@ const RootNavigator = StackNavigator(
     SendPayment: {
       screen: SendPayment,
       navigationOptions: {
-        title: 'Enviar Pagamento',
+        title: I18N.t('SEND_PAYMENT'),
       },
     },
     PaymentOptions: {
@@ -77,27 +93,31 @@ const RootNavigator = StackNavigator(
         header: <View />,
       },
     },
+    ChangePassword: {
+      screen: ChangePassword,
+      navigationOptions: ({ navigation, screenProps }) => {
+        return {
+          title: I18N.t('CHANGE_PASSWORD'),
+          headerTintColor: '#fff',
+          headerStyle: {
+            backgroundColor: BosonColors.$bosonPrimary,
+            elevation: 20,
+          },
+          headerLeft: customHeader(navigation),
+        };
+      },
+    },
     QRCode: {
       screen: QRCode,
       navigationOptions: ({ navigation, screenProps }) => {
         return {
-          title: 'Escanear QRCode',
+          title: I18N.t('SCAN_QRCODE'),
           headerTintColor: '#fff',
           headerStyle: {
             backgroundColor: BosonColors.$bosonLightGreen,
             elevation: 20,
           },
-          headerLeft: (
-            <View style={{ paddingLeft: 10 }}>
-              <FontAwesomeIcon
-                color={'#fff'}
-                name={'arrow-left'}
-                onPress={() => {
-                  navigation.goBack();
-                }}
-              />
-            </View>
-          ),
+          headerLeft: customHeader(navigation),
         };
       },
     },
@@ -111,17 +131,7 @@ const RootNavigator = StackNavigator(
           backgroundColor: BosonColors.$bosonPrimary,
           elevation: null,
         },
-        headerLeft: (
-          <View style={{ paddingLeft: 10 }}>
-            <FontAwesomeIcon
-              color={'#fff'}
-              name={'arrow-left'}
-              onPress={() => {
-                navigation.goBack();
-              }}
-            />
-          </View>
-        ),
+        headerLeft: customHeader(navigation),
       };
     },
   }

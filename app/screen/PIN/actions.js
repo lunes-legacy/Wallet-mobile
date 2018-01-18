@@ -27,6 +27,7 @@ export const requestValidPIN = (PIN, currentUser) => {
 
     LunesCore.users.confirmPin({ pin: PIN }, currentUser.accessToken).then(
       response => {
+        currentUser.pinIsValidated = true;
         dispatch(confirmSuccess(currentUser));
         dispatch(requestFinished());
         navigate('Main');

@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { Container, Button, Text, Tab, Tabs } from 'native-base';
 import firebase from 'react-native-firebase';
 import { FormStyle } from '../../components/theme';
@@ -9,6 +9,7 @@ import LunesLoginForm from '../../native-base-theme/components/LunesLoginForm';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
 import LunesAlert from '../../native-base-theme/components/LunesAlert';
 import I18n from '../../i18n/i18n';
+import { navigate } from '../../config/routes';
 
 export default class Signin extends React.Component<{}> {
   alertError(message, isShow) {
@@ -51,6 +52,10 @@ export default class Signin extends React.Component<{}> {
     return <LunesLoading />;
   }
 
+  redirectToChangePassword() {
+    navigate('ChangePassword');
+  }
+
   render() {
     return (
       <Container>
@@ -66,7 +71,13 @@ export default class Signin extends React.Component<{}> {
               submit={this.props.requestLogin}
               modeAuth="SIGNIN"
             />
-            <Button block transparent light>
+            <Button
+              block
+              transparent
+              light
+              onPress={() => {
+                this.redirectToChangePassword();
+              }}>
               <Text style={{ fontSize: 12 }}>{I18n.t('CHANGE_PASSWORD')}</Text>
             </Button>
           </Tab>
