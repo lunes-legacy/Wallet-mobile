@@ -15,6 +15,7 @@ import Entypo from 'react-native-vector-icons/dist/Entypo';
 import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 import commonColor from './../variables/commonColor';
 import BosonColors from './../variables/bosonColor';
+import I18N from '../../i18n/i18n';
 
 export default class LunesPIN extends React.Component {
   constructor(props) {
@@ -64,12 +65,10 @@ export default class LunesPIN extends React.Component {
       const { inputValue1, inputValue2, inputValue3, inputValue4 } = this.state;
       let PIN = `${inputValue1}${inputValue2}${inputValue3}${inputValue4}`;
       if (PIN === '') {
-        console.log('PIN vazio');
-        alert('Por favor, digite seu PIN');
+        alert(I18N.t('PIN_IS_REQUIRED'));
         return;
       } else if (isNaN(parseInt(PIN))) {
-        console.log('PIN convertido é invalido');
-        alert('Ocorreu algo errado ao tentar salvar o PIN');
+        alert(I18N.t('ERROR_ON_SAVE_PIN'));
         return;
       }
       this.props.onSavePIN(PIN);
@@ -217,8 +216,9 @@ export default class LunesPIN extends React.Component {
           </View>
           <View>
             <Text style={styles.instructions}>
-              Insira um código de 04 dígitos para{' '}
-              {this.props.toValidate ? 'validar' : 'cadastrar'} seu PIN
+              {I18N.t('TYPE_PIN_CODE')}{' '}
+              {this.props.toValidate ? I18N.t('VALIDATE') : I18N.t('SIGNUP')}{' '}
+              {I18N.t('YOUR_PIN')}
             </Text>
           </View>
           <View style={{ flexDirection: 'row' }}>

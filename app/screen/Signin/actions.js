@@ -1,4 +1,5 @@
 import { Keyboard } from 'react-native';
+import LunesCore from 'lunes-core';
 import types from './types';
 import { auth, database } from '../../config/firebase';
 import { navigate } from '../../config/routes';
@@ -7,7 +8,29 @@ export const requestLogin = values => {
   return dispatch => {
     dispatch(requestLoading());
 
-    auth
+    LunesCore.users
+      .login({ email: values.email, password: values.password })
+      .then(
+        user => {
+          dispatch(requestFinished());
+          dispatch(signinSuccess(user));
+          dispatch(storeUser(user));
+          Keyboard.dismiss();
+          if (user && !user.pinIsValidated && user.phoneIsValidated) {
+            navigate('PIN');
+          } else if (user && user.pinIsValidated && user.phoneIsValidated) {
+            navigate('PIN', { isLogged: true });
+          } else {
+            navigate('Confirmation');
+          }
+        },
+        error => {
+          dispatch(requestFinished());
+          dispatch(signinError(error));
+        }
+      );
+
+    /*auth
       .signInWithEmailAndPassword(values.email, values.password)
       .then(user => {
         dispatch(requestFinished());
@@ -23,13 +46,13 @@ export const requestLogin = values => {
       .catch(error => {
         dispatch(requestFinished());
         dispatch(signinError(error));
-      });
+      });*/
   };
 };
 
 export const clearError = () => ({
   type: types.CLEAR_ERROR,
-  error: {},
+  error: null,
 });
 
 const signinLoading = () => ({
@@ -62,40 +85,31 @@ const storeUser = user => ({
 export const requestSignup = values => {
   const { name, email, password } = values;
   let userData = {
-    fname: '',
-    lname: '',
-    email: '',
+    fullname: name,
+    password: password,
+    email: email,
     photoUrl: '',
   };
 
   return dispatch => {
     dispatch(requestLoading());
 
-    auth
-      .createUserWithEmailAndPassword(email, password)
+    LunesCore.users
+      .create(userData)
       .then(user => {
         if (user !== null) {
-          userData.fname = name;
-          userData.email = email;
-
-          let userPath = '/users/' + user.uid;
-          database
-            .ref(userPath)
-            .set(userData)
-            .then(function() {
-              dispatch(requestFinished());
-              dispatch(signupSuccess(user));
-              dispatch(storeUser(user));
-              navigate('Confirmation');
-            })
-            .catch(error => {
-              dispatch(requestFinished());
-              console.error('Error writing document: ', error);
-              dispatch(signupError(error));
-            });
+          user = { ...user, ...userData };
+          delete user.password;
+          dispatch(requestFinished());
+          dispatch(signupSuccess(user));
+          dispatch(storeUser(user));
+          navigate('Confirmation');
+        } else {
+          dispatch(signupError(error));
         }
       })
       .catch(error => {
+        dispatch(requestFinished());
         dispatch(signupError(error));
       });
   };

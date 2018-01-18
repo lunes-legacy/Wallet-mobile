@@ -23,12 +23,6 @@ import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
 
 const RootNavigator = StackNavigator(
   {
-    Main: {
-      screen: Main,
-      navigationOptions: {
-        header: <View />,
-      },
-    },
     Introduction: {
       screen: Introduction,
       navigationOptions: {

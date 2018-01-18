@@ -18,7 +18,8 @@
   "dependencies": {
     "axios": "^0.17.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "lunes-core": "0.0.16",
+    "dotenv": "^4.0.0",
+    "lunes-core": "0.0.26",
     "native-base": "^2.3.5",
     "prop-types": "^15.6.0",
     "react": "16.0.0",

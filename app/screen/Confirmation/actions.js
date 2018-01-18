@@ -1,3 +1,4 @@
+import LunesCore from 'lunes-core';
 import types from './types';
 
 import { auth, fb } from '../../config/firebase';
@@ -41,18 +42,36 @@ export const confirmCode = (codeInput, confirmResult, currentUser) => {
       codeInput
     );
 
-    currentUser.linkWithCredential(credential).then(
-      function(user) {
-        dispatch(requestFinished());
-        dispatch(confirmCodeSuccess(user));
-        navigate('PIN');
-      },
-      function(error) {
-        dispatch(requestFinished());
-        console.log('Account linking error', error);
-        dispatch(confirmCodeError(error));
-      }
-    );
+    fb
+      .auth()
+      .signInWithCredential(credential)
+      .then(
+        user => {
+          user = { phoneNumber: user._user.phoneNumber, ...currentUser };
+          LunesCore.users
+            .confirmPhone(
+              { phoneNumber: user.phoneNumber },
+              currentUser.accessToken
+            )
+            .then(
+              response => {
+                user = { ...user, phoneNumber: response.phoneNumber };
+                dispatch(requestFinished());
+                dispatch(confirmCodeSuccess(user));
+                navigate('PIN');
+              },
+              error => {
+                dispatch(requestFinished());
+                console.log(error);
+              }
+            );
+        },
+        error => {
+          dispatch(requestFinished());
+          console.log('Account linking error', error);
+          dispatch(confirmCodeError(error));
+        }
+      );
 
     dispatch(requestFinished());
   };

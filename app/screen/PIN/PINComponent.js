@@ -11,10 +11,11 @@ import MaterialIcon from 'react-native-vector-icons/dist/MaterialCommunityIcons'
 import FontAwesomeIcon from 'react-native-vector-icons/dist/FontAwesome';
 import LunesPIN from '../../native-base-theme/components/LunesPIN';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
+import I18N from '../../i18n/i18n';
 
 export default class PIN extends React.Component {
   renderLoading() {
-    return <LunesLoading text="Verificando o PIN para validação" />;
+    return <LunesLoading text={I18N.t('CHECKING_PIN_FOR_ACTIVATION')} />;
   }
 
   render() {
@@ -26,10 +27,14 @@ export default class PIN extends React.Component {
         <LunesPIN
           toValidate={isLogged}
           onSavePIN={PIN => {
+            let userInfo = {};
+            if (this.props && this.props.user && this.props.user.userInfo) {
+              userInfo = this.props.user.userInfo;
+            }
             if (isLogged) {
-              this.props.requestValidPIN(PIN);
+              this.props.requestValidPIN(PIN, userInfo);
             } else {
-              this.props.requestAddPIN(PIN);
+              this.props.requestAddPIN(PIN, userInfo);
             }
           }}
         />

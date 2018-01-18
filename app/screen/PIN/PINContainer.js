@@ -8,6 +8,7 @@ import PIN from './PINComponent';
 const mapStateToProps = state => {
   return {
     loading: state.pinReducer.loading,
+    user: state.userReducer,
   };
 };
 
