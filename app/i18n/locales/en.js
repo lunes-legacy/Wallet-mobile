@@ -6,6 +6,7 @@ export default {
   typeYourAmountCoin: 'type your amount coin',
   typeHere: 'type here',
   optionsSent: 'Options to send',
+  SOMETHING_ERROR: 'Error on server. Verify with our support',
   WRONG_PASSWORD: 'Your password is insecure. Try some more secure',
   USER_NOT_FOUND: 'User not found',
   ERROR_AUTHENTICATE: 'Error on try authenticate',
@@ -46,4 +47,9 @@ export default {
   CONFIRM: 'Confirm',
   SEND_PAYEMNT: 'Send Payment',
   SCANNER_QRCODE: 'Scanner QRCode',
+  DO_BACKUP: 'Do Backup',
+  CONFIRM_BACKUP: 'I confirm Backup',
+  SEED_BACKUP_MSG: `You will receive a set of words that is very important you save in somewhere safety for that be possible recover you wallet when required`,
+  REMEMBER: 'Remember',
+  YOUR_WORDS: 'Your Words',
 };

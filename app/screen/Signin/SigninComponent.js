@@ -36,14 +36,14 @@ export default class Signin extends React.Component<{}> {
 
   renderError() {
     const { authorized, error } = this.props;
-    if (error && error.code === 'auth/email-already-in-use') {
+    if (error && error.messageKey === 'auth/email-already-in-use') {
       return this.alertError(I18n.t('EMAIL_ALREADY'), true);
-    } else if (error && error.code === 'auth/wrong-password') {
+    } else if (error && error.messageKey === 'auth/wrong-password') {
       return this.alertError(I18n.t('ERROR_AUTHENTICATE'), true);
-    } else if (error && error.code === 'auth/user-not-found') {
+    } else if (error && error.messageKey === 'auth/user-not-found') {
       return this.alertError(I18n.t('USER_NOT_FOUND'), true);
     } else if (error) {
-      return this.alertError(I18n.t('WRONG_PASSWORD'), true);
+      return this.alertError(I18n.t('SOMETHING_ERROR'), true);
     }
     return null;
   }
@@ -75,6 +75,7 @@ export default class Signin extends React.Component<{}> {
               block
               transparent
               light
+              style={{ marginTop: 30 }}
               onPress={() => {
                 this.redirectToChangePassword();
               }}>

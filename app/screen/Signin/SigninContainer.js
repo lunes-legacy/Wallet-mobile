@@ -19,6 +19,7 @@ const mapStateToProps = state => {
     error: state.auth.error,
     loading: state.auth.loading,
     userInfo: state.userReducer.userInfo || {},
+    wordSeedWasViewed: state.pinReducer.wordSeedWasViewed,
   };
 };
 const mapDispatchToProps = dispatch =>

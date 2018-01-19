@@ -25,7 +25,7 @@ export default class App extends Component {
         duration: 850,
         delay: 500,
       });
-    }).purge();
+    });
   }
 
   render() {

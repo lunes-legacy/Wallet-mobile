@@ -6,6 +6,7 @@ export default {
   typeYourAmountCoin: 'digite a quantidade de moedas',
   typeHere: 'digite aqui',
   optionsSent: 'Formas de Envio',
+  SOMETHING_ERROR: 'Erro no servidor. Verifique com nosso suporte',
   WRONG_PASSWORD: 'Senha inválida ou insegura. Tente algo mais seguro.',
   USER_NOT_FOUND: 'Usuário não encontrado',
   ERROR_AUTHENTICATE: 'Erro ao tentar autenticar-se',
@@ -50,4 +51,9 @@ export default {
   CONFIRM: 'Confirmar',
   SEND_PAYEMNT: 'Enviar Pagamento',
   SCANNER_QRCODE: 'Escanear QRCode',
+  DO_BACKUP: 'Fazer Backup',
+  CONFIRM_BACKUP: 'Eu confirmo Backup',
+  SEED_BACKUP_MSG: `Você irá receber um conjunto de palavras que é de extrema importância você salvar em algum local seguro para que seja possível recuperar sua carteira caso seja necessári.`,
+  REMEMBER: 'Lembre-se',
+  YOUR_WORDS: 'Suas Palavras',
 };

@@ -15,6 +15,7 @@ import {
   LunesIconSuccess,
   LunesIconWarning,
 } from '../components/LunesCustomIcon';
+import I18N from '../../i18n/i18n';
 
 const { width, height } = Dimensions.get('window');
 
@@ -186,6 +187,7 @@ export default class LunesAlert extends React.Component {
     />
   */
   renderAlertInfo() {
+    let titleMsg = this.props.title ? this.props.title : I18N.t('REMEMBER');
     if (this.props.type === 'info' && this.state.isVisible) {
       return (
         <View style={{ flex: 1, width: '100%' }}>
@@ -194,13 +196,15 @@ export default class LunesAlert extends React.Component {
               styles.dialogHeader,
               { backgroundColor: BosonColors.$bosonMediumPurple },
             ]}>
-            <Text style={styles.textHeader}>Lembre-se</Text>
+            <Text style={styles.textHeader}>{titleMsg}</Text>
           </View>
 
           <View style={styles.iconClose}>{this.renderCloseIcon()}</View>
 
           <View style={styles.areaDescription}>
-            <Text style={styles.textDescription}>{this.props.message}</Text>
+            <Text selectable={true} style={styles.textDescription}>
+              {this.props.message}
+            </Text>
           </View>
         </View>
       );
