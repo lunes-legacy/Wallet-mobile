@@ -62,4 +62,5 @@ export default {
   PUT_WALLET_ADDRESS: 'Colar o endereço da carteira',
   SELECT_FORM_TO_SEND: 'Selecione a forma de envio',
   PASTE_HERE: 'cole aqui',
+  INCORRECT_PIN_NUMBER: 'PIN inválido ou incorreto',
 };

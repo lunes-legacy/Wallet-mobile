@@ -1,14 +1,53 @@
 import { Keyboard } from 'react-native';
 import LunesCore from 'lunes-core';
-import types from './types';
+import types from '../../config/types';
 import { auth, database } from '../../config/firebase';
 import { navigate } from '../../config/routes';
+
+//Async requests
+async function createUser(userData, dispatch) {
+  try {
+    let user = await LunesCore.users.create(userData);
+    if (user !== null) {
+      user = { ...user, ...userData };
+      delete user.password;
+      dispatch(requestFinished());
+      dispatch(signupSuccess(user));
+      dispatch(storeUser(user));
+      navigate('Confirmation');
+    } else {
+      dispatch(signupError(error));
+    }
+  } catch (error) {
+    return error;
+  }
+}
+
+async function login(email, password, dispatch) {
+  try {
+    let user = await LunesCore.users.login({ email, password });
+    dispatch(requestFinished());
+    dispatch(signinSuccess(user));
+    dispatch(storeUser(user));
+    Keyboard.dismiss();
+    if (user && !user.pinIsValidated && user.phoneIsValidated) {
+      navigate('PIN');
+    } else if (user && user.pinIsValidated && user.phoneIsValidated) {
+      navigate('PIN', { isLogged: true });
+    } else {
+      navigate('Confirmation');
+    }
+  } catch (error) {
+    return error;
+  }
+}
 
 export const requestLogin = values => {
   return dispatch => {
     dispatch(requestLoading());
+    login(values.email, values.password, dispatch);
 
-    LunesCore.users
+    /*LunesCore.users
       .login({ email: values.email, password: values.password })
       .then(
         user => {
@@ -28,24 +67,41 @@ export const requestLogin = values => {
           dispatch(requestFinished());
           dispatch(signinError(error));
         }
-      );
+      );*/
+  };
+};
 
-    /*auth
-      .signInWithEmailAndPassword(values.email, values.password)
+export const requestSignup = values => {
+  const { name, email, password } = values;
+  let userData = {
+    fullname: name,
+    password: password,
+    email: email,
+    photoUrl: '',
+  };
+
+  return dispatch => {
+    dispatch(requestLoading());
+
+    createUser(userData, dispatch);
+
+    /*LunesCore.users
+      .create(userData)
       .then(user => {
-        dispatch(requestFinished());
-        dispatch(signinSuccess(user));
-        dispatch(storeUser(user));
-        Keyboard.dismiss();
-        if (user && user._user && user._user.phoneNumber) {
-          navigate('PIN', { isLogged: true });
-        } else {
+        if (user !== null) {
+          user = { ...user, ...userData };
+          delete user.password;
+          dispatch(requestFinished());
+          dispatch(signupSuccess(user));
+          dispatch(storeUser(user));
           navigate('Confirmation');
+        } else {
+          dispatch(signupError(error));
         }
       })
       .catch(error => {
         dispatch(requestFinished());
-        dispatch(signinError(error));
+        dispatch(signupError(error));
       });*/
   };
 };
@@ -81,39 +137,6 @@ const storeUser = user => ({
   type: types.STORE_USER,
   user: user,
 });
-
-export const requestSignup = values => {
-  const { name, email, password } = values;
-  let userData = {
-    fullname: name,
-    password: password,
-    email: email,
-    photoUrl: '',
-  };
-
-  return dispatch => {
-    dispatch(requestLoading());
-
-    LunesCore.users
-      .create(userData)
-      .then(user => {
-        if (user !== null) {
-          user = { ...user, ...userData };
-          delete user.password;
-          dispatch(requestFinished());
-          dispatch(signupSuccess(user));
-          dispatch(storeUser(user));
-          navigate('Confirmation');
-        } else {
-          dispatch(signupError(error));
-        }
-      })
-      .catch(error => {
-        dispatch(requestFinished());
-        dispatch(signupError(error));
-      });
-  };
-};
 
 const signupLoading = () => ({
   type: types.SIGNUP_LOADING,

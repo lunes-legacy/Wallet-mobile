@@ -8,6 +8,7 @@ import {
   showTextBackupSeedAction,
   closeTextBackupSeedAction,
   closeShowDialogBackupSeed,
+  clearError,
 } from './actions';
 import PIN from './PINComponent';
 
@@ -18,7 +19,8 @@ const mapStateToProps = state => {
     showTextBackupSeed: state.pinReducer.showTextBackupSeed,
     seedText: state.pinReducer.seedText,
     wordSeedWasViewed: state.pinReducer.wordSeedWasViewed,
-    user: state.userReducer,
+    user: state.auth,
+    error: state.pinReducer.error,
   };
 };
 
@@ -30,6 +32,7 @@ const mapDispatchToProps = dispatch =>
       showTextBackupSeedAction,
       closeTextBackupSeedAction,
       closeShowDialogBackupSeed,
+      clearError,
     },
     dispatch
   );

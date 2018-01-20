@@ -20,7 +20,6 @@ import LunesConfirmButton from '../../native-base-theme/components/LunesConfirmB
 import LunesTabCoins from '../../native-base-theme/components/LunesTabCoins';
 import LunesPickerCountry from '../../native-base-theme/components/LunesPickerCountry';
 import { navigate } from '../../config/routes';
-import { CHOOSE_COINS } from './types';
 import I18n from '../../i18n/i18n';
 
 export default class SendPayment extends React.Component {

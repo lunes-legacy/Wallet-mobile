@@ -7,8 +7,6 @@ import {
   StyleSheet,
 } from 'react-native';
 import { Container, Item, Input } from 'native-base';
-import MaterialIcon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
-import FontAwesomeIcon from 'react-native-vector-icons/dist/FontAwesome';
 import LunesPIN from '../../native-base-theme/components/LunesPIN';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
 import LunesAlert from '../../native-base-theme/components/LunesAlert';
@@ -18,6 +16,32 @@ import { navigate } from '../../config/routes';
 export default class PIN extends React.Component {
   renderLoading() {
     return <LunesLoading text={I18N.t('CHECKING_PIN_FOR_ACTIVATION')} />;
+  }
+
+  alertError(message, isShow) {
+    return (
+      <LunesAlert
+        isShow={isShow}
+        type="error"
+        onClose={() => {
+          this.props.clearError();
+        }}
+        onPressConfirmation={() => {
+          this.props.clearError();
+        }}
+        titleHeader={I18N.t('ACCESS_DENIED')}
+        message={message}
+        textConfirmation={I18N.t('TRY_AGAIN')}
+      />
+    );
+  }
+
+  renderError() {
+    const { error } = this.props;
+    if (error && error.messageKey === 'INCORRECT_PIN_NUMBER') {
+      return this.alertError(I18N.t('INCORRECT_PIN_NUMBER'), true);
+    }
+    return null;
   }
 
   renderAlertInfoBackupSeed() {
@@ -74,6 +98,7 @@ export default class PIN extends React.Component {
     return (
       <Container>
         {this.props.loading ? this.renderLoading() : null}
+        {this.renderError()}
         {this.renderAlertInfoBackupSeed()}
         {this.renderTextSeed()}
         <LunesPIN

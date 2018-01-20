@@ -5,8 +5,8 @@ import SideMenuFooter from './SideMenuFooter';
 
 const mapStateToProps = state => {
   return {
-    userInfo: state.userReducer.userInfo || {},
-    balanceData: state.pinReducer.balance,
+    userInfo: state.auth.userInfo || {},
+    balanceData: state.auth.balance,
   };
 };
 

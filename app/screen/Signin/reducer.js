@@ -1,4 +1,4 @@
-import types from './types';
+import types from '../../config/types';
 
 const initialState = {
   authorized: null,
@@ -6,6 +6,7 @@ const initialState = {
   error: '',
   trySignin: false,
   trySignup: false,
+  balance: null,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -19,6 +20,16 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
+      };
+    case types.STORE_USER:
+      return {
+        ...state,
+        userInfo: action.user,
+      };
+    case types.STORE_BALANCE:
+      return {
+        ...state,
+        balance: action.balance,
       };
     // SIGNIN
     case types.SIGNIN_LOADING:

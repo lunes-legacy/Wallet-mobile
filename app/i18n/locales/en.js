@@ -58,4 +58,5 @@ export default {
   PUT_WALLET_ADDRESS: 'Paste the wallet address',
   SELECT_FORM_TO_SEND: 'Select the send option',
   PASTE_HERE: 'paste here',
+  INCORRECT_PIN_NUMBER: 'Invalid/Incorrect PIN',
 };

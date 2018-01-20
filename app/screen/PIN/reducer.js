@@ -1,7 +1,7 @@
-import types from './types';
-import confirmationTypes from '../Confirmation/types';
+import types from '../../config/types';
 const initialState = {
   loading: false,
+  error: null,
   showDialogBackupSeed: false,
   showTextBackupSeed: false,
   seedText: '',
@@ -20,6 +20,10 @@ const pinReducer = (state = initialState, action) => {
       return { ...state, pin: action.pin };
     case types.SHOW_TEXT_BACKUP_SEED:
       return { ...state, showTextBackupSeed: true, seedText: action.seedText };
+    case types.SHOW_ERROR:
+      return { ...state, error: action.error };
+    case types.CLEAR_ERROR:
+      return { ...state, error: action.error };
     case types.CLOSE_TEXT_BACKUP_SEED:
       return {
         ...state,
@@ -41,7 +45,7 @@ const pinReducer = (state = initialState, action) => {
         pin: null,
         seedText: null,
       };
-    case confirmationTypes.CONFIRM_CODE_SUCCESS:
+    case types.CONFIRM_CODE_SUCCESS:
       return {
         ...state,
         user: action.user,

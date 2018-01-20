@@ -9,7 +9,7 @@ const mapStateToProps = state => {
   return {
     loading: state.sendPaymentReducer.loading,
     coinChosed: state.sendPaymentReducer.coinChosed,
-    balanceData: state.pinReducer.balance,
+    balanceData: state.auth.balance,
   };
 };
 

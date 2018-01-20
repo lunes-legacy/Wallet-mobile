@@ -5,7 +5,7 @@ import SideMenuAvatar from './SideMenuAvatar';
 
 const mapStateToProps = state => {
   return {
-    userInfo: state.userReducer.userInfo || {},
+    userInfo: state.auth.user || {},
   };
 };
 

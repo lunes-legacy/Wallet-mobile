@@ -1,4 +1,4 @@
-import types from './types';
+import types from '../../config/types';
 import { navigate } from '../../config/routes';
 
 export const requestAddPIN = () => {

@@ -5,8 +5,8 @@ import LunesMarket from './LunesMarket';
 
 const mapStateToProps = state => {
   return {
-    userInfo: state.userReducer.userInfo || {},
-    balanceData: state.pinReducer.balance,
+    userInfo: state.auth.user || {},
+    balanceData: state.auth.balance,
   };
 };
 
