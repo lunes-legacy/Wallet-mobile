@@ -1,2 +1,2 @@
-import LunesMarket from './LunesMarket'
-export default LunesMarket
+import LunesMarket from './LunesMarketContainer';
+export default LunesMarket;

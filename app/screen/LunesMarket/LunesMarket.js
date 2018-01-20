@@ -25,7 +25,7 @@ class LunesMarket extends Component {
             flex: 4,
             justifyContent: 'space-between',
           }}>
-          <LunesBalanceText balance="0.02293793" />
+          <LunesBalanceText balance={this.props.balanceData.final_balance} />
           <LunesQuotation />
         </View>
         <View

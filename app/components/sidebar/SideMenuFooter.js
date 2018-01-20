@@ -29,7 +29,7 @@ class SideMenuFooter extends Component {
                 height={30}
                 source={require('../../assets/images/lunes-token-coin.png')}
               />{' '}
-              {` ${amount}`}
+              {` ${this.props.balanceData.final_balance}`}
             </Text>
           </View>
 

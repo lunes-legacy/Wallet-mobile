@@ -35,6 +35,20 @@ export default class SendPayment extends React.Component {
     navigate('PaymentOptions');
   }
 
+  renderChooseCoin() {
+    return (
+      <View style={{ flexDirection: 'row' }}>
+        <Text style={styles.text}>{I18n.t('chooseCoin')}</Text>
+        <FontAwesomeIcon
+          style={{ paddingLeft: 10 }}
+          name={'chevron-down'}
+          size={14}
+          color={BosonColors.$bosonLightGreen}
+        />
+      </View>
+    );
+  }
+
   render() {
     return (
       <KeyboardAwareScrollView
@@ -49,15 +63,7 @@ export default class SendPayment extends React.Component {
           <Root>
             <View style={styles.container}>
               {/* CHOOSE COINS */}
-              <View style={{ flexDirection: 'row' }}>
-                <Text style={styles.text}>{I18n.t('chooseCoin')}</Text>
-                <FontAwesomeIcon
-                  style={{ paddingLeft: 10 }}
-                  name={'chevron-down'}
-                  size={14}
-                  color={BosonColors.$bosonLightGreen}
-                />
-              </View>
+              {/* this.renderChooseCoin() */}
 
               {/* TAB COINS */}
               <View style={{ flexDirection: 'row' }}>
@@ -77,7 +83,9 @@ export default class SendPayment extends React.Component {
                       color={BosonColors.$bosonLightGreen}
                       style={{ paddingRight: 10 }}
                     />
-                    <Text style={styles.textAmount}>4.02293793</Text>
+                    <Text style={styles.textAmount}>
+                      {this.props.balanceData.final_balance}
+                    </Text>
                   </View>
                   <View>
                     <Text style={styles.text}>$ 30850.00</Text>
@@ -92,6 +100,8 @@ export default class SendPayment extends React.Component {
                 </Text>
                 <TextInput
                   style={styles.inputText}
+                  maxLength={9}
+                  keyboardType="numeric"
                   placeholder={I18n.t('typeHere')}
                   underlineColorAndroid={'transparent'}
                   placeholderTextColor="rgba(255,255,255,0.7)"
@@ -103,7 +113,9 @@ export default class SendPayment extends React.Component {
                 <View style={{ flexDirection: 'row' }}>
                   <LunesPickerCountry />
                   <View style={styles.quotationAmount}>
-                    <Text style={styles.textAmountToType}>Valor USD</Text>
+                    <Text style={styles.textAmountToType}>
+                      {I18n.t('VALUE_CURRENCY_LABEL')}
+                    </Text>
                     <Text style={styles.textQuotationAmount}>$ 6.977</Text>
                   </View>
                 </View>

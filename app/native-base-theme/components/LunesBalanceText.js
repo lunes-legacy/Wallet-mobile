@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import BosonColors from '../variables/bosonColor';
 
@@ -7,10 +7,9 @@ const LunesBalanceText = ({ balance }) => {
   return (
     <View style={styles.container}>
       <View style={styles.containerInline}>
-        <MaterialCommunityIcons
-          name="coin"
-          size={25}
-          color={BosonColors.$bosonLightGreen}
+        <Image
+          style={{ width: 20, height: 25 }}
+          source={require('../../assets/images/lunes-token-coin.png')}
         />
         <Text style={styles.text}>{balance}</Text>
       </View>

@@ -53,4 +53,9 @@ export default {
   REMEMBER: 'Remember',
   YOUR_WORDS: 'Your Words',
   PROFILE: 'Profile',
+  SEND_PAYMENT: 'Send Payment',
+  VALUE_CURRENCY_LABEL: 'Value $ USD',
+  PUT_WALLET_ADDRESS: 'Paste the wallet address',
+  SELECT_FORM_TO_SEND: 'Select the send option',
+  PASTE_HERE: 'paste here',
 };

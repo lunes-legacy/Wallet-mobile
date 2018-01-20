@@ -6,17 +6,16 @@ import {
   TouchableOpacity,
   StyleSheet,
   Dimensions,
-  Linking,
   StatusBar,
 } from 'react-native';
-import { Container, Item, Input, Toast, Root } from 'native-base';
+import { Container, Item, Input, Toast, Root, Button } from 'native-base';
 import QRCode from 'react-native-qrcode';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import FontAwesomeIcon from 'react-native-vector-icons/dist/FontAwesome';
 import SimpleLineIcon from 'react-native-vector-icons/dist/SimpleLineIcons';
 import BosonColors from '../../native-base-theme/variables/bosonColor';
-import LunesConfirmButton from '../../native-base-theme/components/LunesConfirmButton';
+import I18N from '../../i18n/i18n';
 import { navigate } from '../../config/routes';
 
 export default class PaymentOptions extends React.Component {
@@ -45,7 +44,7 @@ export default class PaymentOptions extends React.Component {
           <Root>
             <View style={styles.container}>
               <View style={{ flexDirection: 'row' }}>
-                <Text style={styles.text}>Selecione a forma de envio</Text>
+                <Text style={styles.text}>{I18N.t('SELECT_FORM_TO_SEND')}</Text>
               </View>
 
               <View style={styles.containerInner}>
@@ -55,7 +54,7 @@ export default class PaymentOptions extends React.Component {
                     this.redirectToQRCodeScreen();
                   }}>
                   <FontAwesomeIcon name={'qrcode'} size={60} color={'#fff'} />
-                  <Text style={styles.text}>Escanear QR Code</Text>
+                  <Text style={styles.text}>{I18N.t('SCANNER_QRCODE')}</Text>
                 </TouchableOpacity>
               </View>
 
@@ -71,17 +70,29 @@ export default class PaymentOptions extends React.Component {
 
               <View style={styles.containerInner}>
                 <SimpleLineIcon name={'wallet'} size={50} color={'#fff'} />
-                <Text style={styles.text}>Colar o endereço da carteira</Text>
+                <Text style={styles.text}>{I18N.t('PUT_WALLET_ADDRESS')}</Text>
                 <TextInput
                   underlineColorAndroid={'transparent'}
                   style={styles.inputText}
-                  placeholder="cole aqui"
+                  placeholder={I18N.t('PASTE_HERE')}
                   placeholderTextColor="rgba(255,255,255,0.7)"
                 />
               </View>
 
-              <View style={styles.containerInner}>
-                <LunesConfirmButton />
+              <View
+                style={[
+                  styles.containerInner,
+                  { width: Dimensions.get('window').width - 50 },
+                ]}>
+                <Button
+                  rounded
+                  block
+                  success
+                  onPress={() => {
+                    this.redirectToQRCodeScreen();
+                  }}>
+                  <Text style={styles.text}>{I18N.t('SEND_PAYMENT')}</Text>
+                </Button>
               </View>
             </View>
           </Root>
@@ -119,6 +130,7 @@ const styles = StyleSheet.create({
     color: BosonColors.$bosonWhite,
     fontSize: 14,
     fontFamily: 'Roboto-Medium',
+    paddingVertical: 10,
   },
   touchable: {
     flex: 1,

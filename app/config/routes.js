@@ -7,7 +7,7 @@ import {
 } from 'react-navigation';
 import { View } from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/dist/FontAwesome';
-
+import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 import { Introduction } from '../screen/Introduction';
 import { Confirmation } from '../screen/Confirmation';
 import { PIN } from '../screen/PIN';
@@ -26,10 +26,10 @@ import I18N from '../i18n/i18n';
 const customHeader = navigation => {
   return (
     <View style={{ padding: 10 }}>
-      <FontAwesomeIcon
+      <Ionicons
         color={'#fff'}
         size={20}
-        name={'arrow-left'}
+        name={'md-arrow-back'}
         onPress={() => {
           navigation.goBack();
         }}
@@ -40,6 +40,12 @@ const customHeader = navigation => {
 
 const RootNavigator = StackNavigator(
   {
+    Main: {
+      screen: Main,
+      navigationOptions: {
+        header: <View />,
+      },
+    },
     Introduction: {
       screen: Introduction,
       navigationOptions: {
@@ -84,8 +90,16 @@ const RootNavigator = StackNavigator(
     },
     PaymentOptions: {
       screen: PaymentOptions,
-      navigationOptions: {
-        header: <View />,
+      navigationOptions: ({ navigation, screenProps }) => {
+        return {
+          title: null,
+          headerTintColor: '#fff',
+          headerStyle: {
+            backgroundColor: BosonColors.$bosonPrimary,
+            elevation: 0,
+          },
+          headerLeft: customHeader(navigation),
+        };
       },
     },
     NoticeNotification: {
@@ -126,7 +140,7 @@ const RootNavigator = StackNavigator(
       screen: QRCode,
       navigationOptions: ({ navigation, screenProps }) => {
         return {
-          title: I18N.t('SCAN_QRCODE'),
+          title: I18N.t('SCANNER_QRCODE'),
           headerTintColor: '#fff',
           headerStyle: {
             backgroundColor: BosonColors.$bosonLightGreen,

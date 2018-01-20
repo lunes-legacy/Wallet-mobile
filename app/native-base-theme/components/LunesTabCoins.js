@@ -12,6 +12,10 @@ export default class LunesTabCoin extends React.Component {
     this.springValue = new Animated.Value(0.3);
   }
 
+  componentDidMount() {
+    this.spring();
+  }
+
   spring() {
     this.springValue.setValue(0.3);
     Animated.spring(this.springValue, {
@@ -32,37 +36,40 @@ export default class LunesTabCoin extends React.Component {
   }
 
   renderTabs() {
-    return LunesTabCoinsConstant.map((tabCoin, index) => {
-      if (tabCoin.isActive) {
-        return (
-          <View
-            key={tabCoin.name}
-            style={[
-              { paddingLeft: 10, paddingRight: 10 },
-              this.renderBorder(index),
-            ]}>
-            <TouchableOpacity
-              onPress={() => {
-                if (this.props.doAction) {
-                  this.props.doAction(tabCoin);
-                }
-              }}>
-              <View>
-                <LunesTabCoinsKPI kpi={tabCoin} />
-              </View>
-              <View>
-                <LunesTabCoinsPrice tabCoinPrice={tabCoin} />
-              </View>
-            </TouchableOpacity>
-          </View>
-        );
-      } else {
-        return null;
-      }
-    });
+    if (LunesTabCoinsConstant) {
+      return LunesTabCoinsConstant.map((tabCoin, index) => {
+        if (tabCoin.isActive) {
+          return (
+            <View
+              key={tabCoin.name}
+              style={[
+                { paddingLeft: 10, paddingRight: 10 },
+                this.renderBorder(index),
+              ]}>
+              <TouchableOpacity
+                onPress={() => {
+                  if (this.props.doAction) {
+                    this.props.doAction(tabCoin);
+                  }
+                }}>
+                <View>
+                  <LunesTabCoinsKPI kpi={tabCoin} />
+                </View>
+                <View>
+                  <LunesTabCoinsPrice tabCoinPrice={tabCoin} />
+                </View>
+              </TouchableOpacity>
+            </View>
+          );
+        } else {
+          return null;
+        }
+      });
+    }
+    return null;
   }
+
   render() {
-    this.spring();
     return (
       <Animated.View
         style={{

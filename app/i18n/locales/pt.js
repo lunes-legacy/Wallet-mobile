@@ -57,4 +57,9 @@ export default {
   REMEMBER: 'Lembre-se',
   YOUR_WORDS: 'Suas Palavras',
   PROFILE: 'Perfil',
+  SEND_PAYMENT: 'Enviar Pagamento',
+  VALUE_CURRENCY_LABEL: 'Valor R$ BRL',
+  PUT_WALLET_ADDRESS: 'Colar o endereço da carteira',
+  SELECT_FORM_TO_SEND: 'Selecione a forma de envio',
+  PASTE_HERE: 'cole aqui',
 };

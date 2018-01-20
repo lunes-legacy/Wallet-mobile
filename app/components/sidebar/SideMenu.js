@@ -9,7 +9,7 @@ import styles from '../styles/SideMenu';
 import { ScrollView, View } from 'react-native';
 
 import SideMenuItem from './SideMenuItem';
-import SideMenuFooter from './SideMenuFooter';
+import SideMenuFooter from './SideMenuFooterContainer';
 import SideMenuAvatar from './SideMenuAvatarContainer';
 
 class SideMenu extends Component {
