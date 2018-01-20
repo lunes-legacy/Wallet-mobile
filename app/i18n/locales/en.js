@@ -52,4 +52,5 @@ export default {
   SEED_BACKUP_MSG: `You will receive a set of words that is very important you save in somewhere safety for that be possible recover you wallet when required`,
   REMEMBER: 'Remember',
   YOUR_WORDS: 'Your Words',
+  PROFILE: 'Profile',
 };

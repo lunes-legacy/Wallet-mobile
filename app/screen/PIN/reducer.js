@@ -7,6 +7,7 @@ const initialState = {
   seedText: '',
   pin: '',
   wordSeedWasViewed: false,
+  balance: {},
 };
 
 const pinReducer = (state = initialState, action) => {
@@ -44,6 +45,11 @@ const pinReducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.user,
+      };
+    case types.STORE_BALANCE:
+      return {
+        ...state,
+        balance: action.balance,
       };
     default:
       return state;

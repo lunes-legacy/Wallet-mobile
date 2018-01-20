@@ -18,7 +18,6 @@ export const requestAddPIN = (PIN, currentUser) => {
               console.log(seed);
               dispatch(requestFinished());
               dispatch(showDialogBackupSeed(seed.result));
-              //navigate('Main');
             },
             error => {
               console.log(error);
@@ -41,6 +40,7 @@ export const requestValidPIN = (PIN, currentUser, wordSeedWasViewed) => {
       response => {
         currentUser.pinIsValidated = true;
         dispatch(confirmSuccess(currentUser));
+        //Create PIN, Get Backup Seed
         LunesCore.users.createPin({ pin: PIN }, currentUser.accessToken).then(
           response => {
             currentUser.pinIsValidated = true;
@@ -71,6 +71,21 @@ export const requestValidPIN = (PIN, currentUser, wordSeedWasViewed) => {
             dispatch(requestFinished());
           }
         );
+
+        //Get Balance
+        LunesCore.coins.bitcoin
+          .getBalance(
+            { address: currentUser.wallet.coins[0].addresses[0].address },
+            currentUser.accessToken
+          )
+          .then(
+            response => {
+              dispatch(storeBalanceOnUser(response));
+            },
+            error => {
+              console.log(error);
+            }
+          );
       },
       error => {
         dispatch(requestFinished());
@@ -110,4 +125,9 @@ export const closeShowDialogBackupSeed = () => ({
 const confirmSuccess = user => ({
   type: confirmationTypes.CONFIRM_CODE_SUCCESS,
   user: user,
+});
+
+const storeBalanceOnUser = balance => ({
+  type: types.STORE_BALANCE,
+  balance,
 });

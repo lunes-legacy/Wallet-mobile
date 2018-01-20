@@ -8,6 +8,7 @@ import confirmationReducer from '../screen/Confirmation/reducer';
 import receivePaymentReducer from '../screen/ReceivePayment/reducer';
 import sendPaymentReducer from '../screen/SendPayment/reducer';
 import changePasswordReducer from '../screen/ChangePassword/reducer';
+import profileReducer from '../screen/Profile/reducer';
 import pinReducer from '../screen/PIN/reducer';
 
 const reducers = combineReducers({
@@ -20,6 +21,7 @@ const reducers = combineReducers({
   receivePaymentReducer,
   sendPaymentReducer,
   changePasswordReducer,
+  profileReducer,
 });
 
 export default reducers;

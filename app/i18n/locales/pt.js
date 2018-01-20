@@ -56,4 +56,5 @@ export default {
   SEED_BACKUP_MSG: `Você irá receber um conjunto de palavras que é de extrema importância você salvar em algum local seguro para que seja possível recuperar sua carteira caso seja necessári.`,
   REMEMBER: 'Lembre-se',
   YOUR_WORDS: 'Suas Palavras',
+  PROFILE: 'Perfil',
 };

@@ -17,23 +17,6 @@ const getMyBRLAmount = () => getMyAmount().amount * 0.3;
 const getMyDolarAmount = () => getMyAmount().amount * 3;
 
 class SideMenuFooter extends Component {
-  bkp() {
-    return (
-      <Text style={styles.footerContainer}>
-        <Text style={styles.coins}>
-          <Icon name="money" size={15} />
-          {`   ${amount}`}
-        </Text>
-
-        <Text style={styles.footerContainer}>
-          {`         $ ${getMyDolarAmount(amount)}   |   BRL ${getMyBRLAmount(
-            amount
-          )}`}
-        </Text>
-      </Text>
-    );
-  }
-
   render() {
     const { amount } = getMyAmount();
     return (

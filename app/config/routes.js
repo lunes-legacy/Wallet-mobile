@@ -19,6 +19,7 @@ import { Main } from '../screen/Main';
 import { QRCode } from '../screen/QRCodeScreen';
 import { PaymentOptions } from '../screen/PaymentOptions';
 import { ChangePassword } from '../screen/ChangePassword';
+import { Profile } from '../screen/Profile';
 import BosonColors from '../native-base-theme/variables/bosonColor';
 import I18N from '../i18n/i18n';
 
@@ -98,6 +99,20 @@ const RootNavigator = StackNavigator(
       navigationOptions: ({ navigation, screenProps }) => {
         return {
           title: I18N.t('CHANGE_PASSWORD'),
+          headerTintColor: '#fff',
+          headerStyle: {
+            backgroundColor: BosonColors.$bosonPrimary,
+            elevation: 20,
+          },
+          headerLeft: customHeader(navigation),
+        };
+      },
+    },
+    Profile: {
+      screen: Profile,
+      navigationOptions: ({ navigation, screenProps }) => {
+        return {
+          title: I18N.t('PROFILE'),
           headerTintColor: '#fff',
           headerStyle: {
             backgroundColor: BosonColors.$bosonPrimary,
