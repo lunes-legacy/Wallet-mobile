@@ -9,8 +9,9 @@ import {
 } from 'react-native';
 import I18N from '../../i18n/i18n';
 import { Button, Text } from 'native-base';
-import { ValidateEmail } from '../../utils/stringUtils';
+import { ValidateEmail, PasswordIsStronger } from '../../utils/stringUtils';
 import LunesGradientButton from './LunesGradientButton';
+import bosonColor from '../variables/bosonColor';
 
 export default class LunesLoginForm extends React.Component {
   constructor(props) {
@@ -20,11 +21,15 @@ export default class LunesLoginForm extends React.Component {
       email: '',
       password: '',
       isDisabled: true,
+      passwordIsWeak: true,
     };
   }
 
   onSubmit() {
-    //alert(JSON.stringify(this.state));
+    if (!PasswordIsStronger(this.state.password)) {
+      alert('Sua senha não é segura');
+      return;
+    }
     if (this.state.email === '' || this.state.password === '') {
       alert('Por favor, preencha todos os campos');
       return;
@@ -74,7 +79,8 @@ export default class LunesLoginForm extends React.Component {
       this.props.modeAuth === 'SIGNUP' &&
       this.state.email &&
       this.state.name &&
-      this.state.password
+      this.state.password &&
+      PasswordIsStronger(this.state.password)
     ) {
       return this.renderButtonSubmit();
     } else if (
@@ -94,6 +100,28 @@ export default class LunesLoginForm extends React.Component {
         <LunesGradientButton text={text} />
       </View>
     );
+  }
+
+  renderPasswordValidate() {
+    if (this.state.password && !PasswordIsStronger(this.state.password)) {
+      return (
+        <View style={styles.containerForcePassword}>
+          <Text style={[styles.checkForcePassword, styles.passwordWeak]}>
+            Senha Fraca
+          </Text>
+        </View>
+      );
+    } else if (this.state.password && PasswordIsStronger(this.state.password)) {
+      return (
+        <View style={styles.containerForcePassword}>
+          <Text style={[styles.checkForcePassword, styles.passwordStrong]}>
+            Senha Forte
+          </Text>
+        </View>
+      );
+    } else {
+      return null;
+    }
   }
 
   renderButtonSubmit() {
@@ -143,6 +171,8 @@ export default class LunesLoginForm extends React.Component {
           />
         </View>
 
+        {this.renderPasswordValidate()}
+
         {this.checkButtonIsDisabled()}
       </KeyboardAvoidingView>
     );
@@ -157,5 +187,23 @@ const styles = StyleSheet.create({
   input: {
     width: 300,
     color: '#fff',
+  },
+  containerForcePassword: {
+    marginTop: 5,
+  },
+  checkForcePassword: {
+    fontSize: 11,
+    color: '#fff',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 10,
+    textAlign: 'center',
+    width: '100%',
+  },
+  passwordWeak: {
+    backgroundColor: bosonColor.$bosonLightRed,
+  },
+  passwordStrong: {
+    backgroundColor: bosonColor.$bosonDarkPurple,
   },
 });
