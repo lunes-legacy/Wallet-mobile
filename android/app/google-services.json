@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "887279399384",
-    "firebase_url": "https://lunes-wallet.firebaseio.com",
-    "project_id": "lunes-wallet",
-    "storage_bucket": "lunes-wallet.appspot.com"
+    "project_number": "234584887443",
+    "firebase_url": "https://lunes-wallet-producao.firebaseio.com",
+    "project_id": "lunes-wallet-producao",
+    "storage_bucket": "lunes-wallet-producao.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:887279399384:android:0a97964584fe83f1",
+        "mobilesdk_app_id": "1:234584887443:android:0a97964584fe83f1",
         "android_client_info": {
           "package_name": "com.lunesmobilewallet"
         }
       },
       "oauth_client": [
         {
-          "client_id": "887279399384-6nkomad30g0aguvtmqdesfe9o419l1fm.apps.googleusercontent.com",
+          "client_id": "234584887443-k1m46h0d00jhdq98al8cs7vvn6ljhtps.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDn41Djs-8O1auAx7vdY7U1ds7NjOmu3KQ"
+          "current_key": "AIzaSyBZkkdLV1vYDdjA7-sWExk2ocTTvpYQ7zw"
         }
       ],
       "services": {
