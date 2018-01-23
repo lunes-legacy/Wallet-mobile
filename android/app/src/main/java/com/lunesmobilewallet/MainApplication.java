@@ -4,6 +4,9 @@ import android.app.Application;
 import android.os.Bundle;
 
 import com.facebook.react.ReactApplication;
+import com.rnfs.RNFSPackage;
+import fr.bamlab.rnimageresizer.ImageResizerPackage;
+import com.imagepicker.ImagePickerPackage;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.reactnativecomponent.splashscreen.RCTSplashScreenPackage;
@@ -34,8 +37,11 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNI18nPackage(),
-            new RCTCameraPackage(),
+          new RNFSPackage(),
+          new ImageResizerPackage(),
+          new ImagePickerPackage(),
+          new RNI18nPackage(),
+          new RCTCameraPackage(),
           new VectorIconsPackage(),
           new RCTSplashScreenPackage(),
           new RNFirebasePackage(),

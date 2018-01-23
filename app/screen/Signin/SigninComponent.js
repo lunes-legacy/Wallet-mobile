@@ -1,9 +1,7 @@
 // @flow
 import React from 'react';
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Image } from 'react-native';
 import { Container, Button, Text, Tab, Tabs } from 'native-base';
-import firebase from 'react-native-firebase';
-import { FormStyle } from '../../components/theme';
 import LunesLogo from '../../native-base-theme/components/LunesLogo';
 import LunesLoginForm from '../../native-base-theme/components/LunesLoginForm';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
@@ -31,11 +29,11 @@ export default class Signin extends React.Component<{}> {
   }
 
   componentDidMount() {
-    const { authorized, error } = this.props;
+    const { error } = this.props;
   }
 
   renderError() {
-    const { authorized, error } = this.props;
+    const { error } = this.props;
     if (error && error.messageKey === 'auth/email-already-in-use') {
       return this.alertError(I18n.t('EMAIL_ALREADY'), true);
     } else if (error && error.messageKey === 'auth/wrong-password') {

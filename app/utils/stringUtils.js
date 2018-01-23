@@ -12,3 +12,7 @@ export const PasswordIsStronger = password => {
   );
   return pattern.test(password);
 };
+
+export const GetDefaultURIAvatar = () => {
+  return 'https://res.cloudinary.com/luneswallet/image/upload/v1516659103/avatar-test.png';
+};

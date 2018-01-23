@@ -17,6 +17,13 @@ const getMyBRLAmount = () => getMyAmount().amount * 0.3;
 const getMyDolarAmount = () => getMyAmount().amount * 3;
 
 class SideMenuFooter extends Component {
+  getBalance() {
+    let finalBalance =
+      this.props && this.props.balanceData
+        ? this.props.balanceData.final_balance
+        : 0;
+    return finalBalance;
+  }
   render() {
     const { amount } = getMyAmount();
     return (
@@ -29,7 +36,7 @@ class SideMenuFooter extends Component {
                 height={30}
                 source={require('../../assets/images/lunes-token-coin.png')}
               />{' '}
-              {` ${this.props.balanceData.final_balance}`}
+              {` ${this.getBalance()}`}
             </Text>
           </View>
 

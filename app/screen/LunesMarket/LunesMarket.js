@@ -10,6 +10,13 @@ import LunesPaymentButton from '../../native-base-theme/components/LunesPaymentB
 import BosonColors from '../../native-base-theme/variables/bosonColor';
 
 class LunesMarket extends Component {
+  getBalance() {
+    let finalBalance =
+      this.props && this.props.balanceData
+        ? this.props.balanceData.final_balance
+        : 0;
+    return finalBalance;
+  }
   render() {
     return (
       <Container>
@@ -25,7 +32,7 @@ class LunesMarket extends Component {
             flex: 4,
             justifyContent: 'space-between',
           }}>
-          <LunesBalanceText balance={this.props.balanceData.final_balance} />
+          <LunesBalanceText balance={this.getBalance()} />
           <LunesQuotation />
         </View>
         <View

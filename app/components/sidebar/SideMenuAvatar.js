@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
+import PhotoUpload from 'react-native-photo-upload';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
-import Avatar from '../Avatar';
+import { GetDefaultURIAvatar } from '../../utils/stringUtils';
 import styles from '../styles/SideMenu';
 import { navigate } from '../../config/routes';
 
@@ -17,12 +18,21 @@ class SideMenuAvatar extends Component {
 
     return (
       <View style={styles.avatar}>
-        <Avatar
-          name={user.name}
-          src={user.imageSrc}
-          size={styles.avatarSize}
-          color={styles.avatarColor}
-        />
+        <PhotoUpload>
+          <Image
+            style={{
+              paddingVertical: 30,
+              width: 150,
+              height: 150,
+              borderRadius: 75,
+            }}
+            resizeMode="cover"
+            source={{
+              uri: GetDefaultURIAvatar(),
+            }}
+          />
+        </PhotoUpload>
+
         <TouchableOpacity onPress={() => navigate('Profile')}>
           <View>
             <Text style={styles.label.name}>

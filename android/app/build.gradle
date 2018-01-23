@@ -161,6 +161,9 @@ dependencies {
     compile project(':react-native-svg')
     compile project(':react-native-camera')
     compile project(':react-native-i18n')
+    compile project(':react-native-image-resizer')
+    compile project(':react-native-image-picker')
+    compile project(':react-native-fs')
     // Firebase dependencies
     compile "com.google.android.gms:play-services-base:11.6.0"
     compile "com.google.firebase:firebase-core:11.6.0"

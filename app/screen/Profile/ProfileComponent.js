@@ -4,11 +4,12 @@ import {
   TextInput,
   View,
   TouchableOpacity,
+  Image,
   StyleSheet,
 } from 'react-native';
 import { Container, Item, Input } from 'native-base';
-import MaterialIcon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
-import FontAwesomeIcon from 'react-native-vector-icons/dist/FontAwesome';
+import PhotoUpload from 'react-native-photo-upload';
+import { GetDefaultURIAvatar } from '../../utils/stringUtils';
 import LunesPIN from '../../native-base-theme/components/LunesPIN';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
 import LunesAlert from '../../native-base-theme/components/LunesAlert';
@@ -74,6 +75,22 @@ export default class Profile extends React.Component {
     return (
       <Container>
         {this.props.loading ? this.renderLoading() : null}
+
+        <PhotoUpload>
+          <Image
+            style={{
+              paddingVertical: 30,
+              width: 150,
+              height: 150,
+              borderRadius: 75,
+            }}
+            resizeMode="cover"
+            source={{
+              uri: GetDefaultURIAvatar(),
+            }}
+          />
+        </PhotoUpload>
+
         {this.renderAlertInfoBackupSeed()}
         {this.renderTextSeed()}
         <LunesPIN
