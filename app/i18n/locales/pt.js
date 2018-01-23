@@ -63,4 +63,5 @@ export default {
   SELECT_FORM_TO_SEND: 'Selecione a forma de envio',
   PASTE_HERE: 'cole aqui',
   INCORRECT_PIN_NUMBER: 'PIN inválido ou incorreto',
+  PASSWORD_INSECURE: 'Senha Insegura. Tenta algo seguro',
 };

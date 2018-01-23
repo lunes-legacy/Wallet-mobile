@@ -1,4 +1,4 @@
-import LunesCore from 'lunes-core';
+import LunesLib from 'lunes-lib';
 import types from '../../config/types';
 
 import { auth, fb } from '../../config/firebase';
@@ -48,7 +48,7 @@ export const confirmCode = (codeInput, confirmResult, currentUser) => {
       .then(
         user => {
           user = { phoneNumber: user._user.phoneNumber, ...currentUser };
-          LunesCore.users
+          LunesLib.users
             .confirmPhone(
               { phoneNumber: user.phoneNumber },
               currentUser.accessToken

@@ -40,6 +40,8 @@ export default class Signin extends React.Component<{}> {
       return this.alertError(I18n.t('ERROR_AUTHENTICATE'), true);
     } else if (error && error.messageKey === 'auth/user-not-found') {
       return this.alertError(I18n.t('USER_NOT_FOUND'), true);
+    } else if (error && error.messageKey === 'INVALID_PASSWORD') {
+      return this.alertError(I18n.t('PASSWORD_INSECURE'), true);
     } else if (error) {
       return this.alertError(I18n.t('SOMETHING_ERROR'), true);
     }

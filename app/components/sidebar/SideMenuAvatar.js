@@ -18,7 +18,12 @@ class SideMenuAvatar extends Component {
 
     return (
       <View style={styles.avatar}>
-        <PhotoUpload>
+        <PhotoUpload
+          onPhotoSelect={avatar => {
+            if (avatar) {
+              console.log('Image base64 string: ', avatar);
+            }
+          }}>
           <Image
             style={{
               paddingVertical: 30,

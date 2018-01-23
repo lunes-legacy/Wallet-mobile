@@ -1,11 +1,11 @@
 import types from '../../config/types';
-import LunesCore from 'lunes-core';
+import LunesLib from 'lunes-lib';
 import { navigate } from '../../config/routes';
 
 export const changePasswordAction = email => {
   return dispatch => {
     dispatch(requestOpened());
-    LunesCore.users.resetPassword({ email }).then(
+    LunesLib.users.resetPassword({ email }).then(
       response => {
         dispatch(requestFinished());
         alert(response.message);
