@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
-import { View, Image, Dimensions } from 'react-native';
+import _ from 'lodash';
+import { View, Image, Dimensions, StyleSheet } from 'react-native';
 import { Container, Button, Text, Tab, Tabs } from 'native-base';
 import LunesLogo from '../../native-base-theme/components/LunesLogo';
 import LunesLoginForm from '../../native-base-theme/components/LunesLoginForm';
@@ -32,7 +33,9 @@ const { width, height } = Dimensions.get('window');
 
 export default class Signin extends React.Component<{}> {
   render() {
-    const data = [20, 5, 30, 15, 35, 40, 50, 45, 59];
+    const data = [20, 5, 30, 15, 35, 40, 50, 45, 200];
+    const max = _.max(data);
+    const min = _.min(data);
 
     const Tooltip = ({ x, y }) => (
       <G
@@ -40,11 +43,25 @@ export default class Signin extends React.Component<{}> {
         key={'tooltip'}
         onPress={() => alert('clicked')}>
         <G y={13}>
+          <Defs>
+            <LinearGradient id="grad" x1="0" y1="0" x2="0" y2="40">
+              <Stop
+                offset="0"
+                stopColor={bosonColor.$bosonDarkYellow}
+                stopOpacity="1"
+              />
+              <Stop
+                offset="1"
+                stopColor={bosonColor.$bosonLightYellow}
+                stopOpacity="1"
+              />
+            </LinearGradient>
+          </Defs>
           <Rect
             height={30}
             width={75}
             stroke={'grey'}
-            fill={'white'}
+            fill="url(#grad)"
             ry={2}
             rx={2}
           />
@@ -64,8 +81,8 @@ export default class Signin extends React.Component<{}> {
         key={'zero-axis'}
         x1={'0%'}
         x2={'100%'}
-        y1={y(59)}
-        y2={y(59)}
+        y1={y(max)}
+        y2={y(max)}
         stroke={bosonColor.$bosonLightBlue}
         strokeDasharray={[4, 8]}
         strokeWidth={2}
@@ -77,8 +94,8 @@ export default class Signin extends React.Component<{}> {
         key={'zero-axis'}
         x1={'0%'}
         x2={'100%'}
-        y1={y(10)}
-        y2={y(10)}
+        y1={y(min)}
+        y2={y(min)}
         stroke={bosonColor.$bosonLightBlue}
         strokeDasharray={[4, 8]}
         strokeWidth={2}
@@ -87,7 +104,30 @@ export default class Signin extends React.Component<{}> {
 
     return (
       <Container>
-        <View style={{ width: width, height: 300 }}>
+        <View style={styles.containerChart}>
+          <View style={styles.containerPeriod}>
+            <View style={styles.columnPeriod}>
+              <Text style={styles.labelPeriod}>1dia</Text>
+            </View>
+            <View style={styles.columnBorder} />
+            <View style={styles.columnPeriod}>
+              <Text style={styles.labelPeriod}>1semana</Text>
+            </View>
+            <View style={styles.columnBorder} />
+            <View style={styles.columnPeriod}>
+              <Text style={styles.labelPeriod}>1mês</Text>
+            </View>
+            <View style={styles.columnBorder} />
+            <View style={styles.columnPeriod}>
+              <Text style={styles.labelPeriod}>1ano</Text>
+            </View>
+            <View style={styles.columnBorder} />
+            <View style={styles.columnPeriod}>
+              <Text style={styles.labelPeriod}>Todo Período</Text>
+            </View>
+          </View>
+        </View>
+        <View style={{ position: 'absolute', width: width, height: 300 }}>
           <AreaChart
             style={{ height: 250 }}
             dataPoints={data}
@@ -116,7 +156,7 @@ export default class Signin extends React.Component<{}> {
                 <Stop
                   offset={'0%'}
                   stopColor={'rgb(255, 195, 0)'}
-                  stopOpacity={0.2}
+                  stopOpacity={0.7}
                 />
                 <Stop
                   offset={'100%'}
@@ -131,3 +171,30 @@ export default class Signin extends React.Component<{}> {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  containerChart: {
+    position: 'absolute',
+    flex: 1,
+    width: width,
+    height: 400,
+  },
+  containerPeriod: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    textAlign: 'center',
+    padding: 5,
+  },
+  labelPeriod: {
+    fontSize: 11,
+  },
+  columnPeriod: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  columnBorder: {
+    width: 1,
+    backgroundColor: bosonColor.$bosonMediumPurple,
+  },
+});
