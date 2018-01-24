@@ -2,7 +2,7 @@
 import React from 'react';
 import _ from 'lodash';
 import { View, Image, Dimensions, StyleSheet } from 'react-native';
-import { Container, Button, Tab, Tabs } from 'native-base';
+import { Container, Button, Text, Tab, Tabs } from 'native-base';
 import LunesLogo from '../../native-base-theme/components/LunesLogo';
 import LunesLoginForm from '../../native-base-theme/components/LunesLoginForm';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
@@ -13,7 +13,6 @@ import Svg, {
   Circle,
   Ellipse,
   G,
-  Text,
   LinearGradient,
   RadialGradient,
   Line,
@@ -29,11 +28,11 @@ import Svg, {
 import { AreaChart } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
 import bosonColor from '../../native-base-theme/variables/bosonColor';
-import LunesChartPeriod from './LunesChartPeriod';
+import LunesChartPeriod from '../../native-base-theme/components/LunesChartPeriod';
 
 const { width, height } = Dimensions.get('window');
 
-export default class LunesChartMain extends React.Component<{}> {
+export default class Signin extends React.Component<{}> {
   render() {
     const data = [20, 2, 30, 15, 35, 40, 50, 45, 80];
     const max = _.max(data);
@@ -67,7 +66,7 @@ export default class LunesChartMain extends React.Component<{}> {
             ry={2}
             rx={2}
           />
-          <Text x={75 / 2} textAnchor={'middle'} y={min + 18} fill={'white'}>
+          <Text x={x(100)} textAnchor={'middle'} y={10} stroke={'rgb(0, 0, 0)'}>
             $1198.98
           </Text>
         </G>
@@ -79,7 +78,7 @@ export default class LunesChartMain extends React.Component<{}> {
         x={x(data.length - 1) - 75}
         key={'tooltipBottom'}
         onPress={() => alert('clicked')}>
-        <G y={max * 2 + 45}>
+        <G y={max}>
           <Defs>
             <LinearGradient id="gradBottom" x1="0" y1="0" x2="0" y2="40">
               <Stop
@@ -102,8 +101,12 @@ export default class LunesChartMain extends React.Component<{}> {
             ry={2}
             rx={2}
           />
-          <Text x={75 / 2} textAnchor={'middle'} y={20} fill={'white'}>
-            $68.98
+          <Text
+            x={x(data.length - 1) - 75}
+            textAnchor={'middle'}
+            y={10}
+            stroke={'rgb(0, 0, 0)'}>
+            $1198.98
           </Text>
         </G>
       </G>
@@ -118,7 +121,7 @@ export default class LunesChartMain extends React.Component<{}> {
         y2={y(max)}
         stroke={bosonColor.$bosonLightBlue}
         strokeDasharray={[4, 8]}
-        strokeWidth={1}
+        strokeWidth={2}
       />
     );
 
@@ -131,14 +134,14 @@ export default class LunesChartMain extends React.Component<{}> {
         y2={y(min)}
         stroke={bosonColor.$bosonLightBlue}
         strokeDasharray={[4, 8]}
-        strokeWidth={1}
+        strokeWidth={2}
       />
     );
 
     return (
       <Container>
         <LunesChartPeriod />
-        <View style={{ position: 'absolute', width: width, height: '100%' }}>
+        <View style={{ position: 'absolute', width: width, height: 300 }}>
           <AreaChart
             style={{ height: 250 }}
             dataPoints={data}

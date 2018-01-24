@@ -60,4 +60,9 @@ export default {
   PASTE_HERE: 'paste here',
   INCORRECT_PIN_NUMBER: 'Invalid/Incorrect PIN',
   PASSWORD_INSECURE: 'Password insecure',
+  ONE_DAY: '1day',
+  ONE_WEEK: '1week',
+  ONE_MONTH: '1month',
+  ONE_YEAR: '1year',
+  ALL_TIME: 'All Time',
 };

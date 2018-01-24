@@ -64,4 +64,9 @@ export default {
   PASTE_HERE: 'cole aqui',
   INCORRECT_PIN_NUMBER: 'PIN inválido ou incorreto',
   PASSWORD_INSECURE: 'Senha Insegura. Tenta algo seguro',
+  ONE_DAY: '1dia',
+  ONE_WEEK: '1semana',
+  ONE_MONTH: '1mês',
+  ONE_YEAR: '1ano',
+  ALL_TIME: 'Todo Período',
 };

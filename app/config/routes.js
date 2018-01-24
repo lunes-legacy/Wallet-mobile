@@ -40,8 +40,8 @@ const customHeader = navigation => {
 
 const RootNavigator = StackNavigator(
   {
-    Signin: {
-      screen: SigninContainer,
+    Main: {
+      screen: Main,
       navigationOptions: {
         header: <View />,
       },
