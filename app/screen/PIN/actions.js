@@ -70,29 +70,6 @@ export const requestAddPIN = (PIN, currentUser) => {
   return dispatch => {
     dispatch(requestLoading());
     createPin(PIN, currentUser, dispatch);
-
-    /*LunesLib.users.createPin({ pin: PIN }, currentUser.accessToken).then(
-      response => {
-        currentUser.pinIsValidated = true;
-        dispatch(confirmSuccess(currentUser));
-        LunesLib.coins.bitcoin
-          .backupWallet({ email: currentUser.email }, currentUser.accessToken)
-          .then(
-            seed => {
-              console.log(seed);
-              dispatch(requestFinished());
-              dispatch(showDialogBackupSeed(seed.result));
-            },
-            error => {
-              console.log(error);
-              dispatch(requestFinished());
-            }
-          );
-      },
-      error => {
-        dispatch(requestFinished());
-      }
-    );*/
   };
 };
 
@@ -102,62 +79,6 @@ export const requestValidPIN = (PIN, currentUser, wordSeedWasViewed) => {
     confirmPin(PIN, currentUser, wordSeedWasViewed, dispatch).catch(error => {
       dispatch(showError(error));
     });
-
-    /*LunesLib.users.confirmPin({ pin: PIN }, currentUser.accessToken).then(
-      response => {
-        currentUser.pinIsValidated = true;
-        dispatch(confirmSuccess(currentUser));
-        //Create PIN, Get Backup Seed
-        LunesLib.users.createPin({ pin: PIN }, currentUser.accessToken).then(
-          response => {
-            currentUser.pinIsValidated = true;
-            dispatch(confirmSuccess(currentUser));
-            if (wordSeedWasViewed) {
-              dispatch(requestFinished());
-              navigate('Main');
-            } else {
-              LunesLib.coins.bitcoin
-                .backupWallet(
-                  { email: currentUser.email },
-                  currentUser.accessToken
-                )
-                .then(
-                  seed => {
-                    console.log(seed);
-                    dispatch(requestFinished());
-                    dispatch(showDialogBackupSeed(seed.result));
-                  },
-                  error => {
-                    console.log(error);
-                    dispatch(requestFinished());
-                  }
-                );
-            }
-          },
-          error => {
-            dispatch(requestFinished());
-          }
-        );
-
-        //Get Balance
-        LunesLib.coins.bitcoin
-          .getBalance(
-            { address: currentUser.wallet.coins[0].addresses[0].address },
-            currentUser.accessToken
-          )
-          .then(
-            response => {
-              dispatch(storeBalanceOnUser(response));
-            },
-            error => {
-              console.log(error);
-            }
-          );
-      },
-      error => {
-        dispatch(requestFinished());
-      }
-    );*/
   };
 };
 

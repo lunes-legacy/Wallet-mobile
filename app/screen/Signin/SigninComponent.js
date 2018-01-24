@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, Dimensions } from 'react-native';
 import { Container, Button, Text, Tab, Tabs } from 'native-base';
 import LunesLogo from '../../native-base-theme/components/LunesLogo';
 import LunesLoginForm from '../../native-base-theme/components/LunesLoginForm';
@@ -8,89 +8,125 @@ import LunesLoading from '../../native-base-theme/components/LunesLoading';
 import LunesAlert from '../../native-base-theme/components/LunesAlert';
 import I18n from '../../i18n/i18n';
 import { navigate } from '../../config/routes';
+import Svg, {
+  Circle,
+  Ellipse,
+  G,
+  LinearGradient,
+  RadialGradient,
+  Line,
+  Path,
+  Polygon,
+  Polyline,
+  Rect,
+  Symbol,
+  Use,
+  Defs,
+  Stop,
+} from 'react-native-svg';
+import { AreaChart } from 'react-native-svg-charts';
+import * as shape from 'd3-shape';
+import bosonColor from '../../native-base-theme/variables/bosonColor';
+
+const { width, height } = Dimensions.get('window');
 
 export default class Signin extends React.Component<{}> {
-  alertError(message, isShow) {
-    return (
-      <LunesAlert
-        isShow={isShow}
-        type="error"
-        onClose={() => {
-          this.props.clearError();
-        }}
-        onPressConfirmation={() => {
-          this.props.clearError();
-        }}
-        titleHeader={I18n.t('ACCESS_DENIED')}
-        message={message}
-        textConfirmation={I18n.t('TRY_AGAIN')}
+  render() {
+    const data = [20, 5, 30, 15, 35, 40, 50, 45, 59];
+
+    const Tooltip = ({ x, y }) => (
+      <G
+        x={x(data.length - 1) - 75}
+        key={'tooltip'}
+        onPress={() => alert('clicked')}>
+        <G y={13}>
+          <Rect
+            height={30}
+            width={75}
+            stroke={'grey'}
+            fill={'white'}
+            ry={2}
+            rx={2}
+          />
+          <Text
+            x={x(data.length - 1) - 75}
+            textAnchor={'middle'}
+            y={10}
+            stroke={'rgb(0, 0, 0)'}>
+            $1198.98
+          </Text>
+        </G>
+      </G>
+    );
+
+    const HorizontalLineTop = ({ y }) => (
+      <Line
+        key={'zero-axis'}
+        x1={'0%'}
+        x2={'100%'}
+        y1={y(59)}
+        y2={y(59)}
+        stroke={bosonColor.$bosonLightBlue}
+        strokeDasharray={[4, 8]}
+        strokeWidth={2}
       />
     );
-  }
 
-  componentDidMount() {
-    const { error } = this.props;
-  }
+    const HorizontalLineBottom = ({ y }) => (
+      <Line
+        key={'zero-axis'}
+        x1={'0%'}
+        x2={'100%'}
+        y1={y(10)}
+        y2={y(10)}
+        stroke={bosonColor.$bosonLightBlue}
+        strokeDasharray={[4, 8]}
+        strokeWidth={2}
+      />
+    );
 
-  renderError() {
-    const { error } = this.props;
-    if (error && error.messageKey === 'auth/email-already-in-use') {
-      return this.alertError(I18n.t('EMAIL_ALREADY'), true);
-    } else if (error && error.messageKey === 'auth/wrong-password') {
-      return this.alertError(I18n.t('ERROR_AUTHENTICATE'), true);
-    } else if (error && error.messageKey === 'auth/user-not-found') {
-      return this.alertError(I18n.t('USER_NOT_FOUND'), true);
-    } else if (error && error.messageKey === 'INVALID_PASSWORD') {
-      return this.alertError(I18n.t('PASSWORD_INSECURE'), true);
-    } else if (error) {
-      return this.alertError(I18n.t('SOMETHING_ERROR'), true);
-    }
-    return null;
-  }
-
-  renderLoading() {
-    return <LunesLoading />;
-  }
-
-  redirectToChangePassword() {
-    navigate('ChangePassword');
-  }
-
-  render() {
     return (
       <Container>
-        {this.props.loading ? this.renderLoading() : null}
-
-        <View style={{ marginTop: 20 }}>
-          <LunesLogo size={40} />
+        <View style={{ width: width, height: 300 }}>
+          <AreaChart
+            style={{ height: 250 }}
+            dataPoints={data}
+            contentInset={{ top: 30, bottom: 30 }}
+            curve={shape.curveNatural}
+            showGrid={false}
+            extras={[HorizontalLineTop, HorizontalLineBottom, Tooltip]}
+            renderExtra={({ item, ...args }) => item(args)}
+            svg={{
+              stroke: bosonColor.$bosonDarkYellow,
+              strokeWidth: 7,
+            }}
+            gridMin={0}
+            renderDecorator={({ x, y, index, value }) => (
+              <Circle
+                key={index}
+                cx={x(index)}
+                cy={y(value)}
+                r={6}
+                stroke={'rgb(255, 255, 255)'}
+                fill={'white'}
+              />
+            )}
+            renderGradient={({ id }) => (
+              <LinearGradient id={id} x1={'0%'} y={'0%'} x2={'0%'} y2={'100%'}>
+                <Stop
+                  offset={'0%'}
+                  stopColor={'rgb(255, 195, 0)'}
+                  stopOpacity={0.2}
+                />
+                <Stop
+                  offset={'100%'}
+                  stopColor={'rgb(255, 195, 0)'}
+                  stopOpacity={0}
+                />
+              </LinearGradient>
+            )}
+          />
         </View>
-
-        {this.renderError()}
-
-        <Tabs initialPage={0}>
-          <Tab heading={I18n.t('SIGNIN')}>
-            <LunesLoginForm
-              submit={this.props.requestLogin}
-              modeAuth="SIGNIN"
-            />
-            <Button
-              block
-              transparent
-              light
-              style={{ marginTop: 30 }}
-              onPress={() => {
-                this.redirectToChangePassword();
-              }}>
-              <Text style={{ fontSize: 12 }}>{I18n.t('CHANGE_PASSWORD')}</Text>
-            </Button>
-          </Tab>
-          <Tab heading={I18n.t('SIGNUP')}>
-            <LunesLoginForm
-              submit={this.props.requestSignup}
-              modeAuth="SIGNUP"
-            />
-          </Tab>
-        </Tabs>
       </Container>
     );
   }

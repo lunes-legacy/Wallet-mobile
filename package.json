@@ -34,6 +34,7 @@
     "react-native-qrcode-scanner": "0.0.29",
     "react-native-smart-splash-screen": "^2.3.5",
     "react-native-svg": "^6.0.1-rc.1",
+    "react-native-svg-charts": "^2.1.0",
     "react-native-user-avatar": "^1.0.3",
     "react-native-vector-icons": "^4.4.2",
     "react-navigation": "^1.0.0-beta.22",
