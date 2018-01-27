@@ -99,7 +99,7 @@ android {
     buildToolsVersion "24.0.1"
 
     defaultConfig {
-        applicationId "com.lunesmobilewallet"
+        applicationId "com.luneswallet"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
@@ -164,6 +164,7 @@ dependencies {
     compile project(':react-native-image-resizer')
     compile project(':react-native-image-picker')
     compile project(':react-native-fs')
+    compile project(':randombytes')
     // Firebase dependencies
     compile "com.google.android.gms:play-services-base:11.6.0"
     compile "com.google.firebase:firebase-core:11.6.0"
