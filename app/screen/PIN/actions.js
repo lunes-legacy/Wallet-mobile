@@ -3,32 +3,20 @@ import { navigate } from '../../config/routes';
 import LunesLib from 'lunes-lib';
 
 async function getBalance(address, currentUser, dispatch) {
-  let balance = await LunesLib.coins.bitcoin.getBalance(
-    { address },
-    currentUser.accessToken
-  );
-
-  dispatch(confirmSuccess(currentUser));
-  dispatch(storeBalanceOnUser(balance));
-
-  if (currentUser.wordSeedWasViewed) {
-    dispatch(requestFinished());
-    navigate('Main');
-  } else {
-    backupWallet(currentUser, dispatch);
-  }
-}
-
-async function backupWallet(currentUser, dispatch) {
   try {
-    let seed = await LunesLib.coins.bitcoin.backupWallet(
-      { email: currentUser.email },
+    let balance = await LunesLib.coins.bitcoin.getBalance(
+      { address },
       currentUser.accessToken
     );
+
+    dispatch(confirmSuccess(currentUser));
+    dispatch(storeBalanceOnUser(balance.data));
+
     dispatch(requestFinished());
-    dispatch(showDialogBackupSeed(seed.result));
+    navigate('Main');
   } catch (error) {
     dispatch(requestFinished());
+    throw error;
   }
 }
 
@@ -39,7 +27,8 @@ async function createPin(pin, currentUser, dispatch) {
       currentUser.accessToken
     );
     currentUser.pinIsValidated = true;
-    backupWallet(currentUser, dispatch);
+    dispatch(requestFinished());
+    dispatch(showDialogBackupSeed(currentUser.wallet.hash));
   } catch (error) {
     dispatch(requestFinished());
   }
@@ -55,9 +44,10 @@ async function confirmPin(pin, currentUser, wordSeedWasViewed, dispatch) {
     currentUser.wordSeedWasViewed = wordSeedWasViewed;
     try {
       let address = currentUser.wallet.coins[0].addresses[0].address;
-      getBalance(address, currentUser, dispatch);
+      getBalance(address, currentUser, dispatch).catch(error => {
+        dispatch(requestFinished());
+      });
     } catch (error) {
-      console.log(error);
       dispatch(requestFinished());
     }
   } catch (error) {
@@ -69,7 +59,10 @@ async function confirmPin(pin, currentUser, wordSeedWasViewed, dispatch) {
 export const requestAddPIN = (PIN, currentUser) => {
   return dispatch => {
     dispatch(requestLoading());
-    createPin(PIN, currentUser, dispatch);
+    createPin(PIN, currentUser, dispatch).catch(error => {
+      dispatch(requestFinished());
+      dispatch(showError(error));
+    });
   };
 };
 
@@ -77,6 +70,7 @@ export const requestValidPIN = (PIN, currentUser, wordSeedWasViewed) => {
   return dispatch => {
     dispatch(requestLoading());
     confirmPin(PIN, currentUser, wordSeedWasViewed, dispatch).catch(error => {
+      dispatch(requestFinished());
       dispatch(showError(error));
     });
   };

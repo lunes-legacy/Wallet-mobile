@@ -8,7 +8,7 @@ import {
   clearError,
 } from './actions';
 
-import Confirmation from './ConfirmationComponent';
+import ConfirmReceive from './ConfirmReceiveComponent';
 
 const mapStateToProps = state => {
   return {
@@ -25,4 +25,4 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(Confirmation);
+export default connect(mapStateToProps, mapDispatchToProps)(ConfirmReceive);

@@ -53,3 +53,13 @@ export const LunesIconReceivePayment = ({ size, color }) => {
     />
   );
 };
+
+export const LunesIconKey = ({ size, color }) => {
+  return (
+    <Icon
+      name="lunes-key"
+      size={size || 12}
+      color={color || BosonColors.$bosonMediumYellow}
+    />
+  );
+};

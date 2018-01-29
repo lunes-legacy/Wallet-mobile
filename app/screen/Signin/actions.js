@@ -52,28 +52,6 @@ export const requestLogin = values => {
       dispatch(requestFinished());
       dispatch(signinError(error));
     });
-
-    /*LunesLib.users
-      .login({ email: values.email, password: values.password })
-      .then(
-        user => {
-          dispatch(requestFinished());
-          dispatch(signinSuccess(user));
-          dispatch(storeUser(user));
-          Keyboard.dismiss();
-          if (user && !user.pinIsValidated && user.phoneIsValidated) {
-            navigate('PIN');
-          } else if (user && user.pinIsValidated && user.phoneIsValidated) {
-            navigate('PIN', { isLogged: true });
-          } else {
-            navigate('Confirmation');
-          }
-        },
-        error => {
-          dispatch(requestFinished());
-          dispatch(signinError(error));
-        }
-      );*/
   };
 };
 
@@ -84,34 +62,15 @@ export const requestSignup = values => {
     password: password,
     email: email,
     photoUrl: '',
+    testnet: 'true',
   };
 
   return dispatch => {
     dispatch(requestLoading());
-
     createUser(userData, dispatch).catch(error => {
       dispatch(requestFinished());
       dispatch(signupError(error));
     });
-
-    /*LunesLib.users
-      .create(userData)
-      .then(user => {
-        if (user !== null) {
-          user = { ...user, ...userData };
-          delete user.password;
-          dispatch(requestFinished());
-          dispatch(signupSuccess(user));
-          dispatch(storeUser(user));
-          navigate('Confirmation');
-        } else {
-          dispatch(signupError(error));
-        }
-      })
-      .catch(error => {
-        dispatch(requestFinished());
-        dispatch(signupError(error));
-      });*/
   };
 };
 

@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { chooseCoinAction } from './actions';
+import { chooseCoinAction, getBalance } from './actions';
 import SendPayment from './SendPaymentComponent';
 
 const mapStateToProps = state => {
@@ -14,6 +14,6 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ chooseCoinAction }, dispatch);
+  bindActionCreators({ chooseCoinAction, getBalance }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SendPayment);

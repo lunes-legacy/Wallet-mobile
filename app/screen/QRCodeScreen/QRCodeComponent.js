@@ -10,11 +10,11 @@ import {
   StatusBar,
 } from 'react-native';
 import { Container, Item, Input, Toast, Root } from 'native-base';
-import QRCode from 'react-native-qrcode';
 import BosonColors from '../../native-base-theme/variables/bosonColor';
 import QRCodeScanner from 'react-native-qrcode-scanner';
+import { navigate } from '../../config/routes';
 
-export default class SendPayment extends React.Component {
+export default class QRCode extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,6 +25,7 @@ export default class SendPayment extends React.Component {
 
   onSuccess(e) {
     console.log(e.data);
+    navigate('ConfirmSend', { addressToSend: e.data });
   }
 
   showQRCodeScan() {
@@ -43,6 +44,7 @@ export default class SendPayment extends React.Component {
         <Root>
           <View style={styles.container}>
             <QRCodeScanner
+              reactivate={true}
               checkAndroid6Permissions={true}
               showMarker={true}
               onRead={e => {

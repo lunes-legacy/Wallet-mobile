@@ -31,6 +31,8 @@ target 'LunesMobileWallet' do
 
   pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
 
+  pod 'SentryReactNative', :path => '../node_modules/react-native-sentry'
+
   target 'LunesMobileWalletTests' do
     inherit! :search_paths
     # Pods for testing

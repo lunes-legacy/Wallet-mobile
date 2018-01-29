@@ -12,6 +12,7 @@ export default {
   ERROR_AUTHENTICATE: 'Error on try authenticate',
   EMAIL_ALREADY: 'Email already',
   ACCESS_DENIED: 'Access denied',
+  SMS_EXPIRED: 'SMS Expired',
   TRY_AGAIN: 'Try again',
   CHANGE_PASSWORD: 'Change Password',
   SIGNIN: 'Sign In',
@@ -65,4 +66,12 @@ export default {
   ONE_MONTH: '1month',
   ONE_YEAR: '1year',
   ALL_TIME: 'All Time',
+  CURRENCY_USER: 'USD',
+  UKNOWN: 'Unknown Error',
+  WAITING_SMS_CONFIRMATION: 'Waiting code confirmation sent via SMS',
+  YOU_WILL_RECEIVE_CODE_SMS:
+    'You will receive a SMS code to validate your phone number',
+  RE_SEND_SMS: 'Resend SMS',
+  CONFIRMATION_VIA: 'Confirmation via',
+  NEXT: 'Next',
 };
