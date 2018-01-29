@@ -30,6 +30,12 @@ export default class SendPayment extends React.Component {
     };
   }
 
+  componentDidMount() {
+    if (!this.props.balanceData) {
+      this.props.getBalance();
+    }
+  }
+
   redirectToQRCodeScreen() {
     navigate('PaymentOptions');
   }
@@ -83,7 +89,9 @@ export default class SendPayment extends React.Component {
                       style={{ paddingRight: 10 }}
                     />
                     <Text style={styles.textAmount}>
-                      {this.props.balanceData.final_balance}
+                      {this.props.balanceData
+                        ? this.props.balanceData.confirmed_balance
+                        : 0}
                     </Text>
                   </View>
                   <View>

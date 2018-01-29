@@ -26,24 +26,36 @@ import Svg, {
   Defs,
   Stop,
 } from 'react-native-svg';
-import { AreaChart } from 'react-native-svg-charts';
+import { AreaChart, YAxis } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
 import bosonColor from '../../native-base-theme/variables/bosonColor';
 import LunesChartPeriod from './LunesChartPeriod';
+import rangeConstant from '../../constants/general';
 
 const { width, height } = Dimensions.get('window');
 
 export default class LunesChartMain extends React.Component<{}> {
   render() {
-    const data = [20, 2, 30, 15, 35, 40, 50, 45, 80];
+    const dataFormatted =
+      this.props.historic && this.props.historic.data
+        ? _.map(this.props.historic.data, d => {
+            return d.close;
+          })
+        : null;
+    const data = dataFormatted || [0, 0, 0, 0, 0, 0, 0, 0, 0];
     const max = _.max(data);
     const min = _.min(data);
+    let test = '100%';
+    if (this.props.range === rangeConstant.PERIOD.RANGE_1D) {
+      test = '10%';
+    } else if (this.props.range === rangeConstant.PERIOD.RANGE_1W) {
+      test = '20%';
+    } else if (this.props.range === rangeConstant.PERIOD.RANGE_1M) {
+      test = '30%';
+    }
 
     const TooltipTop = ({ x, y }) => (
-      <G
-        x={x(data.length - 1) - 75}
-        key={'tooltipTop'}
-        onPress={() => alert('clicked')}>
+      <G x={max} key={'tooltipTop'} onPress={() => alert('clicked')}>
         <G y={min + 6}>
           <Defs>
             <LinearGradient id="gradTop" x1="0" y1="0" x2="0" y2="20">
@@ -137,7 +149,10 @@ export default class LunesChartMain extends React.Component<{}> {
 
     return (
       <Container>
-        <LunesChartPeriod />
+        <LunesChartPeriod
+          range={this.props.range}
+          onChangeRange={this.props.changeRange}
+        />
         <View style={{ position: 'absolute', width: width, height: '100%' }}>
           <AreaChart
             style={{ height: 250 }}
@@ -156,9 +171,9 @@ export default class LunesChartMain extends React.Component<{}> {
               stroke: bosonColor.$bosonDarkYellow,
               strokeWidth: 7,
             }}
-            gridMin={0}
             renderDecorator={({ x, y, index, value }) => (
               <Circle
+                onPress={() => alert('clicked')}
                 key={index}
                 cx={x(index)}
                 cy={y(value)}
@@ -168,7 +183,7 @@ export default class LunesChartMain extends React.Component<{}> {
               />
             )}
             renderGradient={({ id }) => (
-              <LinearGradient id={id} x1={'0%'} y={'0%'} x2={'0%'} y2={'100%'}>
+              <LinearGradient id={id} x1={'0%'} y={'0%'} x2={'0%'} y2={test}>
                 <Stop
                   offset={'0%'}
                   stopColor={'rgb(255, 195, 0)'}

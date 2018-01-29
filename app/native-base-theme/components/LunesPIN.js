@@ -15,6 +15,7 @@ import Entypo from 'react-native-vector-icons/dist/Entypo';
 import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 import commonColor from './../variables/commonColor';
 import BosonColors from './../variables/bosonColor';
+import { LunesIconKey } from '../../native-base-theme/components/LunesCustomIcon';
 import I18N from '../../i18n/i18n';
 
 export default class LunesPIN extends React.Component {
@@ -212,7 +213,7 @@ export default class LunesPIN extends React.Component {
             alignItems: 'center',
           }}>
           <View style={{ marginTop: 10, marginBottom: 10 }}>
-            <MaterialCommunityIcons name="key-variant" size={45} color="#fff" />
+            <LunesIconKey size={50} color={'#fff'} />
           </View>
           <View>
             <Text style={styles.instructions}>

@@ -19,6 +19,7 @@ import { Main } from '../screen/Main';
 import { QRCode } from '../screen/QRCodeScreen';
 import { PaymentOptions } from '../screen/PaymentOptions';
 import { ChangePassword } from '../screen/ChangePassword';
+import { ConfirmSend } from '../screen/ConfirmTransaction';
 import { Profile } from '../screen/Profile';
 import BosonColors from '../native-base-theme/variables/bosonColor';
 import I18N from '../i18n/i18n';
@@ -40,12 +41,6 @@ const customHeader = navigation => {
 
 const RootNavigator = StackNavigator(
   {
-    Main: {
-      screen: Main,
-      navigationOptions: {
-        header: <View />,
-      },
-    },
     Introduction: {
       screen: Introduction,
       navigationOptions: {
@@ -90,6 +85,20 @@ const RootNavigator = StackNavigator(
     },
     PaymentOptions: {
       screen: PaymentOptions,
+      navigationOptions: ({ navigation, screenProps }) => {
+        return {
+          title: null,
+          headerTintColor: '#fff',
+          headerStyle: {
+            backgroundColor: BosonColors.$bosonPrimary,
+            elevation: 0,
+          },
+          headerLeft: customHeader(navigation),
+        };
+      },
+    },
+    ConfirmSend: {
+      screen: ConfirmSend,
       navigationOptions: ({ navigation, screenProps }) => {
         return {
           title: null,

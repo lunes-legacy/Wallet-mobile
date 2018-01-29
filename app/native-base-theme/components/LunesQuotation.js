@@ -27,7 +27,7 @@ export default class LunesQuotation extends React.Component {
 
   renderImage() {
     const imageSourceURIDefault =
-      'https://res.cloudinary.com/luneswallet/image/upload/v1515200280/circle.png';
+      'https://res.cloudinary.com/luneswallet/image/upload/c_scale,w_386/v1517161948/arco-btc.png';
     const imageSourceURIYellow =
       'https://res.cloudinary.com/luneswallet/image/upload/v1515200280/circle-yellow.png';
     if (this.props.type && this.props.type === 'success') {
@@ -103,8 +103,8 @@ export default class LunesQuotation extends React.Component {
             flex: 1,
             resizeMode: 'contain',
             position: 'absolute',
-            width: Dimensions.get('window').width - 50,
-            height: Dimensions.get('window').width - 50,
+            width: Dimensions.get('window').width,
+            height: Dimensions.get('window').width,
             justifyContent: 'center',
             transform: [{ rotate: spin }],
           }}

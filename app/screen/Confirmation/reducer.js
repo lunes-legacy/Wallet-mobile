@@ -39,6 +39,11 @@ const confirmationReducer = (state = initialState, action) => {
         ...state,
         user: action.user,
       };
+    case types.CLEAR_ERROR:
+      return {
+        ...state,
+        error: null,
+      };
     case types.CONFIRM_CODE_ERROR:
       return {
         ...state,

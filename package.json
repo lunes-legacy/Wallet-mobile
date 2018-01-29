@@ -9,11 +9,14 @@
     "flow stop": "flow stop",
     "flow status": "flow status",
     "flow coverage": "flow coverage",
-    "android-linux": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android",
+    "android-linux":
+      "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "clean": "rm -rf node_modules && npm i && watchman watch-del-all && rm -fr $TMPDIR/react-* && rm -rf ios/build/ModuleCache/* && rm -rf ios/build",
-    "postinstall": "remotedev-debugger --hostname localhost --port 5678 --injectserver"
+    "clean":
+      "rm -rf node_modules && npm i && watchman watch-del-all && rm -fr $TMPDIR/react-* && rm -rf ios/build/ModuleCache/* && rm -rf ios/build",
+    "postinstall":
+      "remotedev-debugger --hostname localhost --port 5678 --injectserver"
   },
   "dependencies": {
     "axios": "^0.17.1",
@@ -43,7 +46,12 @@
     "redux": "^3.7.2",
     "redux-persist": "^3.5.0",
     "redux-promise": "^0.5.3",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "react-native-sentry": "^0.33.0",
+    "pubnub": "^4.20.0",
+    "pubnub-react": "^1.2.0",
+    "react-native-behavior": "0.0.18",
+    "react-native-level-fs": "^3.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -75,9 +83,6 @@
     "preset": "react-native"
   },
   "rnpm": {
-    "assets": [
-      "./app/assets/fonts",
-      "./app/assets/images"
-    ]
+    "assets": ["./app/assets/fonts", "./app/assets/images"]
   }
 }
