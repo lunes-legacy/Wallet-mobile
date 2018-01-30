@@ -3,16 +3,10 @@ import types from '../../config/types';
 const initialState = {
   loading: false,
   error: '',
-  message: '',
-  codeInput: '',
-  prefixCountryNumber: '+55',
-  dddNumber: '',
-  phone: '',
-  phoneNumber: '',
-  confirmResult: null,
+  transactionId: '',
 };
 
-const confirmationReducer = (state = initialState, action) => {
+const confirmTransactionReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.REQUEST_LOADING:
       return {
@@ -24,32 +18,12 @@ const confirmationReducer = (state = initialState, action) => {
         ...state,
         loading: false,
       };
-    case types.REQUEST_CODE_SUCCESS:
+    case types.SHOW_TRANSACTION_SUCCESS:
       return {
         ...state,
-        confirmResult: action.confirmResult,
+        transactionId: action.transactionId,
       };
-    case types.REQUEST_CODE_ERROR:
-      return {
-        ...state,
-        error: action.error,
-      };
-    case types.CONFIRM_CODE_SUCCESS:
-      return {
-        ...state,
-        user: action.user,
-      };
-    case types.CLEAR_ERROR:
-      return {
-        ...state,
-        error: null,
-      };
-    case types.CONFIRM_CODE_ERROR:
-      return {
-        ...state,
-        error: action.error,
-      };
-    case types.CLEAR_INVALID_PHONENUMBER:
+    case types.ERROR_TRANSACTION_SUCCESS:
       return {
         ...state,
         error: action.error,
@@ -59,4 +33,4 @@ const confirmationReducer = (state = initialState, action) => {
   }
 };
 
-export default confirmationReducer;
+export default confirmTransactionReducer;

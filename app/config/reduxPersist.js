@@ -5,7 +5,11 @@ const REDUX_PERSIST = {
   reducerVersion: '4',
   storeConfig: {
     storage: AsyncStorage,
-    blacklist: ['tabsReducer'],
+    blacklist: [
+      'tabsReducer',
+      'confirmTransactionReducer',
+      'changePasswordReducer',
+    ],
   },
 };
 

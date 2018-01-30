@@ -27,6 +27,7 @@ export default class SendPayment extends React.Component {
     super(props);
     this.state = {
       showToast: false,
+      amountToSend: '0.00000000',
     };
   }
 
@@ -37,7 +38,7 @@ export default class SendPayment extends React.Component {
   }
 
   redirectToQRCodeScreen() {
-    navigate('PaymentOptions');
+    navigate('PaymentOptions', { amountToSend: this.state.amountToSend });
   }
 
   renderChooseCoin() {
@@ -109,6 +110,8 @@ export default class SendPayment extends React.Component {
                   style={styles.inputText}
                   maxLength={9}
                   keyboardType="numeric"
+                  value={this.state.amountToSend}
+                  onChangeText={value => this.setState({ amountToSend: value })}
                   placeholder={I18n.t('typeHere')}
                   underlineColorAndroid={'transparent'}
                   placeholderTextColor="rgba(255,255,255,0.7)"

@@ -74,4 +74,5 @@ export default {
   RE_SEND_SMS: 'Resend SMS',
   CONFIRMATION_VIA: 'Confirmation via',
   NEXT: 'Next',
+  CONFIRMATION: 'Confirmation',
 };

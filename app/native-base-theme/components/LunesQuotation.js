@@ -29,11 +29,11 @@ export default class LunesQuotation extends React.Component {
     const imageSourceURIDefault =
       'https://res.cloudinary.com/luneswallet/image/upload/c_scale,w_386/v1517161948/arco-btc.png';
     const imageSourceURIYellow =
-      'https://res.cloudinary.com/luneswallet/image/upload/v1515200280/circle-yellow.png';
+      'https://res.cloudinary.com/luneswallet/image/upload/c_scale,w_404/v1517351621/arco-success-gold.png';
     if (this.props.type && this.props.type === 'success') {
       return imageSourceURIDefault;
     }
-    if (this.props.type && this.props.type === 'success') {
+    if (this.props.type && this.props.type === 'warning') {
       return imageSourceURIYellow;
     }
     return imageSourceURIDefault;

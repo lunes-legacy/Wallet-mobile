@@ -6,10 +6,15 @@ import LunesScreenNotification from '../../native-base-theme/components/LunesScr
 
 export default class NoticeNotification extends React.Component {
   render() {
+    const { state } = this.props.navigation;
     return (
       <Container>
         <LunesScreenNotification
-          title={this.props.title}
+          title={
+            state.params && state.params.title
+              ? state.params.title
+              : 'Concluído!'
+          }
           transationValue={this.props.transationValue}
           type={this.props.type}
         />
