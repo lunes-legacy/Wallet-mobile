@@ -2,14 +2,19 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 import { Container, Button, Text, Tab, Tabs } from 'native-base';
+import LunesLib from 'lunes-lib';
 import LunesLogo from '../../native-base-theme/components/LunesLogo';
 import LunesLoginForm from '../../native-base-theme/components/LunesLoginForm';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
 import LunesAlert from '../../native-base-theme/components/LunesAlert';
 import I18n from '../../i18n/i18n';
 import { navigate } from '../../config/routes';
+import { handleErrors } from '../../utils/stringUtils';
 
 export default class Signin extends React.Component<{}> {
+  constructor(props) {
+    super(props);
+  }
   alertError(message, isShow) {
     return (
       <LunesAlert
@@ -33,17 +38,8 @@ export default class Signin extends React.Component<{}> {
   }
 
   renderError() {
-    const { error } = this.props;
-    if (error && error.messageKey === 'auth/email-already-in-use') {
-      return this.alertError(I18n.t('EMAIL_ALREADY'), true);
-    } else if (error && error.messageKey === 'auth/wrong-password') {
-      return this.alertError(I18n.t('ERROR_AUTHENTICATE'), true);
-    } else if (error && error.messageKey === 'auth/user-not-found') {
-      return this.alertError(I18n.t('USER_NOT_FOUND'), true);
-    } else if (error) {
-      return this.alertError(I18n.t('SOMETHING_ERROR'), true);
-    }
-    return null;
+    const { error, clearError } = this.props;
+    return handleErrors(error, clearError, clearError);
   }
 
   renderLoading() {

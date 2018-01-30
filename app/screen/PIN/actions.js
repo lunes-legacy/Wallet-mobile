@@ -1,45 +1,34 @@
 import types from '../../config/types';
 import { navigate } from '../../config/routes';
-import LunesCore from 'lunes-core';
+import LunesLib from 'lunes-lib';
 
 async function getBalance(address, currentUser, dispatch) {
-  let balance = await LunesCore.coins.bitcoin.getBalance(
-    { address },
-    currentUser.accessToken
-  );
-
-  dispatch(confirmSuccess(currentUser));
-  dispatch(storeBalanceOnUser(balance));
-
-  if (currentUser.wordSeedWasViewed) {
-    dispatch(requestFinished());
-    navigate('Main');
-  } else {
-    backupWallet(currentUser, dispatch);
-  }
-}
-
-async function backupWallet(currentUser, dispatch) {
   try {
-    let seed = await LunesCore.coins.bitcoin.backupWallet(
-      { email: currentUser.email },
+    let balance = await LunesLib.coins.bitcoin.getBalance(
+      { address },
       currentUser.accessToken
     );
+
+    dispatch(confirmSuccess(currentUser));
+    dispatch(storeBalanceOnUser(balance.data));
+
     dispatch(requestFinished());
-    dispatch(showDialogBackupSeed(seed.result));
+    navigate('Main');
   } catch (error) {
     dispatch(requestFinished());
+    throw error;
   }
 }
 
 async function createPin(pin, currentUser, dispatch) {
   try {
-    let pinCreated = await LunesCore.users.createPin(
+    let pinCreated = await LunesLib.users.createPin(
       { pin },
       currentUser.accessToken
     );
     currentUser.pinIsValidated = true;
-    backupWallet(currentUser, dispatch);
+    dispatch(requestFinished());
+    dispatch(showDialogBackupSeed(currentUser.wallet.hash));
   } catch (error) {
     dispatch(requestFinished());
   }
@@ -47,7 +36,7 @@ async function createPin(pin, currentUser, dispatch) {
 
 async function confirmPin(pin, currentUser, wordSeedWasViewed, dispatch) {
   try {
-    let pinConfirmed = await LunesCore.users.confirmPin(
+    let pinConfirmed = await LunesLib.users.confirmPin(
       { pin },
       currentUser.accessToken
     );
@@ -55,9 +44,10 @@ async function confirmPin(pin, currentUser, wordSeedWasViewed, dispatch) {
     currentUser.wordSeedWasViewed = wordSeedWasViewed;
     try {
       let address = currentUser.wallet.coins[0].addresses[0].address;
-      getBalance(address, currentUser, dispatch);
+      getBalance(address, currentUser, dispatch).catch(error => {
+        dispatch(requestFinished());
+      });
     } catch (error) {
-      console.log(error);
       dispatch(requestFinished());
     }
   } catch (error) {
@@ -69,30 +59,10 @@ async function confirmPin(pin, currentUser, wordSeedWasViewed, dispatch) {
 export const requestAddPIN = (PIN, currentUser) => {
   return dispatch => {
     dispatch(requestLoading());
-    createPin(PIN, currentUser, dispatch);
-
-    /*LunesCore.users.createPin({ pin: PIN }, currentUser.accessToken).then(
-      response => {
-        currentUser.pinIsValidated = true;
-        dispatch(confirmSuccess(currentUser));
-        LunesCore.coins.bitcoin
-          .backupWallet({ email: currentUser.email }, currentUser.accessToken)
-          .then(
-            seed => {
-              console.log(seed);
-              dispatch(requestFinished());
-              dispatch(showDialogBackupSeed(seed.result));
-            },
-            error => {
-              console.log(error);
-              dispatch(requestFinished());
-            }
-          );
-      },
-      error => {
-        dispatch(requestFinished());
-      }
-    );*/
+    createPin(PIN, currentUser, dispatch).catch(error => {
+      dispatch(requestFinished());
+      dispatch(showError(error));
+    });
   };
 };
 
@@ -100,64 +70,9 @@ export const requestValidPIN = (PIN, currentUser, wordSeedWasViewed) => {
   return dispatch => {
     dispatch(requestLoading());
     confirmPin(PIN, currentUser, wordSeedWasViewed, dispatch).catch(error => {
+      dispatch(requestFinished());
       dispatch(showError(error));
     });
-
-    /*LunesCore.users.confirmPin({ pin: PIN }, currentUser.accessToken).then(
-      response => {
-        currentUser.pinIsValidated = true;
-        dispatch(confirmSuccess(currentUser));
-        //Create PIN, Get Backup Seed
-        LunesCore.users.createPin({ pin: PIN }, currentUser.accessToken).then(
-          response => {
-            currentUser.pinIsValidated = true;
-            dispatch(confirmSuccess(currentUser));
-            if (wordSeedWasViewed) {
-              dispatch(requestFinished());
-              navigate('Main');
-            } else {
-              LunesCore.coins.bitcoin
-                .backupWallet(
-                  { email: currentUser.email },
-                  currentUser.accessToken
-                )
-                .then(
-                  seed => {
-                    console.log(seed);
-                    dispatch(requestFinished());
-                    dispatch(showDialogBackupSeed(seed.result));
-                  },
-                  error => {
-                    console.log(error);
-                    dispatch(requestFinished());
-                  }
-                );
-            }
-          },
-          error => {
-            dispatch(requestFinished());
-          }
-        );
-
-        //Get Balance
-        LunesCore.coins.bitcoin
-          .getBalance(
-            { address: currentUser.wallet.coins[0].addresses[0].address },
-            currentUser.accessToken
-          )
-          .then(
-            response => {
-              dispatch(storeBalanceOnUser(response));
-            },
-            error => {
-              console.log(error);
-            }
-          );
-      },
-      error => {
-        dispatch(requestFinished());
-      }
-    );*/
   };
 };
 

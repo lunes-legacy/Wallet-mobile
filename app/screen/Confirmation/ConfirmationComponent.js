@@ -15,6 +15,9 @@ import LunesContainerPhone from '../../native-base-theme/components/LunesContain
 import LunesCodeSMS from '../../native-base-theme/components/LunesCodeSMS';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
 import LunesGradientButton from '../../native-base-theme/components/LunesGradientButton';
+import LunesAlert from '../../native-base-theme/components/LunesAlert';
+import { handleErrors } from '../../utils/stringUtils';
+import I18N from '../../i18n/i18n';
 
 export default class Confirmation extends React.Component {
   static get propTypes() {
@@ -37,7 +40,6 @@ export default class Confirmation extends React.Component {
       dddNumber: this.props.authSMS.dddNumber,
       phone: this.props.authSMS.phone,
       codeInput: this.props.authSMS.codeInput,
-      confirmResult: this.props.authSMS.confirmResult,
       loading: this.props.authSMS.loading1,
       code1: '',
       code2: '',
@@ -49,16 +51,11 @@ export default class Confirmation extends React.Component {
   }
 
   renderWaitingConfirmation() {
-    let confirmResult = this.props.authSMS.confirmResult;
     if (this.state.isWaitingConfirmation) {
       return (
         <View>
           <Text style={styles.waitingText}>
-            Aguardando para detectar automaticamente um SMS enviado para{' '}
-            {this.state.phoneNumber}
-          </Text>
-          <Text style={[styles.textBold, styles.textCenter]}>
-            Número errado?
+            {I18N.t('WAITING_SMS_CONFIRMATION')} {this.state.phoneNumber}
           </Text>
         </View>
       );
@@ -71,8 +68,7 @@ export default class Confirmation extends React.Component {
     if (!this.state.isWaitingConfirmation) {
       return (
         <Text style={styles.instructions}>
-          Você receberá um código em seu dispositivo móvel para validar a sua
-          Lunes Wallet
+          {I18N.t('YOU_WILL_RECEIVE_CODE_SMS')}
         </Text>
       );
     } else {
@@ -99,7 +95,7 @@ export default class Confirmation extends React.Component {
       return (
         <View style={styles.resendSMSView}>
           <Button block transparent light onPress={() => this.onPress()}>
-            <Text>Reenviar SMS</Text>
+            <Text>{I18N.t('RE_SEND_SMS')}</Text>
           </Button>
         </View>
       );
@@ -109,11 +105,8 @@ export default class Confirmation extends React.Component {
   }
 
   renderError() {
-    const { error } = this.props.authSMS;
-    if (error && error.code === 'auth/app-not-authorized') {
-      alert('Número invalido ou não autorizado');
-      this.props.clearErrorNumberInvalid();
-    }
+    const { error, clearError } = this.props;
+    return handleErrors(error, clearError, clearError);
   }
 
   changeCode(code) {
@@ -148,7 +141,7 @@ export default class Confirmation extends React.Component {
     let finalCodeInput = `${code1}${code2}${code3}${code4}${code5}${code6}`;
     this.props.confirmCode(
       finalCodeInput,
-      this.props.authSMS.confirmResult,
+      this.props.verificationId,
       this.props.user
     );
   }
@@ -157,6 +150,12 @@ export default class Confirmation extends React.Component {
     this.setState({
       isWaitingConfirmation: true,
     });
+    this.setState({ code1: '' });
+    this.setState({ code2: '' });
+    this.setState({ code3: '' });
+    this.setState({ code4: '' });
+    this.setState({ code5: '' });
+    this.setState({ code6: '' });
     this.onSubmitPhoneNumber();
   }
 
@@ -180,7 +179,7 @@ export default class Confirmation extends React.Component {
     if (!this.state.isWaitingConfirmation) {
       return (
         <Button block rounded light onPress={() => this.onPress()}>
-          <Text>Avançar</Text>
+          <Text>{I18N.t('NEXT')}</Text>
         </Button>
       );
     }
@@ -200,14 +199,14 @@ export default class Confirmation extends React.Component {
     ) {
       return (
         <Button block rounded light onPress={() => this.onSubmitCode()}>
-          <Text>Confirmar</Text>
+          <Text>{I18N.t('CONFIRM')}</Text>
         </Button>
       );
     } else if (
       this.state.isWaitingConfirmation &&
       (!code1 || !code2 || !code3 || !code4 || !code5 || !code6)
     ) {
-      return <LunesGradientButton text="Confirmar" />;
+      return <LunesGradientButton text={I18N.t('CONFIRM')} />;
     }
     return null;
   }
@@ -215,16 +214,14 @@ export default class Confirmation extends React.Component {
   render() {
     return (
       <Container>
-        {this.props.authSMS.loading ? this.renderLoading() : null}
-        {this.props.authSMS.error &&
-        this.props.authSMS.error.code === 'auth/app-not-authorized'
-          ? this.renderError()
-          : null}
+        {this.props.loading ? this.renderLoading() : null}
+        {this.renderError()}
 
         <View style={styles.viewConfirmSMS}>
           <MaterialIcon name="email" size={45} color="#fff" />
           <Text style={styles.textConfirmSMS}>
-            Confirmação via <Text style={styles.textBold}>SMS</Text>
+            {I18N.t('CONFIRMATION_VIA')}{' '}
+            <Text style={styles.textBold}>SMS</Text>
           </Text>
           {this.renderInputConfirmation()}
           {this.renderWaitingConfirmation()}

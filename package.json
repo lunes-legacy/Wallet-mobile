@@ -9,17 +9,20 @@
     "flow stop": "flow stop",
     "flow status": "flow status",
     "flow coverage": "flow coverage",
-    "android-linux": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android",
+    "android-linux":
+      "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "clean": "rm -rf node_modules && npm i && watchman watch-del-all && rm -fr $TMPDIR/react-* && rm -rf ios/build/ModuleCache/* && rm -rf ios/build",
-    "postinstall": "remotedev-debugger --hostname localhost --port 5678 --injectserver"
+    "clean":
+      "rm -rf node_modules && npm i && watchman watch-del-all && rm -fr $TMPDIR/react-* && rm -rf ios/build/ModuleCache/* && rm -rf ios/build",
+    "postinstall":
+      "remotedev-debugger --hostname localhost --port 5678 --injectserver"
   },
   "dependencies": {
     "axios": "^0.17.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "dotenv": "^4.0.0",
-    "lunes-core": "0.0.26",
+    "lodash": "^4.17.4",
+    "lunes-lib": "0.0.12",
     "native-base": "^2.3.5",
     "prop-types": "^15.6.0",
     "react": "16.0.0",
@@ -34,7 +37,8 @@
     "react-native-qrcode": "^0.2.6",
     "react-native-qrcode-scanner": "0.0.29",
     "react-native-smart-splash-screen": "^2.3.5",
-    "react-native-svg": "^6.0.1-rc.1",
+    "react-native-svg": "6.0.1-rc.1",
+    "react-native-svg-charts": "^2.1.0",
     "react-native-user-avatar": "^1.0.3",
     "react-native-vector-icons": "^4.4.2",
     "react-navigation": "^1.0.0-beta.22",
@@ -42,7 +46,12 @@
     "redux": "^3.7.2",
     "redux-persist": "^3.5.0",
     "redux-promise": "^0.5.3",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "react-native-sentry": "^0.33.0",
+    "pubnub": "^4.20.0",
+    "pubnub-react": "^1.2.0",
+    "react-native-behavior": "0.0.18",
+    "react-native-level-fs": "^3.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -74,9 +83,6 @@
     "preset": "react-native"
   },
   "rnpm": {
-    "assets": [
-      "./app/assets/fonts",
-      "./app/assets/images"
-    ]
+    "assets": ["./app/assets/fonts", "./app/assets/images"]
   }
 }
