@@ -40,7 +40,6 @@ export default class Confirmation extends React.Component {
       dddNumber: this.props.authSMS.dddNumber,
       phone: this.props.authSMS.phone,
       codeInput: this.props.authSMS.codeInput,
-      confirmResult: this.props.authSMS.confirmResult,
       loading: this.props.authSMS.loading1,
       code1: '',
       code2: '',
@@ -52,7 +51,6 @@ export default class Confirmation extends React.Component {
   }
 
   renderWaitingConfirmation() {
-    let confirmResult = this.props.authSMS.confirmResult;
     if (this.state.isWaitingConfirmation) {
       return (
         <View>
@@ -143,7 +141,7 @@ export default class Confirmation extends React.Component {
     let finalCodeInput = `${code1}${code2}${code3}${code4}${code5}${code6}`;
     this.props.confirmCode(
       finalCodeInput,
-      this.props.authSMS.confirmResult,
+      this.props.verificationId,
       this.props.user
     );
   }

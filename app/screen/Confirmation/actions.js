@@ -15,21 +15,27 @@ const requestFinished = () => ({
 //1. Stage
 export const requestCode = values => {
   return dispatch => {
-    dispatch(requestLoading());
+    try {
+      dispatch(requestLoading());
 
-    const { prefixCountryNumber, dddNumber, phone } = values;
-    const phoneNumberFormatted = `${prefixCountryNumber}${dddNumber}${phone}`;
+      const { prefixCountryNumber, dddNumber, phone } = values;
+      const phoneNumberFormatted = `${prefixCountryNumber}${dddNumber}${phone}`;
 
-    auth
-      .signInWithPhoneNumber(phoneNumberFormatted)
-      .then(confirmResult => {
-        dispatch(requestFinished());
-        dispatch(requestCodeSuccess(confirmResult));
-      })
-      .catch(error => {
-        dispatch(requestFinished());
-        dispatch(requestCodeError(error));
-      });
+      auth
+        .signInWithPhoneNumber(phoneNumberFormatted)
+        .then(confirmResult => {
+          dispatch(requestFinished());
+          dispatch(requestCodeSuccess(confirmResult.verificationId));
+          //navigate('SMSConfirmation');
+        })
+        .catch(error => {
+          dispatch(requestFinished());
+          dispatch(requestCodeError(error));
+        });
+    } catch (error) {
+      dispatch(requestFinished());
+      console.error(error);
+    }
   };
 };
 
@@ -51,13 +57,13 @@ async function postConfirmPhone(phoneNumber, userFB, dispatch) {
 }
 
 //2. Stage
-export const confirmCode = (codeInput, confirmResult, currentUser) => {
+export const confirmCode = (codeInput, verificationId, currentUser) => {
   return dispatch => {
     try {
       dispatch(requestLoading());
 
       let credential = fb.auth.PhoneAuthProvider.credential(
-        confirmResult.verificationId,
+        verificationId,
         codeInput
       );
 

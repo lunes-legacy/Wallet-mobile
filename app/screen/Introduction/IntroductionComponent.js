@@ -22,7 +22,7 @@ export default class Introduction extends React.Component {
 
   componentWillReceiveProps(props) {
     if (props.isViewedIntroduction) {
-      navigate('Signin');
+      //navigate('Signin');
     }
   }
 
