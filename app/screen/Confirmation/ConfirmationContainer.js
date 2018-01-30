@@ -17,6 +17,7 @@ const mapStateToProps = state => {
     user: state.auth.user,
     loading: state.authSMS.loading,
     error: state.authSMS.error,
+    verificationId: state.authSMS.confirmResult,
   };
 };
 const mapDispatchToProps = dispatch =>

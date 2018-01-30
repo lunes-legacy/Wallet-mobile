@@ -62,7 +62,7 @@ export const requestSignup = values => {
     password: password,
     email: email,
     photoUrl: '',
-    testnet: 'true',
+    testnet: 'true', // TODO remove this line code
   };
 
   return dispatch => {
