@@ -75,4 +75,13 @@ export default {
   CONFIRMATION_VIA: 'Confirmation via',
   NEXT: 'Next',
   CONFIRMATION: 'Confirmation',
+  JUST_SENT: 'just sent',
+  OF_YOUR_WALLET_LUNES: 'of your Wallet Lunes',
+  YOU_WILL_SEND: 'You will send',
+  SENT: 'Sent',
+  COMPLETED: 'Completed',
+  ADDRESS_TO_RECEIVE: 'Address to receive',
+  FEE: 'Fee',
+  STRONG_PASSWORD: 'Strong Password',
+  WEAK_PASSWORD: 'Weak Password',
 };

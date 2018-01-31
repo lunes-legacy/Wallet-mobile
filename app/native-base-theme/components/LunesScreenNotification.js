@@ -17,6 +17,7 @@ import LunesQuotation from './LunesQuotation';
 import commonColor from './../variables/commonColor';
 import BosonColors from './../variables/bosonColor';
 import { navigate } from '../../config/routes';
+import I18N from '../../i18n/i18n';
 
 export default class LunesScreenNotification extends React.Component {
   render() {
@@ -27,18 +28,20 @@ export default class LunesScreenNotification extends React.Component {
         </View>
         <View style={styles.containerMiddle}>
           <LunesQuotation
-            type="warning"
+            type={this.props.type}
             icon="true"
-            title="Enviados"
+            title={I18N.t('SENT')}
             label=""
           />
         </View>
         <View style={styles.containerFooter}>
-          <Text style={styles.textFooter}>Damião, acabou de enviar</Text>
-          <Text style={styles.transationValue}>
-            {this.props.transationValue}
+          <Text style={styles.textFooter}>
+            {this.props.userName}, {I18N.t('JUST_SENT')}
           </Text>
-          <Text>{this.props.text2}</Text>
+          <Text style={styles.transationValue}>{this.props.amount}</Text>
+          <Text style={styles.textFooter}>
+            {I18N.t('OF_YOUR_WALLET_LUNES')}
+          </Text>
         </View>
       </View>
     );
@@ -55,18 +58,20 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   containerMiddle: {
-    flex: 2,
     width: Dimensions.get('window').width,
   },
   containerFooter: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 100,
   },
   transationValue: {
     color: BosonColors.$bosonLightGreen,
     fontSize: 30,
     fontWeight: '700',
+    paddingTop: 10,
+    paddingBottom: 10,
   },
   title: {
     fontFamily: 'Roboto-Medium',

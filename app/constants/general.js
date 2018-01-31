@@ -10,4 +10,9 @@ export default {
     channelDefault: 'Channel-192o23v9m',
     channelBalance: 'balance',
   },
+  STATUS_TRANSACTION: {
+    success: 'success',
+    warning: 'warning',
+    error: 'error',
+  },
 };

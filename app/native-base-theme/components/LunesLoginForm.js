@@ -103,19 +103,27 @@ export default class LunesLoginForm extends React.Component {
   }
 
   renderPasswordValidate() {
-    if (this.state.password && !PasswordIsStronger(this.state.password)) {
+    if (
+      this.state.password &&
+      !PasswordIsStronger(this.state.password) &&
+      this.props.modeAuth === 'SIGNUP'
+    ) {
       return (
         <View style={styles.containerForcePassword}>
           <Text style={[styles.checkForcePassword, styles.passwordWeak]}>
-            Senha Fraca
+            {I18N.t('WEAK_PASSWORD')}
           </Text>
         </View>
       );
-    } else if (this.state.password && PasswordIsStronger(this.state.password)) {
+    } else if (
+      this.state.password &&
+      PasswordIsStronger(this.state.password) &&
+      this.props.modeAuth === 'SIGNUP'
+    ) {
       return (
         <View style={styles.containerForcePassword}>
           <Text style={[styles.checkForcePassword, styles.passwordStrong]}>
-            Senha Forte
+            {I18N.t('STRONG_PASSWORD')}
           </Text>
         </View>
       );

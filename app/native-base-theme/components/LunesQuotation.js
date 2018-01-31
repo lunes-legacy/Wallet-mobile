@@ -110,7 +110,7 @@ export default class LunesQuotation extends React.Component {
           }}
           source={{ uri: this.renderImage() }}
         />
-        <View style={{ padding: 80 }}>{this.renderContent()}</View>
+        <View style={{ paddingTop: 80 }}>{this.renderContent()}</View>
       </View>
     );
   }

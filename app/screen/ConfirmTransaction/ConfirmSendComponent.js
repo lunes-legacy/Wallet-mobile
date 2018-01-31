@@ -11,7 +11,7 @@ import {
 import { Container, Item, Input, Button, Text } from 'native-base';
 import { LunesIconSendPayment } from '../../native-base-theme/components/LunesCustomIcon';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
-import LunesAlert from '../../native-base-theme/components/LunesAlert';
+import LunesPIN from '../../native-base-theme/components/LunesPIN';
 import { handleErrors } from '../../utils/stringUtils';
 import I18N from '../../i18n/i18n';
 import bosonColor from '../../native-base-theme/variables/bosonColor';
@@ -23,6 +23,7 @@ export default class ConfirmSend extends React.Component {
       amountToSend: 0,
       addressToSend: '',
       fee: 0.0000034,
+      showPIN: false,
     };
   }
 
@@ -36,9 +37,13 @@ export default class ConfirmSend extends React.Component {
     });
   }
 
-  render() {
-    return (
-      <Container>
+  showPIN() {
+    this.setState({ showPIN: true });
+  }
+
+  renderConfirmation() {
+    if (this.state.showPIN === false) {
+      return (
         <View style={styles.container}>
           <LunesIconSendPayment size={50} color={bosonColor.$bosonLightGreen} />
           <View style={styles.separator} />
@@ -46,17 +51,17 @@ export default class ConfirmSend extends React.Component {
 
           <View style={styles.separator} />
 
-          <Text style={styles.text}>Você irá enviar</Text>
+          <Text style={styles.text}>{I18N.t('YOU_WILL_SEND')}</Text>
           <Text style={styles.text}>{this.state.amountToSend}</Text>
 
           <View style={styles.separator} />
 
-          <Text style={styles.text}>Endereço de envio</Text>
+          <Text style={styles.text}>{I18N.t('ADDRESS_TO_RECEIVE')}</Text>
           <Text style={styles.text}>{this.state.addressToSend}</Text>
 
           <View style={styles.separator} />
 
-          <Text style={styles.text}>Taxa</Text>
+          <Text style={styles.text}>{I18N.t('FEE')}</Text>
           <Text style={styles.text}>{this.state.fee}</Text>
 
           <View>
@@ -65,18 +70,42 @@ export default class ConfirmSend extends React.Component {
               block
               success
               style={styles.touchable}
-              onPress={() => {
-                this.props.confirmTransactionSend(
-                  this.props.user,
-                  this.state.addressToSend,
-                  this.state.amountToSend,
-                  this.state.fee
-                );
-              }}>
+              onPress={() => this.showPIN()}>
               <Text style={{ fontSize: 12 }}>{I18N.t('CONFIRM')}</Text>
             </Button>
           </View>
         </View>
+      );
+    }
+    return null;
+  }
+
+  renderPIN() {
+    if (this.state.showPIN === true) {
+      return (
+        <View style={styles.container}>
+          <LunesPIN
+            onSavePIN={pin => {
+              this.props.confirmTransactionSend(
+                pin,
+                this.props.user,
+                this.state.addressToSend,
+                this.state.amountToSend,
+                this.state.fee
+              );
+            }}
+          />
+        </View>
+      );
+    }
+    return null;
+  }
+
+  render() {
+    return (
+      <Container>
+        {this.renderConfirmation()}
+        {this.renderPIN()}
       </Container>
     );
   }

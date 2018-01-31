@@ -17,12 +17,14 @@ import SimpleLineIcon from 'react-native-vector-icons/dist/SimpleLineIcons';
 import BosonColors from '../../native-base-theme/variables/bosonColor';
 import I18N from '../../i18n/i18n';
 import { navigate } from '../../config/routes';
+import LunesGradientButton from '../../native-base-theme/components/LunesGradientButton';
 
 export default class PaymentOptions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       showToast: false,
+      addressToSend: '',
     };
   }
 
@@ -30,6 +32,32 @@ export default class PaymentOptions extends React.Component {
     const { state } = this.props.navigation;
     const amountToSend = state.params ? state.params.amountToSend : 0;
     navigate('QRCode', { amountToSend: amountToSend });
+  }
+
+  redirectToConfirmSend() {
+    const { state } = this.props.navigation;
+    const amountToSend = state.params ? state.params.amountToSend : 0;
+    navigate('ConfirmSend', {
+      addressToSend: this.state.addressToSend,
+      amountToSend,
+    });
+  }
+
+  renderButtonConfirm() {
+    if (this.state.addressToSend) {
+      return (
+        <Button
+          rounded
+          block
+          success
+          onPress={() => {
+            this.redirectToConfirmSend();
+          }}>
+          <Text style={{ fontSize: 12, color: '#fff' }}>{I18N.t('NEXT')}</Text>
+        </Button>
+      );
+    }
+    return <LunesGradientButton text={I18N.t('NEXT')} />;
   }
 
   render() {
@@ -76,6 +104,10 @@ export default class PaymentOptions extends React.Component {
                 <TextInput
                   underlineColorAndroid={'transparent'}
                   style={styles.inputText}
+                  value={this.state.addressToSend}
+                  onChangeText={value =>
+                    this.setState({ addressToSend: value })
+                  }
                   placeholder={I18N.t('PASTE_HERE')}
                   placeholderTextColor="rgba(255,255,255,0.7)"
                 />
@@ -86,15 +118,7 @@ export default class PaymentOptions extends React.Component {
                   styles.containerInner,
                   { width: Dimensions.get('window').width - 50 },
                 ]}>
-                <Button
-                  rounded
-                  block
-                  success
-                  onPress={() => {
-                    this.redirectToQRCodeScreen();
-                  }}>
-                  <Text style={styles.text}>{I18N.t('SEND_PAYMENT')}</Text>
-                </Button>
+                {this.renderButtonConfirm()}
               </View>
             </View>
           </Root>

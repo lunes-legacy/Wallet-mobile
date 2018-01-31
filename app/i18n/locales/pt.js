@@ -79,4 +79,13 @@ export default {
   CONFIRMATION_VIA: 'Confirmação via',
   NEXT: 'Avançar',
   CONFIRMATION: 'Confirmação',
+  JUST_SENT: 'acabou de enviar',
+  OF_YOUR_WALLET_LUNES: 'de sua Carteira Lunes',
+  YOU_WILL_SEND: 'Você irá enviar',
+  SENT: 'Enviado',
+  COMPLETED: 'Concluído',
+  ADDRESS_TO_RECEIVE: 'Endereço para envio',
+  FEE: 'Taxa',
+  STRONG_PASSWORD: 'Senha Forte',
+  WEAK_PASSWORD: 'Senha Fraca',
 };
