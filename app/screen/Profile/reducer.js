@@ -13,6 +13,11 @@ const profileReducer = (state = initialState, action) => {
       return { ...state, error: action.error };
     case types.OBTAIN_USER_PROFILE_SUCCESS:
       return { ...state, userProfile: action.userProfile };
+    case types.REHYDRATE:
+      return {
+        ...state,
+        loading: false,
+      };
     default:
       return state;
   }

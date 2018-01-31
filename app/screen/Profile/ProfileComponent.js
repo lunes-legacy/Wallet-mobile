@@ -19,8 +19,6 @@ import { navigate } from '../../config/routes';
 export default class Profile extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
   }
 
   componentWillMount() {
@@ -85,7 +83,7 @@ export default class Profile extends React.Component {
     const personalInfo = this.props.userProfile
       ? this.props.userProfile.personalInfo
       : {};
-    const {_id, accessToken} = this.props.userInfo
+    const { _id, accessToken } = this.props.userInfo;
     const { wordSeedWasViewed } = this.props;
     const {
       email,
@@ -94,7 +92,7 @@ export default class Profile extends React.Component {
       homeAddress,
       birthDate,
       city,
-      avatar
+      avatar,
     } = personalInfo;
     const homeState = personalInfo.state;
 
@@ -103,7 +101,7 @@ export default class Profile extends React.Component {
         {this.props.loading ? this.renderLoading() : null}
         <ScrollView>
           <View style={styles.fullnameContainer}>
-            <PhotoUpload onPhotoSelect={(small => this.setState({small}))}>
+            <PhotoUpload onPhotoSelect={small => this.setState({ small })}>
               <Image
                 style={{
                   paddingVertical: 30,
@@ -113,9 +111,10 @@ export default class Profile extends React.Component {
                 }}
                 resizeMode="cover"
                 source={{
-                  uri: avatar && avatar.small
-                    ? `data:image/png;base64,${avatar.small}`
-                    : GetDefaultURIAvatar(),
+                  uri:
+                    avatar && avatar.small
+                      ? `data:image/png;base64,${avatar.small}`
+                      : GetDefaultURIAvatar(),
                 }}
               />
             </PhotoUpload>
@@ -145,7 +144,7 @@ export default class Profile extends React.Component {
             />
           </View>
           <View style={styles.fullnameContainer}>
-            <Text style={styles.labelText}>Informações pessoais</Text>
+            <Text style={styles.labelText}>{I18N.t('PERSONAL_INFO')}</Text>
           </View>
           <View style={styles.container}>
             <TextInput
@@ -204,7 +203,7 @@ export default class Profile extends React.Component {
               autoCapitalize="none"
               onChangeText={text =>
                 this.setState({
-                  homeAddress: text
+                  homeAddress: text,
                 })
               }
               value={
@@ -226,7 +225,13 @@ export default class Profile extends React.Component {
             rounded
             success
             block
-            onPress={() => this.props.requestUpdate({_id, updates: this.state, accessToken})}>
+            onPress={() =>
+              this.props.requestUpdate({
+                _id,
+                updates: this.state,
+                accessToken,
+              })
+            }>
             <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)' }}>
               {I18N.t('CONFIRM')}
             </Text>

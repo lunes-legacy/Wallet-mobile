@@ -8,8 +8,10 @@ import { RenderColorWhiteToCoinSelected } from '../utils';
 const renderColorPrice = status => {
   if (status === 'up') {
     return BosonColors.$bosonLightGreen;
+  } else if (status === 'down') {
+    return BosonColors.$bosonDarkYellow;
   }
-  return BosonColors.$bosonDarkYellow;
+  return BosonColors.$bosonLightGrey;
 };
 
 const LunesTabCoinsPrice = ({ tabCoinPrice }) => {

@@ -94,4 +94,6 @@ export default {
   HIGH: 'High',
   MEDIUM: 'Medium',
   LOW: 'Low',
+  PERSONAL_INFO: 'Personal Information',
+  QUOTE: 'Price',
 };

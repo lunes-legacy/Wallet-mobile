@@ -14,6 +14,7 @@ import {
   LunesIconReceivePayment,
 } from './LunesCustomIcon';
 import BosonColors from '../variables/bosonColor';
+import I18N from '../../i18n/i18n';
 
 export default class LunesQuotation extends React.Component {
   constructor() {
@@ -56,7 +57,7 @@ export default class LunesQuotation extends React.Component {
     if (!this.props.icon) {
       return (
         <View>
-          <Text style={styles.textQuotation}>COTAÇÃO</Text>
+          <Text style={styles.textQuotation}>{I18N.t('QUOTE')}</Text>
           <Text style={styles.textQuotationPrice}>
             {this.props.ticker.BTC.DISPLAYPRICE}
           </Text>
@@ -132,9 +133,10 @@ const styles = StyleSheet.create({
   textQuotation: {
     backgroundColor: 'transparent',
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 22,
     color: BosonColors.$bosonWhite,
     marginBottom: 10,
+    fontWeight: '700',
   },
   textPayment: {
     fontSize: 24,
@@ -145,7 +147,7 @@ const styles = StyleSheet.create({
   textQuotationPrice: {
     backgroundColor: 'transparent',
     textAlign: 'center',
-    fontSize: 14,
+    fontSize: 18,
     color: '#fff',
   },
 });

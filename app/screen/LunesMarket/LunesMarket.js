@@ -66,26 +66,32 @@ class LunesMarket extends Component {
           coinPairs[pair] = {};
         }
 
-        coinPairs[pair]['CHANGE24HOUR'] = res['CHANGE24HOUR'];
-        coinPairs[pair]['CHANGE24HOURPCT'] = res['CHANGE24HOURPCT'];
+        // CHANGE
+        if (typeof res['OPEN24HOUR'] !== 'undefined') {
+          coinPairs[pair]['OPEN24HOUR'] = res['OPEN24HOUR'];
+        }
+        coinPairs[pair]['CHANGE24HOUR'] = res['CHANGE24HOUR'] || '-';
+        coinPairs[pair]['CHANGE24HOURPCT'] = res['CHANGE24HOURPCT'] || '-';
         coinPairs[pair]['PRICE'] = res['PRICE'];
-        coinPairs[pair]['OPEN24HOUR'] = res['OPEN24HOUR'];
 
-        coinPairs[pair]['CHANGE24HOUR'] = CCC.convertValueToDisplay(
-          tsym,
-          coinPairs[pair]['PRICE'] - coinPairs[pair]['OPEN24HOUR']
-        );
-        coinPairs[pair]['CHANGE24HOURPCT'] =
-          (
-            (coinPairs[pair]['PRICE'] - coinPairs[pair]['OPEN24HOUR']) /
-            coinPairs[pair]['OPEN24HOUR'] *
-            100
-          ).toFixed(2) + '%';
+        if (typeof coinPairs[pair]['OPEN24HOUR'] !== 'undefined') {
+          coinPairs[pair]['CHANGE24HOUR'] = CCC.convertValueToDisplay(
+            tsym,
+            coinPairs[pair]['PRICE'] - coinPairs[pair]['OPEN24HOUR']
+          );
 
-        if (coinPairs[pair]['PRICE'] > coinPairs[pair]['OPEN24HOUR']) {
-          coinPairs[pair]['CHANGE'] = 'up';
-        } else if (coinPairs[pair]['PRICE'] < coinPairs[pair]['OPEN24HOUR']) {
-          coinPairs[pair]['CHANGE'] = 'down';
+          coinPairs[pair]['CHANGE24HOURPCT'] =
+            (
+              (coinPairs[pair]['PRICE'] - coinPairs[pair]['OPEN24HOUR']) /
+              coinPairs[pair]['OPEN24HOUR'] *
+              100
+            ).toFixed(2) + '%';
+
+          if (coinPairs[pair]['PRICE'] > coinPairs[pair]['OPEN24HOUR']) {
+            coinPairs[pair]['CHANGE'] = 'up';
+          } else if (coinPairs[pair]['PRICE'] < coinPairs[pair]['OPEN24HOUR']) {
+            coinPairs[pair]['CHANGE'] = 'down';
+          }
         }
 
         coinPairs[pair]['CURRENTPRICE'] = CCC.convertValueToDisplay(

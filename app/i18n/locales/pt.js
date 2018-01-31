@@ -98,4 +98,6 @@ export default {
   HIGH: 'Alto',
   MEDIUM: 'Médio',
   LOW: 'Baixo',
+  PERSONAL_INFO: 'Informações pessoais',
+  QUOTE: 'Cotação',
 };

@@ -47,9 +47,9 @@ export default class LunesChartMain extends React.Component<{}> {
     const min = _.min(data);
     let test = '100%';
     if (this.props.range === rangeConstant.PERIOD.RANGE_1D) {
-      test = '10%';
+      test = '5%';
     } else if (this.props.range === rangeConstant.PERIOD.RANGE_1W) {
-      test = '20%';
+      test = '10%';
     } else if (this.props.range === rangeConstant.PERIOD.RANGE_1M) {
       test = '30%';
     }

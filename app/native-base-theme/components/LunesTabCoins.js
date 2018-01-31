@@ -36,9 +36,27 @@ export default class LunesTabCoin extends React.Component {
   }
 
   renderTabs() {
+    const { ticker } = this.props;
     if (LunesTabCoinsConstant) {
       return LunesTabCoinsConstant.map((tabCoin, index) => {
         if (tabCoin.isActive) {
+          const currentCoin = ticker[tabCoin.name];
+          let price = tabCoin.price.displayPrice;
+          let percent = tabCoin.price.displayPercent;
+          if (currentCoin) {
+            if (currentCoin.CHANGE24HOUR !== '-') {
+              price = currentCoin.CHANGE24HOUR;
+            }
+
+            if (currentCoin.CHANGE24HOUR !== '-') {
+              percent = currentCoin.CHANGE24HOURPCT;
+            }
+
+            tabCoin.price.status = currentCoin.CHANGE || '-';
+          }
+
+          tabCoin.price.percent = `${price} (${percent})`; //'0 (0%)'
+
           return (
             <View
               key={tabCoin.name}

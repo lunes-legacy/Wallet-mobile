@@ -25,13 +25,17 @@ export const RenderIconKPIUtil = status => {
         color={BosonColors.$bosonLightGreen}
       />
     );
+  } else if (status === 'down') {
+    return (
+      <Entypo
+        name="arrow-long-down"
+        size={10}
+        color={BosonColors.$bosonDarkYellow}
+      />
+    );
   }
   return (
-    <Entypo
-      name="arrow-long-down"
-      size={10}
-      color={BosonColors.$bosonDarkYellow}
-    />
+    <Entypo name="dot-single" size={10} color={BosonColors.$bosonLightGrey} />
   );
 };
 

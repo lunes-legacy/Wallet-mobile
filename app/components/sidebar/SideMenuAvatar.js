@@ -16,7 +16,9 @@ class SideMenuAvatar extends Component {
     const { userInfo } = this.props;
 
     const avatar =
-      this.props.userProfile && this.props.userProfile.personalInfo
+      this.props.userProfile &&
+      this.props.userProfile.personalInfo &&
+      this.props.userProfile.personalInfo.avatar
         ? this.props.userProfile.personalInfo.avatar.small
         : null;
     const user = {

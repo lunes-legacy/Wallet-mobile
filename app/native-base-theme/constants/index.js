@@ -21,8 +21,11 @@ export const LunesTabCoinsConstant = [
     isActive: true,
     isCoinSelected: true, //to show chart or not
     price: {
-      percent: '+14,90 (1,35%)',
-      status: 'up',
+      displayPrice: '0.00',
+      displayPercent: '0%',
+      display: `${this.displayPrice} ${this.displayPercent}`,
+      percent: '0,0 (0%)',
+      status: '-', //up, down
     },
   },
   {
@@ -31,8 +34,11 @@ export const LunesTabCoinsConstant = [
     isActive: true, //to show or not on the device
     isCoinSelected: false, //to show chart or not
     price: {
-      percent: '-4,90 (0,15%)',
-      status: 'down',
+      displayPrice: '0.00',
+      displayPercent: '0%',
+      display: `${this.displayPrice} ${this.displayPercent}`,
+      percent: '0 (0%)',
+      status: '-', //up, down
     },
   },
   {
@@ -41,8 +47,11 @@ export const LunesTabCoinsConstant = [
     isActive: true,
     isCoinSelected: false, //to show chart or not
     price: {
-      percent: '+0,90 (1,35%)',
-      status: 'up',
+      displayPrice: '0.00',
+      displayPercent: '0%',
+      display: `${this.displayPrice} ${this.displayPercent}`,
+      percent: '0 (0%)',
+      status: '-', //up, down
     },
   },
   {
@@ -51,8 +60,11 @@ export const LunesTabCoinsConstant = [
     isActive: true,
     isCoinSelected: false, //to show chart or not
     price: {
-      percent: '+11,90 (1,35%)',
-      status: 'up',
+      displayPrice: '0.00',
+      displayPercent: '0%',
+      display: `${this.displayPrice} ${this.displayPercent}`,
+      percent: '0 (0%)',
+      status: '-', //up, down
     },
   },
 ];

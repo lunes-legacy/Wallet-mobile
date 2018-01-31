@@ -12,8 +12,7 @@ const renderIconKPI = status => {
 const renderFontSizeKPI = kpi => {
   if (kpi.isCoinSelected) {
     return {
-      fontSize: 22,
-      fontWeight: 'bold',
+      fontSize: 18,
       color: RenderColorCoinUtil(kpi.name),
     };
   }

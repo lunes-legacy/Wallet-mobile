@@ -48,13 +48,13 @@ const historicDataReducer = (state = initialState, action) => {
       const value = action.ticker;
 
       if (value.COIN === 'BTC') {
-        state.ticker.BTC = value;
+        state.ticker.BTC = { ...state.ticker.BTC, ...value };
       }
       if (value.COIN === 'ETH') {
-        state.ticker.ETH = value;
+        state.ticker.ETH = { ...state.ticker.ETH, ...value };
       }
       if (value.COIN === 'LTC') {
-        state.ticker.LTC = value;
+        state.ticker.LTC = { ...state.ticker.LTC, ...value };
       }
 
       return {
