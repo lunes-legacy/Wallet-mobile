@@ -31,7 +31,6 @@ export const requestObtain = values => {
     dispatch(requestLoading());
     obtain({ id: values._id, accessToken: values.accessToken }, dispatch)
       .catch(error => {
-      console.log('ERROR', error)
       dispatch(obtainUserProfileError(error));
     });
   };
@@ -42,7 +41,6 @@ export const requestUpdate = values => {
     dispatch(requestLoading());
     updateProfile({ id: values._id, updates: values.updates, accessToken: values.accessToken }, dispatch)
       .catch(error => {
-        console.log('ERROR', error)
         dispatch(obtainUserProfileError(error));
       });
   };

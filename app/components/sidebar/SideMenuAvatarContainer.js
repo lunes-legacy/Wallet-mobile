@@ -5,7 +5,6 @@ import SideMenuAvatar from './SideMenuAvatar';
 import { requestObtain } from '../../screen/Profile/actions';
 
 const mapStateToProps = state => {
-  console.log('ESTATE', state);
   return {
     userInfo: state.auth.user || {},
     userProfile: state.profileReducer && state.profileReducer.userProfile,
