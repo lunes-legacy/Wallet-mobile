@@ -23,20 +23,17 @@ export default {
   TYPE_PIN_CODE: 'Insira um código de 04 dígitos para',
   YOUR_PIN: 'seu PIN',
   WELCOME: 'SEJA BEM-VINDO!',
-  WELCOME_MSG: `Muito obrigado por escolher a Wallet Lunes como sua carteira
-  multicoin. Aproveite da usabilidade e tecnologia desta incrível
-  carteira e armazene suas criptomoedas com um alto nível de
-  segurança.`,
+  WELCOME_MSG: `Muito obrigado por escolher a Wallet Lunes como`,
+  WELCOME_MSG_2: ' sua carteira multicoin. Aproveite da usabilidade\n\r e tecnologia desta incrível carteira e armazene ',
+  WELCOME_MSG_3: 'suas criptomoedas com alto nível de segurança.',
   ANALYTICS: 'Análises',
   ANALYTICS_MSG: `Acompanhe os movimentos de altas e baixas do mercado de criptomoedas com nossos gráficos modernos e práticos.`,
   DO_YOUR_BACKUP: 'Faça seu backup',
-  DO_YOUR_BACKUP_MSG: `Não armazenamos suas moedas em nossos servidores, elas são de sua
-  propriedade e estão em sua posse, por isso não deixe de salvar as
-  suas chaves privadas e fazer seu backup.`,
+  DO_YOUR_BACKUP_MSG: `Não armazenamos suas moedas em nossos servidores, elas são de sua propriedade e estão em sua posse, por isso não deixe de salvar as `,
+  DO_YOUR_BACKUP_MSG_2: 'suas chaves privadas e fazer seu backup.',
   BUY_COINS: 'Compre moedas',
-  BUY_COINS_MSG: `Compre criptomoedas de forma rápida e segura, sem burocracia.
-  Adicione créditos pagando por boleto bancário ou com o seu cartão de
-  crédito.`,
+  BUY_COINS_MSG: `Compre criptomoedas de forma rápida e segura, sem burocracia. Adicione créditos pagando por `,
+  BUY_COINS_MSG_2: 'boleto bancário ou com o seu cartão de crédito.',
   TRANSACTIONS_P2P: 'Transações P2P',
   TRANSACTIONS_P2P_MSG: `Receba e envie pagamentos de qualquer lugar do mundo, de forma rápida, segura e barata, direto de pessoa para pessoa.`,
   CONTINUE: 'Continue',

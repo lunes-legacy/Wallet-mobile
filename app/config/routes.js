@@ -56,12 +56,6 @@ const customHomeHeader = navigation => {
 
 const RootNavigator = StackNavigator(
   {
-    Main: {
-      screen: Main,
-      navigationOptions: {
-        header: <View />,
-      },
-    },
     Introduction: {
       screen: Introduction,
       navigationOptions: {
