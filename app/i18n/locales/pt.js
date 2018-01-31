@@ -43,6 +43,11 @@ export default {
   START: 'Começar',
   INVALID_EMAIL: 'Email Inválido',
   EMAIL: 'Email',
+  PHONE_NUMBER: 'Telefone',
+  HOME_ADDRESS: 'Endereço',
+  BIRTH_DATE: 'Data de Nascimento',
+  FULL_NAME: 'Nome Completo',
+  CITY: 'Cidade',
   NAME: 'Nome',
   PASSWORD: 'Senha',
   CHANGE_PASSWORD: 'Alterar Senha',
@@ -78,4 +83,5 @@ export default {
   RE_SEND_SMS: 'Reenviar SMS',
   CONFIRMATION_VIA: 'Confirmação via',
   NEXT: 'Avançar',
+  CONFIRMATION: 'Confirmação',
 };

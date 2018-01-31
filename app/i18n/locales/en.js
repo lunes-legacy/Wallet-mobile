@@ -41,6 +41,11 @@ export default {
   EMAIL: 'Email',
   NAME: 'Name',
   PASSWORD: 'Password',
+  PHONE_NUMBER: 'Phone Number',
+  HOME_ADDRESS: 'Home Address',
+  FULL_NAME: 'Full name',
+  BIRTH_DATE: 'Birth date',
+  CITY: 'City',
   CHANGE_PASSWORD: 'Change Password',
   CHANGE_PASSWORD_TITLE:
     'You will receive on your email a link to change your password',
@@ -74,4 +79,5 @@ export default {
   RE_SEND_SMS: 'Resend SMS',
   CONFIRMATION_VIA: 'Confirmation via',
   NEXT: 'Next',
+  CONFIRMATION: 'Confirmation',
 };

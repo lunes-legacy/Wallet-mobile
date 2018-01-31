@@ -2,11 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import SideMenuAvatar from './SideMenuAvatar';
+import { requestObtain } from '../../screen/Profile/actions';
 
 const mapStateToProps = state => {
+  console.log('ESTATE', state);
   return {
     userInfo: state.auth.user || {},
+    userProfile: state.profileReducer && state.profileReducer.userProfile,
   };
 };
 
-export default connect(mapStateToProps)(SideMenuAvatar);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ requestObtain }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(SideMenuAvatar);

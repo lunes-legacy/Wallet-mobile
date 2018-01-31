@@ -9,6 +9,10 @@ const profileReducer = (state = initialState, action) => {
       return { ...state, loading: true };
     case types.REQUEST_FINISHED:
       return { ...state, loading: false };
+    case types.OBTAIN_USER_PROFILE_ERROR:
+      return { ...state, error: action.error };
+    case types.OBTAIN_USER_PROFILE_SUCCESS:
+      return { ...state, userProfile: action.userProfile };
     default:
       return state;
   }

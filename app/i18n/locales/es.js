@@ -15,6 +15,11 @@ export default {
   CHANGE_PASSWORD: 'Redefinir Senha',
   SIGNIN: 'Login',
   SIGNUP: 'Cadastro',
+  PHONE_NUMBER: 'Teléfono',
+  HOME_ADDRESS: 'Dirección',
+  BIRTH_DATE: 'Fecha de Nacimiento',
+  FULL_NAME: 'Nombre Completo',
+  CITY: 'Ciudad',
   CHECKING_PIN_FOR_ACTIVATION: 'Checando PIN para ativação',
   PIN_IS_REQUIRED: 'Por favor, digite seu PIN',
   ERROR_ON_SAVE_PIN: 'Erro ao salvar PIN',
@@ -37,4 +42,5 @@ export default {
   EMAIL: 'E-mail',
   NAME: 'Nome',
   PASSWORD: 'Senha',
+  CONFIRMATION: 'Confirmação',
 };
