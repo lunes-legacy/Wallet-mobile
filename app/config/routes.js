@@ -56,12 +56,6 @@ const customHomeHeader = navigation => {
 
 const RootNavigator = StackNavigator(
   {
-    Main: {
-      screen: Main,
-      navigationOptions: {
-        header: <View />,
-      },
-    },
     Introduction: {
       screen: Introduction,
       navigationOptions: {
@@ -94,8 +88,16 @@ const RootNavigator = StackNavigator(
     },
     ReceivePayment: {
       screen: ReceivePayment,
-      navigationOptions: {
-        header: <View />,
+      navigationOptions: ({ navigation, screenProps }) => {
+        return {
+          title: I18N.t('RECEIVE_PAYMENT'),
+          headerTintColor: '#fff',
+          headerStyle: {
+            backgroundColor: BosonColors.$bosonPrimary,
+            elevation: 0,
+          },
+          headerLeft: customHeader(navigation),
+        };
       },
     },
     SendPayment: {

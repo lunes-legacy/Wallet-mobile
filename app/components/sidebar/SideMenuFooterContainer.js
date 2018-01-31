@@ -7,6 +7,7 @@ const mapStateToProps = state => {
   return {
     userInfo: state.auth.userInfo || {},
     balanceData: state.auth.balance,
+    displayPriceBTC: state.historicDataReducer.ticker.BTC,
   };
 };
 

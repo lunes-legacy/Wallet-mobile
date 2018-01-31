@@ -56,11 +56,12 @@ async function getPrice(dispatch) {
     const currentPrice = CCC.convertValueToDisplay(tsym, priceData[toSymbol]);
     const displayPrice = `1 BTC | ${currentPrice}`;
     let ticker = {
-      displayPrice: displayPrice,
-      currentPrice: currentPrice,
-      change24hour: '-',
-      change24hourPct: '0%',
-      change: 'up',
+      DISPLAYPRICE: displayPrice,
+      CURRENTPRICE: currentPrice,
+      CHANGE24HOUR: '-',
+      CHANGEHOURPCT: '0%',
+      CHANGE: 'up',
+      COIN: 'BTC',
     };
     dispatch(priceUpdate(ticker));
   } catch (error) {
@@ -118,7 +119,7 @@ const tickerUpdate = ticker => ({
   ticker,
 });
 
-const priceUpdate = price => ({
+const priceUpdate = ticker => ({
   type: types.PRICE_DATA,
-  price,
+  ticker,
 });

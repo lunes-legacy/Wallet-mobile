@@ -15,6 +15,7 @@ async function createUser(userData, dispatch) {
       dispatch(requestFinished());
       dispatch(signupSuccess(user));
       dispatch(storeUser(user));
+      dispatch(storeAddress(user.wallet));
       navigate('Confirmation');
     } else {
       dispatch(signupError(error));
@@ -31,6 +32,7 @@ async function login(email, password, dispatch) {
     dispatch(requestFinished());
     dispatch(signinSuccess(user));
     dispatch(storeUser(user));
+    dispatch(storeAddress(user.wallet));
     Keyboard.dismiss();
     if (user && !user.pinIsValidated && user.phoneIsValidated) {
       navigate('PIN');
@@ -146,4 +148,9 @@ const signoutSuccess = () => ({
 const signoutError = error => ({
   type: types.SIGNOUT_ERROR,
   error: error,
+});
+
+const storeAddress = wallet => ({
+  type: types.STORE_WALLET,
+  wallet,
 });

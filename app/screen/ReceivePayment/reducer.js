@@ -12,6 +12,8 @@ const receivePaymentReducer = (state = initialState, action) => {
       return { ...state, loading: false };
     case types.COPY_ADDRESS:
       return { ...state, address: action.address };
+    case types.STORE_WALLET:
+      return { ...state, wallet: action.wallet };
     default:
       return state;
   }

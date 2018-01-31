@@ -16,6 +16,11 @@ import Entypo from 'react-native-vector-icons/dist/Entypo';
 import commonColor from './../variables/commonColor';
 import BosonColors from './../variables/bosonColor';
 import { navigate } from '../../config/routes';
+import I18N from '../../i18n/i18n';
+import {
+  LunesIconReceivePayment,
+  LunesIconSendPayment,
+} from '../../native-base-theme/components/LunesCustomIcon';
 
 export default class LunesPaymentButton extends React.Component {
   constructor(props) {
@@ -47,23 +52,21 @@ export default class LunesPaymentButton extends React.Component {
             ]}>
             <TouchableOpacity onPress={() => this.redirect('SendPayment')}>
               <View style={styles.iconButtonOpened}>
-                <MaterialIcons
-                  name="arrow-upward"
+                <LunesIconSendPayment
                   size={SIZE_ICON}
                   color={BosonColors.$bosonWhite}
                 />
-                <Text style={styles.textItemIcons}>Enviar</Text>
+                <Text style={styles.textItemIcons}>{I18N.t('SEND')}</Text>
               </View>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => this.redirect('ReceivePayment')}>
               <View style={[styles.iconButtonOpened, { paddingLeft: 13 }]}>
-                <MaterialIcons
-                  name="arrow-downward"
+                <LunesIconReceivePayment
                   size={SIZE_ICON}
                   color={BosonColors.$bosonWhite}
                 />
-                <Text style={styles.textItemIcons}>Receber</Text>
+                <Text style={styles.textItemIcons}>{I18N.t('RECEIVE')}</Text>
               </View>
             </TouchableOpacity>
 
@@ -74,7 +77,7 @@ export default class LunesPaymentButton extends React.Component {
                   size={SIZE_ICON}
                   color={BosonColors.$bosonWhite}
                 />
-                <Text style={styles.textItemIcons}>Comprar</Text>
+                <Text style={styles.textItemIcons}>{I18N.t('BUY')}</Text>
               </View>
             </TouchableOpacity>
 
@@ -85,7 +88,7 @@ export default class LunesPaymentButton extends React.Component {
                   size={SIZE_ICON}
                   color={BosonColors.$bosonWhite}
                 />
-                <Text style={styles.textItemIcons}>Vender</Text>
+                <Text style={styles.textItemIcons}>{I18N.t('SELL')}</Text>
               </View>
             </TouchableOpacity>
           </View>

@@ -11,29 +11,42 @@ import { Container, Item, Input, Toast, Root } from 'native-base';
 import QRCode from 'react-native-qrcode';
 import BosonColors from '../../native-base-theme/variables/bosonColor';
 import LunesPaymentButton from '../../native-base-theme/components/LunesPaymentButton';
+import I18N from '../../i18n/i18n';
 
 export default class ReceivePayment extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: '1BoatSLRHtKNngkdXEeobR76b53LETtpyT',
       showToast: false,
     };
   }
 
-  setClipboardContent = msg => {
-    Clipboard.setString(this.state.text);
+  setClipboardContent = address => {
+    Clipboard.setString(address);
   };
 
+  getAddressWallet() {
+    const { wallet } = this.props;
+    try {
+      const address = wallet.coins[0].addresses[0].address;
+      return address;
+    } catch (error) {
+      return '';
+    }
+  }
+
   render() {
+    const address = this.getAddressWallet();
     return (
       <Container>
         <Root>
           <View style={styles.container}>
-            <Text style={styles.titleReceivePayment}>Receber Pagamentos</Text>
+            <Text style={styles.titleReceivePayment}>
+              {I18N.t('RECEIVE_PAYMENT')}
+            </Text>
             <View style={styles.wrapperQRCode}>
               <QRCode
-                value={this.state.text}
+                value={address}
                 size={200}
                 bgColor="black"
                 fgColor="white"
@@ -41,7 +54,7 @@ export default class ReceivePayment extends React.Component {
             </View>
 
             <Text style={styles.input} selectable={true}>
-              {this.state.text}
+              {address}
             </Text>
 
             <Text
@@ -49,14 +62,15 @@ export default class ReceivePayment extends React.Component {
               selectable={true}
               onPress={() => {
                 this.setState({ showToast: true });
-                this.setClipboardContent();
+                this.setClipboardContent(address);
                 Toast.show({
-                  text: 'link copiado',
+                  duration: 2000,
+                  text: I18N.t('ADDRESS_COPIED'),
                   position: 'top',
                   buttonText: '',
                 });
               }}>
-              Clique aqui para copiar e enviar
+              {I18N.t('CLICK_HERE_TO_COPY')}
             </Text>
 
             <LunesPaymentButton />

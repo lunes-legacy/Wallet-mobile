@@ -10,6 +10,7 @@ const mapStateToProps = state => {
     loading: state.sendPaymentReducer.loading,
     coinChosed: state.sendPaymentReducer.coinChosed,
     balanceData: state.auth.balance,
+    displayPriceBTC: state.historicDataReducer.ticker.BTC,
   };
 };
 

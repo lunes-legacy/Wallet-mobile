@@ -23,6 +23,7 @@ const initialState = {
 };
 
 const historicDataReducer = (state = initialState, action) => {
+  let value;
   switch (action.type) {
     case types.REQUEST_LOADING:
       return {
@@ -45,7 +46,7 @@ const historicDataReducer = (state = initialState, action) => {
         range: action.range,
       };
     case types.TICKER_UPDATE:
-      const value = action.ticker;
+      value = action.ticker;
 
       if (value.COIN === 'BTC') {
         state.ticker.BTC = { ...state.ticker.BTC, ...value };
@@ -59,11 +60,23 @@ const historicDataReducer = (state = initialState, action) => {
 
       return {
         ...state,
+        ticker: state.ticker,
       };
     case types.PRICE_DATA:
+      value = action.ticker;
+
+      if (value.COIN === 'BTC') {
+        state.ticker.BTC = { ...state.ticker.BTC, ...value };
+      }
+      if (value.COIN === 'ETH') {
+        state.ticker.ETH = { ...state.ticker.ETH, ...value };
+      }
+      if (value.COIN === 'LTC') {
+        state.ticker.LTC = { ...state.ticker.LTC, ...value };
+      }
       return {
         ...state,
-        ticker: action.price,
+        ticker: state.ticker,
       };
     default:
       return state;

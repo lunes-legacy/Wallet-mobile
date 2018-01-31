@@ -8,6 +8,7 @@ import ReceivePayment from './ReceivePaymentComponent';
 const mapStateToProps = state => {
   return {
     loading: state.receivePaymentReducer.loading,
+    wallet: state.receivePaymentReducer.wallet,
   };
 };
 

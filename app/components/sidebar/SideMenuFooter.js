@@ -20,7 +20,7 @@ class SideMenuFooter extends Component {
   getBalance() {
     let finalBalance =
       this.props && this.props.balanceData
-        ? this.props.balanceData.final_balance
+        ? this.props.balanceData.confirmed_balance
         : 0;
     return finalBalance;
   }
@@ -42,9 +42,7 @@ class SideMenuFooter extends Component {
 
           <View>
             <Text style={styles2.rightBalance}>
-              {`    $ ${getMyDolarAmount(amount)} | BRL ${getMyBRLAmount(
-                amount
-              )}`}
+              {this.props.displayPriceBTC.DISPLAYPRICE}
             </Text>
           </View>
         </View>

@@ -73,13 +73,19 @@ export default class SendPayment extends React.Component {
 
               {/* TAB COINS */}
               <View style={{ flexDirection: 'row' }}>
-                <LunesTabCoins doAction={this.props.chooseCoinAction} />
+                {/* <LunesTabCoins doAction={this.props.chooseCoinAction} />*/}
               </View>
 
               {/* AMOUNT AVAIALABLE */}
-              <View style={styles.containerInner}>
-                <View>
-                  <Text style={styles.text}>{I18n.t('balance')}</Text>
+              <View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    padding: 10,
+                  }}>
+                  <Text style={styles.text}>{I18n.t('BALANCE')}</Text>
+                  <Text style={styles.text}>{I18n.t('QUOTE')}</Text>
                 </View>
                 <View style={styles.containerAmountAvailable}>
                   <View style={styles.amount}>
@@ -96,7 +102,9 @@ export default class SendPayment extends React.Component {
                     </Text>
                   </View>
                   <View>
-                    <Text style={styles.text}>$ 30850.00</Text>
+                    <Text style={styles.text}>
+                      {this.props.displayPriceBTC.DISPLAYPRICE}
+                    </Text>
                   </View>
                 </View>
               </View>

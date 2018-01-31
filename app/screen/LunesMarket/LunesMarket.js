@@ -20,11 +20,17 @@ import BosonColors from '../../native-base-theme/variables/bosonColor';
 
 import I18N from '../../i18n/i18n';
 import io from 'socket.io-client';
+const options = {
+  pingTimeout: 85000,
+  transports: ['websocket'],
+  allowUpgrades: false,
+  cookie: false,
+};
 
 import CCC from '../../utils/ccc-streamer-utilities';
 
 class LunesMarket extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.exchange = I18N.t('CURRENCY_EXCHANGE');
     this.currencyTo = I18N.t('CURRENCY_USER');
@@ -33,24 +39,26 @@ class LunesMarket extends Component {
       `5~CCCAGG~ETH~USD`,
       `5~CCCAGG~LTC~${this.currencyTo}`,
     ];
+    // 1. set url
+    this.socket = io('https://streamer.cryptocompare.com/', options);
+    // 2. emmit (connect)
+    this.socket.emit('SubAdd', { subs: this.subscription });
   }
 
   componentDidMount() {
     const { requestHistoricData, updateTicker, requestPrice } = this.props;
     requestHistoricData();
-    // requestPrice();
+    //requestPrice();
     console.ignoredYellowBox = ['Setting a timer'];
+    this.onMessage();
+  }
 
+  onMessage() {
+    const { updateTicker } = this.props;
     var coinPairs = {};
 
-    // 1. set url
-    const socket = io.connect('https://streamer.cryptocompare.com/');
-
-    // 2. emmit (connect)
-    socket.emit('SubAdd', { subs: this.subscription });
-
-    // 2. receive messages
-    socket.on('m', function(message) {
+    // 3. receive messages
+    this.socket.on('m', function(message) {
       const messageType = message.substring(0, message.indexOf('~'));
       if (messageType == CCC.STATIC.TYPE.CURRENTAGG) {
         const res = CCC.CURRENT.unpack(message);
@@ -105,29 +113,15 @@ class LunesMarket extends Component {
         coinPairs[pair]['COIN'] = pair;
 
         updateTicker(coinPairs[pair]);
-
-        // console.log('');
-        // console.log('');
-
-        // if (res['PRICE']) {
-        //   const currentPrice = CCC.convertValueToDisplay(tsym, res['PRICE']);
-        //   const displayPrice = `1 BTC | ${currentPrice}`;
-        //   const ticker = {
-        //     displayPrice: displayPrice,
-        //     currentPrice: currentPrice,
-        //     change24hour: change24hour,
-        //     change24hourPct: change24hourPct,
-        //     change: change,
-        //   };
-
-        //   updateTicker(ticker);
-        // }
+        if (this.socket) {
+          //this.socket.emit('SubRemove', this.subscription);
+        }
       }
     });
   }
 
   componentWillUnmount() {
-    socket.emit('SubRemove', this.subscription);
+    this.socket.emit('SubRemove', this.subscription);
   }
 
   getBalance() {

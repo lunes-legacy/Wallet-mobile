@@ -19,6 +19,7 @@ import { navigate } from '../../config/routes';
 export default class Profile extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {};
   }
 
   componentWillMount() {
