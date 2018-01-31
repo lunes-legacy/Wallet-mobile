@@ -6,8 +6,8 @@ import {
   Text,
 } from 'react-navigation';
 import { View } from 'react-native';
-import FontAwesomeIcon from 'react-native-vector-icons/dist/FontAwesome';
 import Ionicons from 'react-native-vector-icons/dist/Ionicons';
+import Entypo from 'react-native-vector-icons/dist/Entypo';
 import { Introduction } from '../screen/Introduction';
 import { Confirmation } from '../screen/Confirmation';
 import { PIN } from '../screen/PIN';
@@ -33,6 +33,21 @@ const customHeader = navigation => {
         name={'md-arrow-back'}
         onPress={() => {
           navigation.goBack();
+        }}
+      />
+    </View>
+  );
+};
+
+const customHomeHeader = navigation => {
+  return (
+    <View style={{ padding: 10 }}>
+      <Entypo
+        color={'#fff'}
+        size={20}
+        name={'home'}
+        onPress={() => {
+          navigate('Main');
         }}
       />
     </View>
@@ -79,8 +94,16 @@ const RootNavigator = StackNavigator(
     },
     SendPayment: {
       screen: SendPayment,
-      navigationOptions: {
-        title: I18N.t('SEND_PAYMENT'),
+      navigationOptions: ({ navigation, screenProps }) => {
+        return {
+          title: I18N.t('SEND_PAYMENT'),
+          headerTintColor: '#fff',
+          headerStyle: {
+            backgroundColor: BosonColors.$bosonPrimary,
+            elevation: 0,
+          },
+          headerLeft: customHeader(navigation),
+        };
       },
     },
     PaymentOptions: {
@@ -113,8 +136,16 @@ const RootNavigator = StackNavigator(
     },
     NoticeNotification: {
       screen: NoticeNotification,
-      navigationOptions: {
-        header: <View />,
+      navigationOptions: ({ navigation, screenProps }) => {
+        return {
+          title: null,
+          headerTintColor: '#fff',
+          headerStyle: {
+            backgroundColor: BosonColors.$bosonPrimary,
+            elevation: 0,
+          },
+          headerLeft: customHomeHeader(navigation),
+        };
       },
     },
     ChangePassword: {

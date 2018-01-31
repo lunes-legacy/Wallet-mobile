@@ -24,8 +24,14 @@ export default class QRCode extends React.Component {
   }
 
   onSuccess(e) {
-    console.log(e.data);
-    navigate('ConfirmSend', { addressToSend: e.data });
+    try {
+      console.log(e.data);
+      const { state } = this.props.navigation;
+      const amountToSend = state.params ? state.params.amountToSend : 0;
+      navigate('ConfirmSend', { addressToSend: e.data, amountToSend });
+    } catch (error) {
+      alert('Erro ao receber endereço da carteira');
+    }
   }
 
   showQRCodeScan() {

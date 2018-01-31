@@ -29,12 +29,12 @@ export default class LunesScreenNotification extends React.Component {
           <LunesQuotation
             type="warning"
             icon="true"
-            title="Recebidos"
+            title="Enviados"
             label=""
           />
         </View>
         <View style={styles.containerFooter}>
-          <Text style={styles.textFooter}>Damião, acabou de receber</Text>
+          <Text style={styles.textFooter}>Damião, acabou de enviar</Text>
           <Text style={styles.transationValue}>
             {this.props.transationValue}
           </Text>
@@ -52,13 +52,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   containerTop: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    marginBottom: 20,
   },
   containerMiddle: {
-    flex: 3,
-    width: Dimensions.get('window').width - 50,
+    flex: 2,
+    width: Dimensions.get('window').width,
   },
   containerFooter: {
     flex: 1,
