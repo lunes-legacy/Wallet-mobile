@@ -4,6 +4,7 @@ import types from '../../config/types';
 import { navigate } from '../../config/routes';
 import I18N from '../../i18n/i18n';
 import rangeConstant from '../../constants/general';
+import CCC from '../../utils/ccc-streamer-utilities';
 
 async function getHistory(dispatch) {
   try {
@@ -42,10 +43,50 @@ async function getNewPeriod(range, dispatch) {
   }
 }
 
+async function getPrice(dispatch) {
+  try {
+    const toSymbol = I18N.t('CURRENCY_USER');
+    let queryObj = {
+      fromSymbol: 'BTC',
+      toSymbol: toSymbol,
+      exchange: I18N.t('CURRENCY_EXCHANGE'),
+    };
+    var tsym = CCC.STATIC.CURRENCY.getSymbol(toSymbol);
+    let priceData = await LunesLib.coins.getPrice(queryObj);
+    const currentPrice = CCC.convertValueToDisplay(tsym, priceData[toSymbol]);
+    const displayPrice = `1 BTC | ${currentPrice}`;
+    let ticker = {
+      displayPrice: displayPrice,
+      currentPrice: currentPrice,
+      change24hour: '-',
+      change24hourPct: '0%',
+      change: 'up',
+    };
+    dispatch(priceUpdate(ticker));
+  } catch (error) {
+    dispatch(requestFinished());
+    throw error;
+  }
+}
+
 export const requestHistoricData = () => {
   return dispatch => {
     getHistory(dispatch).catch(error => {
       alert('error on get historic');
+    });
+  };
+};
+
+export const updateTicker = ticker => {
+  return dispatch => {
+    dispatch(tickerUpdate(ticker));
+  };
+};
+
+export const requestPrice = () => {
+  return dispatch => {
+    getPrice(dispatch).catch(error => {
+      alert('error on get price');
     });
   };
 };
@@ -70,4 +111,14 @@ const changeColumnPeriod = range => ({
 const historicData = historic => ({
   type: types.HISTORIC_DATA,
   historic,
+});
+
+const tickerUpdate = ticker => ({
+  type: types.TICKER_UPDATE,
+  ticker,
+});
+
+const priceUpdate = price => ({
+  type: types.PRICE_DATA,
+  price,
 });

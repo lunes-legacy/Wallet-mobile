@@ -57,7 +57,9 @@ export default class LunesQuotation extends React.Component {
       return (
         <View>
           <Text style={styles.textQuotation}>COTAÇÃO</Text>
-          <Text style={styles.textQuotationPrice}>$17,500.90 | BRL 0.20</Text>
+          <Text style={styles.textQuotationPrice}>
+            {this.props.ticker.BTC.DISPLAYPRICE}
+          </Text>
         </View>
       );
     }

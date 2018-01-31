@@ -43,4 +43,6 @@ export default {
   NAME: 'Nome',
   PASSWORD: 'Senha',
   CONFIRMATION: 'Confirmação',
+  CURRENCY_USER: 'EUR',
+  CURRENCY_EXCHANGE: 'Kraken',
 };
