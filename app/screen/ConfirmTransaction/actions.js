@@ -22,6 +22,11 @@ const showError = error => ({
   error,
 });
 
+const showFee = fee => ({
+  type: types.SHOW_FEE,
+  fee,
+});
+
 async function _createTransactionData(
   pin,
   currentUser,
@@ -46,7 +51,7 @@ async function _createTransactionData(
       obj,
       accessToken
     );
-    console.log(confirm);
+    dispatch(requestFinished());
     dispatch(showSuccess(confirm));
     navigate('NoticeNotification', {
       title: I18N.t('COMPLETED'),
@@ -88,7 +93,7 @@ async function _confirmPin(
       currentUser.accessToken,
       dispatch
     ).catch(error => {
-      console.error(error);
+      dispatch(requestFinished());
       dispatch(errorSuccess(error));
     });
   } catch (error) {
@@ -105,10 +110,27 @@ export const confirmTransactionSend = (
   fee
 ) => {
   return dispatch => {
+    dispatch(requestLoading());
     _confirmPin(pin, currentUser, senderAddress, amount, fee, dispatch).catch(
       error => {
+        dispatch(requestFinished());
         alert('error confirm PIN');
       }
     );
+  };
+};
+
+async function _getFee(dispatch) {
+  let fee = await LunesLib.coins.getFees();
+  console.log(fee);
+  dispatch(showFee(fee));
+}
+
+export const getFee = () => {
+  return dispatch => {
+    dispatch(requestLoading());
+    _getFee(dispatch).catch(error => {
+      console.log(error);
+    });
   };
 };

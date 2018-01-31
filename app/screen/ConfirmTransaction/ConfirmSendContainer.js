@@ -1,7 +1,7 @@
 // @flow
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { confirmTransactionSend } from './actions';
+import { confirmTransactionSend, getFee } from './actions';
 
 import ConfirmSend from './ConfirmSendComponent';
 
@@ -12,9 +12,10 @@ const mapStateToProps = state => {
     user: state.auth.user,
     loading: state.authSMS.loading,
     error: state.authSMS.error,
+    fee: state.confirmTransactionReducer.fee,
   };
 };
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ confirmTransactionSend }, dispatch);
+  bindActionCreators({ confirmTransactionSend, getFee }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConfirmSend);

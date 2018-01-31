@@ -4,6 +4,7 @@ const initialState = {
   loading: false,
   error: '',
   transactionId: '',
+  fee: '',
 };
 
 const confirmTransactionReducer = (state = initialState, action) => {
@@ -27,6 +28,11 @@ const confirmTransactionReducer = (state = initialState, action) => {
       return {
         ...state,
         error: action.error,
+      };
+    case types.SHOW_FEE:
+      return {
+        ...state,
+        fee: action.fee,
       };
     default:
       return state;

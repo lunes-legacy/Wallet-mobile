@@ -54,6 +54,11 @@ const confirmationReducer = (state = initialState, action) => {
         ...state,
         error: action.error,
       };
+    case types.REHYDRATE:
+      return {
+        ...state,
+        loading: false,
+      };
     default:
       return state;
   }

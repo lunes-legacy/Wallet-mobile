@@ -9,6 +9,13 @@ const REDUX_PERSIST = {
       'tabsReducer',
       'confirmTransactionReducer',
       'changePasswordReducer',
+      'pinReducer',
+      'receivePaymentReducer',
+      'sendPaymentReducer',
+      'changePasswordReducer',
+      'historicDataReducer',
+      'confirmTransactionReducer',
+      'authSMS',
     ],
   },
 };

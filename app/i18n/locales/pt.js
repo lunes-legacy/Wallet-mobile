@@ -88,4 +88,8 @@ export default {
   FEE: 'Taxa',
   STRONG_PASSWORD: 'Senha Forte',
   WEAK_PASSWORD: 'Senha Fraca',
+  SELECT_FEE: 'Selecionar Taxa',
+  HIGH: 'Alto',
+  MEDIUM: 'Médio',
+  LOW: 'Baixo',
 };

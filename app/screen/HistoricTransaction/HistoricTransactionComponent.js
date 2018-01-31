@@ -7,11 +7,9 @@ import {
   StatusBar,
   Dimensions,
   ScrollView,
-  Platform,
 } from 'react-native';
-import { Container, Button, Text, Picker, Content, Spinner } from 'native-base';
+import { Container, Item, Input, Button, Text } from 'native-base';
 import { LunesIconSendPayment } from '../../native-base-theme/components/LunesCustomIcon';
-import Big from 'big.js';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
 import LunesPIN from '../../native-base-theme/components/LunesPIN';
 import { handleErrors } from '../../utils/stringUtils';
@@ -21,60 +19,15 @@ import bosonColor from '../../native-base-theme/variables/bosonColor';
 export default class ConfirmSend extends React.Component {
   constructor(props) {
     super(props);
-    this.conversion = 100000000;
     this.state = {
       amountToSend: 0,
       addressToSend: '',
       fee: 0.0000034,
       showPIN: false,
-      feeSelected: 'low',
-      fees: [
-        {
-          label: I18N.t('HIGH'),
-          name: 'high',
-        },
-        {
-          label: I18N.t('MEDIUM'),
-          name: 'medium',
-        },
-        {
-          label: I18N.t('LOW'),
-          name: 'low',
-        },
-      ],
     };
   }
 
-  //TODO - improve logic in this block, either put in lunes-lib or search another alternative
-  toNumber(num) {
-    return typeof num === 'number' && num % 1 === 0;
-  }
-
-  toBitcoin(satoshi) {
-    //validate arg
-    var satoshiType = typeof satoshi;
-    if (satoshiType === 'string') {
-      satoshi = toNumber(satoshi);
-      satoshiType = 'number';
-    }
-    if (satoshiType !== 'number') {
-      throw new TypeError(
-        'toBitcoin must be called on a number or string, got ' + satoshiType
-      );
-    }
-    if (!Number.isInteger(satoshi)) {
-      throw new TypeError(
-        'toBitcoin must be called on a whole number or string format whole number'
-      );
-    }
-
-    var bigSatoshi = new Big(satoshi);
-    return Number(bigSatoshi.div(this.conversion));
-  }
-  //end TODO
-
   componentDidMount() {
-    this.props.getFee();
     const { state } = this.props.navigation;
     const amountToSend = state.params ? state.params.amountToSend : 0;
     const addressToSend = state.params ? state.params.addressToSend : 0;
@@ -86,44 +39,6 @@ export default class ConfirmSend extends React.Component {
 
   showPIN() {
     this.setState({ showPIN: true });
-  }
-
-  onValueChange(value) {
-    this.setState({ feeSelected: value });
-  }
-
-  renderFeesPicker() {
-    return this.state.fees.map(fee => {
-      if (this.props.fee) {
-        let valueFee = this.toBitcoin(this.props.fee[fee.name]);
-        return (
-          <Picker.Item
-            label={`${fee.label} - ${valueFee}`}
-            value={this.props.fee[fee.name]}
-            key={fee.name}
-          />
-        );
-      }
-      return (
-        <Picker.Item label={fee.label} value={fee.value} key={fee.value} />
-      );
-    });
-  }
-
-  renderFees() {
-    if (this.props.fee) {
-      return (
-        <Picker
-          style={styles.picker}
-          iosHeader={I18N.t('SELECT_FEE')}
-          mode="dropdown"
-          selectedValue={this.state.feeSelected}
-          onValueChange={this.onValueChange.bind(this)}>
-          {this.renderFeesPicker()}
-        </Picker>
-      );
-    }
-    return <Spinner />;
   }
 
   renderConfirmation() {
@@ -147,7 +62,7 @@ export default class ConfirmSend extends React.Component {
           <View style={styles.separator} />
 
           <Text style={styles.text}>{I18N.t('FEE')}</Text>
-          <View>{this.renderFees()}</View>
+          <Text style={styles.text}>{this.state.fee}</Text>
 
           <View>
             <Button
@@ -169,7 +84,6 @@ export default class ConfirmSend extends React.Component {
     if (this.state.showPIN === true) {
       return (
         <View style={styles.container}>
-          {this.props.loading ? <LunesLoading /> : null}
           <LunesPIN
             onSavePIN={pin => {
               this.props.confirmTransactionSend(
@@ -177,7 +91,7 @@ export default class ConfirmSend extends React.Component {
                 this.props.user,
                 this.state.addressToSend,
                 this.state.amountToSend,
-                this.state.feeSelected
+                this.state.fee
               );
             }}
           />
@@ -221,9 +135,5 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     marginTop: 10,
     marginBottom: 10,
-  },
-  picker: {
-    width: Platform.OS === 'ios' ? undefined : 200,
-    color: '#fff',
   },
 });

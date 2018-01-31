@@ -55,6 +55,11 @@ const pinReducer = (state = initialState, action) => {
         ...state,
         balance: action.balance,
       };
+    case types.REHYDRATE:
+      return {
+        ...state,
+        loading: false,
+      };
     default:
       return state;
   }

@@ -84,4 +84,8 @@ export default {
   FEE: 'Fee',
   STRONG_PASSWORD: 'Strong Password',
   WEAK_PASSWORD: 'Weak Password',
+  SELECT_FEE: 'Select Fee',
+  HIGH: 'High',
+  MEDIUM: 'Medium',
+  LOW: 'Low',
 };
