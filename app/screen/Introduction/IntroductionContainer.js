@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {
-  redirectToAuthAction,
-} from './actions';
+import { redirectToAuthAction } from './actions';
 import Introduction from './IntroductionComponent';
 
 const mapStateToProps = state => {

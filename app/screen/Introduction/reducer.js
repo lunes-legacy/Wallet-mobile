@@ -1,4 +1,5 @@
 import types from './types';
+import { navigate } from '../../config/routes';
 const initialState = {
   isViewedIntroduction: false,
 };
@@ -13,6 +14,7 @@ const redirectReducer = (state = initialState, action) => {
     case types.REHYDRATE:
       if (action.payload && action.payload.redirectToAuthReducer) {
         state.isViewedIntroduction = action.payload.redirectToAuthReducer;
+        navigate('Signin');
         return state;
       }
       return {
