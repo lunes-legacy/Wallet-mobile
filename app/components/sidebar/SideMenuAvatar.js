@@ -7,23 +7,28 @@ import styles from '../styles/SideMenu';
 import { navigate } from '../../config/routes';
 
 class SideMenuAvatar extends Component {
-  render() {
-    const { navigation, userInfo } = this.props;
+  componentWillMount() {
+    const { _id, accessToken } = this.props.userInfo;
+    this.props.requestObtain({ _id, accessToken });
+  }
 
+  render() {
+    const { userInfo } = this.props;
+
+    const avatar =
+      this.props.userProfile && this.props.userProfile.personalInfo
+        ? this.props.userProfile.personalInfo.avatar.small
+        : null;
     const user = {
       name: userInfo.fullname || ' ',
       imageSrc: null,
       email: userInfo.email,
+      avatar,
     };
 
     return (
       <View style={styles.avatar}>
-        <PhotoUpload
-          onPhotoSelect={avatar => {
-            if (avatar) {
-              console.log('Image base64 string: ', avatar);
-            }
-          }}>
+        <PhotoUpload>
           <Image
             style={{
               paddingVertical: 30,
@@ -33,7 +38,9 @@ class SideMenuAvatar extends Component {
             }}
             resizeMode="cover"
             source={{
-              uri: GetDefaultURIAvatar(),
+              uri: user.avatar
+                ? `data:image/png;base64,${user.avatar}`
+                : GetDefaultURIAvatar(),
             }}
           />
         </PhotoUpload>
