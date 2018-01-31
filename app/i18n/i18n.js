@@ -8,7 +8,6 @@ I18n.fallbacks = true;
 I18n.translations = {
   en,
   pt,
-  es,
 };
 
 export default I18n;

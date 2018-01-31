@@ -1,12 +1,8 @@
 import React from 'react';
 import {
-  Text,
-  TextInput,
-  View,
-  TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import { Container, Item, Input } from 'native-base';
+import { Container } from 'native-base';
 import LunesPIN from '../../native-base-theme/components/LunesPIN';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
 import LunesAlert from '../../native-base-theme/components/LunesAlert';
@@ -45,7 +41,7 @@ export default class PIN extends React.Component {
   }
 
   renderAlertInfoBackupSeed() {
-    const { showDialogBackupSeed, seedText } = this.props;
+    const { showDialogBackupSeed } = this.props;
     if (showDialogBackupSeed) {
       return (
         <LunesAlert
