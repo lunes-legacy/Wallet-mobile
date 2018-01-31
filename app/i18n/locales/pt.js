@@ -76,6 +76,7 @@ export default {
   ONE_YEAR: '1ano',
   ALL_TIME: 'Todo Período',
   CURRENCY_USER: 'BRL',
+  CURRENCY_EXCHANGE: 'MercadoBitcoin',
   UKNOWN: 'Erro desconhecido',
   WAITING_SMS_CONFIRMATION: 'Aguardando confirmação de código enviado via SMS',
   YOU_WILL_RECEIVE_CODE_SMS:

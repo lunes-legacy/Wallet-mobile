@@ -26,7 +26,7 @@ export const LunesTabCoinsConstant = [
     },
   },
   {
-    name: 'LUN',
+    name: 'LNS',
     label: 'Lunes',
     isActive: true, //to show or not on the device
     isCoinSelected: false, //to show chart or not

@@ -2,7 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import LunesMarket from './LunesMarket';
-import { requestHistoricData, changeRange } from './actions';
+import {
+  requestHistoricData,
+  changeRange,
+  updateTicker,
+  requestPrice,
+} from './actions';
 
 const mapStateToProps = state => {
   return {
@@ -10,10 +15,14 @@ const mapStateToProps = state => {
     balanceData: state.auth.balance,
     historic: state.historicDataReducer.historic,
     range: state.historicDataReducer.range,
+    ticker: state.historicDataReducer.ticker,
   };
 };
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ requestHistoricData, changeRange }, dispatch);
+  bindActionCreators(
+    { requestHistoricData, changeRange, updateTicker, requestPrice },
+    dispatch
+  );
 
 export default connect(mapStateToProps, mapDispatchToProps)(LunesMarket);
