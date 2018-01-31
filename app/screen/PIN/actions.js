@@ -5,7 +5,7 @@ import LunesLib from 'lunes-lib';
 async function getBalance(address, currentUser, dispatch) {
   try {
     let balance = await LunesLib.coins.bitcoin.getBalance(
-      { address, testnet: 'true' }, // TODO remove testnet object on production
+      { address }, // TODO remove testnet object on production
       currentUser.accessToken
     );
 

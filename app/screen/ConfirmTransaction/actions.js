@@ -45,7 +45,6 @@ async function _createTransactionData(
       receivingAddress: senderAddress,
       amount: amount,
       fee: fee,
-      testnet: 'true',
     };
     let confirm = await LunesLib.coins.bitcoin.createTransaction(
       obj,
