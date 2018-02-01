@@ -111,4 +111,11 @@ export default {
   PLEASE_SELECT_FEE: 'Please, select the fee',
   ERROR_TO_CONFIRM_PIN: 'Error to confirm PIN',
   ERROR_TO_GET_FEE: 'Error to get fee',
+  MENU_WALLETS: 'Wallets',
+  MENU_ALERT_SYSTEMS: 'Notification Settings',
+  MENU_MULTI_COINS: 'Multi Coins Management',
+  MENU_PREPAID_CARDS: 'Prepaid Cards',
+  MENU_INVOICES_PAYMENT: 'Invoices Payment',
+  MENU_MOBILE_PHONE_TOPUP: 'Mobile Phone Top-up',
+  MENU_INVITE_FRIENDS: 'Invite Friends',
 };

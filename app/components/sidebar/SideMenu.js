@@ -11,6 +11,7 @@ import { ScrollView, View } from 'react-native';
 import SideMenuItem from './SideMenuItem';
 import SideMenuFooter from './SideMenuFooterContainer';
 import SideMenuAvatar from './SideMenuAvatarContainer';
+import I18N from '../../i18n/i18n';
 
 class SideMenu extends Component {
   render() {
@@ -24,7 +25,7 @@ class SideMenu extends Component {
           <View>
             <SideMenuItem
               screen={'LunesMarket'}
-              menuOption={'Mercado Lunes'}
+              menuOption={I18N.t('MENU_WALLETS')}
               navigation={navigation}
               space={38}
             />
@@ -32,7 +33,7 @@ class SideMenu extends Component {
           <View>
             <SideMenuItem
               screen={'ValuesAlertSystem'}
-              menuOption={'Sistema de Alerta de Valores'}
+              menuOption={I18N.t('MENU_ALERT_SYSTEMS')}
               navigation={navigation}
               disabled="true"
               space={14}
@@ -41,7 +42,7 @@ class SideMenu extends Component {
           <View>
             <SideMenuItem
               screen={'MultiCoinsSystem'}
-              menuOption={'Sistema de Multi-Coins'}
+              menuOption={I18N.t('MENU_MULTI_COINS')}
               navigation={navigation}
               disabled="true"
               space={24}
@@ -50,7 +51,7 @@ class SideMenu extends Component {
           <View>
             <SideMenuItem
               screen={'CardManager'}
-              menuOption={'Gestão de Gasto de Cartão'}
+              menuOption={I18N.t('MENU_PREPAID_CARDS')}
               navigation={navigation}
               disabled="true"
               space={17}
@@ -59,7 +60,7 @@ class SideMenu extends Component {
           <View>
             <SideMenuItem
               screen={'BoletoPayments'}
-              menuOption={'Pagamento de Boletos'}
+              menuOption={I18N.t('MENU_INVOICES_PAYMENT')}
               navigation={navigation}
               disabled="true"
               space={24}
@@ -68,7 +69,7 @@ class SideMenu extends Component {
           <View>
             <SideMenuItem
               screen={'PhoneRecharges'}
-              menuOption={'Recargas de Celular'}
+              menuOption={I18N.t('MENU_MOBILE_PHONE_TOPUP')}
               navigation={navigation}
               disabled="true"
               space={29}
@@ -77,7 +78,7 @@ class SideMenu extends Component {
           <View>
             <SideMenuItem
               screen={'InviteFriends'}
-              menuOption={'Convidar Amigos'}
+              menuOption={I18N.t('MENU_INVITE_FRIENDS')}
               navigation={navigation}
               disabled="true"
               space={29}

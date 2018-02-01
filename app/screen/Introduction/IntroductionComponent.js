@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     flex: 2, // Take up all screen
     justifyContent: 'flex-start', // Center vertically
     alignItems: 'center', // Center horizontally
-    paddingTop: 15
+    paddingTop: 5,
   },
   // Header styles
   header: {
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     color: '#4CD566',
     marginTop: 5,
-    marginBottom: 15,
+    marginBottom: 5,
   },
   // Text below header
   text: {

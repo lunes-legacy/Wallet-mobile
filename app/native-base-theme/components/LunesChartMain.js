@@ -55,7 +55,7 @@ export default class LunesChartMain extends React.Component<{}> {
     }
 
     const TooltipTop = ({ x, y }) => (
-      <G x={max} key={'tooltipTop'} onPress={() => //alert('clicked')}>
+      <G x={max} key={'tooltipTop'} onPress={() => console.log('')}>
         <G y={min + 6}>
           <Defs>
             <LinearGradient id="gradTop" x1="0" y1="0" x2="0" y2="20">
