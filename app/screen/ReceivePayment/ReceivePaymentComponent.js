@@ -57,7 +57,7 @@ export default class ReceivePayment extends React.Component {
               {address}
             </Text>
 
-            <Text
+            {/*<Text
               style={styles.textCopy}
               selectable={true}
               onPress={() => {
@@ -71,7 +71,7 @@ export default class ReceivePayment extends React.Component {
                 });
               }}>
               {I18N.t('CLICK_HERE_TO_COPY')}
-            </Text>
+            </Text>*/}
 
             <LunesPaymentButton />
           </View>

@@ -146,7 +146,7 @@ export default class SendPayment extends React.Component {
               {/* AMOUNT COIN to TYPE */}
               <View style={styles.containerInner}>
                 <View style={{ flexDirection: 'row' }}>
-                  <LunesPickerCountry />
+                  <LunesPickerCountry selectable={false} />
                   <View style={styles.quotationAmount}>
                     <Text style={styles.textAmountToType}>
                       {I18n.t('VALUE_CURRENCY_LABEL')}

@@ -29,11 +29,15 @@ export default class LunesPickerCountry extends React.Component {
     ];
     this.state = {
       countries: countries,
-      countrySelected: countries[0],
+      countrySelected:
+        I18n.t('CURRENCY_USER') === 'BRL' ? countries[0] : countries[1],
     };
   }
 
   onValueChange(value) {
+    if (this.props.selectable === false) {
+      return;
+    }
     const countryFiltered = this.state.countries.filter(country => {
       return country.value === value;
     });
