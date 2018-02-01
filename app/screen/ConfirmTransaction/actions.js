@@ -133,5 +133,6 @@ export const getFee = () => {
       dispatch(requestFinished());
       console.log(error);
     });
+    dispatch(requestFinished());
   };
 };
