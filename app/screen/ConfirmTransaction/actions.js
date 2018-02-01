@@ -114,7 +114,7 @@ export const confirmTransactionSend = (
     _confirmPin(pin, currentUser, senderAddress, amount, fee, dispatch).catch(
       error => {
         dispatch(requestFinished());
-        alert('error confirm PIN');
+        alert(I18N.t('ERROR_TO_CONFIRM_PIN'));
       }
     );
   };
@@ -131,8 +131,7 @@ export const getFee = () => {
     dispatch(requestLoading());
     _getFee(dispatch).catch(error => {
       dispatch(requestFinished());
-      console.log(error);
+      alert(I18N.t('ERROR_TO_GET_FEE'));
     });
-    dispatch(requestFinished());
   };
 };

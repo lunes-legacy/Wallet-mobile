@@ -109,4 +109,6 @@ export default {
   COMING_SOON: 'Em Breve!!!!',
   BACK: 'voltar',
   PLEASE_SELECT_FEE: 'Por favor, selecione a taxa',
+  ERROR_TO_CONFIRM_PIN: 'Erro ao confirmar o PIN',
+  ERROR_TO_GET_FEE: 'Erro ao receber as taxas',
 };

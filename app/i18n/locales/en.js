@@ -109,4 +109,6 @@ export default {
   COMING_SOON: 'Coming Soon!!!!',
   BACK: 'back',
   PLEASE_SELECT_FEE: 'Please, select the fee',
+  ERROR_TO_CONFIRM_PIN: 'Error to confirm PIN',
+  ERROR_TO_GET_FEE: 'Error to get fee',
 };
