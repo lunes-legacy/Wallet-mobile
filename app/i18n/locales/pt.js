@@ -25,7 +25,8 @@ export default {
   YOUR_PIN: 'seu PIN',
   WELCOME: 'SEJA BEM-VINDO!',
   WELCOME_MSG: `Muito obrigado por escolher a Wallet Lunes como`,
-  WELCOME_MSG_2: ' sua carteira multicoin. Aproveite da usabilidade\n\r e tecnologia desta incrível carteira e armazene ',
+  WELCOME_MSG_2:
+    ' sua carteira multicoin. Aproveite da usabilidade\n\r e tecnologia desta incrível carteira e armazene ',
   WELCOME_MSG_3: 'suas criptomoedas com alto nível de segurança.',
   ANALYTICS: 'Análises',
   ANALYTICS_MSG: `Acompanhe os movimentos de altas e baixas do mercado de criptomoedas com nossos gráficos modernos e práticos.`,
@@ -105,4 +106,6 @@ export default {
   ADDRESS_COPIED: 'Endereço Copiado',
   RECEIVE_PAYMENT: 'Receber Pagamento',
   CLICK_HERE_TO_COPY: 'Clique aqui para copiar',
+  COMING_SOON: 'Em Breve!!!!',
+  BACK: 'voltar',
 };

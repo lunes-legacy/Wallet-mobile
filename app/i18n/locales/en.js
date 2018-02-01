@@ -106,4 +106,6 @@ export default {
   ADDRESS_COPIED: 'Address Copied',
   RECEIVE_PAYMENT: 'Receive Payment',
   CLICK_HERE_TO_COPY: 'Click here to copy',
+  COMING_SOON: 'Coming Soon!!!!',
+  BACK: 'back',
 };

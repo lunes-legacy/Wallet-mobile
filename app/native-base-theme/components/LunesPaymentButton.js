@@ -70,7 +70,7 @@ export default class LunesPaymentButton extends React.Component {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => this.redirect('BuyCoins')}>
+            <TouchableOpacity onPress={() => this.redirect('AlertMessages')}>
               <View style={[styles.iconButtonOpened, { paddingLeft: 70 }]}>
                 <Icon
                   name="money"
@@ -81,7 +81,7 @@ export default class LunesPaymentButton extends React.Component {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => this.redirect('SellCoins')}>
+            <TouchableOpacity onPress={() => this.redirect('AlertMessages')}>
               <View style={[styles.iconButtonOpened, { paddingRight: 10 }]}>
                 <Icon
                   name="line-chart"

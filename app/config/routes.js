@@ -21,6 +21,7 @@ import { PaymentOptions } from '../screen/PaymentOptions';
 import { ChangePassword } from '../screen/ChangePassword';
 import { ConfirmSend } from '../screen/ConfirmTransaction';
 import { Profile } from '../screen/Profile';
+import { AlertMessages } from '../screen/AlertMessages';
 import BosonColors from '../native-base-theme/variables/bosonColor';
 import I18N from '../i18n/i18n';
 
@@ -56,6 +57,20 @@ const customHomeHeader = navigation => {
 
 const RootNavigator = StackNavigator(
   {
+    AlertMessages: {
+      screen: AlertMessages,
+      navigationOptions: ({ navigation, screenProps }) => {
+        return {
+          title: null,
+          headerTintColor: '#fff',
+          headerStyle: {
+            backgroundColor: BosonColors.$bosonPrimary,
+            elevation: 0,
+          },
+          headerLeft: customHeader(navigation),
+        };
+      },
+    },
     Introduction: {
       screen: Introduction,
       navigationOptions: {

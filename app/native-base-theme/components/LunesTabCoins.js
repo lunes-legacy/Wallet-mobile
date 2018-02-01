@@ -5,6 +5,7 @@ import { LunesTabCoinsConstant } from '../constants';
 import BosonColors from '../variables/bosonColor';
 import LunesTabCoinsPrice from './LunesTabCoinsPrice';
 import LunesTabCoinsKPI from './LunesTabCoinsKPI';
+import { navigate } from '../../config/routes';
 
 export default class LunesTabCoin extends React.Component {
   constructor() {
@@ -66,8 +67,16 @@ export default class LunesTabCoin extends React.Component {
               ]}>
               <TouchableOpacity
                 onPress={() => {
+                  if (
+                    tabCoin.name === 'LTC' ||
+                    tabCoin.name === 'LNS' ||
+                    tabCoin.name === 'ETH'
+                  ) {
+                    navigate('AlertMessages');
+                  }
+
                   if (this.props.doAction) {
-                    this.props.doAction(tabCoin);
+                    //this.props.doAction(tabCoin);
                   }
                 }}>
                 <View>
