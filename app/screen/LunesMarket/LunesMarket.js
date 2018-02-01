@@ -62,59 +62,60 @@ class LunesMarket extends Component {
       const messageType = message.substring(0, message.indexOf('~'));
       if (messageType == CCC.STATIC.TYPE.CURRENTAGG) {
         const res = CCC.CURRENT.unpack(message);
-        const fromSymbol = res['FROMSYMBOL'];
-        const toSymbol = res['TOSYMBOL'];
-        const fsym = CCC.STATIC.CURRENCY.getSymbol(fromSymbol);
-        const tsym = CCC.STATIC.CURRENCY.getSymbol(toSymbol);
-        const pair = fromSymbol;
+        if (typeof res['PRICE'] !== 'undefined') {
+          const fromSymbol = res['FROMSYMBOL'];
+          const toSymbol = res['TOSYMBOL'];
+          const fsym = CCC.STATIC.CURRENCY.getSymbol(fromSymbol);
+          const tsym = CCC.STATIC.CURRENCY.getSymbol(toSymbol);
+          const pair = fromSymbol;
 
-        // CHANGE24HOUR, CHANGE24HOURPCT, PRICE, CHANGE
+          // CHANGE24HOUR, CHANGE24HOURPCT, PRICE, CHANGE
 
-        if (!coinPairs.hasOwnProperty(pair)) {
-          coinPairs[pair] = {};
-        }
-
-        // CHANGE
-        if (typeof res['OPEN24HOUR'] !== 'undefined') {
-          coinPairs[pair]['OPEN24HOUR'] = res['OPEN24HOUR'];
-        }
-        coinPairs[pair]['CHANGE24HOUR'] = res['CHANGE24HOUR'] || '-';
-        coinPairs[pair]['CHANGE24HOURPCT'] = res['CHANGE24HOURPCT'] || '-';
-        coinPairs[pair]['PRICE'] = res['PRICE'];
-
-        if (typeof coinPairs[pair]['OPEN24HOUR'] !== 'undefined') {
-          coinPairs[pair]['CHANGE24HOUR'] = CCC.convertValueToDisplay(
-            tsym,
-            coinPairs[pair]['PRICE'] - coinPairs[pair]['OPEN24HOUR']
-          );
-
-          coinPairs[pair]['CHANGE24HOURPCT'] =
-            (
-              (coinPairs[pair]['PRICE'] - coinPairs[pair]['OPEN24HOUR']) /
-              coinPairs[pair]['OPEN24HOUR'] *
-              100
-            ).toFixed(2) + '%';
-
-          if (coinPairs[pair]['PRICE'] > coinPairs[pair]['OPEN24HOUR']) {
-            coinPairs[pair]['CHANGE'] = 'up';
-          } else if (coinPairs[pair]['PRICE'] < coinPairs[pair]['OPEN24HOUR']) {
-            coinPairs[pair]['CHANGE'] = 'down';
+          if (!coinPairs.hasOwnProperty(pair)) {
+            coinPairs[pair] = {};
           }
-        }
 
-        coinPairs[pair]['CURRENTPRICE'] = CCC.convertValueToDisplay(
-          tsym,
-          coinPairs[pair]['PRICE']
-        );
-        coinPairs[pair]['DISPLAYPRICE'] = `1 BTC | ${
-          coinPairs[pair]['CURRENTPRICE']
-        }`;
+          // CHANGE
+          if (typeof res['OPEN24HOUR'] !== 'undefined') {
+            coinPairs[pair]['OPEN24HOUR'] = res['OPEN24HOUR'];
+          }
+          coinPairs[pair]['CHANGE24HOUR'] = res['CHANGE24HOUR'] || '-';
+          coinPairs[pair]['CHANGE24HOURPCT'] = res['CHANGE24HOURPCT'] || '-';
+          coinPairs[pair]['PRICE'] = res['PRICE'];
 
-        coinPairs[pair]['COIN'] = pair;
+          if (typeof coinPairs[pair]['OPEN24HOUR'] !== 'undefined') {
+            coinPairs[pair]['CHANGE24HOUR'] = CCC.convertValueToDisplay(
+              tsym,
+              coinPairs[pair]['PRICE'] - coinPairs[pair]['OPEN24HOUR']
+            );
 
-        updateTicker(coinPairs[pair]);
-        if (this.socket) {
-          //this.socket.emit('SubRemove', this.subscription);
+            coinPairs[pair]['CHANGE24HOURPCT'] =
+              (
+                (coinPairs[pair]['PRICE'] - coinPairs[pair]['OPEN24HOUR']) /
+                coinPairs[pair]['OPEN24HOUR'] *
+                100
+              ).toFixed(2) + '%';
+
+            if (coinPairs[pair]['PRICE'] > coinPairs[pair]['OPEN24HOUR']) {
+              coinPairs[pair]['CHANGE'] = 'up';
+            } else if (
+              coinPairs[pair]['PRICE'] < coinPairs[pair]['OPEN24HOUR']
+            ) {
+              coinPairs[pair]['CHANGE'] = 'down';
+            }
+          }
+
+          coinPairs[pair]['CURRENTPRICE'] = CCC.convertValueToDisplay(
+            tsym,
+            coinPairs[pair]['PRICE']
+          );
+          coinPairs[pair]['DISPLAYPRICE'] = `1 BTC | ${
+            coinPairs[pair]['CURRENTPRICE']
+          }`;
+
+          coinPairs[pair]['COIN'] = pair;
+
+          updateTicker(coinPairs[pair]);
         }
       }
     });
