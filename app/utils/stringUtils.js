@@ -1,6 +1,7 @@
 import React from 'react';
 import I18n from '../i18n/i18n';
 import LunesAlert from '../native-base-theme/components/LunesAlert';
+
 /**
  * Return true if email is valid
  */

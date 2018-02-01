@@ -21,6 +21,7 @@ import LunesTabCoins from '../../native-base-theme/components/LunesTabCoins';
 import LunesPickerCountry from '../../native-base-theme/components/LunesPickerCountry';
 import { navigate } from '../../config/routes';
 import I18n from '../../i18n/i18n';
+import SatoshiBTC from '../../utils/btcConverter';
 
 export default class SendPayment extends React.Component {
   constructor(props) {
@@ -34,6 +35,22 @@ export default class SendPayment extends React.Component {
   componentDidMount() {
     if (!this.props.balanceData) {
       this.props.getBalance();
+    }
+  }
+
+  getQuotationAmount() {
+    if (
+      this.props.displayPriceBTC &&
+      this.props.displayPriceBTC.DISPLAYPRICE &&
+      this.props.balanceData &&
+      this.props.balanceData.confirmed_balance > 0
+    ) {
+      let btc =
+        this.props.displayPriceBTC.DISPLAYPRICE *
+        this.props.balanceData.confirmed_balance; //
+      return btc.toFixed(2);
+    } else {
+      return '0.00';
     }
   }
 
@@ -134,7 +151,9 @@ export default class SendPayment extends React.Component {
                     <Text style={styles.textAmountToType}>
                       {I18n.t('VALUE_CURRENCY_LABEL')}
                     </Text>
-                    <Text style={styles.textQuotationAmount}>$ 6.977</Text>
+                    <Text style={styles.textQuotationAmount}>
+                      {I18n.t('CURRENCY_USER')} {this.getQuotationAmount()}
+                    </Text>
                   </View>
                 </View>
               </View>

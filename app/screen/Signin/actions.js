@@ -7,7 +7,6 @@ import { navigate } from '../../config/routes';
 //Async requests
 async function createUser(userData, dispatch) {
   try {
-    console.log('');
     let user = await LunesLib.users.create(userData);
     if (user !== null) {
       user = { ...user, ...userData };
@@ -16,7 +15,7 @@ async function createUser(userData, dispatch) {
       dispatch(signupSuccess(user));
       dispatch(storeUser(user));
       dispatch(storeAddress(user.wallet));
-      navigate('Confirmation');
+      navigate('PIN');
     } else {
       dispatch(signupError(error));
     }
@@ -34,12 +33,10 @@ async function login(email, password, dispatch) {
     dispatch(storeUser(user));
     dispatch(storeAddress(user.wallet));
     Keyboard.dismiss();
-    if (user && !user.pinIsValidated && user.phoneIsValidated) {
+    if (user && !user.pinIsValidated) {
       navigate('PIN');
-    } else if (user && user.pinIsValidated && user.phoneIsValidated) {
-      navigate('PIN', { isLogged: true });
     } else {
-      navigate('Confirmation');
+      navigate('PIN', { isLogged: true });
     }
   } catch (error) {
     dispatch(requestFinished());

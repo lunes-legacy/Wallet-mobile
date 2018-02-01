@@ -46,6 +46,7 @@ async function confirmPin(pin, currentUser, wordSeedWasViewed, dispatch) {
       let address = currentUser.wallet.coins[0].addresses[0].address;
       getBalance(address, currentUser, dispatch).catch(error => {
         dispatch(requestFinished());
+        navigate('Main');
       });
     } catch (error) {
       dispatch(requestFinished());
