@@ -108,4 +108,5 @@ export default {
   CLICK_HERE_TO_COPY: 'Clique aqui para copiar',
   COMING_SOON: 'Em Breve!!!!',
   BACK: 'voltar',
+  PLEASE_SELECT_FEE: 'Por favor, selecione a taxa',
 };

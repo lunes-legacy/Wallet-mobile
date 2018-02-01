@@ -10,7 +10,7 @@ const mapStateToProps = state => {
     auth: state.auth,
     authSMS: state.authSMS,
     user: state.auth.user,
-    loading: state.authSMS.loading,
+    loading: state.confirmTransactionReducer.loading,
     error: state.authSMS.error,
     fee: state.confirmTransactionReducer.fee,
   };

@@ -108,4 +108,5 @@ export default {
   CLICK_HERE_TO_COPY: 'Click here to copy',
   COMING_SOON: 'Coming Soon!!!!',
   BACK: 'back',
+  PLEASE_SELECT_FEE: 'Please, select the fee',
 };

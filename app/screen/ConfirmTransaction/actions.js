@@ -61,6 +61,7 @@ async function _createTransactionData(
       status: generalConstant.STATUS_TRANSACTION.warning,
     });
   } catch (error) {
+    dispatch(requestFinished());
     throw error;
   }
 }
@@ -121,7 +122,7 @@ export const confirmTransactionSend = (
 
 async function _getFee(dispatch) {
   let fee = await LunesLib.coins.getFees();
-  console.log(fee);
+  dispatch(requestFinished());
   dispatch(showFee(fee));
 }
 
@@ -129,6 +130,7 @@ export const getFee = () => {
   return dispatch => {
     dispatch(requestLoading());
     _getFee(dispatch).catch(error => {
+      dispatch(requestFinished());
       console.log(error);
     });
   };

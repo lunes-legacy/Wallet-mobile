@@ -27,7 +27,7 @@ export default class ConfirmSend extends React.Component {
       addressToSend: '',
       fee: 0.0000034,
       showPIN: false,
-      feeSelected: 'low',
+      feeSelected: '',
       fees: [
         {
           label: I18N.t('HIGH'),
@@ -99,7 +99,7 @@ export default class ConfirmSend extends React.Component {
         return (
           <Picker.Item
             label={`${fee.label} - ${valueFee}`}
-            value={this.props.fee[fee.name]}
+            value={valueFee}
             key={fee.name}
           />
         );
@@ -169,9 +169,12 @@ export default class ConfirmSend extends React.Component {
     if (this.state.showPIN === true) {
       return (
         <View style={styles.container}>
-          {this.props.loading ? <LunesLoading /> : null}
           <LunesPIN
             onSavePIN={pin => {
+              if (!this.state.fee) {
+                alert(I18N.t('PLEASE_SELECT_FEE'));
+                return;
+              }
               this.props.confirmTransactionSend(
                 pin,
                 this.props.user,
@@ -190,6 +193,7 @@ export default class ConfirmSend extends React.Component {
   render() {
     return (
       <Container>
+        {this.props.loading ? <LunesLoading /> : null}
         {this.renderConfirmation()}
         {this.renderPIN()}
       </Container>

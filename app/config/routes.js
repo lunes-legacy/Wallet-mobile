@@ -57,20 +57,6 @@ const customHomeHeader = navigation => {
 
 const RootNavigator = StackNavigator(
   {
-    AlertMessages: {
-      screen: AlertMessages,
-      navigationOptions: ({ navigation, screenProps }) => {
-        return {
-          title: null,
-          headerTintColor: '#fff',
-          headerStyle: {
-            backgroundColor: BosonColors.$bosonPrimary,
-            elevation: 0,
-          },
-          headerLeft: customHeader(navigation),
-        };
-      },
-    },
     Introduction: {
       screen: Introduction,
       navigationOptions: {
@@ -99,6 +85,20 @@ const RootNavigator = StackNavigator(
       screen: Main,
       navigationOptions: {
         header: <View />,
+      },
+    },
+    AlertMessages: {
+      screen: AlertMessages,
+      navigationOptions: ({ navigation, screenProps }) => {
+        return {
+          title: null,
+          headerTintColor: '#fff',
+          headerStyle: {
+            backgroundColor: BosonColors.$bosonPrimary,
+            elevation: 0,
+          },
+          headerLeft: customHeader(navigation),
+        };
       },
     },
     ReceivePayment: {
