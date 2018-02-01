@@ -131,5 +131,6 @@ export const getFee = () => {
     _getFee(dispatch).catch(error => {
       console.log(error);
     });
+    dispatch(requestFinished());
   };
 };
