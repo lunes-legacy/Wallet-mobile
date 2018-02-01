@@ -12,6 +12,11 @@ const sendPaymentReducer = (state = initialState, action) => {
       return { ...state, loading: false };
     case types.COPY_ADDRESS:
       return { ...state, address: action.address };
+    case types.REHYDRATE:
+      return {
+        ...state,
+        loading: false,
+      };
     default:
       return state;
   }

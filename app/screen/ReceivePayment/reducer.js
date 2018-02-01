@@ -14,6 +14,11 @@ const receivePaymentReducer = (state = initialState, action) => {
       return { ...state, address: action.address };
     case types.STORE_WALLET:
       return { ...state, wallet: action.wallet };
+    case types.REHYDRATE:
+      return {
+        ...state,
+        loading: false,
+      };
     default:
       return state;
   }

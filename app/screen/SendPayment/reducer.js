@@ -15,6 +15,11 @@ const sendPaymentReducer = (state = initialState, action) => {
       return { ...state, address: action.address };
     case types.CHOOSE_COINS:
       return { ...state, coinChosed: action.coinChosed };
+    case types.REHYDRATE:
+      return {
+        ...state,
+        loading: false,
+      };
     default:
       return state;
   }
