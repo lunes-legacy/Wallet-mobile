@@ -118,18 +118,14 @@ const signupError = error => ({
   error: error,
 });
 
-export const requestSignout = () => {
+export const requestSignout = user => {
   return dispatch => {
-    dispatch(signoutLoading());
-    auth
-      .signOut()
-      .then(() => {
-        dispatch(signoutSuccess());
-        navigate('Signin');
-      })
-      .catch(error => {
-        dispatch(signoutError(error));
-      });
+    try {
+      navigate('Signin');
+      LunesLib.users.logout(user.accessToken);
+    } catch (error) {
+      navigate('Signin');
+    }
   };
 };
 

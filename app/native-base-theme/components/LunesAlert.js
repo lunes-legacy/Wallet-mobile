@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: width,
     height: height,
-    zIndex: 90,
+    zIndex: 995,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -257,7 +257,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    zIndex: 91,
+    zIndex: 996,
   },
   dialog: {
     position: 'absolute',
@@ -265,13 +265,13 @@ const styles = StyleSheet.create({
     width: width - 50,
     minHeight: 200,
     backgroundColor: '#fff',
-    zIndex: 92,
+    zIndex: 997,
     alignItems: 'center',
     justifyContent: 'center',
   },
   buttonsContainer: {
     width: width,
-    zIndex: 93,
+    zIndex: 998,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 210,
@@ -310,7 +310,7 @@ const styles = StyleSheet.create({
   },
   iconClose: {
     position: 'absolute',
-    zIndex: 99,
+    zIndex: 999,
     right: 10,
   },
 });

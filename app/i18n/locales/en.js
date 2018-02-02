@@ -118,4 +118,10 @@ export default {
   MENU_INVOICES_PAYMENT: 'Invoices Payment',
   MENU_MOBILE_PHONE_TOPUP: 'Mobile Phone Top-up',
   MENU_INVITE_FRIENDS: 'Invite Friends',
+  FILL_FIELDS: 'Please, fill all fields',
+  USER_NOT_FOUND: 'User/Email not found',
+  EMAIL_SENT: 'Email Sent',
+  LOGOUT: 'Logout',
+  SUCCESS: 'Success',
+  OK: 'OK',
 };

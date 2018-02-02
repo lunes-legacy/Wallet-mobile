@@ -9,18 +9,16 @@ import { navigate } from '../../config/routes';
 class SideMenuAvatar extends Component {
   componentWillMount() {
     const { _id, accessToken } = this.props.userInfo;
-    this.props.requestObtain({ _id, accessToken });
+    //this.props.requestObtain({ _id, accessToken });
   }
 
   render() {
     const { userInfo } = this.props;
 
     const avatar =
-      this.props.userProfile &&
-      this.props.userProfile.personalInfo &&
-      this.props.userProfile.personalInfo.avatar
-        ? this.props.userProfile.personalInfo.avatar.small
-        : null;
+      this.props.userInfo && this.props.userInfo.avatar
+        ? this.props.userInfo.avatar.small
+        : '';
     const user = {
       name: userInfo.fullname || ' ',
       imageSrc: null,

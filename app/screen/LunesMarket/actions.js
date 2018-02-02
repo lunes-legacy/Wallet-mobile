@@ -73,7 +73,7 @@ async function getPrice(dispatch) {
 export const requestHistoricData = () => {
   return dispatch => {
     getHistory(dispatch).catch(error => {
-      alert('error on get historic');
+      //alert('error on get historic');
     });
   };
 };

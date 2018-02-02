@@ -6,7 +6,6 @@ import LunesLib from 'lunes-lib';
 import LunesLogo from '../../native-base-theme/components/LunesLogo';
 import LunesLoginForm from '../../native-base-theme/components/LunesLoginForm';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
-import LunesAlert from '../../native-base-theme/components/LunesAlert';
 import I18n from '../../i18n/i18n';
 import { navigate } from '../../config/routes';
 import { handleErrors } from '../../utils/stringUtils';
@@ -14,23 +13,6 @@ import { handleErrors } from '../../utils/stringUtils';
 export default class Signin extends React.Component<{}> {
   constructor(props) {
     super(props);
-  }
-  alertError(message, isShow) {
-    return (
-      <LunesAlert
-        isShow={isShow}
-        type="error"
-        onClose={() => {
-          this.props.clearError();
-        }}
-        onPressConfirmation={() => {
-          this.props.clearError();
-        }}
-        titleHeader={I18n.t('ACCESS_DENIED')}
-        message={message}
-        textConfirmation={I18n.t('TRY_AGAIN')}
-      />
-    );
   }
 
   componentDidMount() {

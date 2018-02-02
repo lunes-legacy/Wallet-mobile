@@ -24,7 +24,7 @@ export default class Profile extends React.Component {
 
   componentWillMount() {
     const { _id, accessToken } = this.props.userInfo;
-    this.props.requestObtain({ _id, accessToken });
+    //this.props.requestObtain({ _id, accessToken });
   }
 
   renderLoading() {
@@ -81,9 +81,7 @@ export default class Profile extends React.Component {
   render() {
     const { state } = this.props.navigation;
     const isLogged = state.params ? state.params.isLogged : null;
-    const personalInfo = this.props.userProfile
-      ? this.props.userProfile.personalInfo
-      : {};
+    const personalInfo = this.props.userInfo;
     const { _id, accessToken } = this.props.userInfo;
     const { wordSeedWasViewed } = this.props;
     const {
@@ -164,7 +162,7 @@ export default class Profile extends React.Component {
           </View>
           <View style={styles.container}>
             <TextInput
-              maxLength={60}
+              maxLength={9}
               underlineColorAndroid={'transparent'}
               style={styles.input}
               placeholder={phoneNumber || I18N.t('PHONE_NUMBER')}
@@ -178,7 +176,7 @@ export default class Profile extends React.Component {
           </View>
           <View style={styles.container}>
             <TextInput
-              maxLength={60}
+              maxLength={10}
               underlineColorAndroid={'transparent'}
               style={styles.input}
               placeholder={birthDate || I18N.t('BIRTH_DATE')}
@@ -195,11 +193,7 @@ export default class Profile extends React.Component {
               maxLength={60}
               underlineColorAndroid={'transparent'}
               style={styles.input}
-              placeholder={
-                homeAddress && city && homeState
-                  ? ` ${homeAddress} - ${city} - ${homeState}`
-                  : I18N.t('HOME_ADDRESS')
-              }
+              placeholder={homeAddress || I18N.t('HOME_ADDRESS')}
               placeholderTextColor="rgba(255,255,255,0.7)"
               autoCapitalize="none"
               onChangeText={text =>
@@ -207,15 +201,7 @@ export default class Profile extends React.Component {
                   homeAddress: text,
                 })
               }
-              value={
-                this.state.homeAddress &&
-                this.state.city &&
-                this.state.homeState
-                  ? `${this.state.homeAddress} - ${this.state.city} - ${
-                      this.state.homeState
-                    }`
-                  : ''
-              }
+              value={this.state.homeAddress}
               autoCorrect={false}
               returnKeyType={'next'}
             />
@@ -231,6 +217,7 @@ export default class Profile extends React.Component {
                 _id,
                 updates: this.state,
                 accessToken,
+                userInfo: this.props.userInfo,
               })
             }>
             <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)' }}>

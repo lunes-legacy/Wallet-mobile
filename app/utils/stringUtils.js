@@ -1,6 +1,8 @@
 import React from 'react';
 import I18n from '../i18n/i18n';
 import LunesAlert from '../native-base-theme/components/LunesAlert';
+import generalConstant from '../constants/general';
+const STATUS_MSG = generalConstant.STATUS_MSG;
 
 /**
  * Return true if email is valid
@@ -12,7 +14,7 @@ export const ValidateEmail = email => {
 
 export const PasswordIsStronger = password => {
   const pattern = new RegExp(
-    /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$/g
+    '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!_+=@#-$%^&*])(?=.{8,})'
   );
   return pattern.test(password);
 };
@@ -39,60 +41,70 @@ function alertError(message, isShow, callbackOnClose, callbackOnConfirmation) {
   );
 }
 
+function alertSuccess(
+  message,
+  isShow,
+  callbackOnClose,
+  callbackOnConfirmation
+) {
+  return (
+    <LunesAlert
+      isShow={isShow}
+      type="success"
+      onClose={() => {
+        callbackOnClose();
+      }}
+      onPressConfirmation={() => {
+        callbackOnConfirmation();
+      }}
+      titleHeader={I18n.t('SUCCESS')}
+      message={message}
+      textConfirmation={'OK'}
+    />
+  );
+}
+
+export const handleSuccess = (
+  success,
+  callbackOnClose,
+  callbackOnConfirmation
+) => {
+  const renderAlertSuccess = msg => {
+    return alertSuccess(msg, true, callbackOnClose, callbackOnConfirmation);
+  };
+
+  if (success && success.messageKey === STATUS_MSG.SUCCESS_AUTH_EMAIL_SENT) {
+    return renderAlertSuccess(I18n.t('EMAIL_SENT'));
+  }
+  return null;
+};
+
 export const handleErrors = (
   error,
   callbackOnClose,
   callbackOnConfirmation
 ) => {
-  if (error && error.messageKey === 'auth/email-already-in-use') {
-    return alertError(
-      I18n.t('EMAIL_ALREADY'),
-      true,
-      callbackOnClose,
-      callbackOnConfirmation
-    );
-  } else if (error && error.messageKey === 'auth/wrong-password') {
-    return alertError(
-      I18n.t('ERROR_AUTHENTICATE'),
-      true,
-      callbackOnClose,
-      callbackOnConfirmation
-    );
-  } else if (error && error.messageKey === 'auth/user-not-found') {
-    return alertError(
-      I18n.t('USER_NOT_FOUND'),
-      true,
-      callbackOnClose,
-      callbackOnConfirmation
-    );
-  } else if (error && error.messageKey === 'INVALID_PASSWORD') {
-    return alertError(
-      I18n.t('PASSWORD_INSECURE'),
-      true,
-      callbackOnClose,
-      callbackOnConfirmation
-    );
+  const renderAlertError = msg => {
+    return alertError(msg, true, callbackOnClose, callbackOnConfirmation);
+  };
+
+  if (error && error.messageKey === STATUS_MSG.AUTH_EMAIL_ALREADY) {
+    return renderAlertError(I18n.t('EMAIL_ALREADY'));
+  } else if (error && error.messageKey === STATUS_MSG.AUTH_WRONG_PASSWORD) {
+    return renderAlertError(I18n.t('ERROR_AUTHENTICATE'));
+  } else if (error && error.messageKey === STATUS_MSG.AUTH_USER_NOT_FOUND) {
+    return renderAlertError(I18n.t('USER_NOT_FOUND'));
+  } else if (error && error.messageKey === STATUS_MSG.INVALID_PASSWORD) {
+    return renderAlertError(I18n.t('PASSWORD_INSECURE'));
   } else if (error) {
-    return alertError(
-      I18n.t('SOMETHING_ERROR'),
-      true,
-      callbackOnClose,
-      callbackOnConfirmation
-    );
-  } else if (error && error.code === 'auth/unknown') {
-    return alertError(
-      I18n.t('UKNOWN'),
-      true,
-      callbackOnClose,
-      callbackOnConfirmation
-    );
-  } else if (error && error.code === 'auth/session-expired') {
-    return alertError(
-      I18n.t('SMS_EXPIRED'),
-      true,
-      callbackOnClose,
-      callbackOnConfirmation
-    );
+    if (error && error.message === STATUS_MSG.AUTH_USER_NOT_FOUND2) {
+      return renderAlertError(I18n.t('USER_NOT_FOUND'));
+    }
+    return renderAlertError(I18n.t('SOMETHING_ERROR'));
+  } else if (error && error.code === STATUS_MSG.AUTH_UNKNOWN) {
+    return renderAlertError(I18n.t('UKNOWN'));
+  } else if (error && error.code === STATUS_MSG.AUTH_SESSION_EXPIRED) {
+    return renderAlertError(I18n.t('SMS_EXPIRED'));
   }
   return null;
 };

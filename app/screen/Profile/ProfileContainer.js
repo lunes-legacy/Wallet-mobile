@@ -9,7 +9,6 @@ const mapStateToProps = state => {
   return {
     loading: state.pinReducer.loading,
     userInfo: state.auth && state.auth.userInfo,
-    userProfile: state.profileReducer && state.profileReducer.userProfile
   };
 };
 

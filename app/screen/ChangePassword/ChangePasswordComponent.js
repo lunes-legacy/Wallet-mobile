@@ -3,18 +3,15 @@ import {
   Text,
   TextInput,
   View,
-  TouchableOpacity,
   StyleSheet,
   Dimensions,
   StatusBar,
 } from 'react-native';
-import { Container, Item, Input, Toast, Root, Button } from 'native-base';
-import QRCode from 'react-native-qrcode';
+import { Container, Root, Button } from 'native-base';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import FontAwesomeIcon from 'react-native-vector-icons/dist/FontAwesome';
 import BosonColors from '../../native-base-theme/variables/bosonColor';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
-import { navigate } from '../../config/routes';
+import { handleErrors, handleSuccess } from '../../utils/stringUtils';
 import I18n from '../../i18n/i18n';
 
 export default class ChangePassword extends React.Component {
@@ -23,6 +20,16 @@ export default class ChangePassword extends React.Component {
     this.state = {
       email: '',
     };
+  }
+
+  renderError() {
+    const { error, clearError } = this.props;
+    return handleErrors(error, clearError, clearError);
+  }
+
+  renderSuccess() {
+    const { success, clearSuccess } = this.props;
+    return handleSuccess(success, clearSuccess, clearSuccess);
   }
 
   renderLoading() {
@@ -35,6 +42,8 @@ export default class ChangePassword extends React.Component {
         style={styles.keyboardContainer}
         resetScrollToCoords={{ x: 0, y: 0 }}
         scrollEnabled={false}>
+        {this.renderError()}
+        {this.renderSuccess()}
         {this.props.loading ? this.renderLoading() : null}
         <Container>
           <StatusBar
@@ -64,6 +73,7 @@ export default class ChangePassword extends React.Component {
                   paddingTop: 20,
                 }}>
                 <Button
+                  style={{ zIndex: 8 }}
                   rounded
                   block
                   success

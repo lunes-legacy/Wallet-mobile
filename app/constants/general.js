@@ -15,4 +15,21 @@ export default {
     warning: 'warning',
     error: 'error',
   },
+  STATUS_MSG: {
+    AUTH_EMAIL_ALREADY: 'auth/email-already-in-use',
+    AUTH_WRONG_PASSWORD: 'auth/wrong-password',
+    AUTH_USER_NOT_FOUND: 'auth/user-not-found',
+    AUTH_UNKNOWN: 'auth/unknown',
+    AUTH_SESSION_EXPIRED: 'auth/session-expired',
+    AUTH_USER_NOT_FOUND2:
+      'There is no user record corresponding to this identifier. The user may have been deleted.',
+    EMAIL_ALREADY: 'EMAIL_ALREADY',
+    ERROR_AUTHENTICATE: 'ERROR_AUTHENTICATE',
+    USER_NOT_FOUND: 'USER_NOT_FOUND',
+    INVALID_PASSWORD: 'INVALID_PASSWORD',
+    ERROR_AUTHENTICATE: 'ERROR_AUTHENTICATE',
+    SUCCESS_CHANGE_PASSWORD_EMAIL: 'SUCCESS_CHANGE_PASSWORD_EMAIL',
+    SUCCESS_AUTH_EMAIL_SENT: 'SUCCESS_AUTH_EMAIL_SENT',
+    SOMETHING_ERROR: 'SOMETHING_ERROR',
+  },
 };

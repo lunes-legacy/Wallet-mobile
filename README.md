@@ -105,3 +105,7 @@ https://github.com/moaazsidat/react-native-qrcode-scanner
 ### I18N
 
 https://github.com/AlexanderZaytsev/react-native-i18n
+
+### Simple Swiper
+
+https://github.com/sonaye/react-native-animated-swiper
