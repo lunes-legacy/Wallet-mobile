@@ -1,13 +1,6 @@
 import React from 'react';
-import {
-  Text,
-  TextInput,
-  View,
-  TouchableOpacity,
-  StyleSheet,
-  Clipboard,
-} from 'react-native';
-import { Container, Item, Input, Toast, Root } from 'native-base';
+import { Text, View, StyleSheet, Clipboard, Dimensions } from 'react-native';
+import { Container, Root } from 'native-base';
 import QRCode from 'react-native-qrcode';
 import BosonColors from '../../native-base-theme/variables/bosonColor';
 import LunesPaymentButton from '../../native-base-theme/components/LunesPaymentButton';
@@ -39,43 +32,44 @@ export default class ReceivePayment extends React.Component {
     const address = this.getAddressWallet();
     return (
       <Container>
-        <Root>
-          <View style={styles.container}>
-            <Text style={styles.titleReceivePayment}>
-              {I18N.t('RECEIVE_PAYMENT')}
-            </Text>
-            <View style={styles.wrapperQRCode}>
-              <QRCode
-                value={address}
-                size={200}
-                bgColor="black"
-                fgColor="white"
-              />
-            </View>
+        <View style={styles.container}>
+          <Text style={styles.titleReceivePayment}>
+            {I18N.t('RECEIVE_PAYMENT')}
+          </Text>
+          <View style={styles.wrapperQRCode}>
+            <QRCode
+              value={address}
+              size={200}
+              bgColor="black"
+              fgColor="white"
+            />
+          </View>
 
-            <Text style={styles.input} selectable={true}>
-              {address}
-            </Text>
+          <Text style={styles.input} selectable={true}>
+            {address}
+          </Text>
 
-            {/*<Text
+          {this.state.showToast === false ? (
+            <Text
               style={styles.textCopy}
               selectable={true}
               onPress={() => {
                 this.setState({ showToast: true });
                 this.setClipboardContent(address);
-                Toast.show({
-                  duration: 2000,
-                  text: I18N.t('ADDRESS_COPIED'),
-                  position: 'top',
-                  buttonText: '',
-                });
+                setTimeout(() => {
+                  this.setState({ showToast: false });
+                }, 5000);
               }}>
               {I18N.t('CLICK_HERE_TO_COPY')}
-            </Text>*/}
+            </Text>
+          ) : null}
 
-            <LunesPaymentButton />
-          </View>
-        </Root>
+          {this.state.showToast ? (
+            <Text style={styles.textToast}>{I18N.t('ADDRESS_COPIED')}</Text>
+          ) : null}
+
+          <LunesPaymentButton />
+        </View>
       </Container>
     );
   }
@@ -109,6 +103,12 @@ const styles = StyleSheet.create({
   },
   textCopy: {
     color: BosonColors.$bosonLightGreen,
-    fontSize: 12,
+    fontSize: 14,
+    padding: 10,
+  },
+  textToast: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 16,
   },
 });

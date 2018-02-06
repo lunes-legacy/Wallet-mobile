@@ -41,6 +41,7 @@ export default {
   CONTINUE: 'Continue',
   START: 'Começar',
   INVALID_EMAIL: 'Email Inválido',
+  INVALID_PASSWORD2: 'Senha inválida, digite pelo menos letras e números',
   EMAIL: 'Email',
   PHONE_NUMBER: 'Telefone',
   HOME_ADDRESS: 'Endereço',
@@ -58,7 +59,7 @@ export default {
   SCANNER_QRCODE: 'Escanear QRCode',
   DO_BACKUP: 'Fazer Backup',
   CONFIRM_BACKUP: 'Eu confirmo Backup',
-  SEED_BACKUP_MSG: `Você irá receber um conjunto de palavras que é de extrema importância você salvar em algum local seguro, para que seja possível recuperar sua carteira caso seja necessário.`,
+  SEED_BACKUP_MSG: `A melhor maneira de garantir que seus fundos estejam seguros durante uma possível divisão, é garantir que você possua suas chaves privadas, backups e certificar-se de que suas frases de recuperação estão bem seguras. Se você tem a posse de suas chaves, você não precisa fazer nada além de ter paciência e "assistir" tudo acontecer`,
   REMEMBER: 'Lembre-se',
   YOUR_WORDS: 'Suas Palavras',
   PROFILE: 'Perfil',
@@ -124,4 +125,7 @@ export default {
   LOGOUT: 'Sair',
   SUCCESS: 'Sucesso',
   OK: 'OK',
+  INVALID_FULLNAME: 'Nome inválido',
+  GOOD_PASSWORD_EXAMPLE:
+    'Uma senha segura deve conter letras maiúsculas e minúsculas, números e caracteres especiais',
 };

@@ -42,6 +42,7 @@ export default {
   CONTINUE: 'Continue',
   START: 'Start',
   INVALID_EMAIL: 'Invalid Email',
+  INVALID_PASSWORD2: 'Invalid password, type at least numbers and characters',
   EMAIL: 'Email',
   NAME: 'Name',
   PASSWORD: 'Password',
@@ -58,7 +59,7 @@ export default {
   SCANNER_QRCODE: 'Scanner QRCode',
   DO_BACKUP: 'Do Backup',
   CONFIRM_BACKUP: 'I confirm Backup',
-  SEED_BACKUP_MSG: `You will receive a set of words that is very important you save in somewhere safety for that be possible recover you wallet when required`,
+  SEED_BACKUP_MSG: `The best way to ensure your funds are secure during a possible split is to make sure you have your private keys and backups. Make sure your recovery phrases are safe. If you have possession of your keys, you do not have to do anything but sit back and relax "watching" everything happen`,
   REMEMBER: 'Remember',
   YOUR_WORDS: 'Your Words',
   PROFILE: 'Profile',
@@ -124,4 +125,7 @@ export default {
   LOGOUT: 'Logout',
   SUCCESS: 'Success',
   OK: 'OK',
+  INVALID_FULLNAME: 'Invalid name',
+  GOOD_PASSWORD_EXAMPLE:
+    'A secure password should be contain an uppercase and lowercase letter, numbers and special characters',
 };

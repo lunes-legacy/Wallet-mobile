@@ -101,6 +101,23 @@ export default class LunesLoginForm extends React.Component {
     );
   }
 
+  /**
+   * Show a example message how to write a good password
+   */
+  renderHelpPasswordExample() {
+    if (this.props.modeAuth === 'SIGNUP' && this.state.password) {
+      return (
+        <View>
+          <Text style={{ fontSize: 10, paddingTop: 5 }}>
+            <Ionicons size={10} name={'md-help-circle'} color={'#fff'} /> {'  '}
+            {I18N.t('GOOD_PASSWORD_EXAMPLE')}
+          </Text>
+        </View>
+      );
+    }
+    return null;
+  }
+
   renderPasswordValidate() {
     if (
       this.state.password &&
@@ -243,6 +260,7 @@ export default class LunesLoginForm extends React.Component {
         </View>
 
         {this.renderPasswordValidate()}
+        {this.renderHelpPasswordExample()}
 
         {this.checkButtonIsDisabled()}
       </KeyboardAvoidingView>

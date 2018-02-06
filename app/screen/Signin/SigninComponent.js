@@ -38,7 +38,7 @@ export default class Signin extends React.Component<{}> {
         {this.props.loading ? this.renderLoading() : null}
 
         <View style={{ marginTop: 20 }}>
-          <LunesLogo size={40} />
+          <LunesLogo size={50} />
         </View>
 
         {this.renderError()}

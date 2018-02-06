@@ -96,15 +96,21 @@ export const handleErrors = (
     return renderAlertError(I18n.t('USER_NOT_FOUND'));
   } else if (error && error.messageKey === STATUS_MSG.INVALID_PASSWORD) {
     return renderAlertError(I18n.t('PASSWORD_INSECURE'));
+  } else if (error && error.messageKey === STATUS_MSG.AUTH_UNKNOWN) {
+    return renderAlertError(I18n.t('UKNOWN'));
+  } else if (error && error.messageKey === STATUS_MSG.AUTH_SESSION_EXPIRED) {
+    return renderAlertError(I18n.t('SMS_EXPIRED'));
+  } else if (error && error.messageKey === STATUS_MSG.INVALID_FULLNAME) {
+    return renderAlertError(I18n.t('INVALID_FULLNAME'));
+  } else if (error && error.message === STATUS_MSG.INVALID_PASSWORD2) {
+    return renderAlertError(I18n.t('INVALID_PASSWORD2'));
   } else if (error) {
+    //esse caso é especifico, pois o erro vem do firebase e a maneira de
+    //pegar o nome do erro é pelo error.message
     if (error && error.message === STATUS_MSG.AUTH_USER_NOT_FOUND2) {
       return renderAlertError(I18n.t('USER_NOT_FOUND'));
     }
     return renderAlertError(I18n.t('SOMETHING_ERROR'));
-  } else if (error && error.code === STATUS_MSG.AUTH_UNKNOWN) {
-    return renderAlertError(I18n.t('UKNOWN'));
-  } else if (error && error.code === STATUS_MSG.AUTH_SESSION_EXPIRED) {
-    return renderAlertError(I18n.t('SMS_EXPIRED'));
   }
   return null;
 };

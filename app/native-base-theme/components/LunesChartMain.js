@@ -52,6 +52,8 @@ export default class LunesChartMain extends React.Component<{}> {
       test = '10%';
     } else if (this.props.range === rangeConstant.PERIOD.RANGE_1M) {
       test = '30%';
+    } else if (this.props.range === rangeConstant.PERIOD.RANGE_MAX) {
+      test = '30%';
     }
 
     const TooltipTop = ({ x, y }) => (
@@ -169,15 +171,17 @@ export default class LunesChartMain extends React.Component<{}> {
             renderExtra={({ item, ...args }) => item(args)}
             svg={{
               stroke: bosonColor.$bosonDarkYellow,
-              strokeWidth: 7,
+              strokeWidth: 4,
             }}
             renderDecorator={({ x, y, index, value }) => (
               <Circle
-                onPress={() => alert('clicked')}
+                onPress={value => {
+                  console.log(value.target);
+                }}
                 key={index}
                 cx={x(index)}
                 cy={y(value)}
-                r={6}
+                r={3}
                 stroke={'rgb(255, 255, 255)'}
                 fill={'white'}
               />

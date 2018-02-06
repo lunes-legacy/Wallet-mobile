@@ -154,12 +154,12 @@ class LunesMarket extends Component {
             dotsBottom={0}
             dotsColor="rgba(255, 255, 255, 0.25)"
             dotsColorActive="rgba(255, 255, 255, 0.75)">
-            <LunesQuotation ticker={this.props.ticker} />
             <LunesChartMain
               historic={this.props.historic}
               range={this.props.range}
               changeRange={this.props.changeRange}
             />
+            <LunesQuotation ticker={this.props.ticker} />
           </LunesSwiper>
         </View>
         <View

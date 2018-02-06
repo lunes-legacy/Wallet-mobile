@@ -62,7 +62,7 @@ export default class LunesChartPeriod extends React.Component {
           )}
           <View style={styles.columnBorder} />
           {this.renderTouchablePeriod(
-            periodConstant.PERIOD.allPeriod,
+            periodConstant.PERIOD.RANGE_MAX,
             'ALL_TIME'
           )}
         </View>

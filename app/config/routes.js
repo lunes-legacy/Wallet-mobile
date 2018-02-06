@@ -27,7 +27,7 @@ import I18N from '../i18n/i18n';
 
 const customHeader = navigation => {
   return (
-    <View style={{ padding: 10 }}>
+    <View style={{ padding: 20 }}>
       <Ionicons
         color={'#fff'}
         size={20}
@@ -42,7 +42,7 @@ const customHeader = navigation => {
 
 const customHomeHeader = navigation => {
   return (
-    <View style={{ padding: 10 }}>
+    <View style={{ padding: 20 }}>
       <Entypo
         color={'#fff'}
         size={20}
