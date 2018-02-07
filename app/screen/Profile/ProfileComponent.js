@@ -6,8 +6,9 @@ import {
   View,
   Image,
   StyleSheet,
+  Dimensions,
 } from 'react-native';
-import { Container, Button, Card, CardItem } from 'native-base';
+import { Container, Button } from 'native-base';
 import PhotoUpload from 'react-native-photo-upload';
 import { GetDefaultURIAvatar } from '../../utils/stringUtils';
 import LunesPIN from '../../native-base-theme/components/LunesPIN';
@@ -15,16 +16,14 @@ import LunesLoading from '../../native-base-theme/components/LunesLoading';
 import LunesAlert from '../../native-base-theme/components/LunesAlert';
 import I18N from '../../i18n/i18n';
 import { navigate } from '../../config/routes';
+import bosonColor from '../../native-base-theme/variables/bosonColor';
+import Svg, { RadialGradient, Rect, Defs, Stop } from 'react-native-svg';
+import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
 
 export default class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-  }
-
-  componentWillMount() {
-    const { _id, accessToken } = this.props.userInfo;
-    //this.props.requestObtain({ _id, accessToken });
   }
 
   renderLoading() {
@@ -79,26 +78,32 @@ export default class Profile extends React.Component {
   }
 
   render() {
-    const { state } = this.props.navigation;
-    const isLogged = state.params ? state.params.isLogged : null;
-    const personalInfo = this.props.userInfo;
-    const { _id, accessToken } = this.props.userInfo;
-    const { wordSeedWasViewed } = this.props;
-    const {
-      email,
-      fullname,
-      phoneNumber,
-      homeAddress,
-      birthDate,
-      city,
-      avatar,
-    } = personalInfo;
-    const homeState = personalInfo.state;
+    let _id = '';
+    let accessToken = '';
+    let email = '';
+    let fullname = '';
+    let phoneNumber = '';
+    let homeAddress = '';
+    let birthDate = '';
+    let city = '';
+    let avatar = {};
+    if (this.props.userInfo) {
+      _id = this.props.userInfo._id;
+      accessToken = this.props.userInfo.accessToken;
+      email = this.props.userInfo.email;
+      fullname = this.props.userInfo.fullname;
+      phoneNumber = this.props.userInfo.phoneNumber;
+      homeAddress = this.props.userInfo.homeAddress;
+      birthDate = this.props.userInfo.birthDate;
+      city = this.props.userInfo.city;
+      avatar = this.props.userInfo.avatar;
+    }
 
     return (
       <Container>
         {this.props.loading ? this.renderLoading() : null}
-        <ScrollView>
+        <ScrollView style={{ width: Dimensions.get('window').width }}>
+          {/* AVATAR, NAME and LOCATION */}
           <View style={styles.fullnameContainer}>
             <PhotoUpload onPhotoSelect={small => this.setState({ small })}>
               <Image
@@ -117,6 +122,7 @@ export default class Profile extends React.Component {
                 }}
               />
             </PhotoUpload>
+            <View style={styles.lineBreaker} />
             <TextInput
               maxLength={60}
               underlineColorAndroid={'transparent'}
@@ -141,11 +147,50 @@ export default class Profile extends React.Component {
               autoCorrect={false}
               returnKeyType={'next'}
             />
+            <View style={styles.lineBreaker} />
+            <View style={styles.containerQuotation}>
+              <Text style={styles.textQuotation}>$ 1.20 | BRL 0.20</Text>
+              <Svg width={Dimensions.get('window').width} height="60">
+                <Defs>
+                  <RadialGradient
+                    id="grad"
+                    cx="50%"
+                    cy="0%"
+                    rx="80%"
+                    ry="90%"
+                    fx="50%"
+                    fy="50%"
+                    gradientUnits="userSpaceOnUse">
+                    <Stop
+                      offset="0%"
+                      stopColor={bosonColor.$bosonLightGreen}
+                      stopOpacity="1"
+                    />
+                    <Stop offset="100%" stopColor="#654fa4" stopOpacity="1" />
+                  </RadialGradient>
+                </Defs>
+                <Rect
+                  x="0"
+                  y="0"
+                  width={Dimensions.get('window').width}
+                  height="80"
+                  fill="url(#grad)"
+                />
+              </Svg>
+            </View>
           </View>
-          <View style={styles.fullnameContainer}>
+
+          {/* PERSONAL INFO */}
+          <View style={styles.container}>
             <Text style={styles.labelText}>{I18N.t('PERSONAL_INFO')}</Text>
           </View>
           <View style={styles.container}>
+            <FontAwesome
+              name={'envelope-o'}
+              size={30}
+              color={'#fff'}
+              style={styles.iconForm}
+            />
             <TextInput
               maxLength={60}
               underlineColorAndroid={'transparent'}
@@ -161,6 +206,12 @@ export default class Profile extends React.Component {
             />
           </View>
           <View style={styles.container}>
+            <FontAwesome
+              name={'phone'}
+              size={30}
+              color={'#fff'}
+              style={styles.iconForm}
+            />
             <TextInput
               maxLength={9}
               underlineColorAndroid={'transparent'}
@@ -175,6 +226,12 @@ export default class Profile extends React.Component {
             />
           </View>
           <View style={styles.container}>
+            <FontAwesome
+              name={'calendar'}
+              size={30}
+              color={'#fff'}
+              style={styles.iconForm}
+            />
             <TextInput
               maxLength={10}
               underlineColorAndroid={'transparent'}
@@ -189,6 +246,12 @@ export default class Profile extends React.Component {
             />
           </View>
           <View style={styles.container}>
+            <FontAwesome
+              name={'map-marker'}
+              size={30}
+              color={'#fff'}
+              style={styles.iconForm}
+            />
             <TextInput
               maxLength={60}
               underlineColorAndroid={'transparent'}
@@ -206,24 +269,61 @@ export default class Profile extends React.Component {
               returnKeyType={'next'}
             />
           </View>
-          <Button
-            style={{ marginTop: 50 }}
-            disabled={Object.keys(this.state).length === 0}
-            rounded
-            success
-            block
-            onPress={() =>
-              this.props.requestUpdate({
-                _id,
-                updates: this.state,
-                accessToken,
-                userInfo: this.props.userInfo,
-              })
-            }>
-            <Text style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)' }}>
-              {I18N.t('CONFIRM')}
-            </Text>
-          </Button>
+
+          <View style={styles.lineBreaker} />
+          <View style={styles.lineBreakerPurple} />
+
+          <View style={styles.footer}>
+            <FontAwesome
+              name={'envelope-o'}
+              size={30}
+              color={'#fff'}
+              style={styles.iconForm}
+            />
+            <Text>Support</Text>
+          </View>
+
+          <View style={styles.footer}>
+            <FontAwesome
+              name={'envelope-o'}
+              size={30}
+              color={'#fff'}
+              style={styles.iconForm}
+            />
+            <Text>About</Text>
+          </View>
+
+          <View style={styles.footer}>
+            <FontAwesome
+              name={'envelope-o'}
+              size={30}
+              color={'#fff'}
+              style={styles.iconForm}
+            />
+            <Text>Version App</Text>
+          </View>
+
+          {/* BUTTON save */}
+          <View style={{ padding: 10 }}>
+            <Button
+              style={{ marginTop: 50 }}
+              disabled={Object.keys(this.state).length === 0}
+              rounded
+              success
+              block
+              onPress={() =>
+                this.props.requestUpdate({
+                  _id,
+                  updates: this.state,
+                  accessToken,
+                  userInfo: this.props.userInfo,
+                })
+              }>
+              <Text style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)' }}>
+                {I18N.t('SAVE').toUpperCase()}
+              </Text>
+            </Button>
+          </View>
         </ScrollView>
       </Container>
     );
@@ -235,26 +335,55 @@ const styles = StyleSheet.create({
     fontWeight: '900',
   },
   container: {
-    borderBottomColor: '#9f90c5',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: 10,
+    paddingTop: 5,
+  },
+  footer: {
+    flexDirection: 'row',
+    alignItems: 'center',
     borderBottomWidth: 1,
+    borderBottomColor: bosonColor.$bosonLightGrey,
+  },
+  iconForm: {
+    width: 40,
+    marginRight: 10,
+    paddingTop: 10,
+    paddingLeft: 10,
+    textAlign: 'center',
   },
   labelText: {
     color: '#4CD566',
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'left',
-    paddingLeft: -150,
   },
   input: {
-    width: 250,
+    width: Dimensions.get('window').width - 80,
     color: '#fff',
     textAlign: 'left',
+    borderBottomWidth: 1,
+    borderBottomColor: bosonColor.$bosonMediumGrey,
   },
   fullname: {
     color: '#fff',
-    width: 260,
     fontSize: 16,
     textAlign: 'center',
+    margin: 5,
+    padding: 0,
+  },
+  containerQuotation: {
+    position: 'relative',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textQuotation: {
+    textAlign: 'center',
+    color: bosonColor.$bosonWhite,
+    position: 'absolute',
+    zIndex: 99,
+    top: 10,
   },
   fullnameContainer: {
     marginTop: 30,
@@ -266,5 +395,14 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginTop: 10,
     marginBottom: 20,
+  },
+  lineBreaker: {
+    height: 1,
+    marginTop: 5,
+  },
+  lineBreakerPurple: {
+    height: 1,
+    marginTop: 10,
+    backgroundColor: bosonColor.$bosonDarkPurple,
   },
 });

@@ -94,7 +94,7 @@ async function _confirmPin(
       dispatch
     ).catch(error => {
       dispatch(requestFinished());
-      dispatch(errorSuccess(error));
+      dispatch(showError(error));
     });
   } catch (error) {
     dispatch(requestFinished());

@@ -128,4 +128,7 @@ export default {
   INVALID_FULLNAME: 'Invalid name',
   GOOD_PASSWORD_EXAMPLE:
     'A secure password should be contain an uppercase and lowercase letter, numbers and special characters',
+  TRANSACTION_NO_SOLUTION:
+    'Could not execute transaction. Error: TRANSACTION_NO_SOLUTION',
+  SAVE: 'SAVE',
 };
