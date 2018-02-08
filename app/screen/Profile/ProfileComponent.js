@@ -7,23 +7,40 @@ import {
   Image,
   StyleSheet,
   Dimensions,
+  TouchableOpacity,
+  Modal,
 } from 'react-native';
 import { Container, Button } from 'native-base';
 import PhotoUpload from 'react-native-photo-upload';
+import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
 import { GetDefaultURIAvatar } from '../../utils/stringUtils';
 import LunesPIN from '../../native-base-theme/components/LunesPIN';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
+import LunesAbout from '../../native-base-theme/components/LunesAbout';
+import LunesSupport from '../../native-base-theme/components/LunesSupport';
 import LunesAlert from '../../native-base-theme/components/LunesAlert';
 import I18N from '../../i18n/i18n';
 import { navigate } from '../../config/routes';
 import bosonColor from '../../native-base-theme/variables/bosonColor';
 import Svg, { RadialGradient, Rect, Defs, Stop } from 'react-native-svg';
-import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
+import {
+  LunesIconVersion,
+  LunesIconAbout,
+  LunesIconSupport,
+  LunesIconLocal,
+  LunesIconMail,
+  LunesIconCalendar,
+  LunesIconPhone,
+} from '../../native-base-theme/components/LunesCustomIcon';
+import generalConstant from '../../constants/general';
 
 export default class Profile extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      modalVisible: false,
+      textModal: '',
+    };
   }
 
   renderLoading() {
@@ -77,6 +94,14 @@ export default class Profile extends React.Component {
     return null;
   }
 
+  openModal(textModal) {
+    this.setState({ modalVisible: true, textModal });
+  }
+
+  closeModal() {
+    this.setState({ modalVisible: false, textModal: '' });
+  }
+
   render() {
     let _id = '';
     let accessToken = '';
@@ -102,6 +127,34 @@ export default class Profile extends React.Component {
     return (
       <Container>
         {this.props.loading ? this.renderLoading() : null}
+        <Modal
+          transparent={true}
+          visible={this.state.modalVisible}
+          animationType={'fade'}
+          onRequestClose={this.closeModal.bind(this)}>
+          <View style={styles.modalContainer}>
+            <View style={styles.innerContainer}>
+              {this.state.textModal === 'ABOUT' ? <LunesAbout /> : null}
+              {this.state.textModal === 'SUPPORT' ? <LunesSupport /> : null}
+              <View>
+                <Button
+                  style={{ marginTop: 20 }}
+                  bordered
+                  rounded
+                  onPress={() => this.closeModal()}>
+                  <Text
+                    style={{
+                      paddingHorizontal: 50,
+                      color: bosonColor.$bosonWhite,
+                    }}>
+                    {I18N.t('CLOSE')}
+                  </Text>
+                </Button>
+              </View>
+            </View>
+          </View>
+        </Modal>
+
         <ScrollView style={{ width: Dimensions.get('window').width }}>
           {/* AVATAR, NAME and LOCATION */}
           <View style={styles.fullnameContainer}>
@@ -149,7 +202,9 @@ export default class Profile extends React.Component {
             />
             <View style={styles.lineBreaker} />
             <View style={styles.containerQuotation}>
-              <Text style={styles.textQuotation}>$ 1.20 | BRL 0.20</Text>
+              <Text style={styles.textQuotation}>
+                {this.props.ticker.BTC.DISPLAYPRICE}
+              </Text>
               <Svg width={Dimensions.get('window').width} height="60">
                 <Defs>
                   <RadialGradient
@@ -185,12 +240,7 @@ export default class Profile extends React.Component {
             <Text style={styles.labelText}>{I18N.t('PERSONAL_INFO')}</Text>
           </View>
           <View style={styles.container}>
-            <FontAwesome
-              name={'envelope-o'}
-              size={30}
-              color={'#fff'}
-              style={styles.iconForm}
-            />
+            <LunesIconMail size={30} color={'#fff'} style={styles.iconForm} />
             <TextInput
               maxLength={60}
               underlineColorAndroid={'transparent'}
@@ -206,14 +256,9 @@ export default class Profile extends React.Component {
             />
           </View>
           <View style={styles.container}>
-            <FontAwesome
-              name={'phone'}
-              size={30}
-              color={'#fff'}
-              style={styles.iconForm}
-            />
+            <LunesIconPhone size={30} color={'#fff'} style={styles.iconForm} />
             <TextInput
-              maxLength={9}
+              maxLength={15}
               underlineColorAndroid={'transparent'}
               style={styles.input}
               placeholder={phoneNumber || I18N.t('PHONE_NUMBER')}
@@ -226,8 +271,7 @@ export default class Profile extends React.Component {
             />
           </View>
           <View style={styles.container}>
-            <FontAwesome
-              name={'calendar'}
+            <LunesIconCalendar
               size={30}
               color={'#fff'}
               style={styles.iconForm}
@@ -246,12 +290,7 @@ export default class Profile extends React.Component {
             />
           </View>
           <View style={styles.container}>
-            <FontAwesome
-              name={'map-marker'}
-              size={30}
-              color={'#fff'}
-              style={styles.iconForm}
-            />
+            <LunesIconLocal size={30} color={'#fff'} style={styles.iconForm} />
             <TextInput
               maxLength={60}
               underlineColorAndroid={'transparent'}
@@ -270,37 +309,51 @@ export default class Profile extends React.Component {
             />
           </View>
 
-          <View style={styles.lineBreaker} />
+          <View style={styles.divider} />
           <View style={styles.lineBreakerPurple} />
+          <View style={styles.divider} />
+
+          <TouchableOpacity onPress={() => this.openModal('SUPPORT')}>
+            <View style={styles.footer}>
+              <Text>{'  '}</Text>
+              <LunesIconSupport
+                color={bosonColor.$bosonLightGreen}
+                size={25}
+                style={styles.iconForm}
+              />
+              <Text
+                style={{ paddingLeft: 25, color: bosonColor.$bosonLightGreen }}>
+                {I18N.t('SUPPORT')}
+              </Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => this.openModal('ABOUT')}>
+            <View style={styles.footer}>
+              <Text>{'  '}</Text>
+              <LunesIconAbout
+                color={bosonColor.$bosonLightGreen}
+                size={30}
+                style={styles.iconForm}
+              />
+              <Text
+                style={{ paddingLeft: 30, color: bosonColor.$bosonLightGreen }}>
+                {I18N.t('ABOUT')}
+              </Text>
+            </View>
+          </TouchableOpacity>
 
           <View style={styles.footer}>
-            <FontAwesome
-              name={'envelope-o'}
+            <Text>{'   '}</Text>
+            <LunesIconVersion
+              color={bosonColor.$bosonLightGreen}
               size={30}
-              color={'#fff'}
               style={styles.iconForm}
             />
-            <Text>Support</Text>
-          </View>
-
-          <View style={styles.footer}>
-            <FontAwesome
-              name={'envelope-o'}
-              size={30}
-              color={'#fff'}
-              style={styles.iconForm}
-            />
-            <Text>About</Text>
-          </View>
-
-          <View style={styles.footer}>
-            <FontAwesome
-              name={'envelope-o'}
-              size={30}
-              color={'#fff'}
-              style={styles.iconForm}
-            />
-            <Text>Version App</Text>
+            <Text
+              style={{ paddingLeft: 30, color: bosonColor.$bosonLightGreen }}>
+              {I18N.t('VERSION_APP')} - {generalConstant.VERSION_NAME}
+            </Text>
           </View>
 
           {/* BUTTON save */}
@@ -331,6 +384,20 @@ export default class Profile extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(43, 19, 74, 0.86)',
+  },
+  innerContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textModal: {
+    color: '#fff',
+    padding: 20,
+  },
   textBold: {
     fontWeight: '900',
   },
@@ -343,15 +410,12 @@ const styles = StyleSheet.create({
   footer: {
     flexDirection: 'row',
     alignItems: 'center',
+    padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: bosonColor.$bosonLightGrey,
   },
-  iconForm: {
-    width: 40,
-    marginRight: 10,
-    paddingTop: 10,
-    paddingLeft: 10,
-    textAlign: 'center',
+  textFooter: {
+    color: bosonColor.$bosonWhite,
   },
   labelText: {
     color: '#4CD566',
@@ -404,5 +468,9 @@ const styles = StyleSheet.create({
     height: 1,
     marginTop: 10,
     backgroundColor: bosonColor.$bosonDarkPurple,
+  },
+  divider: {
+    height: 20,
+    marginBottom: 20,
   },
 });

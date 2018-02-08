@@ -63,3 +63,77 @@ export const LunesIconKey = ({ size, color }) => {
     />
   );
 };
+
+export const LunesIconVersion = ({ size, color }) => {
+  return (
+    <Icon
+      name="lunes-version"
+      size={size || 12}
+      color={color || BosonColors.$bosonMediumYellow}
+    />
+  );
+};
+
+export const LunesIconAbout = ({ size, color }) => {
+  return (
+    <Icon
+      name="lunes-about"
+      size={size || 12}
+      color={color || BosonColors.$bosonMediumYellow}
+    />
+  );
+};
+
+export const LunesIconSupport = ({ size, color }) => {
+  return (
+    <Icon
+      name="lunes-suport"
+      size={size || 12}
+      color={color || BosonColors.$bosonMediumYellow}
+    />
+  );
+};
+
+export const LunesIconLocal = ({ size, color }) => {
+  return (
+    <Icon
+      style={{ paddingLeft: 10, paddingRight: 15 }}
+      name="lunes-local"
+      size={size || 12}
+      color={color || BosonColors.$bosonMediumYellow}
+    />
+  );
+};
+
+export const LunesIconMail = ({ size, color }) => {
+  return (
+    <Icon
+      style={{ paddingLeft: 10, paddingRight: 10 }}
+      name="lunes-mail"
+      size={size || 12}
+      color={color || BosonColors.$bosonMediumYellow}
+    />
+  );
+};
+
+export const LunesIconCalendar = ({ size, color }) => {
+  return (
+    <Icon
+      style={{ paddingLeft: 10, paddingRight: 10 }}
+      name="lunes-calendar"
+      size={size || 12}
+      color={color || BosonColors.$bosonMediumYellow}
+    />
+  );
+};
+
+export const LunesIconPhone = ({ size, color }) => {
+  return (
+    <Icon
+      style={{ paddingLeft: 10, paddingRight: 10 }}
+      name="lunes-phone"
+      size={size || 12}
+      color={color || BosonColors.$bosonMediumYellow}
+    />
+  );
+};

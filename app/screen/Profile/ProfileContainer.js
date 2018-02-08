@@ -9,6 +9,7 @@ const mapStateToProps = state => {
   return {
     loading: state.pinReducer.loading,
     userInfo: state.auth && state.auth.userInfo,
+    ticker: state.historicDataReducer.ticker,
   };
 };
 

@@ -49,7 +49,24 @@ export const requestUpdate = values => {
   return dispatch => {
     try {
       dispatch(requestLoading());
-      values.userInfo.avatar.small = values.updates.small;
+      if (!values.userInfo.avatar && values.updates.small) {
+        values.userInfo.avatar = {
+          small: values.updates.small,
+        };
+      } else if (
+        values.userInfo.avatar &&
+        values.userInfo.avatar.small === '' &&
+        values.updates.small
+      ) {
+        values.userInfo.avatar.small = values.updates.small;
+      } else if (
+        values.userInfo.avatar &&
+        values.updates &&
+        values.updates.small &&
+        values.userInfo.avatar.small !== values.updates.small
+      ) {
+        values.userInfo.avatar.small = values.updates.small;
+      }
       dispatch(storeUserProfile(values.userInfo));
       updateProfile(
         {

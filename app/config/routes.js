@@ -57,20 +57,6 @@ const customHomeHeader = navigation => {
 
 const RootNavigator = StackNavigator(
   {
-    Profile: {
-      screen: Profile,
-      navigationOptions: ({ navigation, screenProps }) => {
-        return {
-          title: I18N.t('PROFILE'),
-          headerTintColor: '#fff',
-          headerStyle: {
-            backgroundColor: BosonColors.$bosonPrimary,
-            elevation: 0,
-          },
-          headerLeft: customHeader(navigation),
-        };
-      },
-    },
     Introduction: {
       screen: Introduction,
       navigationOptions: {
