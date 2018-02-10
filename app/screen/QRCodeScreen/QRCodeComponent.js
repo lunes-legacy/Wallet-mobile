@@ -8,11 +8,14 @@ import {
   Dimensions,
   Linking,
   StatusBar,
+  Vibration,
 } from 'react-native';
 import { Container, Item, Input, Toast, Root } from 'native-base';
 import BosonColors from '../../native-base-theme/variables/bosonColor';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { navigate } from '../../config/routes';
+import Camera from 'react-native-camera';
+import bosonColor from '../../native-base-theme/variables/bosonColor';
 
 export default class QRCode extends React.Component {
   constructor(props) {
@@ -26,6 +29,8 @@ export default class QRCode extends React.Component {
   onSuccess(e) {
     try {
       console.log(e.data);
+      this.setState({ qrcode: e.data });
+      Vibration.vibrate();
       const { state } = this.props.navigation;
       const amountToSend = state.params ? state.params.amountToSend : 0;
       navigate('ConfirmSend', { addressToSend: e.data, amountToSend });
@@ -37,29 +42,43 @@ export default class QRCode extends React.Component {
   showQRCodeScan() {
     this.setState({
       showQRCode: true,
+      qrcode: '',
     });
   }
 
   render() {
     return (
-      <Container>
+      <View style={styles.container2}>
         <StatusBar
           backgroundColor={BosonColors.$bosonLightGreen}
           barStyle="light-content"
         />
-        <Root>
-          <View style={styles.container}>
-            <QRCodeScanner
-              reactivate={true}
-              checkAndroid6Permissions={true}
-              showMarker={true}
-              onRead={e => {
-                this.onSuccess(e);
-              }}
-            />
-          </View>
-        </Root>
-      </Container>
+        <View style={styles.container2}>
+          <Camera
+            style={styles.preview}
+            onBarCodeRead={e => {
+              this.onSuccess(e);
+            }}
+            ref={cam => (this.camera = cam)}
+            aspect={Camera.constants.Aspect.stretch}>
+            <View style={styles.border} />
+            <Text
+              style={{
+                backgroundColor: 'white',
+              }}>
+              {this.state.qrcode}
+            </Text>
+          </Camera>
+          {/*<QRCodeScanner
+          reactivate={true}
+          checkAndroid6Permissions={true}
+          showMarker={true}
+          onRead={e => {
+            this.onSuccess(e);
+          }}
+        />*/}
+        </View>
+      </View>
     );
   }
 }
@@ -69,5 +88,26 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  container2: {
+    flex: 1,
+    margin: 0,
+    padding: 0,
+  },
+  preview: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+  },
+  border: {
+    position: 'absolute',
+    top: 20,
+    width: Dimensions.get('window').width - 20,
+    height: Dimensions.get('window').height / 2,
+    backgroundColor: 'transparent',
+    borderColor: bosonColor.$bosonLightGreen,
+    borderWidth: 3,
   },
 });

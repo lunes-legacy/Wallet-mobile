@@ -17,6 +17,7 @@ import LunesPIN from '../../native-base-theme/components/LunesPIN';
 import { handleErrors } from '../../utils/stringUtils';
 import I18N from '../../i18n/i18n';
 import bosonColor from '../../native-base-theme/variables/bosonColor';
+import LunesGradientButton from '../../native-base-theme/components/LunesGradientButton';
 
 export default class ConfirmSend extends React.Component {
   constructor(props) {
@@ -25,7 +26,7 @@ export default class ConfirmSend extends React.Component {
     this.state = {
       amountToSend: 0,
       addressToSend: '',
-      fee: 0.0000034,
+      fee: 0.00000034,
       showPIN: false,
       feeSelected: '',
       fees: [
@@ -51,25 +52,7 @@ export default class ConfirmSend extends React.Component {
   }
 
   toBitcoin(satoshi) {
-    //validate arg
-    var satoshiType = typeof satoshi;
-    if (satoshiType === 'string') {
-      satoshi = toNumber(satoshi);
-      satoshiType = 'number';
-    }
-    if (satoshiType !== 'number') {
-      throw new TypeError(
-        'toBitcoin must be called on a number or string, got ' + satoshiType
-      );
-    }
-    if (!Number.isInteger(satoshi)) {
-      throw new TypeError(
-        'toBitcoin must be called on a whole number or string format whole number'
-      );
-    }
-
-    var bigSatoshi = new Big(satoshi);
-    return Number(bigSatoshi.div(this.conversion));
+    return (satoshi / this.conversion).toFixed(8);
   }
   //end TODO
 
@@ -150,14 +133,20 @@ export default class ConfirmSend extends React.Component {
           <View>{this.renderFees()}</View>
 
           <View>
-            <Button
-              rounded
-              block
-              success
-              style={styles.touchable}
-              onPress={() => this.showPIN()}>
-              <Text style={{ fontSize: 12 }}>{I18N.t('CONFIRM')}</Text>
-            </Button>
+            {this.state.amountToSend > 0 ? (
+              <Button
+                rounded
+                block
+                success
+                style={styles.touchable}
+                onPress={() => this.showPIN()}>
+                <Text style={{ fontSize: 12 }}>{I18N.t('CONFIRM')}</Text>
+              </Button>
+            ) : (
+              <View style={styles.touchable}>
+                <LunesGradientButton text={I18N.t('CONFIRM')} />
+              </View>
+            )}
           </View>
         </View>
       );

@@ -1,6 +1,12 @@
 // @flow
 import React from 'react';
-import { View, Dimensions, ScrollView } from 'react-native';
+import {
+  View,
+  Dimensions,
+  ScrollView,
+  BackHandler,
+  Platform,
+} from 'react-native';
 import { Container, Button, Text, Tab, Tabs } from 'native-base';
 import LunesLogo from '../../native-base-theme/components/LunesLogo';
 import LunesLoginForm from '../../native-base-theme/components/LunesLoginForm';
@@ -9,12 +15,24 @@ import I18n from '../../i18n/i18n';
 import { navigate } from '../../config/routes';
 import { handleErrors } from '../../utils/stringUtils';
 
+// Keep a reference to ensure there is only one event listener
+// subscribed with BackHandler
+let listener = null;
+
+// Default behavior: returning true to not exits the app.
+let backButtonPressFunction = () => true;
+
 export default class Signin extends React.Component<{}> {
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
+    if (Platform.OS == 'android' && listener == null) {
+      listener = BackHandler.addEventListener('hardwareBackPress', function() {
+        return backButtonPressFunction();
+      });
+    }
     const { error } = this.props;
   }
 
