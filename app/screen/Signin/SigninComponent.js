@@ -1,8 +1,7 @@
 // @flow
 import React from 'react';
-import { View, Image } from 'react-native';
+import { View, Dimensions, ScrollView } from 'react-native';
 import { Container, Button, Text, Tab, Tabs } from 'native-base';
-import LunesLib from 'lunes-lib';
 import LunesLogo from '../../native-base-theme/components/LunesLogo';
 import LunesLoginForm from '../../native-base-theme/components/LunesLoginForm';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
@@ -36,37 +35,40 @@ export default class Signin extends React.Component<{}> {
     return (
       <Container>
         {this.props.loading ? this.renderLoading() : null}
-
-        <View style={{ marginTop: 20 }}>
-          <LunesLogo size={50} />
-        </View>
-
         {this.renderError()}
 
-        <Tabs initialPage={0}>
-          <Tab heading={I18n.t('SIGNIN')}>
-            <LunesLoginForm
-              submit={this.props.requestLogin}
-              modeAuth="SIGNIN"
-            />
-            <Button
-              block
-              transparent
-              light
-              style={{ marginTop: 30 }}
-              onPress={() => {
-                this.redirectToChangePassword();
-              }}>
-              <Text style={{ fontSize: 12 }}>{I18n.t('CHANGE_PASSWORD')}</Text>
-            </Button>
-          </Tab>
-          <Tab heading={I18n.t('SIGNUP')}>
-            <LunesLoginForm
-              submit={this.props.requestSignup}
-              modeAuth="SIGNUP"
-            />
-          </Tab>
-        </Tabs>
+        <ScrollView style={{ width: Dimensions.get('window').width - 50 }}>
+          <View style={{ marginTop: 20 }}>
+            <LunesLogo size={50} />
+          </View>
+
+          <Tabs initialPage={0}>
+            <Tab heading={I18n.t('SIGNIN')}>
+              <LunesLoginForm
+                submit={this.props.requestLogin}
+                modeAuth="SIGNIN"
+              />
+              <Button
+                block
+                transparent
+                light
+                style={{ marginTop: 30 }}
+                onPress={() => {
+                  this.redirectToChangePassword();
+                }}>
+                <Text style={{ fontSize: 12 }}>
+                  {I18n.t('CHANGE_PASSWORD')}
+                </Text>
+              </Button>
+            </Tab>
+            <Tab heading={I18n.t('SIGNUP')}>
+              <LunesLoginForm
+                submit={this.props.requestSignup}
+                modeAuth="SIGNUP"
+              />
+            </Tab>
+          </Tabs>
+        </ScrollView>
       </Container>
     );
   }

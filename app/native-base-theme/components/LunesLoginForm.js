@@ -68,6 +68,29 @@ export default class LunesLoginForm extends React.Component {
     }
   }
 
+  renderFieldConfirmPassword() {
+    if (this.props.modeAuth === 'SIGNUP') {
+      return (
+        <View style={styles.container}>
+          <TextInput
+            underlineColorAndroid={'transparent'}
+            style={styles.input}
+            maxLength={50}
+            placeholder={I18N.t('CONFIRM_PASSWORD')}
+            onChangeText={text => this.setState({ confirmPassword: text })}
+            ref={input => (this.confirmPasswordInput = input)}
+            value={this.state.confirmPassword}
+            secureTextEntry={this.state.secureTextEntry}
+            placeholderTextColor="rgba(255,255,255,0.7)"
+          />
+          {this.renderEyePassword()}
+        </View>
+      );
+    } else {
+      return null;
+    }
+  }
+
   getTextButton() {
     return this.props.modeAuth === 'SIGNUP'
       ? I18N.t('SIGNUP')
@@ -79,7 +102,8 @@ export default class LunesLoginForm extends React.Component {
       this.props.modeAuth === 'SIGNUP' &&
       this.state.email &&
       this.state.name &&
-      this.state.password
+      this.state.password &&
+      !this.invalidPasswordMatch()
     ) {
       return this.renderButtonSubmit();
     } else if (
@@ -105,7 +129,11 @@ export default class LunesLoginForm extends React.Component {
    * Show a example message how to write a good password
    */
   renderHelpPasswordExample() {
-    if (this.props.modeAuth === 'SIGNUP' && this.state.password) {
+    if (
+      this.props.modeAuth === 'SIGNUP' &&
+      this.state.password &&
+      this.state.password === this.state.confirmPassword
+    ) {
       return (
         <View>
           <Text style={{ fontSize: 10, paddingTop: 5 }}>
@@ -118,11 +146,38 @@ export default class LunesLoginForm extends React.Component {
     return null;
   }
 
+  invalidPasswordMatch() {
+    return this.state.password !== this.state.confirmPassword;
+  }
+
+  /**
+   * Show a error if the password was different to confirm password
+   */
+  renderErrorConfirmPassword() {
+    if (
+      this.invalidPasswordMatch() &&
+      this.props.modeAuth === 'SIGNUP' &&
+      this.state.password &&
+      this.confirmPassword
+    ) {
+      return (
+        <View>
+          <Text style={{ fontSize: 10, paddingTop: 5 }}>
+            <Ionicons size={10} name={'md-help-circle'} color={'#fff'} /> {'  '}
+            {I18N.t('CONFIRM_PASSWORD_NOT_MATCH')}
+          </Text>
+        </View>
+      );
+    }
+    return null;
+  }
+
   renderPasswordValidate() {
     if (
       this.state.password &&
       !PasswordIsStronger(this.state.password) &&
-      this.props.modeAuth === 'SIGNUP'
+      this.props.modeAuth === 'SIGNUP' &&
+      this.state.password === this.state.confirmPassword
     ) {
       return (
         <View style={styles.containerForcePassword}>
@@ -148,67 +203,36 @@ export default class LunesLoginForm extends React.Component {
     }
   }
 
+  renderEyePassword() {
+    return (
+      <View style={styles.containerPassword}>
+        <TouchableOpacity
+          onPress={() =>
+            this.setState({ secureTextEntry: !this.state.secureTextEntry })
+          }>
+          <View style={{ padding: 10 }}>
+            {this.state.secureTextEntry ? (
+              <Ionicons size={20} name={'md-eye-off'} color={'#fff'} />
+            ) : (
+              <Ionicons size={20} name={'md-eye'} color={'#fff'} />
+            )}
+          </View>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
   renderButtonSubmit() {
     const text = this.getTextButton();
 
     return (
-      <View style={{ marginTop: 90 }}>
+      <View style={{ marginTop: 80 }}>
         <Button rounded block success onPress={() => this.onSubmit()}>
           <Text>{text}</Text>
         </Button>
       </View>
     );
   }
-
-  /* TODO */
-  changePassword(text) {
-    this.setState({ password: text });
-    if (typeof text !== 'undefined') {
-      this.setState({ showHelpPassword: true });
-    }
-  }
-
-  renderCheckIcon() {
-    return (
-      <Ionicons
-        name={'md-checkmark-circle'}
-        size={15}
-        color={bosonColor.$bosonLightGreen}
-      />
-    );
-  }
-
-  renderErrorIcon() {
-    return (
-      <Ionicons
-        name={'md-warning'}
-        size={15}
-        color={bosonColor.$bosonLightRed}
-      />
-    );
-  }
-
-  renderHelpPassword() {
-    if (this.state.showHelpPassword && this.props.modeAuth === 'SIGNUP') {
-      return (
-        <View style={styles.containerHelp}>
-          <Text style={{ color: '#000' }}>
-            {this.renderCheckIcon()}
-            At least one alphanumeric
-          </Text>
-          <Text style={{ color: '#000' }}>
-            {this.renderErrorIcon()} At least one character
-          </Text>
-          <Text style={{ color: '#000' }}>At least one special character</Text>
-          <Text style={{ color: '#000' }}>At least character upper case</Text>
-          <Text style={{ color: '#000' }}>At least character lower case</Text>
-          <Text style={{ color: '#000' }}>Minimun 8 charcaters</Text>
-        </View>
-      );
-    }
-    return null;
-  }
-  /* end TODO */
 
   render() {
     return (
@@ -233,7 +257,6 @@ export default class LunesLoginForm extends React.Component {
         </View>
 
         <View style={styles.container}>
-          {/*this.renderHelpPassword()*/}
           <TextInput
             underlineColorAndroid={'transparent'}
             style={styles.input}
@@ -241,25 +264,20 @@ export default class LunesLoginForm extends React.Component {
             placeholder={I18N.t('PASSWORD')}
             onChangeText={text => this.setState({ password: text })}
             ref={input => (this.passwordInput = input)}
+            returnKeyType={'next'}
             value={this.state.password}
+            onSubmitEditing={() => this.confirmPasswordInput.focus()}
             secureTextEntry={this.state.secureTextEntry}
             placeholderTextColor="rgba(255,255,255,0.7)"
           />
-          <View style={styles.containerPassword}>
-            <TouchableOpacity
-              onPress={() =>
-                this.setState({ secureTextEntry: !this.state.secureTextEntry })
-              }>
-              {this.state.secureTextEntry ? (
-                <Ionicons size={20} name={'md-eye-off'} color={'#fff'} />
-              ) : (
-                <Ionicons size={20} name={'md-eye'} color={'#fff'} />
-              )}
-            </TouchableOpacity>
-          </View>
+
+          {this.renderEyePassword()}
         </View>
 
-        {this.renderPasswordValidate()}
+        {this.renderFieldConfirmPassword()}
+        {this.renderErrorConfirmPassword()}
+
+        {/*this.renderPasswordValidate()*/}
         {this.renderHelpPasswordExample()}
 
         {this.checkButtonIsDisabled()}
@@ -301,7 +319,7 @@ const styles = StyleSheet.create({
   },
   containerPassword: {
     position: 'absolute',
-    top: 20,
+    top: 4,
     right: 10,
     flex: 1,
     justifyContent: 'center',

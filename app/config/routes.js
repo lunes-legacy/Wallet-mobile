@@ -21,6 +21,7 @@ import { PaymentOptions } from '../screen/PaymentOptions';
 import { ChangePassword } from '../screen/ChangePassword';
 import { ConfirmSend } from '../screen/ConfirmTransaction';
 import { Profile } from '../screen/Profile';
+import { Roadmap } from '../screen/Roadmap';
 import { AlertMessages } from '../screen/AlertMessages';
 import BosonColors from '../native-base-theme/variables/bosonColor';
 import I18N from '../i18n/i18n';
@@ -180,6 +181,20 @@ const RootNavigator = StackNavigator(
           headerStyle: {
             backgroundColor: BosonColors.$bosonPrimary,
             elevation: 20,
+          },
+          headerLeft: customHeader(navigation),
+        };
+      },
+    },
+    Roadmap: {
+      screen: Roadmap,
+      navigationOptions: ({ navigation, screenProps }) => {
+        return {
+          title: I18N.t('VERSION_AND_UPDATE'),
+          headerTintColor: '#fff',
+          headerStyle: {
+            backgroundColor: BosonColors.$bosonPrimary,
+            elevation: 0,
           },
           headerLeft: customHeader(navigation),
         };
