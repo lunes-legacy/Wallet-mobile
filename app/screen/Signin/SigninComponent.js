@@ -1,8 +1,7 @@
 // @flow
 import React from 'react';
-import { View, Image } from 'react-native';
-import { Container, Button, Text, Tab, Tabs } from 'native-base';
-import LunesLib from 'lunes-lib';
+import { View, NetInfo } from 'react-native';
+import { Container, Button, Text, Tab, Tabs } from 'native-base';;
 import LunesLogo from '../../native-base-theme/components/LunesLogo';
 import LunesLoginForm from '../../native-base-theme/components/LunesLoginForm';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
@@ -16,7 +15,21 @@ export default class Signin extends React.Component<{}> {
   }
 
   componentDidMount() {
-    const { error } = this.props;
+    NetInfo.isConnected.addEventListener(
+      'connectionChange',
+      this.networkConnectionChange
+    );
+  }
+
+  componentWillUnmount() {
+    NetInfo.isConnected.removeEventListener(
+      'connectionChange',
+      this.networkConnectionChange
+    );
+  }
+
+  networkConnectionChange = isConnected => {
+    this.props.updateConnectionStatus(isConnected);
   }
 
   renderError() {
@@ -33,6 +46,7 @@ export default class Signin extends React.Component<{}> {
   }
 
   render() {
+    console.log('PROPS', this.props)
     return (
       <Container>
         {this.props.loading ? this.renderLoading() : null}

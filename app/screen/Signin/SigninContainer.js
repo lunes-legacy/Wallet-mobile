@@ -9,14 +9,22 @@ import {
   clearError,
 } from './actions';
 
+import { updateConnectionStatus } from '../../services/connectionService/actions';
+
 import Signin from './SigninComponent';
+
+const handleConnectionError = status =>
+  !status && { messageKey: 'NOT_CONNECTED' };
 
 const mapStateToProps = state => {
   return {
+    isConnected: state.connectionReducer.isConnected,
     tabSelected: state.tabsReducer.tabSelected,
     user: state.auth.user,
     authorized: state.auth.authorized,
-    error: state.auth.error,
+    error:
+      handleConnectionError(state.connectionReducer.isConnected) ||
+      state.auth.error,
     loading: state.auth.loading,
     userInfo: state.auth.userInfo || {},
     wordSeedWasViewed: state.pinReducer.wordSeedWasViewed,
@@ -24,7 +32,13 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
-    { requestLogin, requestSignup, requestSignout, clearError },
+    {
+      requestLogin,
+      requestSignup,
+      requestSignout,
+      clearError,
+      updateConnectionStatus,
+    },
     dispatch
   );
 
