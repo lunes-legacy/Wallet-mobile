@@ -46,7 +46,6 @@ export default class Signin extends React.Component<{}> {
   }
 
   render() {
-    console.log('PROPS', this.props)
     return (
       <Container>
         {this.props.loading ? this.renderLoading() : null}
