@@ -9,6 +9,7 @@ export default {
   optionsSent: 'Formas de Envio',
   SOMETHING_ERROR: 'Erro no servidor. Verifique com nosso suporte',
   WRONG_PASSWORD: 'Senha inválida ou insegura. Tente algo mais seguro.',
+  NOT_CONNECTED: 'Você deve estar contectado para acessar sua Lunes Wallet.',
   USER_NOT_FOUND: 'Usuário não encontrado',
   ERROR_AUTHENTICATE: 'Erro ao tentar autenticar-se',
   EMAIL_ALREADY: 'Email já existe',
