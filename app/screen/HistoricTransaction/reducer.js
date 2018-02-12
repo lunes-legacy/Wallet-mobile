@@ -18,6 +18,11 @@ const historicTransactionReducer = (state = initialState, action) => {
         ...state,
         loading: false,
       };
+    case types.HISTORIC_TRANSACTION:
+      return {
+        ...state,
+        transactions: action.transactions,
+      };
     default:
       return state;
   }

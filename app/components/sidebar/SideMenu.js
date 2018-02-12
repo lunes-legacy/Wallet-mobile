@@ -32,6 +32,14 @@ class SideMenu extends Component {
           </View>
           <View>
             <SideMenuItem
+              screen={'HistoricTransaction'}
+              menuOption={I18N.t('HISTORIC_TRANSACTION')}
+              navigation={navigation}
+              space={38}
+            />
+          </View>
+          <View>
+            <SideMenuItem
               screen={'Roadmap'}
               menuOption={I18N.t('ROADMAP')}
               navigation={navigation}

@@ -22,12 +22,32 @@ const showError = error => ({
   error,
 });
 
-export const confirmTransactionSend = (
-  pin,
-  currentUser,
-  senderAddress,
-  amount,
-  fee
-) => {
-  return dispatch => {};
+const showTransactions = historicTransactions => ({
+  type: types.HISTORIC_TRANSACTION,
+  transactions: historicTransactions,
+});
+
+async function _getHistoric(user, dispatch) {
+  try {
+    let address = user.wallet.coins[0].addresses[0].address;
+    let historicTransactions = await LunesLib.coins.bitcoin.getHistory(
+      { address },
+      user.accessToken
+    );
+    dispatch(requestFinished());
+    dispatch(showTransactions(historicTransactions));
+  } catch (error) {
+    dispatch(requestFinished());
+    throw new Error(error);
+  }
+}
+
+export const getHistoric = user => {
+  return dispatch => {
+    dispatch(requestLoading());
+    _getHistoric(user, dispatch).catch(error => {
+      dispatch(requestFinished());
+      console.log(error);
+    });
+  };
 };

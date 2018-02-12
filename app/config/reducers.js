@@ -11,6 +11,7 @@ import profileReducer from '../screen/Profile/reducer';
 import historicDataReducer from '../screen/LunesMarket/reducer';
 import pinReducer from '../screen/PIN/reducer';
 import confirmTransactionReducer from '../screen/ConfirmTransaction/reducer';
+import historicTransactionReducer from '../screen/HistoricTransaction/reducer';
 
 const reducers = combineReducers({
   tabsReducer,
@@ -24,6 +25,7 @@ const reducers = combineReducers({
   profileReducer,
   historicDataReducer,
   confirmTransactionReducer,
+  historicTransactionReducer,
 });
 
 export default reducers;

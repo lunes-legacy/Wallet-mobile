@@ -147,9 +147,10 @@ export default {
   START_ACTIVITIES: 'Início das Atividades',
   STARTING_POINT: 'Starting Point',
   WALLET_WIN_LINUX: 'Wallet Win/Linux',
-  PRIVATE_LABEL: 'Private Label',
+  PRIVATE_LABEL: 'Cartão Pré-Pago',
   GATEWAY_PAYMENT: 'Gateway Pagamentos',
   DATE_26_01: '26/01',
   DATE_25_02: '25/02',
   DATE_03_04: '03/04',
+  HISTORIC_TRANSACTION: 'Histórico de Transações',
 };
