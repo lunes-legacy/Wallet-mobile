@@ -15,6 +15,7 @@ import LunesLoading from '../../native-base-theme/components/LunesLoading';
 import I18n from '../../i18n/i18n';
 import { navigate } from '../../config/routes';
 import { handleErrors } from '../../utils/stringUtils';
+import generalConstant from '../../constants/general';
 
 // Keep a reference to ensure there is only one event listener
 // subscribed with BackHandler
@@ -102,6 +103,12 @@ export default class Signin extends React.Component<{}> {
               />
             </Tab>
           </Tabs>
+
+          <View>
+            <Text style={{ fontSize: 10, textAlign: 'center', marginTop: 30 }}>
+              {I18n.t('VERSION')} {generalConstant.VERSION_NAME}
+            </Text>
+          </View>
         </ScrollView>
       </Container>
     );

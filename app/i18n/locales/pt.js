@@ -132,6 +132,7 @@ export default {
   TRANSACTION_NO_SOLUTION:
     'Não foi possível efetuar a transação. Erro: TRANSACTION_NO_SOLUTION',
   SAVE: 'SALVAR',
+  VERSION: 'Versão',
   VERSION_APP: 'Versão do Aplicativo',
   ABOUT: 'Sobre',
   SUPPORT: 'Suporte',

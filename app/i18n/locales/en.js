@@ -133,6 +133,7 @@ export default {
     'Could not execute transaction. Error: TRANSACTION_NO_SOLUTION',
   SAVE: 'SAVE',
   VERSION_APP: 'App Version',
+  VERSION: 'Version',
   ABOUT: 'About',
   SUPPORT: 'Support',
   ALL_RIGHTS_RESERVED: 'All rights reserved',
