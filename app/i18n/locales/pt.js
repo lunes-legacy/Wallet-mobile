@@ -155,4 +155,7 @@ export default {
   DATE_25_02: '25/02',
   DATE_03_04: '03/04',
   HISTORIC_TRANSACTION: 'Histórico de Transações',
+  TRANSACTION: 'Transações',
+  EMPTY_TRANSACTION: 'Nenhuma transação até o momento',
+  YOUR_TRANSACTION_HISTORIC: 'Seu historico de transações',
 };

@@ -12,6 +12,7 @@ import FontAwesomeIcon from 'react-native-vector-icons/dist/FontAwesome';
 import { handleErrors } from '../../utils/stringUtils';
 import I18N from '../../i18n/i18n';
 import bosonColor from '../../native-base-theme/variables/bosonColor';
+import moment from 'moment';
 
 const { width, height } = Dimensions.get('window');
 const widthSpacePadding = width - 40;
@@ -32,14 +33,21 @@ export default class HistoricTransaction extends React.Component {
       return (
         <View key={index} style={styles.containerItemTransaction}>
           <View style={styles.itemTransaction}>
-            <Text>Transação Jan 26, 2018</Text>
-            <Text style={styles.itemValueTransaction}>+ 0.01806000</Text>
+            <Text>
+              {I18N.t('TRANSACTION')}{' '}
+              {moment(item.time * 1000).format('MMM DD, YYYY')}
+            </Text>
+            <Text style={styles.itemValueTransaction}>{item.value}</Text>
           </View>
           <View style={styles.itemTransaction}>
             <Text style={styles.textFooterTransaction}>Via Lunes</Text>
-            <Text style={styles.textFooterTransaction}>Pending</Text>
+            <Text style={styles.textFooterTransaction}>{item.type}</Text>
           </View>
-          <View style={styles.footerLine} />
+          {item.type === 'RECEIVED' ? (
+            <View style={[styles.footerLine, styles.footerLineReceived]} />
+          ) : (
+            <View style={[styles.footerLine, styles.footerLinePending]} />
+          )}
         </View>
       );
     });
@@ -51,8 +59,8 @@ export default class HistoricTransaction extends React.Component {
     } else if (this.props.transactions.length === 0) {
       return (
         <View style={styles.emptyTransactions}>
-          <FontAwesomeIcon name={'connectdevelop'} size={40} color={'#fff'} />
-          <Text>Nenhuma transação até o momento</Text>
+          <FontAwesomeIcon name={'list-alt'} size={40} color={'#fff'} />
+          <Text style={{ marginTop: 20 }}>{I18N.t('EMPTY_TRANSACTION')}</Text>
         </View>
       );
     }
@@ -64,7 +72,7 @@ export default class HistoricTransaction extends React.Component {
         <ScrollView style={styles.containerScroll}>
           <View style={styles.container}>
             <Text style={styles.titleTransaction}>
-              Seu historico de transações
+              {I18N.t('YOUR_TRANSACTION_HISTORIC')}
             </Text>
             {this.renderSpinner()}
             {this.renderItems()}
@@ -91,6 +99,7 @@ const styles = StyleSheet.create({
     flex: 2,
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: 40,
   },
   titleTransaction: {
     fontSize: 18,
@@ -111,6 +120,11 @@ const styles = StyleSheet.create({
   footerLine: {
     width: widthSpacePadding,
     height: 2,
-    backgroundColor: 'red',
+  },
+  footerLineReceived: {
+    backgroundColor: bosonColor.$bosonLightGreen,
+  },
+  footerLinePending: {
+    backgroundColor: bosonColor.$bosonLightRed,
   },
 });
