@@ -75,6 +75,9 @@ export default class Signin extends React.Component<{}> {
         <ScrollView style={{ width: Dimensions.get('window').width - 50 }}>
           <View style={{ marginTop: 20 }}>
             <LunesLogo size={50} />
+            <Text style={{ fontSize: 10, textAlign: 'center' }}>
+              {I18n.t('VERSION')} {generalConstant.VERSION_NAME}
+            </Text>
           </View>
 
           <Tabs initialPage={0}>
@@ -103,12 +106,6 @@ export default class Signin extends React.Component<{}> {
               />
             </Tab>
           </Tabs>
-
-          <View>
-            <Text style={{ fontSize: 10, textAlign: 'center', marginTop: 30 }}>
-              {I18n.t('VERSION')} {generalConstant.VERSION_NAME}
-            </Text>
-          </View>
         </ScrollView>
       </Container>
     );

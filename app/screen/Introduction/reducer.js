@@ -14,7 +14,7 @@ const redirectReducer = (state = initialState, action) => {
     case types.REHYDRATE:
       if (action.payload && action.payload.redirectToAuthReducer) {
         state.isViewedIntroduction = action.payload.redirectToAuthReducer;
-        //navigate('Signin');
+        navigate('Signin');
         return state;
       }
       return {

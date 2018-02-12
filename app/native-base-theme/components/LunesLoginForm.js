@@ -266,7 +266,11 @@ export default class LunesLoginForm extends React.Component {
             ref={input => (this.passwordInput = input)}
             returnKeyType={'next'}
             value={this.state.password}
-            onSubmitEditing={() => this.confirmPasswordInput.focus()}
+            onSubmitEditing={() => {
+              if (this.confirmPasswordInput) {
+                this.confirmPasswordInput.focus();
+              }
+            }}
             secureTextEntry={this.state.secureTextEntry}
             placeholderTextColor="rgba(255,255,255,0.7)"
           />
