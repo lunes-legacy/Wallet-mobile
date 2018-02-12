@@ -6,6 +6,7 @@ import {
   ScrollView,
   BackHandler,
   Platform,
+  NetInfo,
 } from 'react-native';
 import { Container, Button, Text, Tab, Tabs } from 'native-base';
 import LunesLogo from '../../native-base-theme/components/LunesLogo';
@@ -28,13 +29,28 @@ export default class Signin extends React.Component<{}> {
   }
 
   componentDidMount() {
+    const { error } = this.props;
     if (Platform.OS == 'android' && listener == null) {
       listener = BackHandler.addEventListener('hardwareBackPress', function() {
         return backButtonPressFunction();
       });
     }
-    const { error } = this.props;
+    NetInfo.isConnected.addEventListener(
+      'connectionChange',
+      this.networkConnectionChange
+    );
   }
+
+  componentWillUnmount() {
+    NetInfo.isConnected.removeEventListener(
+      'connectionChange',
+      this.networkConnectionChange
+    );
+  }
+
+  networkConnectionChange = isConnected => {
+    this.props.updateConnectionStatus(isConnected);
+  };
 
   renderError() {
     const { error, clearError } = this.props;

@@ -1,4 +1,3 @@
-import { AsyncStorage } from 'react-native';
 import { combineReducers } from 'redux';
 import tabsReducer from '../components/tabs/reducer';
 import authReducer from '../screen/Signin/reducer';
@@ -12,6 +11,7 @@ import historicDataReducer from '../screen/LunesMarket/reducer';
 import pinReducer from '../screen/PIN/reducer';
 import confirmTransactionReducer from '../screen/ConfirmTransaction/reducer';
 import historicTransactionReducer from '../screen/HistoricTransaction/reducer';
+import connectionReducer from '../services/connectionService/reducer';
 
 const reducers = combineReducers({
   tabsReducer,
@@ -26,6 +26,7 @@ const reducers = combineReducers({
   historicDataReducer,
   confirmTransactionReducer,
   historicTransactionReducer,
+  connectionReducer,
 });
 
 export default reducers;

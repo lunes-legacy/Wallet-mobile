@@ -104,6 +104,8 @@ export const handleErrors = (
     return renderAlertError(I18n.t('INVALID_FULLNAME'));
   } else if (error && error.message === STATUS_MSG.INVALID_PASSWORD2) {
     return renderAlertError(I18n.t('INVALID_PASSWORD2'));
+  } else if (error && error.messageKey === STATUS_MSG.NOT_CONNECTED) {
+    return renderAlertError(I18n.t('NOT_CONNECTED'));
   } else if (error) {
     //esse caso é especifico, pois o erro vem do firebase e a maneira de
     //pegar o nome do erro é pelo error.message

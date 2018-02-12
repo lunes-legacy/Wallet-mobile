@@ -11,6 +11,7 @@ export default {
   WRONG_PASSWORD: 'Your password is insecure. Try something more secure',
   USER_NOT_FOUND: 'User not found',
   ERROR_AUTHENTICATE: 'Error on authentication',
+  NOT_CONNECTED: 'You must to be online to access your Lunes Wallet.',
   EMAIL_ALREADY: 'Email already',
   ACCESS_DENIED: 'Access denied',
   SMS_EXPIRED: 'SMS Expired',
