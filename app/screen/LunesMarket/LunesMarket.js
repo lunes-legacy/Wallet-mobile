@@ -20,6 +20,7 @@ import BosonColors from '../../native-base-theme/variables/bosonColor';
 
 import I18N from '../../i18n/i18n';
 import io from 'socket.io-client';
+
 const options = {
   pingTimeout: 85000,
   transports: ['websocket'],
@@ -36,7 +37,7 @@ class LunesMarket extends Component {
     this.currencyTo = I18N.t('CURRENCY_USER');
     this.subscription = [
       `5~CCCAGG~BTC~${this.currencyTo}`,
-      `5~CCCAGG~ETH~USD`,
+      '5~CCCAGG~ETH~USD',
       `5~CCCAGG~LTC~${this.currencyTo}`,
     ];
     // 1. set url
@@ -48,23 +49,23 @@ class LunesMarket extends Component {
   componentDidMount() {
     const { requestHistoricData, updateTicker, requestPrice } = this.props;
     requestHistoricData();
-    //requestPrice();
+    // requestPrice();
     console.ignoredYellowBox = ['Setting a timer'];
     this.onMessage();
   }
 
   onMessage() {
     const { updateTicker } = this.props;
-    var coinPairs = {};
+    const coinPairs = {};
 
     // 3. receive messages
-    this.socket.on('m', function(message) {
+    this.socket.on('m', message => {
       const messageType = message.substring(0, message.indexOf('~'));
       if (messageType == CCC.STATIC.TYPE.CURRENTAGG) {
         const res = CCC.CURRENT.unpack(message);
-        if (typeof res['PRICE'] !== 'undefined') {
-          const fromSymbol = res['FROMSYMBOL'];
-          const toSymbol = res['TOSYMBOL'];
+        if (typeof res.PRICE !== 'undefined') {
+          const fromSymbol = res.FROMSYMBOL;
+          const toSymbol = res.TOSYMBOL;
           const fsym = CCC.STATIC.CURRENCY.getSymbol(fromSymbol);
           const tsym = CCC.STATIC.CURRENCY.getSymbol(toSymbol);
           const pair = fromSymbol;
@@ -76,44 +77,41 @@ class LunesMarket extends Component {
           }
 
           // CHANGE
-          if (typeof res['OPEN24HOUR'] !== 'undefined') {
-            coinPairs[pair]['OPEN24HOUR'] = res['OPEN24HOUR'];
+          if (typeof res.OPEN24HOUR !== 'undefined') {
+            coinPairs[pair].OPEN24HOUR = res.OPEN24HOUR;
           }
-          coinPairs[pair]['CHANGE24HOUR'] = res['CHANGE24HOUR'] || '-';
-          coinPairs[pair]['CHANGE24HOURPCT'] = res['CHANGE24HOURPCT'] || '-';
-          coinPairs[pair]['PRICE'] = res['PRICE'];
+          coinPairs[pair].CHANGE24HOUR = res.CHANGE24HOUR || '-';
+          coinPairs[pair].CHANGE24HOURPCT = res.CHANGE24HOURPCT || '-';
+          coinPairs[pair].PRICE = res.PRICE;
 
-          if (typeof coinPairs[pair]['OPEN24HOUR'] !== 'undefined') {
-            coinPairs[pair]['CHANGE24HOUR'] = CCC.convertValueToDisplay(
+          if (typeof coinPairs[pair].OPEN24HOUR !== 'undefined') {
+            coinPairs[pair].CHANGE24HOUR = CCC.convertValueToDisplay(
               tsym,
-              coinPairs[pair]['PRICE'] - coinPairs[pair]['OPEN24HOUR']
+              coinPairs[pair].PRICE - coinPairs[pair].OPEN24HOUR
             );
 
-            coinPairs[pair]['CHANGE24HOURPCT'] =
-              (
-                (coinPairs[pair]['PRICE'] - coinPairs[pair]['OPEN24HOUR']) /
-                coinPairs[pair]['OPEN24HOUR'] *
-                100
-              ).toFixed(2) + '%';
+            coinPairs[pair].CHANGE24HOURPCT = `${(
+              (coinPairs[pair].PRICE - coinPairs[pair].OPEN24HOUR) /
+              coinPairs[pair].OPEN24HOUR *
+              100
+            ).toFixed(2)}%`;
 
-            if (coinPairs[pair]['PRICE'] > coinPairs[pair]['OPEN24HOUR']) {
-              coinPairs[pair]['CHANGE'] = 'up';
-            } else if (
-              coinPairs[pair]['PRICE'] < coinPairs[pair]['OPEN24HOUR']
-            ) {
-              coinPairs[pair]['CHANGE'] = 'down';
+            if (coinPairs[pair].PRICE > coinPairs[pair].OPEN24HOUR) {
+              coinPairs[pair].CHANGE = 'up';
+            } else if (coinPairs[pair].PRICE < coinPairs[pair].OPEN24HOUR) {
+              coinPairs[pair].CHANGE = 'down';
             }
           }
 
-          coinPairs[pair]['CURRENTPRICE'] = CCC.convertValueToDisplay(
+          coinPairs[pair].CURRENTPRICE = CCC.convertValueToDisplay(
             tsym,
-            coinPairs[pair]['PRICE']
+            coinPairs[pair].PRICE
           );
-          coinPairs[pair]['DISPLAYPRICE'] = `1 BTC | ${
-            coinPairs[pair]['CURRENTPRICE']
+          coinPairs[pair].DISPLAYPRICE = `1 BTC | ${
+            coinPairs[pair].CURRENTPRICE
           }`;
 
-          coinPairs[pair]['COIN'] = pair;
+          coinPairs[pair].COIN = pair;
 
           updateTicker(coinPairs[pair]);
         }
@@ -126,7 +124,7 @@ class LunesMarket extends Component {
   }
 
   getBalance() {
-    let finalBalance =
+    const finalBalance =
       this.props && this.props.balanceData
         ? this.props.balanceData.confirmed_balance
         : 0;

@@ -8,15 +8,15 @@ import CCC from '../../utils/ccc-streamer-utilities';
 
 async function getHistory(dispatch) {
   try {
-    let queryObj = {
+    const queryObj = {
       fromSymbol: 'BTC',
       toSymbol: I18N.t('CURRENCY_USER'),
       range: rangeConstant.PERIOD.RANGE_1D,
     };
-    let historic = await LunesLib.coins.getHistory(queryObj);
+    const historic = await LunesLib.coins.getHistory(queryObj);
     dispatch(historicData(historic));
   } catch (error) {
-    //dispatch(requestFinished());
+    // dispatch(requestFinished());
     throw error;
   }
 }
@@ -31,12 +31,12 @@ async function getHistory(dispatch) {
  */
 async function getNewPeriod(range, dispatch) {
   try {
-    let queryObj = {
+    const queryObj = {
       fromSymbol: 'BTC',
       toSymbol: I18N.t('CURRENCY_USER'),
       range,
     };
-    let historic = await LunesLib.coins.getHistory(queryObj);
+    const historic = await LunesLib.coins.getHistory(queryObj);
     dispatch(historicData(historic));
   } catch (error) {
     throw error;
@@ -46,16 +46,16 @@ async function getNewPeriod(range, dispatch) {
 async function getPrice(dispatch) {
   try {
     const toSymbol = I18N.t('CURRENCY_USER');
-    let queryObj = {
+    const queryObj = {
       fromSymbol: 'BTC',
-      toSymbol: toSymbol,
+      toSymbol,
       exchange: I18N.t('CURRENCY_EXCHANGE'),
     };
-    var tsym = CCC.STATIC.CURRENCY.getSymbol(toSymbol);
-    let priceData = await LunesLib.coins.getPrice(queryObj);
+    const tsym = CCC.STATIC.CURRENCY.getSymbol(toSymbol);
+    const priceData = await LunesLib.coins.getPrice(queryObj);
     const currentPrice = CCC.convertValueToDisplay(tsym, priceData[toSymbol]);
     const displayPrice = `1 BTC | ${currentPrice}`;
-    let ticker = {
+    const ticker = {
       DISPLAYPRICE: displayPrice,
       CURRENTPRICE: currentPrice,
       CHANGE24HOUR: '-',
@@ -70,38 +70,30 @@ async function getPrice(dispatch) {
   }
 }
 
-export const requestHistoricData = () => {
-  return dispatch => {
-    getHistory(dispatch).catch(error => {
-      //alert('error on get historic');
-    });
-  };
+export const requestHistoricData = () => dispatch => {
+  getHistory(dispatch).catch(error => {
+    // alert('error on get historic');
+  });
 };
 
-export const updateTicker = ticker => {
-  return dispatch => {
-    dispatch(tickerUpdate(ticker));
-  };
+export const updateTicker = ticker => dispatch => {
+  dispatch(tickerUpdate(ticker));
 };
 
-export const requestPrice = () => {
-  return dispatch => {
-    getPrice(dispatch).catch(error => {
-      alert('error on get price');
-    });
-  };
+export const requestPrice = () => dispatch => {
+  getPrice(dispatch).catch(error => {
+    alert('error on get price');
+  });
 };
 
 /**
  * @params { string } range - 'RANGE_1D'
  */
-export const changeRange = range => {
-  return dispatch => {
-    dispatch(changeColumnPeriod(range));
-    getNewPeriod(range, dispatch).catch(error => {
-      alert('error');
-    });
-  };
+export const changeRange = range => dispatch => {
+  dispatch(changeColumnPeriod(range));
+  getNewPeriod(range, dispatch).catch(error => {
+    alert('error');
+  });
 };
 
 const changeColumnPeriod = range => ({

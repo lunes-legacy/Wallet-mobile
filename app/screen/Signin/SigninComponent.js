@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import {
   View,
@@ -19,23 +18,19 @@ import generalConstant from '../../constants/general';
 
 // Keep a reference to ensure there is only one event listener
 // subscribed with BackHandler
-let listener = null;
+// let listener = null;
 
 // Default behavior: returning true to not exits the app.
-let backButtonPressFunction = () => true;
+const backButtonPressFunction = () => true;
 
 export default class Signin extends React.Component<{}> {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
-    const { error } = this.props;
-    if (Platform.OS == 'android' && listener == null) {
-      listener = BackHandler.addEventListener('hardwareBackPress', function() {
-        return backButtonPressFunction();
-      });
+    if (Platform.OS === 'android') {
+      BackHandler.addEventListener('hardwareBackPress', () =>
+        backButtonPressFunction()
+      );
     }
+
     NetInfo.isConnected.addEventListener(
       'connectionChange',
       this.networkConnectionChange
@@ -49,9 +44,8 @@ export default class Signin extends React.Component<{}> {
     );
   }
 
-  networkConnectionChange = isConnected => {
+  networkConnectionChange = isConnected =>
     this.props.updateConnectionStatus(isConnected);
-  };
 
   renderError() {
     const { error, clearError } = this.props;

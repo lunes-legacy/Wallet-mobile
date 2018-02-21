@@ -46,7 +46,7 @@ export default class ConfirmSend extends React.Component {
     };
   }
 
-  //TODO - improve logic in this block, either put in lunes-lib or search another alternative
+  // TODO - improve logic in this block, either put in lunes-lib or search another alternative
   toNumber(num) {
     return typeof num === 'number' && num % 1 === 0;
   }
@@ -54,7 +54,7 @@ export default class ConfirmSend extends React.Component {
   toBitcoin(satoshi) {
     return (satoshi / this.conversion).toFixed(8);
   }
-  //end TODO
+  // end TODO
 
   componentDidMount() {
     this.props.getFee();
@@ -78,7 +78,7 @@ export default class ConfirmSend extends React.Component {
   renderFeesPicker() {
     return this.state.fees.map(fee => {
       if (this.props.fee) {
-        let valueFee = this.toBitcoin(this.props.fee[fee.name]);
+        const valueFee = this.toBitcoin(this.props.fee[fee.name]);
         return (
           <Picker.Item
             label={`${fee.label} - ${valueFee}`}

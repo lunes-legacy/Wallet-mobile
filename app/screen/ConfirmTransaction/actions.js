@@ -37,16 +37,16 @@ async function _createTransactionData(
   dispatch
 ) {
   try {
-    let obj = {
+    const obj = {
       email: currentUser.email,
-      pin: pin,
+      pin,
       mnemonic: currentUser.wallet.hash,
       senderAddress: currentUser.wallet.coins[0].addresses[0].address,
       receivingAddress: senderAddress,
-      amount: amount,
-      fee: fee,
+      amount,
+      fee,
     };
-    let confirm = await LunesLib.coins.bitcoin.createTransaction(
+    const confirm = await LunesLib.coins.bitcoin.createTransaction(
       obj,
       accessToken
     );
@@ -75,7 +75,7 @@ async function _confirmPin(
   dispatch
 ) {
   try {
-    let pinConfirmed = await LunesLib.users.confirmPin(
+    const pinConfirmed = await LunesLib.users.confirmPin(
       { pin },
       currentUser.accessToken
     );
@@ -108,30 +108,26 @@ export const confirmTransactionSend = (
   senderAddress,
   amount,
   fee
-) => {
-  return dispatch => {
-    dispatch(requestLoading());
-    _confirmPin(pin, currentUser, senderAddress, amount, fee, dispatch).catch(
-      error => {
-        dispatch(requestFinished());
-        alert(I18N.t('ERROR_TO_CONFIRM_PIN'));
-      }
-    );
-  };
+) => dispatch => {
+  dispatch(requestLoading());
+  _confirmPin(pin, currentUser, senderAddress, amount, fee, dispatch).catch(
+    error => {
+    dispatch(requestFinished());
+    alert(I18N.t('ERROR_TO_CONFIRM_PIN'));
+  }
+  );
 };
 
 async function _getFee(dispatch) {
-  let fee = await LunesLib.coins.getFees();
+  const fee = await LunesLib.coins.getFees();
   dispatch(requestFinished());
   dispatch(showFee(fee));
 }
 
-export const getFee = () => {
-  return dispatch => {
-    dispatch(requestLoading());
-    _getFee(dispatch).catch(error => {
-      dispatch(requestFinished());
-      alert(I18N.t('ERROR_TO_GET_FEE'));
-    });
-  };
+export const getFee = () => dispatch => {
+  dispatch(requestLoading());
+  _getFee(dispatch).catch(error => {
+    dispatch(requestFinished());
+    alert(I18N.t('ERROR_TO_GET_FEE'));
+  });
 };

@@ -29,28 +29,26 @@ export default class HistoricTransaction extends React.Component {
   }
 
   renderItems() {
-    return this.props.transactions.map((item, index) => {
-      return (
-        <View key={index} style={styles.containerItemTransaction}>
-          <View style={styles.itemTransaction}>
-            <Text>
-              {I18N.t('TRANSACTION')}{' '}
-              {moment(item.time * 1000).format('MMM DD, YYYY')}
-            </Text>
-            <Text style={styles.itemValueTransaction}>{item.value}</Text>
-          </View>
-          <View style={styles.itemTransaction}>
-            <Text style={styles.textFooterTransaction}>Via Lunes</Text>
-            <Text style={styles.textFooterTransaction}>{item.type}</Text>
-          </View>
-          {item.type === 'RECEIVED' ? (
-            <View style={[styles.footerLine, styles.footerLineReceived]} />
-          ) : (
-            <View style={[styles.footerLine, styles.footerLinePending]} />
-          )}
+    return this.props.transactions.map((item, index) => (
+      <View key={index} style={styles.containerItemTransaction}>
+        <View style={styles.itemTransaction}>
+          <Text>
+            {I18N.t('TRANSACTION')}{' '}
+            {moment(item.time * 1000).format('MMM DD, YYYY')}
+          </Text>
+          <Text style={styles.itemValueTransaction}>{item.value}</Text>
         </View>
-      );
-    });
+        <View style={styles.itemTransaction}>
+          <Text style={styles.textFooterTransaction}>Via Lunes</Text>
+          <Text style={styles.textFooterTransaction}>{item.type}</Text>
+        </View>
+        {item.type === 'RECEIVED' ? (
+          <View style={[styles.footerLine, styles.footerLineReceived]} />
+        ) : (
+          <View style={[styles.footerLine, styles.footerLinePending]} />
+        )}
+      </View>
+    ));
   }
 
   renderSpinner() {

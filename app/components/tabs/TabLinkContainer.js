@@ -6,6 +6,9 @@ import { changeSelectedTab } from './reducer';
 import tabStyle from './style';
 import TabLink from './TabLink';
 
-const mapStateToProps = state => ({ tabSelected: state.tabsReducer.tabSelected });
-const mapDispatchToProps = dispatch => bindActionCreators({ changeSelectedTab }, dispatch);
+const mapStateToProps = state => ({
+  tabSelected: state.tabsReducer.tabSelected,
+});
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ changeSelectedTab }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(TabLink);

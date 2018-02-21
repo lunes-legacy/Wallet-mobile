@@ -1,5 +1,6 @@
 import types from './types';
 import { navigate } from '../../config/routes';
+
 const initialState = {
   isViewedIntroduction: false,
 };

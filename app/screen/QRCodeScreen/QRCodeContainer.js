@@ -5,11 +5,9 @@ import { bindActionCreators } from 'redux';
 import { requestAddPIN, requestValidPIN } from './actions';
 import QRCode from './QRCodeComponent';
 
-const mapStateToProps = state => {
-  return {
-    qrcodeAdressToSend: state.sendPaymentReducer.loading,
-  };
-};
+const mapStateToProps = state => ({
+  qrcodeAdressToSend: state.sendPaymentReducer.loading,
+});
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ requestAddPIN, requestValidPIN }, dispatch);

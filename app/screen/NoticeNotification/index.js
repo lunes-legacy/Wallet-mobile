@@ -5,4 +5,5 @@
  */
 
 import NoticeNotification from './NoticeNotificationContainer';
+
 export { NoticeNotification };

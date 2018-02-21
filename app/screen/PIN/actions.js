@@ -4,7 +4,7 @@ import LunesLib from 'lunes-lib';
 
 async function getBalance(address, currentUser, dispatch) {
   try {
-    let balance = await LunesLib.coins.bitcoin.getBalance(
+    const balance = await LunesLib.coins.bitcoin.getBalance(
       { address }, // TODO remove testnet object on production
       currentUser.accessToken
     );
@@ -22,7 +22,7 @@ async function getBalance(address, currentUser, dispatch) {
 
 async function createPin(pin, currentUser, dispatch) {
   try {
-    let pinCreated = await LunesLib.users.createPin(
+    const pinCreated = await LunesLib.users.createPin(
       { pin },
       currentUser.accessToken
     );
@@ -36,14 +36,14 @@ async function createPin(pin, currentUser, dispatch) {
 
 async function confirmPin(pin, currentUser, wordSeedWasViewed, dispatch) {
   try {
-    let pinConfirmed = await LunesLib.users.confirmPin(
+    const pinConfirmed = await LunesLib.users.confirmPin(
       { pin },
       currentUser.accessToken
     );
     currentUser.pinIsValidated = true;
     currentUser.wordSeedWasViewed = wordSeedWasViewed;
     try {
-      let address = currentUser.wallet.coins[0].addresses[0].address;
+      const address = currentUser.wallet.coins[0].addresses[0].address;
       getBalance(address, currentUser, dispatch).catch(error => {
         dispatch(requestFinished());
         navigate('Main');
@@ -57,27 +57,27 @@ async function confirmPin(pin, currentUser, wordSeedWasViewed, dispatch) {
   }
 }
 
-export const requestAddPIN = (PIN, currentUser) => {
-  return dispatch => {
-    dispatch(requestLoading());
-    createPin(PIN, currentUser, dispatch).catch(error => {
-      dispatch(requestFinished());
-      dispatch(showError(error));
-    });
-  };
+export const requestAddPIN = (PIN, currentUser) => dispatch => {
+  dispatch(requestLoading());
+  createPin(PIN, currentUser, dispatch).catch(error => {
+    dispatch(requestFinished());
+    dispatch(showError(error));
+  });
 };
 
-export const requestValidPIN = (PIN, currentUser, wordSeedWasViewed) => {
-  return dispatch => {
-    dispatch(requestLoading());
-    confirmPin(PIN, currentUser, wordSeedWasViewed, dispatch).catch(error => {
-      dispatch(requestFinished());
-      dispatch(showError(error));
-    });
-  };
+export const requestValidPIN = (
+  PIN,
+  currentUser,
+  wordSeedWasViewed
+) => dispatch => {
+  dispatch(requestLoading());
+  confirmPin(PIN, currentUser, wordSeedWasViewed, dispatch).catch(error => {
+    dispatch(requestFinished());
+    dispatch(showError(error));
+  });
 };
 
-//Aqui mostra o diloag com a seed word
+// Aqui mostra o diloag com a seed word
 export const showTextBackupSeedAction = seedText => ({
   type: types.SHOW_TEXT_BACKUP_SEED,
   seedText,
@@ -100,7 +100,7 @@ const showError = error => ({
   error,
 });
 
-//Aqui mostra o diloag informando que é importante ele efetuar o backup
+// Aqui mostra o diloag informando que é importante ele efetuar o backup
 const showDialogBackupSeed = seedText => ({
   type: types.SHOW_DIALOG_BACKUP_SEED,
   seedText,
@@ -112,7 +112,7 @@ export const closeShowDialogBackupSeed = () => ({
 
 const confirmSuccess = user => ({
   type: types.CONFIRM_CODE_SUCCESS,
-  user: user,
+  user,
 });
 
 const storeBalanceOnUser = balance => ({

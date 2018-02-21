@@ -9,7 +9,7 @@ import { navigate } from '../../config/routes';
 class SideMenuAvatar extends Component {
   componentWillMount() {
     const { _id, accessToken } = this.props.userInfo;
-    //this.props.requestObtain({ _id, accessToken });
+    // this.props.requestObtain({ _id, accessToken });
   }
 
   render() {

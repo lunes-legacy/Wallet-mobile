@@ -5,4 +5,5 @@
  */
 
 import Confirmation from './ConfirmationContainer';
+
 export { Confirmation };

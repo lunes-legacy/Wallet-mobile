@@ -15,7 +15,6 @@ export default class ButtonUI extends React.Component {
   checkFunctionOnPress() {
     if (!this.props.onPress) {
       alert('Erro. Você precisa implementar a função onPress!!!!');
-      return;
     }
   }
 
@@ -35,9 +34,8 @@ export default class ButtonUI extends React.Component {
           </View>
         </TouchableOpacity>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 
   primaryButton() {
@@ -56,9 +54,8 @@ export default class ButtonUI extends React.Component {
           </View>
         </TouchableOpacity>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 
   disabledButton() {
@@ -77,9 +74,8 @@ export default class ButtonUI extends React.Component {
           </View>
         </TouchableOpacity>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 
   roundedPrimaryButton() {
@@ -95,9 +91,8 @@ export default class ButtonUI extends React.Component {
           </View>
         </TouchableHighlight>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 
   render() {

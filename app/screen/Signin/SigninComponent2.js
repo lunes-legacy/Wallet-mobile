@@ -1,27 +1,14 @@
 // @flow
 import React from 'react';
 import _ from 'lodash';
-import { View, Image, Dimensions, StyleSheet } from 'react-native';
-import { Container, Button, Text, Tab, Tabs } from 'native-base';
-import LunesLogo from '../../native-base-theme/components/LunesLogo';
-import LunesLoginForm from '../../native-base-theme/components/LunesLoginForm';
-import LunesLoading from '../../native-base-theme/components/LunesLoading';
-import LunesAlert from '../../native-base-theme/components/LunesAlert';
-import I18n from '../../i18n/i18n';
-import { navigate } from '../../config/routes';
-import Svg, {
+import { View, Dimensions } from 'react-native';
+import { Container, Text } from 'native-base';
+import {
   Circle,
-  Ellipse,
   G,
   LinearGradient,
-  RadialGradient,
   Line,
-  Path,
-  Polygon,
-  Polyline,
   Rect,
-  Symbol,
-  Use,
   Defs,
   Stop,
 } from 'react-native-svg';
@@ -30,7 +17,7 @@ import * as shape from 'd3-shape';
 import bosonColor from '../../native-base-theme/variables/bosonColor';
 import LunesChartPeriod from '../../native-base-theme/components/LunesChartPeriod';
 
-const { width, height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 export default class Signin extends React.Component<{}> {
   render() {
@@ -38,10 +25,11 @@ export default class Signin extends React.Component<{}> {
     const max = _.max(data);
     const min = _.min(data);
 
-    const TooltipTop = ({ x, y }) => (
+    const TooltipTop = ({ x }) => (
       <G
         x={x(data.length - 1) - 75}
         key={'tooltipTop'}
+        // eslint-disable-next-line
         onPress={() => alert('clicked')}>
         <G y={min + 6}>
           <Defs>
@@ -73,10 +61,11 @@ export default class Signin extends React.Component<{}> {
       </G>
     );
 
-    const TooltipBottom = ({ x, y }) => (
+    const TooltipBottom = ({ x }) => (
       <G
         x={x(data.length - 1) - 75}
         key={'tooltipBottom'}
+        // eslint-disable-next-line
         onPress={() => alert('clicked')}>
         <G y={max}>
           <Defs>
@@ -141,7 +130,7 @@ export default class Signin extends React.Component<{}> {
     return (
       <Container>
         <LunesChartPeriod />
-        <View style={{ position: 'absolute', width: width, height: 300 }}>
+        <View style={{ position: 'absolute', width, height: 300 }}>
           <AreaChart
             style={{ height: 250 }}
             dataPoints={data}
@@ -160,7 +149,7 @@ export default class Signin extends React.Component<{}> {
               strokeWidth: 7,
             }}
             gridMin={0}
-            renderDecorator={({ x, y, index, value }) => (
+            renderDecorator={(x, y, index, value) => (
               <Circle
                 key={index}
                 cx={x(index)}
@@ -190,5 +179,3 @@ export default class Signin extends React.Component<{}> {
     );
   }
 }
-
-const styles = StyleSheet.create({});

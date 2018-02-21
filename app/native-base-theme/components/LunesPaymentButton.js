@@ -125,9 +125,8 @@ export default class LunesPaymentButton extends React.Component {
           </View>
         </TouchableHighlight>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 
   render() {

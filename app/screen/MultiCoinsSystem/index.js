@@ -1,2 +1,3 @@
-import MultiCoinsSystem from './MultiCoinsSystem'
-export default MultiCoinsSystem
+import MultiCoinsSystem from './MultiCoinsSystem';
+
+export default MultiCoinsSystem;

@@ -1,4 +1,5 @@
 import types from './types';
+
 const initialState = {
   loading: false,
   address: '',

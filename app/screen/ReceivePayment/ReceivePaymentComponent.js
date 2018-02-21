@@ -6,6 +6,44 @@ import BosonColors from '../../native-base-theme/variables/bosonColor';
 import LunesPaymentButton from '../../native-base-theme/components/LunesPaymentButton';
 import I18N from '../../i18n/i18n';
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  titleReceivePayment: {
+    padding: 10,
+    color: BosonColors.$bosonWhite,
+    fontFamily: 'Roboto-Medium',
+    fontSize: 14,
+  },
+  wrapperQRCode: {
+    backgroundColor: BosonColors.$bosonWhite,
+    padding: 20,
+  },
+  input: {
+    height: 40,
+    borderColor: BosonColors.$bosonWhite,
+    borderWidth: 0,
+    margin: 10,
+    borderRadius: 5,
+    padding: 5,
+    color: BosonColors.$bosonWhite,
+    fontSize: 12,
+  },
+  textCopy: {
+    color: BosonColors.$bosonLightGreen,
+    fontSize: 14,
+    padding: 10,
+  },
+  textToast: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 16,
+  },
+});
+
 export default class ReceivePayment extends React.Component {
   constructor(props) {
     super(props);
@@ -21,6 +59,7 @@ export default class ReceivePayment extends React.Component {
   getAddressWallet() {
     const { wallet } = this.props;
     try {
+      // eslint-disable-next-line
       const address = wallet.coins[0].addresses[0].address;
       return address;
     } catch (error) {
@@ -74,41 +113,3 @@ export default class ReceivePayment extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  titleReceivePayment: {
-    padding: 10,
-    color: BosonColors.$bosonWhite,
-    fontFamily: 'Roboto-Medium',
-    fontSize: 14,
-  },
-  wrapperQRCode: {
-    backgroundColor: BosonColors.$bosonWhite,
-    padding: 20,
-  },
-  input: {
-    height: 40,
-    borderColor: BosonColors.$bosonWhite,
-    borderWidth: 0,
-    margin: 10,
-    borderRadius: 5,
-    padding: 5,
-    color: BosonColors.$bosonWhite,
-    fontSize: 12,
-  },
-  textCopy: {
-    color: BosonColors.$bosonLightGreen,
-    fontSize: 14,
-    padding: 10,
-  },
-  textToast: {
-    color: 'white',
-    textAlign: 'center',
-    fontSize: 16,
-  },
-});

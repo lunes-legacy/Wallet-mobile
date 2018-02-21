@@ -26,35 +26,31 @@ import { AlertMessages } from '../screen/AlertMessages';
 import BosonColors from '../native-base-theme/variables/bosonColor';
 import I18N from '../i18n/i18n';
 
-const customHeader = navigation => {
-  return (
-    <View style={{ padding: 20 }}>
-      <Ionicons
-        color={'#fff'}
-        size={20}
-        name={'md-arrow-back'}
-        onPress={() => {
-          navigation.goBack();
-        }}
-      />
-    </View>
-  );
-};
+const customHeader = navigation => (
+  <View style={{ padding: 20 }}>
+    <Ionicons
+      color={'#fff'}
+      size={20}
+      name={'md-arrow-back'}
+      onPress={() => {
+        navigation.goBack();
+      }}
+    />
+  </View>
+);
 
-const customHomeHeader = navigation => {
-  return (
-    <View style={{ padding: 20 }}>
-      <Entypo
-        color={'#fff'}
-        size={20}
-        name={'home'}
-        onPress={() => {
-          navigate('Main');
-        }}
-      />
-    </View>
-  );
-};
+const customHomeHeader = navigation => (
+  <View style={{ padding: 20 }}>
+    <Entypo
+      color={'#fff'}
+      size={20}
+      name={'home'}
+      onPress={() => {
+        navigate('Main');
+      }}
+    />
+  </View>
+);
 
 const RootNavigator = StackNavigator(
   {
@@ -90,143 +86,123 @@ const RootNavigator = StackNavigator(
     },
     AlertMessages: {
       screen: AlertMessages,
-      navigationOptions: ({ navigation, screenProps }) => {
-        return {
-          title: null,
-          headerTintColor: '#fff',
-          headerStyle: {
-            backgroundColor: BosonColors.$bosonPrimary,
-            elevation: 0,
-          },
-          headerLeft: customHeader(navigation),
-        };
-      },
+      navigationOptions: ({ navigation, screenProps }) => ({
+        title: null,
+        headerTintColor: '#fff',
+        headerStyle: {
+          backgroundColor: BosonColors.$bosonPrimary,
+          elevation: 0,
+        },
+        headerLeft: customHeader(navigation),
+      }),
     },
     ReceivePayment: {
       screen: ReceivePayment,
-      navigationOptions: ({ navigation, screenProps }) => {
-        return {
-          title: I18N.t('RECEIVE_PAYMENT'),
-          headerTintColor: '#fff',
-          headerStyle: {
-            backgroundColor: BosonColors.$bosonPrimary,
-            elevation: 0,
-          },
-          headerLeft: customHeader(navigation),
-        };
-      },
+      navigationOptions: ({ navigation, screenProps }) => ({
+        title: I18N.t('RECEIVE_PAYMENT'),
+        headerTintColor: '#fff',
+        headerStyle: {
+          backgroundColor: BosonColors.$bosonPrimary,
+          elevation: 0,
+        },
+        headerLeft: customHeader(navigation),
+      }),
     },
     SendPayment: {
       screen: SendPayment,
-      navigationOptions: ({ navigation, screenProps }) => {
-        return {
-          title: I18N.t('SEND_PAYMENT'),
-          headerTintColor: '#fff',
-          headerStyle: {
-            backgroundColor: BosonColors.$bosonPrimary,
-            elevation: 0,
-          },
-          headerLeft: customHeader(navigation),
-        };
-      },
+      navigationOptions: ({ navigation, screenProps }) => ({
+        title: I18N.t('SEND_PAYMENT'),
+        headerTintColor: '#fff',
+        headerStyle: {
+          backgroundColor: BosonColors.$bosonPrimary,
+          elevation: 0,
+        },
+        headerLeft: customHeader(navigation),
+      }),
     },
     PaymentOptions: {
       screen: PaymentOptions,
-      navigationOptions: ({ navigation, screenProps }) => {
-        return {
-          title: null,
-          headerTintColor: '#fff',
-          headerStyle: {
-            backgroundColor: BosonColors.$bosonPrimary,
-            elevation: 0,
-          },
-          headerLeft: customHeader(navigation),
-        };
-      },
+      navigationOptions: ({ navigation, screenProps }) => ({
+        title: null,
+        headerTintColor: '#fff',
+        headerStyle: {
+          backgroundColor: BosonColors.$bosonPrimary,
+          elevation: 0,
+        },
+        headerLeft: customHeader(navigation),
+      }),
     },
     ConfirmSend: {
       screen: ConfirmSend,
-      navigationOptions: ({ navigation, screenProps }) => {
-        return {
-          title: null,
-          headerTintColor: '#fff',
-          headerStyle: {
-            backgroundColor: BosonColors.$bosonPrimary,
-            elevation: 0,
-          },
-          headerLeft: customHeader(navigation),
-        };
-      },
+      navigationOptions: ({ navigation, screenProps }) => ({
+        title: null,
+        headerTintColor: '#fff',
+        headerStyle: {
+          backgroundColor: BosonColors.$bosonPrimary,
+          elevation: 0,
+        },
+        headerLeft: customHeader(navigation),
+      }),
     },
     NoticeNotification: {
       screen: NoticeNotification,
-      navigationOptions: ({ navigation, screenProps }) => {
-        return {
-          title: null,
-          headerTintColor: '#fff',
-          headerStyle: {
-            backgroundColor: BosonColors.$bosonPrimary,
-            elevation: 0,
-          },
-          headerLeft: customHomeHeader(navigation),
-        };
-      },
+      navigationOptions: ({ navigation, screenProps }) => ({
+        title: null,
+        headerTintColor: '#fff',
+        headerStyle: {
+          backgroundColor: BosonColors.$bosonPrimary,
+          elevation: 0,
+        },
+        headerLeft: customHomeHeader(navigation),
+      }),
     },
     ChangePassword: {
       screen: ChangePassword,
-      navigationOptions: ({ navigation, screenProps }) => {
-        return {
-          title: I18N.t('CHANGE_PASSWORD'),
-          headerTintColor: '#fff',
-          headerStyle: {
-            backgroundColor: BosonColors.$bosonPrimary,
-            elevation: 20,
-          },
-          headerLeft: customHeader(navigation),
-        };
-      },
+      navigationOptions: ({ navigation, screenProps }) => ({
+        title: I18N.t('CHANGE_PASSWORD'),
+        headerTintColor: '#fff',
+        headerStyle: {
+          backgroundColor: BosonColors.$bosonPrimary,
+          elevation: 20,
+        },
+        headerLeft: customHeader(navigation),
+      }),
     },
     Roadmap: {
       screen: Roadmap,
-      navigationOptions: ({ navigation, screenProps }) => {
-        return {
-          title: I18N.t('VERSION_AND_UPDATE'),
-          headerTintColor: '#fff',
-          headerStyle: {
-            backgroundColor: BosonColors.$bosonPrimary,
-            elevation: 0,
-          },
-          headerLeft: customHeader(navigation),
-        };
-      },
+      navigationOptions: ({ navigation, screenProps }) => ({
+        title: I18N.t('VERSION_AND_UPDATE'),
+        headerTintColor: '#fff',
+        headerStyle: {
+          backgroundColor: BosonColors.$bosonPrimary,
+          elevation: 0,
+        },
+        headerLeft: customHeader(navigation),
+      }),
     },
     Profile: {
       screen: Profile,
-      navigationOptions: ({ navigation, screenProps }) => {
-        return {
-          title: I18N.t('PROFILE'),
-          headerTintColor: '#fff',
-          headerStyle: {
-            backgroundColor: BosonColors.$bosonPrimary,
-            elevation: 0,
-          },
-          headerLeft: customHeader(navigation),
-        };
-      },
+      navigationOptions: ({ navigation, screenProps }) => ({
+        title: I18N.t('PROFILE'),
+        headerTintColor: '#fff',
+        headerStyle: {
+          backgroundColor: BosonColors.$bosonPrimary,
+          elevation: 0,
+        },
+        headerLeft: customHeader(navigation),
+      }),
     },
     QRCode: {
       screen: QRCode,
-      navigationOptions: ({ navigation, screenProps }) => {
-        return {
-          title: I18N.t('SCANNER_QRCODE'),
-          headerTintColor: '#fff',
-          headerStyle: {
-            backgroundColor: BosonColors.$bosonLightGreen,
-            elevation: 20,
-          },
-          headerLeft: customHeader(navigation),
-        };
-      },
+      navigationOptions: ({ navigation, screenProps }) => ({
+        title: I18N.t('SCANNER_QRCODE'),
+        headerTintColor: '#fff',
+        headerStyle: {
+          backgroundColor: BosonColors.$bosonLightGreen,
+          elevation: 20,
+        },
+        headerLeft: customHeader(navigation),
+      }),
     },
   },
   {
@@ -249,7 +225,7 @@ title: 'oi',
       headerStyle: {
         backgroundColor: BosonColors.$bosonPrimary,
         elevation: null,
-      },*/
+      }, */
 
 let navigator;
 

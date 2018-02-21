@@ -5,4 +5,5 @@
  */
 
 import HistoricTransaction from './HistoricTransactionContainer';
+
 export default HistoricTransaction;

@@ -29,8 +29,8 @@ const showTransactions = historicTransactions => ({
 
 async function _getHistoric(user, dispatch) {
   try {
-    let address = user.wallet.coins[0].addresses[0].address;
-    let historicTransactions = await LunesLib.coins.bitcoin.getHistory(
+    const address = user.wallet.coins[0].addresses[0].address;
+    const historicTransactions = await LunesLib.coins.bitcoin.getHistory(
       { address },
       user.accessToken
     );
@@ -42,12 +42,10 @@ async function _getHistoric(user, dispatch) {
   }
 }
 
-export const getHistoric = user => {
-  return dispatch => {
-    dispatch(requestLoading());
-    _getHistoric(user, dispatch).catch(error => {
-      dispatch(requestFinished());
-      console.log(error);
-    });
-  };
+export const getHistoric = user => dispatch => {
+  dispatch(requestLoading());
+  _getHistoric(user, dispatch).catch(error => {
+    dispatch(requestFinished());
+    console.log(error);
+  });
 };

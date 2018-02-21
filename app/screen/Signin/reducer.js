@@ -52,7 +52,7 @@ const authReducer = (state = initialState, action) => {
         user: false,
         error: action.error,
       };
-    //SIGNUP
+    // SIGNUP
     case types.SIGNUP_LOADING:
       return {
         ...state,
@@ -73,7 +73,7 @@ const authReducer = (state = initialState, action) => {
         user: false,
         error: action.error,
       };
-    //SIGNOUT
+    // SIGNOUT
     case types.SIGNOUT_LOADING:
       return { ...state, loading: true };
     case types.SIGNOUT_SUCCESS:

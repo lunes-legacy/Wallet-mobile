@@ -54,9 +54,8 @@ export default class LoginForm extends React.Component {
           />
         </View>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 
   renderButtonSubmit() {

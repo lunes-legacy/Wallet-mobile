@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 25,
     textAlign: 'center',
   },
-  //Images
+  // Images
   introductionImages: {
     height: 270,
     width: 270,

@@ -7,29 +7,27 @@ import BosonColors from './../variables/bosonColor';
 
 export default class LunesCodeSMS extends React.Component {
   renderInputs() {
-    let code = {};
-    return [1, 2, 3, 4, 5, 6].map((position, index) => {
-      return (
-        <TextInput
-          ref={ref => (code[index] = ref)}
-          key={position}
-          keyboardType="numeric"
-          maxLength={1}
-          style={styles.input}
-          returnKeyType={'next'}
-          onChangeText={text => {
-            this.props.changeCode({ position, value: text });
-            if (text && text.length == 1) {
-              if (code[index + 1]) {
-                code[index + 1].focus();
-              } else {
-                Keyboard.dismiss();
-              }
+    const code = {};
+    return [1, 2, 3, 4, 5, 6].map((position, index) => (
+      <TextInput
+        ref={ref => (code[index] = ref)}
+        key={position}
+        keyboardType="numeric"
+        maxLength={1}
+        style={styles.input}
+        returnKeyType={'next'}
+        onChangeText={text => {
+          this.props.changeCode({ position, value: text });
+          if (text && text.length == 1) {
+            if (code[index + 1]) {
+              code[index + 1].focus();
+            } else {
+              Keyboard.dismiss();
             }
-          }}
-        />
-      );
-    });
+          }
+        }}
+      />
+    ));
   }
   render() {
     return (

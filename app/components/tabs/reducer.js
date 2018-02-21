@@ -5,7 +5,7 @@ const types = {
 
 // Initial State
 const INITIAL_STATE = {
-  tabSelected: 'tab1'
+  tabSelected: 'tab1',
 };
 
 // Actions

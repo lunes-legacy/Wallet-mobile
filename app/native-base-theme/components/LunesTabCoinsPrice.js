@@ -14,18 +14,16 @@ const renderColorPrice = status => {
   return BosonColors.$bosonLightGrey;
 };
 
-const LunesTabCoinsPrice = ({ tabCoinPrice }) => {
-  return (
-    <Text
-      style={[
-        styles.price,
-        { color: renderColorPrice(tabCoinPrice.price.status) },
-        RenderColorWhiteToCoinSelected(tabCoinPrice),
-      ]}>
-      {tabCoinPrice.price.percent}
-    </Text>
-  );
-};
+const LunesTabCoinsPrice = ({ tabCoinPrice }) => (
+  <Text
+    style={[
+      styles.price,
+      { color: renderColorPrice(tabCoinPrice.price.status) },
+      RenderColorWhiteToCoinSelected(tabCoinPrice),
+    ]}>
+    {tabCoinPrice.price.percent}
+  </Text>
+);
 
 const styles = StyleSheet.create({
   price: {

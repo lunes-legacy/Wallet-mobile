@@ -1,4 +1,5 @@
 import types from '../../config/types';
+
 const initialState = {
   loading: false,
 };

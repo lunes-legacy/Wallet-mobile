@@ -11,6 +11,7 @@ import {
 import bosonColor from '../variables/bosonColor';
 import I18N from '../../i18n/i18n';
 import periodConstant from '../../constants/general';
+
 const { width, height } = Dimensions.get('window');
 export default class LunesChartPeriod extends React.Component {
   isSelected(rangeSelected) {
@@ -75,8 +76,8 @@ const styles = StyleSheet.create({
   containerChart: {
     position: 'absolute',
     flex: 1,
-    width: width,
-    height: height,
+    width,
+    height,
     top: 0,
   },
   containerPeriod: {

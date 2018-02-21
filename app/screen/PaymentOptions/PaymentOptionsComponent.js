@@ -31,7 +31,7 @@ export default class PaymentOptions extends React.Component {
   redirectToQRCodeScreen() {
     const { state } = this.props.navigation;
     const amountToSend = state.params ? state.params.amountToSend : 0;
-    navigate('QRCode', { amountToSend: amountToSend });
+    navigate('QRCode', { amountToSend });
   }
 
   redirectToConfirmSend() {

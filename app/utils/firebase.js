@@ -1,3 +1,4 @@
+/*eslint-disable*/
 // converter erros do firebase
 
 export const parseSignupErrors = error => {
@@ -12,6 +13,4 @@ export const parseSignupErrors = error => {
   }
 };
 
-export const parseSigninErrors = error => {
-  return { _error: error.message };
-};
+export const parseSigninErrors = error => ({ _error: error.message });

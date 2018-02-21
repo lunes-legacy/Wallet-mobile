@@ -23,6 +23,70 @@ import { navigate } from '../../config/routes';
 import I18n from '../../i18n/i18n';
 import SatoshiBTC from '../../utils/btcConverter';
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: '100%',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  quotationAmount: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textQuotationAmount: {
+    fontSize: 18,
+    color: BosonColors.$bosonMediumYellow,
+  },
+  amount: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  containerAmountAvailable: {
+    height: 40,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10,
+    backgroundColor: BosonColors.$bosonDarkPurple,
+    width: Dimensions.get('window').width,
+  },
+  containerInner: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  inputText: {
+    width: Dimensions.get('window').width,
+    borderBottomColor: BosonColors.$bosonLightGreen,
+    borderBottomWidth: 1,
+    color: BosonColors.$bosonWhite,
+    textAlign: 'center',
+    fontFamily: 'Roboto-Medium',
+    fontSize: 16,
+  },
+  text: {
+    color: BosonColors.$bosonWhite,
+    fontSize: 14,
+    fontFamily: 'Roboto-Medium',
+  },
+  textAmountToType: {
+    color: BosonColors.$bosonWhite,
+    fontSize: 11,
+    fontFamily: 'Roboto-Light',
+  },
+  textAmount: {
+    color: BosonColors.$bosonLightGreen,
+    fontSize: 13,
+    fontFamily: 'Roboto-Medium',
+  },
+  touchable: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
+
 export default class SendPayment extends React.Component {
   constructor(props) {
     super(props);
@@ -45,13 +109,12 @@ export default class SendPayment extends React.Component {
       this.props.balanceData &&
       this.props.balanceData.confirmed_balance > 0
     ) {
-      let btc =
+      const btc =
         this.props.displayPriceBTC.DISPLAYPRICE *
-        this.props.balanceData.confirmed_balance; //
+        this.props.balanceData.confirmed_balance;
       return btc.toFixed(2);
-    } else {
-      return '0.00';
     }
+    return '0.00';
   }
 
   redirectToQRCodeScreen() {
@@ -90,7 +153,7 @@ export default class SendPayment extends React.Component {
 
               {/* TAB COINS */}
               <View style={{ flexDirection: 'row' }}>
-                {/* <LunesTabCoins doAction={this.props.chooseCoinAction} />*/}
+                {/* <LunesTabCoins doAction={this.props.chooseCoinAction} /> */}
               </View>
 
               {/* AMOUNT AVAIALABLE */}
@@ -180,67 +243,3 @@ export default class SendPayment extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: '100%',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  quotationAmount: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  textQuotationAmount: {
-    fontSize: 18,
-    color: BosonColors.$bosonMediumYellow,
-  },
-  amount: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  containerAmountAvailable: {
-    height: 40,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 10,
-    backgroundColor: BosonColors.$bosonDarkPurple,
-    width: Dimensions.get('window').width,
-  },
-  containerInner: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  inputText: {
-    width: Dimensions.get('window').width,
-    borderBottomColor: BosonColors.$bosonLightGreen,
-    borderBottomWidth: 1,
-    color: BosonColors.$bosonWhite,
-    textAlign: 'center',
-    fontFamily: 'Roboto-Medium',
-    fontSize: 16,
-  },
-  text: {
-    color: BosonColors.$bosonWhite,
-    fontSize: 14,
-    fontFamily: 'Roboto-Medium',
-  },
-  textAmountToType: {
-    color: BosonColors.$bosonWhite,
-    fontSize: 11,
-    fontFamily: 'Roboto-Light',
-  },
-  textAmount: {
-    color: BosonColors.$bosonLightGreen,
-    fontSize: 13,
-    fontFamily: 'Roboto-Medium',
-  },
-  touchable: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});

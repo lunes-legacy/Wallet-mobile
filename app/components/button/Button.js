@@ -25,9 +25,8 @@ export default class Button extends React.Component {
           </View>
         </TouchableOpacity>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 
   disabledButton() {
@@ -39,9 +38,8 @@ export default class Button extends React.Component {
           </View>
         </TouchableOpacity>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 
   primaryButton() {
@@ -53,9 +51,8 @@ export default class Button extends React.Component {
           </View>
         </TouchableOpacity>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 
   roundedPrimaryButton() {
@@ -69,9 +66,8 @@ export default class Button extends React.Component {
           </View>
         </TouchableHighlight>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 
   roundedButtonOpened() {
@@ -118,9 +114,8 @@ export default class Button extends React.Component {
           </View>
         </TouchableHighlight>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 
   renderTest() {
@@ -201,7 +196,7 @@ export default class Button extends React.Component {
         {this.disabledButton()}
         {this.primaryButton()}
         {this.roundedPrimaryButton()}
-        {/*this.roundedButtonOpened()*/}
+        {/* this.roundedButtonOpened() */}
         {this.renderTest()}
       </View>
     );

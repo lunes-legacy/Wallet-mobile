@@ -5,14 +5,12 @@ import { bindActionCreators } from 'redux';
 import { chooseCoinAction, getBalance } from './actions';
 import SendPayment from './SendPaymentComponent';
 
-const mapStateToProps = state => {
-  return {
-    loading: state.sendPaymentReducer.loading,
-    coinChosed: state.sendPaymentReducer.coinChosed,
-    balanceData: state.auth.balance,
-    displayPriceBTC: state.historicDataReducer.ticker.BTC,
-  };
-};
+const mapStateToProps = state => ({
+  loading: state.sendPaymentReducer.loading,
+  coinChosed: state.sendPaymentReducer.coinChosed,
+  balanceData: state.auth.balance,
+  displayPriceBTC: state.historicDataReducer.ticker.BTC,
+});
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ chooseCoinAction, getBalance }, dispatch);

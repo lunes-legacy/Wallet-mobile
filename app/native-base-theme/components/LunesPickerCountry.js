@@ -28,7 +28,7 @@ export default class LunesPickerCountry extends React.Component {
       },
     ];
     this.state = {
-      countries: countries,
+      countries,
       countrySelected:
         I18n.t('CURRENCY_USER') === 'BRL' ? countries[0] : countries[1],
     };
@@ -38,24 +38,22 @@ export default class LunesPickerCountry extends React.Component {
     if (this.props.selectable === false) {
       return;
     }
-    const countryFiltered = this.state.countries.filter(country => {
-      return country.value === value;
-    });
+    const countryFiltered = this.state.countries.filter(
+      country => country.value === value
+    );
     this.setState({
       countrySelected: countryFiltered[0],
     });
   }
 
   renderCountries() {
-    return this.state.countries.map(country => {
-      return (
-        <Picker.Item
-          label={country.label}
-          value={country.value}
-          key={country.code}
-        />
-      );
-    });
+    return this.state.countries.map(country => (
+      <Picker.Item
+        label={country.label}
+        value={country.value}
+        key={country.code}
+      />
+    ));
   }
 
   renderFlag() {

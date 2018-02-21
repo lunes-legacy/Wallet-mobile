@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 /**
  * @module satoshi-bitcoin
  */
@@ -5,7 +7,7 @@
 import Big from 'big.js';
 
 // @private
-var conversion = 100000000;
+const conversion = 100000000;
 
 // es6 polyfill
 if (!Number.isInteger) {
@@ -27,16 +29,16 @@ export default {
    * @throws {TypeError} Thrown if input is not a whole number or string format whole number
    * @returns {number}
    */
-  toBitcoin: function(satoshi) {
-    //validate arg
-    var satoshiType = typeof satoshi;
+  toBitcoin(satoshi) {
+    // validate arg
+    let satoshiType = typeof satoshi;
     if (satoshiType === 'string') {
       satoshi = toNumber(satoshi);
       satoshiType = 'number';
     }
     if (satoshiType !== 'number') {
       throw new TypeError(
-        'toBitcoin must be called on a number or string, got ' + satoshiType
+        `toBitcoin must be called on a number or string, got ${satoshiType}`
       );
     }
     if (!Number.isInteger(satoshi)) {
@@ -45,7 +47,7 @@ export default {
       );
     }
 
-    var bigSatoshi = new Big(satoshi);
+    const bigSatoshi = new Big(satoshi);
     return Number(bigSatoshi.div(conversion));
   },
 
@@ -55,20 +57,20 @@ export default {
    * @throws {TypeError} Thrown if input is not a number or string
    * @returns {number}
    */
-  toSatoshi: function(bitcoin) {
-    //validate arg
-    var bitcoinType = typeof bitcoin;
+  toSatoshi(bitcoin) {
+    // validate arg
+    let bitcoinType = typeof bitcoin;
     if (bitcoinType === 'string') {
       bitcoin = toNumber(bitcoin);
       bitcoinType = 'number';
     }
     if (bitcoinType !== 'number') {
       throw new TypeError(
-        'toSatoshi must be called on a number or string, got ' + bitcoinType
+        `toSatoshi must be called on a number or string, got ${bitcoinType}`
       );
     }
 
-    var bigBitcoin = new Big(bitcoin);
+    const bigBitcoin = new Big(bitcoin);
     return Number(bigBitcoin.times(conversion));
   },
 };

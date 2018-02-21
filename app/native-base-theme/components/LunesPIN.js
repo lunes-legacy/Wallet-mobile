@@ -64,7 +64,7 @@ export default class LunesPIN extends React.Component {
     }
     if (typeof this.props.onSavePIN === 'function') {
       const { inputValue1, inputValue2, inputValue3, inputValue4 } = this.state;
-      let PIN = `${inputValue1}${inputValue2}${inputValue3}${inputValue4}`;
+      const PIN = `${inputValue1}${inputValue2}${inputValue3}${inputValue4}`;
       if (PIN === '') {
         alert(I18N.t('PIN_IS_REQUIRED'));
         return;

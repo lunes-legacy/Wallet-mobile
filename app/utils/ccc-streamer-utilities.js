@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 var CCC = {};
 
 CCC.STATIC = CCC.STATIC || {};

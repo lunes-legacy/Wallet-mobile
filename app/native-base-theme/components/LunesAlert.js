@@ -187,7 +187,7 @@ export default class LunesAlert extends React.Component {
     />
   */
   renderAlertInfo() {
-    let titleMsg = this.props.title ? this.props.title : I18N.t('REMEMBER');
+    const titleMsg = this.props.title ? this.props.title : I18N.t('REMEMBER');
     if (this.props.type === 'info' && this.state.isVisible) {
       return (
         <View style={{ flex: 1, width: '100%' }}>
@@ -239,15 +239,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     position: 'absolute',
-    width: width,
-    height: height,
+    width,
+    height,
     zIndex: 995,
     alignItems: 'center',
     justifyContent: 'center',
   },
   backdrop: {
-    width: width,
-    height: height,
+    width,
+    height,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#000',
@@ -270,7 +270,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonsContainer: {
-    width: width,
+    width,
     zIndex: 998,
     alignItems: 'center',
     justifyContent: 'center',

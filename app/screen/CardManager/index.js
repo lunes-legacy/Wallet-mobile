@@ -1,2 +1,3 @@
-import CardManager from './CardManager'
-export default CardManager
+import CardManager from './CardManager';
+
+export default CardManager;

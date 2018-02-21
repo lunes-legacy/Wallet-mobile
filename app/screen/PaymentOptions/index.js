@@ -5,4 +5,5 @@
  */
 
 import PaymentOptions from './PaymentOptionsContainer';
+
 export { PaymentOptions };

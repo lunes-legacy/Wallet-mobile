@@ -1,2 +1,3 @@
-import PhoneRecharges from './PhoneRecharges'
-export default PhoneRecharges
+import PhoneRecharges from './PhoneRecharges';
+
+export default PhoneRecharges;

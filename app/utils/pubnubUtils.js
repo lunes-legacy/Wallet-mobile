@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import ChannelConstant from '../constants/general';
 
 const pubnubKeys = {

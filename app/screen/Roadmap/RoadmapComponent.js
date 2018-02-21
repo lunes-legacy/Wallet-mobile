@@ -16,6 +16,50 @@ import bosonColor from '../../native-base-theme/variables/bosonColor';
 
 const { width, height } = Dimensions.get('window');
 
+const styles = StyleSheet.create({
+  container: {
+    position: 'absolute',
+    top: 50,
+    padding: 10,
+    width: width - 50,
+    height: height - 200,
+    backgroundColor: bosonColor.$bosonLightGreen,
+    borderRadius: 8,
+  },
+  innerContainer: {
+    flex: 1,
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+    width: width - 70,
+    alignItems: 'center',
+  },
+  date: {
+    position: 'absolute',
+    top: 25,
+    width: 50,
+    height: 50,
+    borderRadius: 100,
+    backgroundColor: bosonColor.$bosonLightRed,
+    elevation: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  items: {
+    flexDirection: 'row',
+    width: width - 100,
+    justifyContent: 'space-between',
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    marginBottom: 10,
+    backgroundColor: 'rgba(0, 0, 0, 0.02)',
+    borderRadius: 6,
+  },
+  titleInner: {
+    marginTop: 5,
+    marginBottom: 20,
+  },
+});
+
 export default class Roadmap extends React.Component {
   constructor(props) {
     super(props);
@@ -83,16 +127,14 @@ export default class Roadmap extends React.Component {
   }
 
   getItems() {
-    return this.items.map((item, index) => {
-      return (
-        <View
-          key={index}
-          style={[styles.items, this.checkItemSelected(item.checked)]}>
-          <Text>{item.title}</Text>
-          <Text>{item.date}</Text>
-        </View>
-      );
-    });
+    return this.items.map((item, index) => (
+      <View
+        key={index}
+        style={[styles.items, this.checkItemSelected(item.checked)]}>
+        <Text>{item.title}</Text>
+        <Text>{item.date}</Text>
+      </View>
+    ));
   }
 
   renderItems() {
@@ -132,47 +174,3 @@ export default class Roadmap extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    position: 'absolute',
-    top: 50,
-    padding: 10,
-    width: width - 50,
-    height: height - 200,
-    backgroundColor: bosonColor.$bosonLightGreen,
-    borderRadius: 8,
-  },
-  innerContainer: {
-    flex: 1,
-    paddingHorizontal: 20,
-    paddingVertical: 20,
-    width: width - 70,
-    alignItems: 'center',
-  },
-  date: {
-    position: 'absolute',
-    top: 25,
-    width: 50,
-    height: 50,
-    borderRadius: 100,
-    backgroundColor: bosonColor.$bosonLightRed,
-    elevation: 4,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  items: {
-    flexDirection: 'row',
-    width: width - 100,
-    justifyContent: 'space-between',
-    paddingVertical: 10,
-    paddingHorizontal: 10,
-    marginBottom: 10,
-    backgroundColor: 'rgba(0, 0, 0, 0.02)',
-    borderRadius: 6,
-  },
-  titleInner: {
-    marginTop: 5,
-    marginBottom: 20,
-  },
-});

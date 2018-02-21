@@ -33,56 +33,52 @@ const updateProfile = async (params, dispatch) => {
   }
 };
 
-export const requestObtain = values => {
-  return dispatch => {
-    dispatch(requestLoading());
-    obtain({ id: values._id, accessToken: values.accessToken }, dispatch).catch(
-      error => {
-        dispatch(requestFinished());
-        dispatch(obtainUserProfileError(error));
-      }
-    );
-  };
+export const requestObtain = values => dispatch => {
+  dispatch(requestLoading());
+  obtain({ id: values._id, accessToken: values.accessToken }, dispatch).catch(
+    error => {
+    dispatch(requestFinished());
+    dispatch(obtainUserProfileError(error));
+  }
+  );
 };
 
-export const requestUpdate = values => {
-  return dispatch => {
-    try {
-      dispatch(requestLoading());
-      if (!values.userInfo.avatar && values.updates.small) {
-        values.userInfo.avatar = {
-          small: values.updates.small,
-        };
-      } else if (
-        values.userInfo.avatar &&
-        values.userInfo.avatar.small === '' &&
-        values.updates.small
-      ) {
-        values.userInfo.avatar.small = values.updates.small;
-      } else if (
-        values.userInfo.avatar &&
-        values.updates &&
-        values.updates.small &&
-        values.userInfo.avatar.small !== values.updates.small
-      ) {
-        values.userInfo.avatar.small = values.updates.small;
-      }
-      dispatch(storeUserProfile(values.userInfo));
-      updateProfile(
-        {
-          id: values._id,
-          updates: values.updates,
-          accessToken: values.accessToken,
-        },
-        dispatch
-      ).catch(error => {
-        dispatch(requestFinished());
-        dispatch(obtainUserProfileError(error));
-      });
-    } catch (e) {
-      dispatch(requestFinished());
+export const requestUpdate = values => dispatch => {
+  try {
+    dispatch(requestLoading());
+    if (!values.userInfo.avatar && values.updates.small) {
+      values.userInfo.avatar = {
+        small: values.updates.small,
+      };
+    } else if (
+      values.userInfo.avatar &&
+      values.userInfo.avatar.small === '' &&
+      values.updates.small
+    ) {
+      values.userInfo.avatar.small = values.updates.small;
+    } else if (
+      values.userInfo.avatar &&
+      values.updates &&
+      values.updates.small &&
+      values.userInfo.avatar.small !== values.updates.small
+    ) {
+      values.userInfo.avatar.small = values.updates.small;
     }
-  };
+    dispatch(storeUserProfile(values.userInfo));
+    updateProfile(
+      {
+        id: values._id,
+        updates: values.updates,
+        accessToken: values.accessToken,
+      },
+      dispatch
+    ).catch(error => {
+      dispatch(requestFinished());
+      dispatch(obtainUserProfileError(error));
+    });
+  } catch (e) {
+    dispatch(requestFinished());
+  }
 };
 
 const storeUserProfile = userProfile => ({

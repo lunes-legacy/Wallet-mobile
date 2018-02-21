@@ -106,9 +106,8 @@ export default class LunesConfirmButton extends React.Component {
           </View>
         </TouchableHighlight>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 
   render() {

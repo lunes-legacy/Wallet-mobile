@@ -29,13 +29,17 @@ export default {
   WELCOME_MSG: `Muchas gracias por elegir a Wallet Lunes como su cartera multicoin.
   Disfrute de la usabilidad y la tecnología de esta increíble cartera y almacene sus criptomoedas con un alto nivel de seguridad.`,
   ANALYTICS: 'Analítica',
-  ANALYTICS_MSG: `Acompañe los movimientos de altas y bajas del mercado de criptomoedas con nuestros gráficos modernos y prácticos.`,
+  ANALYTICS_MSG:
+    'Acompañe los movimientos de altas y bajas del mercado de criptomoedas con nuestros gráficos modernos y prácticos.',
   DO_YOUR_BACKUP: 'Haga su copia de seguridad',
-  DO_YOUR_BACKUP_MSG: `No almacenamos sus monedas en nuestros servidores, que son de su propiedad y están en su posesión, así que no deje de guardar sus claves privadas y hacer su copia de seguridad.`,
+  DO_YOUR_BACKUP_MSG:
+    'No almacenamos sus monedas en nuestros servidores, que son de su propiedad y están en su posesión, así que no deje de guardar sus claves privadas y hacer su copia de seguridad.',
   BUY_COINS: 'Comprar monedas',
-  BUY_COINS_MSG: `Comprar criptomoedas de forma rápida y segura, sin burocracia. Agregar créditos pagando por boleto bancario o con su tarjeta de crédito.`,
+  BUY_COINS_MSG:
+    'Comprar criptomoedas de forma rápida y segura, sin burocracia. Agregar créditos pagando por boleto bancario o con su tarjeta de crédito.',
   TRANSACTIONS_P2P: 'Transacciones P2P',
-  TRANSACTIONS_P2P_MSG: `Obtenga y envíe pagos desde cualquier lugar del mundo, de forma rápida, segura y barata, directamente de persona a persona.`,
+  TRANSACTIONS_P2P_MSG:
+    'Obtenga y envíe pagos desde cualquier lugar del mundo, de forma rápida, segura y barata, directamente de persona a persona.',
   CONTINUE: 'Continue',
   START: 'Começar',
   INVALID_EMAIL: 'Email Inválido',

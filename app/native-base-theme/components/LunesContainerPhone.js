@@ -16,7 +16,7 @@ export default class LunesContainerPhone extends React.Component {
       { label: 'US (+1)', code: 'US', value: '+1' },
     ];
     this.state = {
-      countries: countries,
+      countries,
       countrySelected: countries[0],
     };
   }
@@ -29,15 +29,13 @@ export default class LunesContainerPhone extends React.Component {
   }
 
   renderCountries() {
-    return this.state.countries.map(country => {
-      return (
-        <Picker.Item
-          label={country.label}
-          value={country.value}
-          key={country.code}
-        />
-      );
-    });
+    return this.state.countries.map(country => (
+      <Picker.Item
+        label={country.label}
+        value={country.value}
+        key={country.code}
+      />
+    ));
   }
 
   render() {

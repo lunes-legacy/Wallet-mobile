@@ -5,19 +5,19 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createLogger } from 'redux-logger';
 import { autoRehydrate, persistStore } from 'redux-persist';
 import promise from 'redux-promise';
-//import multi from 'redux-multi';
+// import multi from 'redux-multi';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
 
-//const middlewares = [thunk, multi, promise];
+// const middlewares = [thunk, multi, promise];
 const middlewares = [thunk, promise];
 
 middlewares.push(createLogger());
 
-//let store = applyMiddleware(thunk, multi, promise)(createStore)(reducers);
-//export default store;
+// let store = applyMiddleware(thunk, multi, promise)(createStore)(reducers);
+// export default store;
 
-/*const enhancer = compose(
+/* const enhancer = compose(
   applyMiddleware(...middlewares),
   devTools({
     name: Platform.OS,
@@ -25,7 +25,7 @@ middlewares.push(createLogger());
     port: 5678,
   }),
   autoRehydrate()
-);*/
+); */
 
 export default createStore(
   reducers,
@@ -33,12 +33,12 @@ export default createStore(
   composeWithDevTools(applyMiddleware(...middlewares), autoRehydrate())
 );
 
-/*const configureStore = () => {
+/* const configureStore = () => {
   let store = createStore(reducers, undefined, enhancer);
   let persistor = persistStore(store, {}, () => {
     store.getState();
   });
   return { store, persistor };
-};*/
+}; */
 
-//export default configureStore;
+// export default configureStore;

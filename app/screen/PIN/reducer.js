@@ -1,4 +1,5 @@
 import types from '../../config/types';
+
 const initialState = {
   loading: false,
   error: null,
@@ -30,7 +31,7 @@ const pinReducer = (state = initialState, action) => {
         showTextBackupSeed: false,
         pin: null,
         seedText: null,
-        wordSeedWasViewed: true, //flag pra mostrar ou nao o dialog de informação do seed
+        wordSeedWasViewed: true, // flag pra mostrar ou nao o dialog de informação do seed
       };
     case types.SHOW_DIALOG_BACKUP_SEED:
       return {

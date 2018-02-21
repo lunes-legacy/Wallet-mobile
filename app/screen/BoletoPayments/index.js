@@ -1,2 +1,3 @@
-import BoletoPayments from './BoletoPayments'
-export default BoletoPayments
+import BoletoPayments from './BoletoPayments';
+
+export default BoletoPayments;

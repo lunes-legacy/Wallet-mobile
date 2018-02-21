@@ -4,12 +4,10 @@ import { bindActionCreators } from 'redux';
 import SideMenuAvatar from './SideMenuAvatar';
 import { requestObtain } from '../../screen/Profile/actions';
 
-const mapStateToProps = state => {
-  return {
-    userInfo: state.auth.user || {},
-    userProfile: state.profileReducer && state.profileReducer.userProfile,
-  };
-};
+const mapStateToProps = state => ({
+  userInfo: state.auth.user || {},
+  userProfile: state.profileReducer && state.profileReducer.userProfile,
+});
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ requestObtain }, dispatch);

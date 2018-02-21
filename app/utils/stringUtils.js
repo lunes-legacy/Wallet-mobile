@@ -1,7 +1,10 @@
+/*eslint-disable*/
+
 import React from 'react';
 import I18n from '../i18n/i18n';
 import LunesAlert from '../native-base-theme/components/LunesAlert';
 import generalConstant from '../constants/general';
+
 const STATUS_MSG = generalConstant.STATUS_MSG;
 
 /**
@@ -19,9 +22,8 @@ export const PasswordIsStronger = password => {
   return pattern.test(password);
 };
 
-export const GetDefaultURIAvatar = () => {
-  return 'https://res.cloudinary.com/luneswallet/image/upload/v1516659103/avatar-test.png';
-};
+export const GetDefaultURIAvatar = () =>
+  'https://res.cloudinary.com/luneswallet/image/upload/v1516659103/avatar-test.png';
 
 function alertError(message, isShow, callbackOnClose, callbackOnConfirmation) {
   return (
@@ -69,9 +71,8 @@ export const handleSuccess = (
   callbackOnClose,
   callbackOnConfirmation
 ) => {
-  const renderAlertSuccess = msg => {
-    return alertSuccess(msg, true, callbackOnClose, callbackOnConfirmation);
-  };
+  const renderAlertSuccess = msg =>
+    alertSuccess(msg, true, callbackOnClose, callbackOnConfirmation);
 
   if (success && success.messageKey === STATUS_MSG.SUCCESS_AUTH_EMAIL_SENT) {
     return renderAlertSuccess(I18n.t('EMAIL_SENT'));
@@ -84,9 +85,8 @@ export const handleErrors = (
   callbackOnClose,
   callbackOnConfirmation
 ) => {
-  const renderAlertError = msg => {
-    return alertError(msg, true, callbackOnClose, callbackOnConfirmation);
-  };
+  const renderAlertError = msg =>
+    alertError(msg, true, callbackOnClose, callbackOnConfirmation);
 
   if (error && error.messageKey === STATUS_MSG.AUTH_EMAIL_ALREADY) {
     return renderAlertError(I18n.t('EMAIL_ALREADY'));
@@ -107,8 +107,8 @@ export const handleErrors = (
   } else if (error && error.messageKey === STATUS_MSG.NOT_CONNECTED) {
     return renderAlertError(I18n.t('NOT_CONNECTED'));
   } else if (error) {
-    //esse caso é especifico, pois o erro vem do firebase e a maneira de
-    //pegar o nome do erro é pelo error.message
+    // esse caso é especifico, pois o erro vem do firebase e a maneira de
+    // pegar o nome do erro é pelo error.message
     if (error && error.message === STATUS_MSG.AUTH_USER_NOT_FOUND2) {
       return renderAlertError(I18n.t('USER_NOT_FOUND'));
     }

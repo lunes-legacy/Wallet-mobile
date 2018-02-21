@@ -5,4 +5,5 @@
  */
 
 import ReceivePayment from './ReceivePaymentContainer';
+
 export { ReceivePayment };

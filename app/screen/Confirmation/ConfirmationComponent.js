@@ -59,9 +59,8 @@ export default class Confirmation extends React.Component {
           </Text>
         </View>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 
   renderInputConfirmation() {
@@ -71,9 +70,8 @@ export default class Confirmation extends React.Component {
           {I18N.t('YOU_WILL_RECEIVE_CODE_SMS')}
         </Text>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 
   renderCodeConfirmation() {
@@ -85,9 +83,8 @@ export default class Confirmation extends React.Component {
           }}
         />
       );
-    } else {
-      return null;
     }
+    return null;
   }
 
   renderButtonResendSMS() {
@@ -99,9 +96,8 @@ export default class Confirmation extends React.Component {
           </Button>
         </View>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 
   renderError() {
@@ -128,7 +124,6 @@ export default class Confirmation extends React.Component {
         return;
       case '6':
         this.setState({ code6: code.value });
-        return;
     }
   }
 
@@ -137,8 +132,8 @@ export default class Confirmation extends React.Component {
   }
 
   onSubmitCode() {
-    let { code1, code2, code3, code4, code5, code6 } = this.state;
-    let finalCodeInput = `${code1}${code2}${code3}${code4}${code5}${code6}`;
+    const { code1, code2, code3, code4, code5, code6 } = this.state;
+    const finalCodeInput = `${code1}${code2}${code3}${code4}${code5}${code6}`;
     this.props.confirmCode(
       finalCodeInput,
       this.props.verificationId,
@@ -187,7 +182,7 @@ export default class Confirmation extends React.Component {
   }
 
   renderButtonConfirm() {
-    let { code1, code2, code3, code4, code5, code6 } = this.state;
+    const { code1, code2, code3, code4, code5, code6 } = this.state;
     if (
       this.state.isWaitingConfirmation &&
       code1 &&

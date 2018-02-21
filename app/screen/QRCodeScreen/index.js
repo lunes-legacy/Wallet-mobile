@@ -5,4 +5,5 @@
  */
 
 import QRCode from './QRCodeContainer';
+
 export { QRCode };

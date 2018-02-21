@@ -1,16 +1,18 @@
-import ReduxPersist from '../config/reduxPersist';
+// @flow
+
 import { AsyncStorage } from 'react-native';
 import { persistStore } from 'redux-persist';
+import ReduxPersist from '../config/reduxPersist';
 import StartupActions from '../Redux/StartupRedux';
 
 const updateReducers = (store: Object) => {
-  const reducerVersion = ReduxPersist.reducerVersion;
+  const { reducerVersion } = ReduxPersist;
   const config = ReduxPersist.storeConfig;
   const startup = () => store.dispatch(StartupActions.startup());
 
   // Check to ensure latest reducer version
   AsyncStorage.getItem('reducerVersion')
-    .then(localVersion => {
+    .then((localVersion: string) => {
       if (localVersion !== reducerVersion) {
         console.tron.display({
           name: 'PURGE',

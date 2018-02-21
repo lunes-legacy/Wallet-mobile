@@ -9,19 +9,22 @@ import {
   requestPrice,
 } from './actions';
 
-const mapStateToProps = state => {
-  return {
-    userInfo: state.auth.user || {},
-    balanceData: state.auth.balance,
-    historic: state.historicDataReducer.historic,
-    range: state.historicDataReducer.range,
-    ticker: state.historicDataReducer.ticker,
-  };
-};
+const mapStateToProps = state => ({
+  userInfo: state.auth.user || {},
+  balanceData: state.auth.balance,
+  historic: state.historicDataReducer.historic,
+  range: state.historicDataReducer.range,
+  ticker: state.historicDataReducer.ticker,
+});
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
-    { requestHistoricData, changeRange, updateTicker, requestPrice },
+    {
+      requestHistoricData,
+      changeRange,
+      updateTicker,
+      requestPrice,
+    },
     dispatch
   );
 

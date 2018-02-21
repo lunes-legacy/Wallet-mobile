@@ -1,26 +1,22 @@
 import types from '../../config/types';
 import { navigate } from '../../config/routes';
 
-export const requestAddPIN = () => {
-  return dispatch => {
-    dispatch(requestLoading());
+export const requestAddPIN = () => dispatch => {
+  dispatch(requestLoading());
 
-    setTimeout(() => {
-      dispatch(requestFinished());
-      navigate('Main');
-    }, 5000);
-  };
+  setTimeout(() => {
+    dispatch(requestFinished());
+    navigate('Main');
+  }, 5000);
 };
 
-export const requestValidPIN = () => {
-  return dispatch => {
-    dispatch(requestLoading());
+export const requestValidPIN = () => dispatch => {
+  dispatch(requestLoading());
 
-    setTimeout(() => {
-      dispatch(requestFinished());
-      navigate('Main');
-    }, 5000);
-  };
+  setTimeout(() => {
+    dispatch(requestFinished());
+    navigate('Main');
+  }, 5000);
 };
 
 const requestLoading = () => ({

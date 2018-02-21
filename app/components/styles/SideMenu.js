@@ -21,13 +21,13 @@ export default {
   },
   avatarSize: 80,
   avatarSmallSize: 40,
-  label:{
-    name:{
+  label: {
+    name: {
       paddingTop: 15,
       color: Colors.white,
       fontSize: 18,
     },
-    email:{
+    email: {
       color: Colors.white,
       fontSize: 11,
     },
@@ -57,7 +57,7 @@ export default {
   coins: {
     color: Colors.primary,
     backgroundColor: Colors.secondary,
-    borderWidth: 100
+    borderWidth: 100,
   },
   dolar: {
     fontSize: 15,

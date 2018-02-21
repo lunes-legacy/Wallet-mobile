@@ -5,4 +5,5 @@
  */
 
 import ChangePassword from './ChangePasswordContainer';
+
 export { ChangePassword };

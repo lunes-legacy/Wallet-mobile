@@ -5,9 +5,7 @@ import BosonColors from '../variables/bosonColor';
 import { LunesTabCoinsConstant } from '../constants';
 import { RenderColorCoinUtil, RenderIconKPIUtil } from '../utils';
 
-const renderIconKPI = status => {
-  return RenderIconKPIUtil(status);
-};
+const renderIconKPI = status => RenderIconKPIUtil(status);
 
 const renderFontSizeKPI = kpi => {
   if (kpi.isCoinSelected) {
@@ -19,14 +17,12 @@ const renderFontSizeKPI = kpi => {
   return { fontSize: 18, color: '#fff' };
 };
 
-const LunesTabCoinsKPI = ({ kpi }) => {
-  return (
-    <View style={styles.container}>
-      <View style={{ paddingRight: 5 }}>{renderIconKPI(kpi.price.status)}</View>
-      <Text style={[renderFontSizeKPI(kpi)]}>{kpi.name}</Text>
-    </View>
-  );
-};
+const LunesTabCoinsKPI = ({ kpi }) => (
+  <View style={styles.container}>
+    <View style={{ paddingRight: 5 }}>{renderIconKPI(kpi.price.status)}</View>
+    <Text style={[renderFontSizeKPI(kpi)]}>{kpi.name}</Text>
+  </View>
+);
 
 const styles = StyleSheet.create({
   container: {

@@ -2,20 +2,18 @@ import types from '../../config/types';
 import LunesLib from 'lunes-lib';
 import { navigate } from '../../config/routes';
 
-export const changePasswordAction = email => {
-  return dispatch => {
-    dispatch(requestOpened());
-    LunesLib.users.resetPassword({ email }).then(
-      response => {
-        dispatch(requestFinished());
-        alert(response.message);
-      },
-      error => {
-        dispatch(requestFinished());
-        console.log(error);
-      }
-    );
-  };
+export const changePasswordAction = email => dispatch => {
+  dispatch(requestOpened());
+  LunesLib.users.resetPassword({ email }).then(
+    response => {
+      dispatch(requestFinished());
+      alert(response.message);
+    },
+    error => {
+      dispatch(requestFinished());
+      console.log(error);
+    }
+  );
 };
 
 const requestOpened = () => ({

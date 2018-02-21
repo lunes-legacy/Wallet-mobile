@@ -26,7 +26,7 @@ export default class LunesTabCoin extends React.Component {
   }
 
   renderBorder(index) {
-    let last = LunesTabCoinsConstant.length - 1 === index;
+    const last = LunesTabCoinsConstant.length - 1 === index;
     if (!last) {
       return {
         borderRightWidth: 1,
@@ -56,7 +56,7 @@ export default class LunesTabCoin extends React.Component {
             tabCoin.price.status = currentCoin.CHANGE || '-';
           }
 
-          tabCoin.price.percent = `${price} (${percent})`; //'0 (0%)'
+          tabCoin.price.percent = `${price} (${percent})`; // '0 (0%)'
 
           return (
             <View
@@ -76,7 +76,7 @@ export default class LunesTabCoin extends React.Component {
                   }
 
                   if (this.props.doAction) {
-                    //this.props.doAction(tabCoin);
+                    // this.props.doAction(tabCoin);
                   }
                 }}>
                 <View>
@@ -88,9 +88,8 @@ export default class LunesTabCoin extends React.Component {
               </TouchableOpacity>
             </View>
           );
-        } else {
-          return null;
         }
+        return null;
       });
     }
     return null;

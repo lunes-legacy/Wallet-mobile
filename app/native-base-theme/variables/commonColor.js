@@ -14,7 +14,7 @@ export default {
   platformStyle,
   platform,
   bgContainer: BosonColors.$bosonPrimary,
-  //logo
+  // logo
   sizeLogo: 70,
   fontLogo: 'Offside-Regular',
   // AndroidRipple
@@ -33,7 +33,7 @@ export default {
   btnDisabledBg: '#b5b5b5',
   btnDisabledClr: '#f1f1f1',
 
-  //Android
+  // Android
   btnUppercaseAndroidText: true,
 
   // CheckBox

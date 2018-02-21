@@ -5,4 +5,5 @@
  */
 
 import Introduction from './IntroductionContainer';
+
 export { Introduction };

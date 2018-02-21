@@ -2,27 +2,26 @@ import types from '../../config/types';
 import LunesLib from 'lunes-lib';
 import { navigate } from '../../config/routes';
 import generalConstant from '../../constants/general';
+
 const STATUS_MSG = generalConstant.STATUS_MSG;
 
-export const changePasswordAction = email => {
-  return dispatch => {
-    dispatch(requestOpened());
-    LunesLib.users.resetPassword({ email }).then(
-      response => {
-        dispatch(requestFinished());
-        dispatch(
-          showSuccess({
-            message: '',
-            messageKey: STATUS_MSG.SUCCESS_AUTH_EMAIL_SENT,
-          })
-        );
-      },
-      error => {
-        dispatch(requestFinished());
-        dispatch(showError(error));
-      }
-    );
-  };
+export const changePasswordAction = email => dispatch => {
+  dispatch(requestOpened());
+  LunesLib.users.resetPassword({ email }).then(
+    response => {
+      dispatch(requestFinished());
+      dispatch(
+        showSuccess({
+        message: '',
+        messageKey: STATUS_MSG.SUCCESS_AUTH_EMAIL_SENT,
+      })
+      );
+    },
+    error => {
+      dispatch(requestFinished());
+      dispatch(showError(error));
+    }
+  );
 };
 
 const requestOpened = () => ({

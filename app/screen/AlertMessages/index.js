@@ -5,4 +5,5 @@
  */
 
 import AlertMessages from './AlertMessagesComponent';
+
 export { AlertMessages };

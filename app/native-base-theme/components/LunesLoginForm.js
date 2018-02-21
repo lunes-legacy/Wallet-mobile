@@ -63,9 +63,8 @@ export default class LunesLoginForm extends React.Component {
           />
         </View>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 
   renderFieldConfirmPassword() {
@@ -86,9 +85,8 @@ export default class LunesLoginForm extends React.Component {
           {this.renderEyePassword()}
         </View>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 
   getTextButton() {
@@ -198,9 +196,8 @@ export default class LunesLoginForm extends React.Component {
           </Text>
         </View>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 
   renderEyePassword() {
@@ -281,7 +278,7 @@ export default class LunesLoginForm extends React.Component {
         {this.renderFieldConfirmPassword()}
         {this.renderErrorConfirmPassword()}
 
-        {/*this.renderPasswordValidate()*/}
+        {/* this.renderPasswordValidate() */}
         {this.renderHelpPasswordExample()}
 
         {this.checkButtonIsDisabled()}

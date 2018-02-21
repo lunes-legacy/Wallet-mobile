@@ -5,4 +5,5 @@
  */
 
 import SendPayment from './SendPaymentContainer';
+
 export { SendPayment };

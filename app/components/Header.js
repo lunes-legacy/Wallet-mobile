@@ -122,11 +122,9 @@ class Header extends React.Component {
   }
 }
 
-const mpStateToProps = state => {
-  return {
-    user: state.auth.user,
-  };
-};
+const mpStateToProps = state => ({
+  user: state.auth.user,
+});
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ requestSignout }, dispatch);

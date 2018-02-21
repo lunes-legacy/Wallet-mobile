@@ -7,6 +7,10 @@ export default class TabContent extends React.Component {
     return this.props.isVisible;
   }
   render() {
-    return <View style={tabStyle.tabContent}>{this.canRender() && this.props.children}</View>;
+    return (
+      <View style={tabStyle.tabContent}>
+        {this.canRender() && this.props.children}
+      </View>
+    );
   }
 }

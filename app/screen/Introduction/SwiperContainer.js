@@ -7,11 +7,9 @@ import {
 } from './actions';
 import Swiper from './SwiperComponent';
 
-const mapStateToProps = state => {
-  return {
-    isViewedIntroduction: state.redirectToAuthReducer.isViewedIntroduction,
-  };
-};
+const mapStateToProps = state => ({
+  isViewedIntroduction: state.redirectToAuthReducer.isViewedIntroduction,
+});
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ redirectToAuthAction }, dispatch);

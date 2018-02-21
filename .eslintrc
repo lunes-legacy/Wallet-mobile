@@ -7,7 +7,9 @@
     "plugin:import/warnings",
     "prettier",
     "prettier/flowtype",
-    "prettier/react"
+    "prettier/react",
+    "eslint:recommended",
+    "airbnb-base"
   ],
   "plugins": ["flowtype", "react", "prettier"],
   "globals": {
@@ -27,12 +29,15 @@
     "node": true
   },
   "rules": {
-    "no-unused-vars": 1,
+    "no-unused-vars": "off",
     "no-duplicate-imports": 0,
     "import/no-duplicates": 2,
     "import/named": 0,
     "import/no-unresolved": 0,
-    "react/prop-types": [1, { "skipUndeclared": true }],
+    "arrow-parens": "off",
+    "react/prop-types": [0, { 
+      "skipUndeclared": true
+    }],
     "react/display-name": 0,
     "prettier/prettier": [
       "error",
@@ -43,6 +48,23 @@
         "jsxBracketSameLine": true,
         "trailingComma": "es5"
       }
-    ]
+    ],
+    "arrow-body-style" : "off",
+    "import/extensions": ["off"],
+    "eslint-plugin-import": ["off", "never"],
+    "import/prefer-default-export": ["off", "never"],
+    "react/jsx-filename-extension": ["off", "never"],
+    "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
+    "indent": [2, 2, {"SwitchCase": 1}],
+    "react/jsx-indent": [2, 2],
+    "import/no-extraneous-dependencies": "off",
+    "global-require": "off",
+    "semi": "off",
+    "no-undersco": "off",
+    "no-console": "off",
+    "class-methods-use-this": "off",
+    "no-mixed-operators": "off",
+    "comma-dangle": "off",
+    "function-paren-newline": "off"
   }
 }

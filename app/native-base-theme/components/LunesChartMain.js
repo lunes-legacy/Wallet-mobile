@@ -38,9 +38,7 @@ export default class LunesChartMain extends React.Component<{}> {
   render() {
     const dataFormatted =
       this.props.historic && this.props.historic.data
-        ? _.map(this.props.historic.data, d => {
-            return d.close;
-          })
+        ? _.map(this.props.historic.data, d => d.close)
         : null;
     const data = dataFormatted || [0, 0, 0, 0, 0, 0, 0, 0, 0];
     const max = _.max(data);
@@ -155,7 +153,7 @@ export default class LunesChartMain extends React.Component<{}> {
           range={this.props.range}
           onChangeRange={this.props.changeRange}
         />
-        <View style={{ position: 'absolute', width: width, height: '100%' }}>
+        <View style={{ position: 'absolute', width, height: '100%' }}>
           <AreaChart
             style={{ height: 250 }}
             dataPoints={data}
@@ -174,7 +172,7 @@ export default class LunesChartMain extends React.Component<{}> {
               strokeWidth: 4,
             }}
             renderDecorator={({ x, y, index, value }) => (
-              <Circle
+  <Circle
                 onPress={value => {
                   console.log(value.target);
                 }}

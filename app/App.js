@@ -10,7 +10,7 @@ import RootNavigator, { setNavigator } from './config/routes';
 import store from './config/store';
 import reduxPersist from './config/reduxPersist';
 
-//theme native base
+// theme native base
 import getTheme from './native-base-theme/components';
 import commonColor from './native-base-theme/variables/commonColor';
 

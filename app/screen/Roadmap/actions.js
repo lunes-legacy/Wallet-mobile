@@ -28,6 +28,4 @@ export const confirmTransactionSend = (
   senderAddress,
   amount,
   fee
-) => {
-  return dispatch => {};
-};
+) => dispatch => {};

@@ -11,77 +11,10 @@ import {
   Vibration,
 } from 'react-native';
 import { Container, Item, Input, Toast, Root } from 'native-base';
-import BosonColors from '../../native-base-theme/variables/bosonColor';
 import QRCodeScanner from 'react-native-qrcode-scanner';
-import { navigate } from '../../config/routes';
 import Camera from 'react-native-camera';
-import bosonColor from '../../native-base-theme/variables/bosonColor';
-
-export default class QRCode extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showToast: false,
-      showQRCode: false,
-    };
-  }
-
-  onSuccess(e) {
-    try {
-      console.log(e.data);
-      this.setState({ qrcode: e.data });
-      Vibration.vibrate();
-      const { state } = this.props.navigation;
-      const amountToSend = state.params ? state.params.amountToSend : 0;
-      navigate('ConfirmSend', { addressToSend: e.data, amountToSend });
-    } catch (error) {
-      alert('Erro ao receber endereço da carteira');
-    }
-  }
-
-  showQRCodeScan() {
-    this.setState({
-      showQRCode: true,
-      qrcode: '',
-    });
-  }
-
-  render() {
-    return (
-      <View style={styles.container2}>
-        <StatusBar
-          backgroundColor={BosonColors.$bosonLightGreen}
-          barStyle="light-content"
-        />
-        <View style={styles.container2}>
-          <Camera
-            style={styles.preview}
-            onBarCodeRead={e => {
-              this.onSuccess(e);
-            }}
-            ref={cam => (this.camera = cam)}
-            aspect={Camera.constants.Aspect.stretch}>
-            <View style={styles.border} />
-            <Text
-              style={{
-                backgroundColor: 'white',
-              }}>
-              {this.state.qrcode}
-            </Text>
-          </Camera>
-          {/*<QRCodeScanner
-          reactivate={true}
-          checkAndroid6Permissions={true}
-          showMarker={true}
-          onRead={e => {
-            this.onSuccess(e);
-          }}
-        />*/}
-        </View>
-      </View>
-    );
-  }
-}
+import BosonColors from '../../native-base-theme/variables/bosonColor';
+import { navigate } from '../../config/routes';
 
 const styles = StyleSheet.create({
   container: {
@@ -107,7 +40,76 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width - 20,
     height: Dimensions.get('window').height / 2,
     backgroundColor: 'transparent',
-    borderColor: bosonColor.$bosonLightGreen,
+    borderColor: BosonColors.$bosonLightGreen,
     borderWidth: 3,
   },
 });
+
+export default class QRCode extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showToast: false,
+      showQRCode: false,
+    };
+  }
+
+  onSuccess(e) {
+    try {
+      console.log(e.data);
+      this.setState({ qrcode: e.data });
+      Vibration.vibrate();
+      const { state } = this.props.navigation;
+      const amountToSend = state.params ? state.params.amountToSend : 0;
+      navigate('ConfirmSend', { addressToSend: e.data, amountToSend });
+    } catch (error) {
+      // eslint-disable-next-line
+      alert('Erro ao receber endereço da carteira');
+    }
+  }
+
+  showQRCodeScan() {
+    this.setState({
+      showQRCode: true,
+      qrcode: '',
+    });
+  }
+
+  render() {
+    return (
+      <View style={styles.container2}>
+        <StatusBar
+          backgroundColor={BosonColors.$bosonLightGreen}
+          barStyle="light-content"
+        />
+        <View style={styles.container2}>
+          <Camera
+            style={styles.preview}
+            onBarCodeRead={e => {
+              this.onSuccess(e);
+            }}
+            ref={cam => {
+              this.camera = cam;
+            }}
+            aspect={Camera.constants.Aspect.stretch}>
+            <View style={styles.border} />
+            <Text
+              style={{
+                backgroundColor: 'white',
+              }}>
+              {this.state.qrcode}
+            </Text>
+          </Camera>
+          {/* <QRCodeScanner
+          reactivate={true}
+          checkAndroid6Permissions={true}
+          showMarker={true}
+          onRead={e => {
+            this.onSuccess(e);
+          }}
+        /> */}
+        </View>
+      </View>
+    );
+  }
+}

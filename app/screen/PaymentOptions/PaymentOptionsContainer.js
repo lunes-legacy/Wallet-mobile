@@ -5,11 +5,9 @@ import { bindActionCreators } from 'redux';
 import { requestAddPIN, requestValidPIN } from './actions';
 import PaymentOptions from './PaymentOptionsComponent';
 
-const mapStateToProps = state => {
-  return {
-    loading: state.sendPaymentReducer.loading,
-  };
-};
+const mapStateToProps = state => ({
+  loading: state.sendPaymentReducer.loading,
+});
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ requestAddPIN, requestValidPIN }, dispatch);

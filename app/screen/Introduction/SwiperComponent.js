@@ -85,10 +85,9 @@ export default class Swiper extends Component {
     // Update index
     this.updateIndex(
       e.nativeEvent.contentOffset
-        ? e.nativeEvent.contentOffset.x
-        : // When scrolled with .scrollTo() on Android there is no contentOffset
-          e.nativeEvent.position * this.state.width
-    );
+      ? e.nativeEvent.contentOffset.x
+      : // When scrolled with .scrollTo() on Android there is no contentOffset
+      e.nativeEvent.position * this.state.width);
   };
 
   /*
@@ -174,26 +173,24 @@ export default class Swiper extends Component {
    * Render ScrollView component
    * @param {array} slides to swipe through
    */
-  renderScrollView = pages => {
-    return (
-      <ScrollView
-        ref={component => {
-          this.scrollView = component;
-        }}
-        {...this.props}
-        contentContainerStyle={[styles.wrapper, this.props.style]}
-        onScrollBeginDrag={this.onScrollBegin}
-        onMomentumScrollEnd={this.onScrollEnd}
-        onScrollEndDrag={this.onScrollEndDrag}>
-        {pages.map((page, i) => (
-          // Render each slide inside a View
-          <View style={[styles.fullScreen, styles.slide]} key={i}>
-            {page}
-          </View>
-        ))}
-      </ScrollView>
-    );
-  };
+  renderScrollView = pages => (
+    <ScrollView
+      ref={component => {
+        this.scrollView = component;
+      }}
+      {...this.props}
+      contentContainerStyle={[styles.wrapper, this.props.style]}
+      onScrollBeginDrag={this.onScrollBegin}
+      onMomentumScrollEnd={this.onScrollEnd}
+      onScrollEndDrag={this.onScrollEndDrag}>
+      {pages.map((page, i) => (
+        // Render each slide inside a View
+        <View style={[styles.fullScreen, styles.slide]} key={i}>
+          {page}
+        </View>
+      ))}
+    </ScrollView>
+  );
 
   /**
    * Render pagination indicators
@@ -206,16 +203,15 @@ export default class Swiper extends Component {
     const ActiveDot = <View style={[styles.dot, styles.activeDot]} />,
       Dot = <View style={styles.dot} />;
 
-    let dots = [];
+    const dots = [];
 
     for (let key = 0; key < this.state.total; key++) {
       dots.push(
         key === this.state.index
-          ? // Active dot
+        ? // Active dot
             React.cloneElement(ActiveDot, { key })
-          : // Other dots
-            React.cloneElement(Dot, { key })
-      );
+        : // Other dots
+        React.cloneElement(Dot, { key }));
     }
 
     return (
@@ -252,28 +248,26 @@ export default class Swiper extends Component {
   /**
    * Render the component
    */
-  render = ({ children } = this.props) => {
-    return (
-      <View style={[styles.container, styles.fullScreen]}>
-        {/* Render screens */}
-        {this.renderScrollView(children)}
-        <View style={{ flexDirection: 'row' }}>
-          {this.renderButton()}
-          {/* Render pagination */}
-          {this.renderPagination()}
-          {/* Render Continue or Done button */}
-          {this.renderButton()}
-        </View>
+  render = ({ children } = this.props) => (
+    <View style={[styles.container, styles.fullScreen]}>
+      {/* Render screens */}
+      {this.renderScrollView(children)}
+      <View style={{ flexDirection: 'row' }}>
+        {this.renderButton()}
+        {/* Render pagination */}
+        {this.renderPagination()}
+        {/* Render Continue or Done button */}
+        {this.renderButton()}
       </View>
-    );
-  };
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   // Set width and height to the screen size
   fullScreen: {
-    width: width,
-    height: height,
+    width,
+    height,
   },
   // Main container
   container: {
