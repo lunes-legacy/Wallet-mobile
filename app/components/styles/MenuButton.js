@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Colors from '../theme/Colors';
 import { Platform } from 'react-native';
 

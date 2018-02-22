@@ -1,3 +1,4 @@
+/* eslint-disable */
 // @flow
 
 const _PRIMARY = '#654FA4';

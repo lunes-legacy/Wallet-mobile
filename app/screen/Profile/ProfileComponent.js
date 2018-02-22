@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import {
   Text,
@@ -13,6 +14,7 @@ import {
 import { Container, Button } from 'native-base';
 import PhotoUpload from 'react-native-photo-upload';
 import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
+import Svg, { RadialGradient, Rect, Defs, Stop } from 'react-native-svg';
 import { GetDefaultURIAvatar } from '../../utils/stringUtils';
 import LunesPIN from '../../native-base-theme/components/LunesPIN';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
@@ -22,7 +24,6 @@ import LunesAlert from '../../native-base-theme/components/LunesAlert';
 import I18N from '../../i18n/i18n';
 import { navigate } from '../../config/routes';
 import bosonColor from '../../native-base-theme/variables/bosonColor';
-import Svg, { RadialGradient, Rect, Defs, Stop } from 'react-native-svg';
 import {
   LunesIconVersion,
   LunesIconAbout,
@@ -33,6 +34,98 @@ import {
   LunesIconPhone,
 } from '../../native-base-theme/components/LunesCustomIcon';
 import generalConstant from '../../constants/general';
+
+const styles = StyleSheet.create({
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(43, 19, 74, 0.86)',
+  },
+  innerContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textModal: {
+    color: '#fff',
+    padding: 20,
+  },
+  textBold: {
+    fontWeight: '900',
+  },
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: 10,
+    paddingTop: 5,
+  },
+  footer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: bosonColor.$bosonLightGrey,
+  },
+  textFooter: {
+    color: bosonColor.$bosonWhite,
+  },
+  labelText: {
+    color: '#4CD566',
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'left',
+  },
+  input: {
+    width: Dimensions.get('window').width - 80,
+    color: '#fff',
+    textAlign: 'left',
+    borderBottomWidth: 1,
+    borderBottomColor: bosonColor.$bosonMediumGrey,
+  },
+  fullname: {
+    color: '#fff',
+    fontSize: 16,
+    textAlign: 'center',
+    margin: 5,
+    padding: 0,
+  },
+  containerQuotation: {
+    position: 'relative',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textQuotation: {
+    textAlign: 'center',
+    color: bosonColor.$bosonWhite,
+    position: 'absolute',
+    zIndex: 99,
+    top: 10,
+  },
+  fullnameContainer: {
+    marginTop: 30,
+    marginBottom: 10,
+  },
+  instructions: {
+    width: 220,
+    textAlign: 'center',
+    color: '#fff',
+    marginTop: 10,
+    marginBottom: 20,
+  },
+  lineBreaker: {
+    height: 1,
+    marginTop: 5,
+  },
+  lineBreakerPurple: {
+    height: 1,
+    marginTop: 10,
+    backgroundColor: bosonColor.$bosonDarkPurple,
+  },
+  divider: {
+    height: 20,
+    marginBottom: 20,
+  },
+});
 
 export default class Profile extends React.Component {
   constructor(props) {
@@ -103,6 +196,7 @@ export default class Profile extends React.Component {
   }
 
   render() {
+    // eslint-disable-next-line
     let _id = '';
     let accessToken = '';
     let email = '';
@@ -382,95 +476,3 @@ export default class Profile extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  modalContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(43, 19, 74, 0.86)',
-  },
-  innerContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  textModal: {
-    color: '#fff',
-    padding: 20,
-  },
-  textBold: {
-    fontWeight: '900',
-  },
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingLeft: 10,
-    paddingTop: 5,
-  },
-  footer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: bosonColor.$bosonLightGrey,
-  },
-  textFooter: {
-    color: bosonColor.$bosonWhite,
-  },
-  labelText: {
-    color: '#4CD566',
-    fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'left',
-  },
-  input: {
-    width: Dimensions.get('window').width - 80,
-    color: '#fff',
-    textAlign: 'left',
-    borderBottomWidth: 1,
-    borderBottomColor: bosonColor.$bosonMediumGrey,
-  },
-  fullname: {
-    color: '#fff',
-    fontSize: 16,
-    textAlign: 'center',
-    margin: 5,
-    padding: 0,
-  },
-  containerQuotation: {
-    position: 'relative',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  textQuotation: {
-    textAlign: 'center',
-    color: bosonColor.$bosonWhite,
-    position: 'absolute',
-    zIndex: 99,
-    top: 10,
-  },
-  fullnameContainer: {
-    marginTop: 30,
-    marginBottom: 10,
-  },
-  instructions: {
-    width: 220,
-    textAlign: 'center',
-    color: '#fff',
-    marginTop: 10,
-    marginBottom: 20,
-  },
-  lineBreaker: {
-    height: 1,
-    marginTop: 5,
-  },
-  lineBreakerPurple: {
-    height: 1,
-    marginTop: 10,
-    backgroundColor: bosonColor.$bosonDarkPurple,
-  },
-  divider: {
-    height: 20,
-    marginBottom: 20,
-  },
-});

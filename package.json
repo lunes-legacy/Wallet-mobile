@@ -20,12 +20,13 @@
     "android:logcat": "$ANDROID_HOME/platform-tools/adb logcat *:S ReactNative:V ReactNativeJS:V",
     "android:shake": "$ANDROID_HOME/platform-tools/adb devices | grep '\\t' | awk '{print $1}' | sed 's/\\s//g' | xargs -I {} $ANDROID_HOME/platform-tools/adb -s {} shell input keyevent 82",
     "ios": "react-native run-ios",
-    "clean": "rm -rf node_modules && npm i && watchman watch-del-all && rm -fr $TMPDIR/react-* && rm -rf ios/build/ModuleCache/* && rm -rf ios/build",    
+    "clean": "rm -rf node_modules && npm i && watchman watch-del-all && rm -fr $TMPDIR/react-* && rm -rf ios/build/ModuleCache/* && rm -rf ios/build",
     "clean:android": "cd android/ && gradlew clean && cd .. && react-native run-android",
     "newclear": "rm -rf $TMPDIR/react-* && watchman watch-del-all && rm -rf ios/build && rm -rf node_modules/ && npm cache clean --force && npm i",
     "postinstall": "remotedev-debugger --hostname localhost --port 5678 --injectserver",
     "pretest": "npm run eslint",
     "prestart": "npm run eslint",
+    "preinstall": "npm run eslint",
     "format": "prettier-eslint --write \"app/**/**/*.js\""
   },
   "dependencies": {

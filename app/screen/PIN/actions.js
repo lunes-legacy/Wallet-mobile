@@ -1,3 +1,4 @@
+/* eslint-disable */
 import types from '../../config/types';
 import { navigate } from '../../config/routes';
 import LunesLib from 'lunes-lib';

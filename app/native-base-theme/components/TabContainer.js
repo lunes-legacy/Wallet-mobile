@@ -1,3 +1,4 @@
+/* eslint-disable */
 import variable from './../variables/commonColor';
 import { Platform } from 'react-native';
 

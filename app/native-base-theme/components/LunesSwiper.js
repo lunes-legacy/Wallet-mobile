@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import { Animated, Dimensions, ScrollView, View } from 'react-native';
 import Behavior from 'react-native-behavior';

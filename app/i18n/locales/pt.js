@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default {
   greeting: 'Bom dia!',
   selectCode: 'Selecionar código',

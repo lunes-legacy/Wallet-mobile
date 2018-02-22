@@ -1,3 +1,4 @@
+/* eslint-disable */
 import LunesLib from 'lunes-lib';
 import types from '../../config/types';
 import { navigate } from '../../config/routes';
@@ -112,9 +113,9 @@ export const confirmTransactionSend = (
   dispatch(requestLoading());
   _confirmPin(pin, currentUser, senderAddress, amount, fee, dispatch).catch(
     error => {
-    dispatch(requestFinished());
-    alert(I18N.t('ERROR_TO_CONFIRM_PIN'));
-  }
+      dispatch(requestFinished());
+      alert(I18N.t('ERROR_TO_CONFIRM_PIN'));
+    }
   );
 };
 

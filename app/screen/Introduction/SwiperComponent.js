@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import {
   Dimensions, // Detects screen dimensions
@@ -85,9 +86,10 @@ export default class Swiper extends Component {
     // Update index
     this.updateIndex(
       e.nativeEvent.contentOffset
-      ? e.nativeEvent.contentOffset.x
-      : // When scrolled with .scrollTo() on Android there is no contentOffset
-      e.nativeEvent.position * this.state.width);
+        ? e.nativeEvent.contentOffset.x
+        : // When scrolled with .scrollTo() on Android there is no contentOffset
+          e.nativeEvent.position * this.state.width
+    );
   };
 
   /*
@@ -208,10 +210,11 @@ export default class Swiper extends Component {
     for (let key = 0; key < this.state.total; key++) {
       dots.push(
         key === this.state.index
-        ? // Active dot
+          ? // Active dot
             React.cloneElement(ActiveDot, { key })
-        : // Other dots
-        React.cloneElement(Dot, { key }));
+          : // Other dots
+            React.cloneElement(Dot, { key })
+      );
     }
 
     return (

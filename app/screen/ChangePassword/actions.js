@@ -1,3 +1,4 @@
+/* eslint-disable */
 import types from '../../config/types';
 import LunesLib from 'lunes-lib';
 import { navigate } from '../../config/routes';
@@ -12,9 +13,9 @@ export const changePasswordAction = email => dispatch => {
       dispatch(requestFinished());
       dispatch(
         showSuccess({
-        message: '',
-        messageKey: STATUS_MSG.SUCCESS_AUTH_EMAIL_SENT,
-      })
+          message: '',
+          messageKey: STATUS_MSG.SUCCESS_AUTH_EMAIL_SENT,
+        })
       );
     },
     error => {

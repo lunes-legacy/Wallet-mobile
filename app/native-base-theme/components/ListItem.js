@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Platform, PixelRatio } from 'react-native';
 
 import pickerTheme from './Picker';

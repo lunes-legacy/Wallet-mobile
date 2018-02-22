@@ -1,3 +1,4 @@
+/* eslint-disable */
 import variable from './../variables/commonColor';
 
 export default (variables = variable) => {

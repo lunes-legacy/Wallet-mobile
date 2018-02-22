@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Platform } from 'react-native';
 
 import variable from './../variables/platform';

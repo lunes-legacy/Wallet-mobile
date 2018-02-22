@@ -1,3 +1,4 @@
+/* eslint-disable */
 // @flow
 import React from 'react';
 import _ from 'lodash';
@@ -172,7 +173,7 @@ export default class LunesChartMain extends React.Component<{}> {
               strokeWidth: 4,
             }}
             renderDecorator={({ x, y, index, value }) => (
-  <Circle
+              <Circle
                 onPress={value => {
                   console.log(value.target);
                 }}

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { PixelRatio } from 'react-native';
 
 import variable from './../variables/platform';

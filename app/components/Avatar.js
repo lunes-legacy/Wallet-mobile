@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import UserAvatar from 'react-native-user-avatar';

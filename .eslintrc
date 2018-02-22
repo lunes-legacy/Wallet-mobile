@@ -24,7 +24,7 @@
       "experimentalDecorators": true
     }
   },
-  "env": {
+  "env": {  
     "jest": true,
     "node": true
   },

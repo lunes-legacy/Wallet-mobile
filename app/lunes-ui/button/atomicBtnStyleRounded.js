@@ -1,3 +1,4 @@
+/* eslint-disable */
 // @flow
 import { Platform, Dimensions } from 'react-native';
 import { TextDensityConstant, FontFamilyConstant } from '../constants';

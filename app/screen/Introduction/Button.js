@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * Button component
  * Renders a button and calls a function passed via onPress prop once tapped

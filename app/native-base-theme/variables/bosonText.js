@@ -1,3 +1,4 @@
+/* eslint-disable */
 // @flow
 import { TextDensityConstant, FontFamilyConstant } from '../constants';
 import Colors from './bosonColor';

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import types from '../../config/types';
 import rangeConstant from '../../constants/general';
 

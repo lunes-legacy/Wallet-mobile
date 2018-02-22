@@ -1,3 +1,4 @@
+/* eslint-disable */
 import types from '../../config/types';
 import { navigate } from '../../config/routes';
 import LunesLib from 'lunes-lib';
@@ -37,9 +38,9 @@ export const requestObtain = values => dispatch => {
   dispatch(requestLoading());
   obtain({ id: values._id, accessToken: values.accessToken }, dispatch).catch(
     error => {
-    dispatch(requestFinished());
-    dispatch(obtainUserProfileError(error));
-  }
+      dispatch(requestFinished());
+      dispatch(obtainUserProfileError(error));
+    }
   );
 };
 

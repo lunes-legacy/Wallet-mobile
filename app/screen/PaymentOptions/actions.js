@@ -1,3 +1,4 @@
+/* eslint-disable */
 import types from './types';
 import { navigate } from '../../config/routes';
 

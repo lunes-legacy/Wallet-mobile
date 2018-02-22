@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { Text, View, StatusBar, StyleSheet, Image } from 'react-native';
 import { Container } from 'native-base';
