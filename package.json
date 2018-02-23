@@ -28,7 +28,8 @@
     "prestart": "npm run eslint",
     "preinstall": "npm run eslint",
     "format": "prettier-eslint --write \"app/**/**/*.js\"",
-    "precommit" : "npm run format"
+    "precommit" : "npm run format",
+    "prepush": "npm test"
   },
   "dependencies": {
     "axios": "^0.17.1",
