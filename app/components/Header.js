@@ -20,7 +20,7 @@ import { bindActionCreators } from 'redux';
 import { AppStyle } from './theme';
 import MenuButton from './styles/MenuButton';
 import BosonColors from '../native-base-theme/variables/bosonColor';
-import { requestSignout } from '../screen/Signin/actions';
+import { requestSignout } from 'lunesmobilewallet/app/screens/Signin/actions';
 import { navigate } from '../config/routes';
 import I18N from '../i18n/i18n';
 

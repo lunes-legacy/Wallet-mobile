@@ -1,7 +1,6 @@
 import { Keyboard } from 'react-native';
 import LunesLib from 'lunes-lib';
 import types from '../../config/types';
-import { auth, database } from '../../config/firebase';
 import { navigate } from '../../config/routes';
 
 const signinLoading = () => ({

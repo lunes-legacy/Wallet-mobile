@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
-import { Logo } from '../../components';
+import { Content, Text } from 'native-base';
+import { Logo } from 'lunesmobilewallet/app/components';
+import I18N from 'lunesmobilewallet/app/i18n/i18n';
 import styles from './styles/SplashScreenStyle';
 
 export default class SplashScreen extends Component {
   render() {
     return (
-      <View>
+      <Content>
         <Logo />
-        <Text style={styles.loadingTxt}>Carregando...</Text>
-      </View>
+        <Text style={styles.loadingTxt}>{I18N.t('loading')}</Text>
+      </Content>
     );
   }
 }

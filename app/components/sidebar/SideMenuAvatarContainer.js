@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { requestObtain } from 'lunesmobilewallet/app/screens/Profile/actions';
 import SideMenuAvatar from './SideMenuAvatar';
-import { requestObtain } from '../../screen/Profile/actions';
 
 const mapStateToProps = state => ({
   userInfo: state.auth.user || {},

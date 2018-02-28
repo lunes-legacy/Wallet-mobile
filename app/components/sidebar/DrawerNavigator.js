@@ -1,14 +1,14 @@
-import { DrawerNavigator, StackNavigator } from 'react-navigation';
 import React from 'react';
+import { DrawerNavigator, StackNavigator } from 'react-navigation';
+import LunesMarket from 'lunesmobilewallet/app/screens/LunesMarket';
+import ValuesAlertSystem from 'lunesmobilewallet/app/screens/ValuesAlertSystem';
+import MultiCoinsSystem from 'lunesmobilewallet/app/screens/MultiCoinsSystem';
+import CardManager from 'lunesmobilewallet/app/screens/CardManager';
+import BoletoPayments from 'lunesmobilewallet/app/screens/BoletoPayments';
+import PhoneRecharges from 'lunesmobilewallet/app/screens/PhoneRecharges';
+import HistoricTransaction from 'lunesmobilewallet/app/screens/HistoricTransaction';
 import Header from '../Header';
 import SideMenu from './SideMenu';
-import LunesMarket from '../../screen/LunesMarket';
-import ValuesAlertSystem from '../../screen/ValuesAlertSystem';
-import MultiCoinsSystem from '../../screen/MultiCoinsSystem';
-import CardManager from '../../screen/CardManager';
-import BoletoPayments from '../../screen/BoletoPayments';
-import PhoneRecharges from '../../screen/PhoneRecharges';
-import HistoricTransaction from '../../screen/HistoricTransaction';
 
 const generateDrawerHamburger = currentNav => {
   const onPress = () => currentNav.navigation.navigate('DrawerOpen');

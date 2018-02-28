@@ -1,5 +1,11 @@
 import firebase from 'react-native-firebase';
 
-export const database = firebase.database();
-export const auth = firebase.auth();
-export const fb = firebase;
+const database = firebase.database();
+const auth = firebase.auth();
+const fb = firebase;
+
+export default {
+  database,
+  auth,
+  fb,
+};

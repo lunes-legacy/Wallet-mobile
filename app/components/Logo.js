@@ -1,10 +1,8 @@
-// @flow
-
-import React from 'react';
+import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { AppStyle } from './theme';
 
-export default class Logo extends React.Component {
+export default class Logo extends Component {
   render() {
     return (
       <View>

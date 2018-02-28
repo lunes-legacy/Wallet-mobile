@@ -43,7 +43,8 @@
     "pubnub": "^4.20.0",
     "pubnub-react": "^1.2.0",
     "react": "16.0.0",
-    "react-native": "0.50.4",
+    "react-dom": "^16.0.0",
+    "react-native": "^0.53.3",
     "react-native-behavior": "0.0.18",
     "react-native-camera": "^0.12.0",
     "react-native-firebase": "^3.1.1",
@@ -73,6 +74,7 @@
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.3",
     "babel-jest": "21.2.0",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-es2017": "^6.24.1",
@@ -96,8 +98,10 @@
     "husky": "^0.14.3",
     "jest": "21.2.1",
     "jest-enzyme": "^4.2.0",
+    "jest-react-native": "^18.0.0",
     "prettier-eslint": "^8.2.2",
     "prettier-eslint-cli": "^4.7.1",
+    "react-native-mock": "^0.3.1",
     "react-test-renderer": "16.0.0",
     "redux-devtools-extension": "^2.13.2",
     "redux-logger": "^3.0.6",
@@ -105,18 +109,24 @@
     "remotedev-rn-debugger": "^0.8.3"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
+    "preset": "react-native",
     "collectCoverageFrom": [
       "app/**/**/*.js"
     ],
     "testMatch": [
-      "**/tests/**/*.js",
+      "*/__tests__/**/**/*.js",
       "**/?(*.)(spec|test).js?(x)"
     ],
     "testPathIgnorePatterns": [
-      "/node_modules/"
+      "./node_modules/",
+      "./__tests__/setup"
     ],
-    "preset": "react-native"
+    "transformIgnorePatterns": [
+      "/node_modules/(?!react-native|react-native-firebase|react-native-google-signin|react-native-fbsdk|native-base|native-base-shoutem-theme|@shoutem/theme|@shoutem/animation|@shoutem/ui|tcomb-form-native|react-navigation)"
+    ],
+    "setupFiles": [
+      "./__tests__/setup"
+    ]
   },
   "rnpm": {
     "assets": [

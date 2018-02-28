@@ -1,5 +1,6 @@
 /* eslint-disable */
 export default {
+  loading: 'Carregando...',
   greeting: 'Bom dia!',
   selectCode: 'Selecionar código',
   chooseCoin: 'Escolher moeda',

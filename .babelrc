@@ -1,12 +1,10 @@
 {
-  "presets": ["react-native", "flow"],
+  "presets": ["react-native"],
   "env": {
-  "test": {
-      "presets":[
-        "es2015"
+    "production": {
+      "plugins": [
+        "ignite-ignore-reactotron"
       ]
     }
   }
-  ,
-  "retainLines": true
 }
