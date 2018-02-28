@@ -1,11 +1,12 @@
 {
-  "name": "LunesMobileWallet",
+  "name": "lunesmobilewallet",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:coverage": "npm test -- --coverage",
     "eslint": "eslint ./app",
     "flow start": "flow start",
     "flow stop": "flow stop",
@@ -28,7 +29,7 @@
     "prestart": "npm run eslint",
     "preinstall": "npm run eslint",
     "format": "prettier-eslint --write \"app/**/**/*.js\"",
-    "precommit" : "npm run format",
+    "precommit": "npm run format",
     "prepush": "npm test"
   },
   "dependencies": {
@@ -78,6 +79,8 @@
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react-native": "4.0.0",
     "babel-preset-stage-2": "^6.24.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.12.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.2.0",
@@ -92,6 +95,7 @@
     "flow-bin": "^0.56.0",
     "husky": "^0.14.3",
     "jest": "21.2.1",
+    "jest-enzyme": "^4.2.0",
     "prettier-eslint": "^8.2.2",
     "prettier-eslint-cli": "^4.7.1",
     "react-test-renderer": "16.0.0",
@@ -101,6 +105,17 @@
     "remotedev-rn-debugger": "^0.8.3"
   },
   "jest": {
+    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
+    "collectCoverageFrom": [
+      "app/**/**/*.js"
+    ],
+    "testMatch": [
+      "**/tests/**/*.js",
+      "**/?(*.)(spec|test).js?(x)"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
     "preset": "react-native"
   },
   "rnpm": {

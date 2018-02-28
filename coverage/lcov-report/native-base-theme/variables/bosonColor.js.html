@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for native-base-theme/variables/bosonColor.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">native-base-theme/variables</a> bosonColor.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/31</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/30</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >// @flow</span>
+&nbsp;
+/**
+ * ===========================================================================
+ * COLORS
+ * ===========================================================================
+ */
+const $bosonPrimar<span class="cstat-no" title="statement not covered" >y = '#654F</span>A4'; // roxo
+const $bosonSecondar<span class="cstat-no" title="statement not covered" >y = '#4CD5</span>66'; // verde
+const $bosonWhit<span class="cstat-no" title="statement not covered" >e = '#FFFF</span>FF'; // branco
+const $bosonBlac<span class="cstat-no" title="statement not covered" >k = '#0000</span>00'; // preto
+const $bosonOrang<span class="cstat-no" title="statement not covered" >e = '#FF5F</span>00'; // laranja
+&nbsp;
+// green color
+const $bosonGree<span class="cstat-no" title="statement not covered" >n = $bosonSecond</span>ary; // verde(alias)
+const $bosonLightGree<span class="cstat-no" title="statement not covered" >n = '#4CD5</span>66'; // verde claro
+const $bosonMediumGree<span class="cstat-no" title="statement not covered" >n = '#49BE</span>49'; // verde médio
+const $bosonDarkGree<span class="cstat-no" title="statement not covered" >n = '#39BD</span>52'; // verde escuro
+&nbsp;
+// purple color
+const $bosonPurpl<span class="cstat-no" title="statement not covered" >e = $bosonPrim</span>ary; // roxo(alias)
+const $bosonPastaPurpl<span class="cstat-no" title="statement not covered" >e = '#7562</span>ad'; // roxo pasta - geralmente usado para campos disabled
+const $bosonLightPurpl<span class="cstat-no" title="statement not covered" >e = '#654F</span>A4'; // roxo claro
+const $bosonMediumPurpl<span class="cstat-no" title="statement not covered" >e = '#6950</span>B3'; // roxo médio
+const $bosonDarkPurpl<span class="cstat-no" title="statement not covered" >e = '#5844</span>98'; // roxo escuro
+&nbsp;
+// red color
+const $bosonLightRe<span class="cstat-no" title="statement not covered" >d = '#EB00</span>1B'; // vermelho claro
+const $bosonMediumRe<span class="cstat-no" title="statement not covered" >d = '#DA40</span>33'; // vermelho médio
+const $bosonDarkRe<span class="cstat-no" title="statement not covered" >d = '#D002</span>1B'; // vermelho escuro
+&nbsp;
+// yellow color
+const $bosonLightYello<span class="cstat-no" title="statement not covered" >w = '#F8E7</span>1C'; // amarelo claro
+const $bosonMediumYello<span class="cstat-no" title="statement not covered" >w = '#F5B3</span>00'; // amarelo médio
+const $bosonDarkYello<span class="cstat-no" title="statement not covered" >w = '#F79E</span>1B'; // amarelo escuro
+&nbsp;
+// pink color
+const $bosonLightPin<span class="cstat-no" title="statement not covered" >k = '#FF4A</span>60'; // rosa claro
+const $bosonMediumPin<span class="cstat-no" title="statement not covered" >k = '#FF4A</span>60'; // rosa médio
+const $bosonDarkPin<span class="cstat-no" title="statement not covered" >k = '#C74A</span>69'; // rosa escuro
+&nbsp;
+// blue color
+const $bosonLightBlu<span class="cstat-no" title="statement not covered" >e = '#4A90</span>E2'; // azul claro
+const $bosonMediumBlu<span class="cstat-no" title="statement not covered" >e = '#4A90</span>E2'; // azul médio
+const $bosonDarkBlu<span class="cstat-no" title="statement not covered" >e = '#1957</span>7e'; // azul escuro
+&nbsp;
+// grey color
+const $bosonLightGre<span class="cstat-no" title="statement not covered" >y = '#D8D8</span>D8'; // cinza claro
+const $bosonMediumGre<span class="cstat-no" title="statement not covered" >y = '#9B9B</span>9B'; // cinza médio
+const $bosonDarkGre<span class="cstat-no" title="statement not covered" >y = '#6A69<span class="cstat-no" title="statement not covered" ></span>6A'; // cinza escuro</span>
+&nbsp;
+export default {
+  $bosonPrimary,
+  $bosonSecondary,
+  $bosonWhite,
+  $bosonBlack,
+  $bosonOrange,
+  $bosonGreen,
+  $bosonLightGreen,
+  $bosonMediumGreen,
+  $bosonDarkGreen,
+  $bosonPurple,
+  $bosonPastaPurple,
+  $bosonLightPurple,
+  $bosonMediumPurple,
+  $bosonDarkPurple,
+  $bosonLightRed,
+  $bosonMediumRed,
+  $bosonDarkRed,
+  $bosonLightYellow,
+  $bosonMediumYellow,
+  $bosonDarkYellow,
+  $bosonLightPink,
+  $bosonMediumPink,
+  $bosonDarkPink,
+  $bosonLightBlue,
+  $bosonMediumBlue,
+  $bosonDarkBlue,
+  $bosonLightGrey,
+  $bosonMediumGrey,
+  $bosonDarkGrey,
+};
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Feb 28 2018 02:45:13 GMT-0300 (-03)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

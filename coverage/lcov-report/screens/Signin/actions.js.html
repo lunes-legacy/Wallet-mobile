@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for screens/Signin/actions.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">screens/Signin</a> actions.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/113</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/28</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/28</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/63</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { Keyboard } from 'react-native';<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span></span></span></span></span></span></span></span>
+import LunesLi<span class="cstat-no" title="statement not covered" >b from 'lunes-lib';<span class="cstat-no" title="statement not covered" ></span></span>
+import type<span class="cstat-no" title="statement not covered" >s from '../../config/types';<span class="cstat-no" title="statement not covered" ></span></span>
+import { auth,<span class="cstat-no" title="statement not covered" > database } from '../../config/fi</span>rebase';
+import { nav<span class="cstat-no" title="statement not covered" >igate } from '../../config/rout</span>es';<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
+&nbsp;
+const signinLoadin<span class="cstat-no" title="statement not covered" >g = () =&gt;<span class="fstat-no" title="function not covered" > ({<span class="cstat-no" title="statement not covered" ></span></span></span>
+  type: types.SIGNIN_LOADING,
+});
+&nbsp;
+const signinSucces<span class="cstat-no" title="statement not covered" >s = user <span class="fstat-no" title="function not covered" >=&gt; ({<span class="cstat-no" title="statement not covered" ></span></span></span>
+  type: types.SIGNIN_SUCCESS,
+  user,
+});
+&nbsp;
+const signinErro<span class="cstat-no" title="statement not covered" >r = error<span class="fstat-no" title="function not covered" > =&gt; ({<span class="cstat-no" title="statement not covered" ></span></span></span>
+  type: types.SIGNIN_ERROR,
+  error,
+});
+&nbsp;
+const requestLoadin<span class="cstat-no" title="statement not covered" >g = () =&gt;<span class="fstat-no" title="function not covered" > ({<span class="cstat-no" title="statement not covered" ></span></span></span>
+  type: types.REQUEST_LOADING,
+});
+&nbsp;
+const requestFinishe<span class="cstat-no" title="statement not covered" >d = () =&gt;<span class="fstat-no" title="function not covered" > ({<span class="cstat-no" title="statement not covered" ></span></span></span>
+  type: types.REQUEST_FINISHED,
+});
+&nbsp;
+const storeUse<span class="cstat-no" title="statement not covered" >r = user <span class="fstat-no" title="function not covered" >=&gt; ({<span class="cstat-no" title="statement not covered" ></span></span></span>
+  type: types.STORE_USER,
+  user,
+});
+&nbsp;
+const signupLoadin<span class="cstat-no" title="statement not covered" >g = () =&gt;<span class="fstat-no" title="function not covered" > ({<span class="cstat-no" title="statement not covered" ></span></span></span>
+  type: types.SIGNUP_LOADING,
+});
+&nbsp;
+const signupSucces<span class="cstat-no" title="statement not covered" >s = user <span class="fstat-no" title="function not covered" >=&gt; ({<span class="cstat-no" title="statement not covered" ></span></span></span>
+  type: types.SIGNUP_SUCCESS,
+  user,
+});
+&nbsp;
+const signupErro<span class="cstat-no" title="statement not covered" >r = (erro<span class="fstat-no" title="function not covered" >r = null) =&gt;</span> ({<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span></span>
+  type: types.SIGNUP_ERROR,
+  error,
+});
+&nbsp;
+const signoutLoadin<span class="cstat-no" title="statement not covered" >g = () =&gt;<span class="fstat-no" title="function not covered" > ({<span class="cstat-no" title="statement not covered" ></span></span></span>
+  type: types.SIGNOUT_LOADING,
+});
+&nbsp;
+const signoutSucces<span class="cstat-no" title="statement not covered" >s = () =&gt;<span class="fstat-no" title="function not covered" > ({<span class="cstat-no" title="statement not covered" ></span></span></span>
+  type: types.SIGNOUT_SUCCESS,
+});
+&nbsp;
+const signoutErro<span class="cstat-no" title="statement not covered" >r = error<span class="fstat-no" title="function not covered" > =&gt; ({<span class="cstat-no" title="statement not covered" ></span></span></span>
+  type: types.SIGNOUT_ERROR,
+  error,
+});
+&nbsp;
+const storeAddres<span class="cstat-no" title="statement not covered" >s = walle<span class="fstat-no" title="function not covered" >t =&gt; ({<span class="cstat-no" title="statement not covered" ></span></span></span>
+  type: types.STORE_WALLET,
+  wallet,
+});
+&nbsp;
+export const cl<span class="cstat-no" title="statement not covered" >earError = () =&gt; ({<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span>
+  type: types.CLEAR_ERROR,
+  error: null,
+});
+&nbsp;
+async fun<span class="fstat-no" title="function not covered" >ction </span>login(email, password, dispatch) {<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span></span></span></span>
+  try {
+    const user = await LunesLib.users.login({ email, password });<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    dispatch(requestFinished(</span>));
+<span class="cstat-no" title="statement not covered" >    dispatch(signinSuccess(user</span>));
+<span class="cstat-no" title="statement not covered" >    dispatch(storeUser(user</span>));
+<span class="cstat-no" title="statement not covered" >    dispatch(storeAddress(user.wallet</span>));
+<span class="cstat-no" title="statement not covered" >    Keyboard.dismiss();</span>
+<span class="cstat-no" title="statement not covered" >    if (user &amp;&amp; !user.pinIsValidated) {</span>
+<span class="cstat-no" title="statement not covered" >      navigate('PIN');</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >      navigate('PIN', { isLogged: true });</span>
+<span class="cstat-no" title="statement not covered" >    }<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span></span></span>
+  } catch (error) {
+<span class="cstat-no" title="statement not covered" >    dispatch(requestFinished<span class="cstat-no" title="statement not covered" >(</span>));<span class="cstat-no" title="statement not covered" ></span></span>
+    throw error;
+  }
+}
+&nbsp;
+export const requ<span class="cstat-no" title="statement not covered" >estLogin = values =&gt; {<span class="fstat-no" title="function not covered" ></span></span>
+<span class="cstat-no" title="statement not covered" >  retur<span class="fstat-no" title="function not covered" >n </span>dispatch =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    dispatch(requestLoading(</span>));
+<span class="cstat-no" title="statement not covered" >    login(values.email, values.password, dispatch).<span class="fstat-no" title="function not covered" >ca</span>tch(error =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      dispatch(requestFinishe</span>d());
+<span class="cstat-no" title="statement not covered" >      dispatch(signinError(err</span>or));
+    });
+  };
+};
+&nbsp;
+async fun<span class="fstat-no" title="function not covered" >ction creat</span>eUser(userData, dispatch) {<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span></span></span></span>
+  try {
+    let user = await LunesLib.users.create(userDat<span class="cstat-no" title="statement not covered" >a);</span>
+<span class="cstat-no" title="statement not covered" >    if (user !== null) {</span>
+<span class="cstat-no" title="statement not covered" >      user = { ...user, ...userDa</span>ta };
+<span class="cstat-no" title="statement not covered" >      delete user.pass</span>word;
+<span class="cstat-no" title="statement not covered" >      dispatch(requestFinishe</span>d());
+<span class="cstat-no" title="statement not covered" >      dispatch(signupSuccess(us</span>er));
+<span class="cstat-no" title="statement not covered" >      dispatch(storeUser(us</span>er));
+<span class="cstat-no" title="statement not covered" >      dispatch(storeAddress(user.wall</span>et));
+<span class="cstat-no" title="statement not covered" >      navigate('PIN');</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >      dispatch(signupErro</span>r());
+<span class="cstat-no" title="statement not covered" >    }<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span></span></span>
+  } catch (error) {
+<span class="cstat-no" title="statement not covered" >    dispatch(requestFinished<span class="cstat-no" title="statement not covered" >(</span>));<span class="cstat-no" title="statement not covered" ></span></span>
+    throw error;
+  }
+}
+&nbsp;
+export const reque<span class="cstat-no" title="statement not covered" >stSignup = values =&gt; {<span class="fstat-no" title="function not covered" ></span></span>
+  con<span class="cstat-no" title="statement not covered" >st { name, e</span>mail, <span class="cstat-no" title="statement not covered" >password } = </span>values;<span class="cstat-no" title="statement not covered" ></span>
+  const userD<span class="cstat-no" title="statement not covered" >ata = {</span>
+    fullname: name,
+    password,
+    email,
+    photoUrl: '',
+  };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  retur<span class="fstat-no" title="function not covered" >n </span>dispatch =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    dispatch(requestLoading(</span>));
+<span class="cstat-no" title="statement not covered" >    createUser(userData, dispatch).c<span class="fstat-no" title="function not covered" >at</span>ch(error =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      dispatch(requestFinishe</span>d());
+<span class="cstat-no" title="statement not covered" >      dispatch(signupError(err</span>or));
+    });
+  };
+};
+&nbsp;
+export const reques<span class="cstat-no" title="statement not covered" >tSignout = user =&gt; dispatch =&gt; {<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span>
+<span class="cstat-no" title="statement not covered" >  try {</span>
+<span class="cstat-no" title="statement not covered" >    navigate('Signin');</span>
+<span class="cstat-no" title="statement not covered" >    LunesLib.users.logout(user.accessToken);</span>
+  } catch (error) {
+<span class="cstat-no" title="statement not covered" >    navigate('Signin');</span>
+  }
+};
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Feb 28 2018 02:45:13 GMT-0300 (-03)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

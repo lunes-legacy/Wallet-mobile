@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for config/reducers.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">All files</a> / <a href="index.html">config</a> reducers.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/31</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/4</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/1</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/16</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { combineReducers } from 'redux';<span class="cstat-no" title="statement not covered" ></span></span>
+import tabsRe<span class="cstat-no" title="statement not covered" >ducer from '../components/tabs/reducer</span>';<span class="cstat-no" title="statement not covered" ></span>
+import authRed<span class="cstat-no" title="statement not covered" >ucer from '../screen/Signin/reducer'</span>;<span class="cstat-no" title="statement not covered" ></span>
+import redirec<span class="cstat-no" title="statement not covered" >tToAuthReducer from '../screen/Introductio</span>n/reducer';<span class="cstat-no" title="statement not covered" ></span>
+import confirm<span class="cstat-no" title="statement not covered" >ationReducer from '../screen/Confirmation/</span>reducer';<span class="cstat-no" title="statement not covered" ></span>
+import receive<span class="cstat-no" title="statement not covered" >PaymentReducer from '../screen/ReceivePaymen</span>t/reducer';<span class="cstat-no" title="statement not covered" ></span>
+import sendPaym<span class="cstat-no" title="statement not covered" >entReducer from '../screen/SendPayment/re</span>ducer';<span class="cstat-no" title="statement not covered" ></span>
+import changePa<span class="cstat-no" title="statement not covered" >sswordReducer from '../screen/ChangePassword</span>/reducer';<span class="cstat-no" title="statement not covered" ></span>
+import profileR<span class="cstat-no" title="statement not covered" >educer from '../screen/Profile/reduce</span>r';<span class="cstat-no" title="statement not covered" ></span>
+import historic<span class="cstat-no" title="statement not covered" >DataReducer from '../screen/LunesMarket/r</span>educer';<span class="cstat-no" title="statement not covered" ></span>
+import pinReduc<span class="cstat-no" title="statement not covered" >er from '../screen/PIN/reducer';<span class="cstat-no" title="statement not covered" ></span></span>
+import confirmT<span class="cstat-no" title="statement not covered" >ransactionReducer from '../screen/ConfirmTransac</span>tion/reducer';<span class="cstat-no" title="statement not covered" ></span>
+import historic<span class="cstat-no" title="statement not covered" >TransactionReducer from '../screen/HistoricTransa</span>ction/reducer';<span class="cstat-no" title="statement not covered" ></span>
+import connecti<span class="cstat-no" title="statement not covered" >onReducer from '../services/connectionService/red</span>ucer';<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span>
+&nbsp;
+const reducer<span class="cstat-no" title="statement not covered" >s = combineReducers({</span>
+  tabsReducer,
+  auth: authReducer,
+  redirectToAuthReducer,
+  authSMS: confirmationReducer,
+  pinReducer,
+  receivePaymentReducer,
+  sendPaymentReducer,
+  changePasswordReducer,
+  profileReducer,
+  historicDataReducer,
+  confirmTransactionReducer,
+  historicTransactionReducer,
+  connectionReducer,<span class="cstat-no" title="statement not covered" ></span>
+});
+&nbsp;
+export default reducers;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Feb 28 2018 02:45:13 GMT-0300 (-03)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

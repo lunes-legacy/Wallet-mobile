@@ -1,0 +1,947 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for native-base-theme/variables/platform.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">native-base-theme/variables</a> platform.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/37</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/121</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/1</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/34</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >/* eslint-disable */</span>
+import colo<span class="cstat-no" title="statement not covered" >r from 'color';<span class="cstat-no" title="statement not covered" ></span></span>
+&nbsp;
+import { Platform<span class="cstat-no" title="statement not covered" >, Dimensions, PixelRatio</span> } from '<span class="fstat-no" title="function not covered" >react-native';<span class="cstat-no" title="statement not covered" ></span></span>
+&nbsp;
+const deviceHeigh<span class="cstat-no" title="statement not covered" >t = Dimensions.get('window').height;</span>
+const deviceWidt<span class="cstat-no" title="statement not covered" >h = Dimensions.get('window').width;</span>
+const platfor<span class="cstat-no" title="statement not covered" >m = Platform.OS;</span>
+const platformStyl<span class="cstat-no" title="statement not covered" >e = undefi</span>ned;
+const isIphoneX =
+<span class="cstat-no" title="statement not covered" >  platform === 'ios' &amp;&amp; deviceHeight === 812 &amp;&amp; deviceWi<span class="cstat-no" title="statement not covered" ></span>dth === 375;</span>
+&nbsp;
+export default {
+  platformStyle,
+  platform,
+  // AndroidRipple
+  androidRipple: true,
+  androidRippleColor: 'rgba(256, 256, 256, 0.3)',
+  androidRippleColorDark: 'rgba(0, 0, 0, 0.15)',
+&nbsp;
+  // Badge
+  badgeBg: '#ED1727',
+  badgeColor: '#fff',
+  // New Variable
+  badgePadding: platform === 'ios' ? 3 : 0,
+&nbsp;
+  // Button
+  btnFontFamily: platform === 'ios' ? 'System' : 'Roboto_medium',
+  btnDisabledBg: '#b5b5b5',
+  btnDisabledClr: '#f1f1f1',
+&nbsp;
+  // Android
+  btnUppercaseAndroidText: true,
+&nbsp;
+  // CheckBox
+  CheckboxRadius: platform === 'ios' ? 13 : 0,
+  CheckboxBorderWidth: platform === 'ios' ? 1 : 2,
+  CheckboxPaddingLeft: platform === 'ios' ? 4 : 2,
+  CheckboxPaddingBottom: platform === 'ios' ? 0 : 5,
+  CheckboxIconSize: platform === 'ios' ? 21 : 14,
+  CheckboxIconMarginTop: platform === 'ios' ? undefined : 1,
+  CheckboxFontSize: platform === 'ios' ? 23 / 0.9 : 18,
+  DefaultFontSize: 17,
+  checkboxBgColor: '#039BE5',
+  checkboxSize: 20,
+  checkboxTickColor: '#fff',
+&nbsp;
+  // Segment
+  segmentBackgroundColor: platform === 'ios' ? '#F8F8F8' : '#3F51B5',
+  segmentActiveBackgroundColor: platform === 'ios' ? '#007aff' : '#fff',
+  segmentTextColor: platform === 'ios' ? '#007aff' : '#fff',
+  segmentActiveTextColor: platform === 'ios' ? '#fff' : '#3F51B5',
+  segmentBorderColor: platform === 'ios' ? '#007aff' : '#fff',
+  segmentBorderColorMain: platform === 'ios' ? '#a7a6ab' : '#3F51B5',
+&nbsp;
+  // New Variable
+  get defaultTextColor() {
+<span class="cstat-no" title="statement not covered" >    return this.textCol</span>or;
+  },
+&nbsp;
+  get btnPrimaryBg() {
+<span class="cstat-no" title="statement not covered" >    return this.brandPrima</span>ry;
+  },
+  get btnPrimaryColor() {
+<span class="cstat-no" title="statement not covered" >    return this.inverseTextCol</span>or;
+  },
+  get btnInfoBg() {
+<span class="cstat-no" title="statement not covered" >    return this.brandIn</span>fo;
+  },
+  get btnInfoColor() {
+<span class="cstat-no" title="statement not covered" >    return this.inverseTextCol</span>or;
+  },
+  get btnSuccessBg() {
+<span class="cstat-no" title="statement not covered" >    return this.brandSucce</span>ss;
+  },
+  get btnSuccessColor() {
+<span class="cstat-no" title="statement not covered" >    return this.inverseTextCol</span>or;
+  },
+  get btnDangerBg() {
+<span class="cstat-no" title="statement not covered" >    return this.brandDang</span>er;
+  },
+  get btnDangerColor() {
+<span class="cstat-no" title="statement not covered" >    return this.inverseTextCol</span>or;
+  },
+  get btnWarningBg() {
+<span class="cstat-no" title="statement not covered" >    return this.brandWarni</span>ng;
+  },
+  get btnWarningColor() {
+<span class="cstat-no" title="statement not covered" >    return this.inverseTextCol</span>or;
+  },
+  get btnTextSize() {
+<span class="cstat-no" title="statement not covered" >    return platform === 'ios' ? this.fontSizeBase * 1.1 : this.font</span>SizeBase - 1;
+  },
+  get btnTextSizeLarge() {
+<span class="cstat-no" title="statement not covered" >    return this.fontSizeBase *</span> 1.5;
+  },
+  get btnTextSizeSmall() {
+<span class="cstat-no" title="statement not covered" >    return this.fontSizeBase *</span> 0.8;
+  },
+  get borderRadiusLarge() {
+<span class="cstat-no" title="statement not covered" >    return this.fontSizeBase *</span> 3.8;
+  },
+&nbsp;
+  buttonPadding: 6,
+&nbsp;
+  get iconSizeLarge() {
+<span class="cstat-no" title="statement not covered" >    return this.iconFontSize *</span> 1.5;
+  },
+  get iconSizeSmall() {
+<span class="cstat-no" title="statement not covered" >    return this.iconFontSize *</span> 0.6;
+  },
+&nbsp;
+  // Card
+  cardDefaultBg: '#fff',
+&nbsp;
+  // Color
+  brandPrimary: platform === 'ios' ? '#007aff' : '#3F51B5',
+  brandInfo: '#62B1F6',
+  brandSuccess: '#5cb85c',
+  brandDanger: '#d9534f',
+  brandWarning: '#f0ad4e',
+  brandSidebar: '#252932',
+  brandDark: '#000',
+  brandLight: '#f4f4f4',
+&nbsp;
+  // Font
+  fontFamily: platform === 'ios' ? 'System' : 'Roboto',
+  fontSizeBase: 15,
+&nbsp;
+  get fontSizeH1() {
+<span class="cstat-no" title="statement not covered" >    return this.fontSizeBase *</span> 1.8;
+  },
+  get fontSizeH2() {
+<span class="cstat-no" title="statement not covered" >    return this.fontSizeBase *</span> 1.6;
+  },
+  get fontSizeH3() {
+<span class="cstat-no" title="statement not covered" >    return this.fontSizeBase *</span> 1.4;
+  },
+&nbsp;
+  // Footer
+  footerHeight: isIphoneX ? 89 : 55,
+  footerDefaultBg: platform === 'ios' ? '#F8F8F8' : '#4179F7',
+  footerPaddingBottom: isIphoneX ? 34 : 0,
+&nbsp;
+  // FooterTab
+  tabBarTextColor: platform === 'ios' ? '#6b6b6b' : '#b3c7f9',
+  tabBarTextSize: platform === 'ios' ? 14 : 11,
+  activeTab: platform === 'ios' ? '#007aff' : '#fff',
+  sTabBarActiveTextColor: '#007aff',
+  tabBarActiveTextColor: platform === 'ios' ? '#007aff' : '#fff',
+  tabActiveBgColor: platform === 'ios' ? '#cde1f9' : '#3F51B5',
+&nbsp;
+  // Tab
+  tabDefaultBg: platform === 'ios' ? '#F8F8F8' : '#3F51B5',
+  topTabBarTextColor: platform === 'ios' ? '#6b6b6b' : '#b3c7f9',
+  topTabBarActiveTextColor: platform === 'ios' ? '#007aff' : '#fff',
+  topTabActiveBgColor: platform === 'ios' ? '#cde1f9' : undefined,
+  topTabBarBorderColor: platform === 'ios' ? '#a7a6ab' : '#fff',
+  topTabBarActiveBorderColor: platform === 'ios' ? '#007aff' : '#fff',
+&nbsp;
+  // Header
+  toolbarBtnColor: platform === 'ios' ? '#007aff' : '#fff',
+  toolbarDefaultBg: platform === 'ios' ? '#F8F8F8' : '#3F51B5',
+  toolbarHeight: platform === 'ios' ? (isIphoneX ? 88 : 64) : 56,
+  toolbarIconSize: platform === 'ios' ? 20 : 22,
+  toolbarSearchIconSize: platform === 'ios' ? 20 : 23,
+  toolbarInputColor: platform === 'ios' ? '#CECDD2' : '#fff',
+  searchBarHeight: platform === 'ios' ? 30 : 40,
+  searchBarInputHeight: platform === 'ios' ? 30 : 50,
+  toolbarInverseBg: '#222',
+  toolbarTextColor: platform === 'ios' ? '#000' : '#fff',
+  toolbarDefaultBorder: platform === 'ios' ? '#a7a6ab' : '#3F51B5',
+  iosStatusbar: platform === 'ios' ? 'dark-content' : 'light-content',
+  get statusBarColor() {
+<span class="cstat-no" title="statement not covered" >    return color(this.toolbarDefaultBg)</span>
+      .darken(0.2)
+      .hex();
+  },
+&nbsp;
+  // Icon
+  iconFamily: 'Ionicons',
+  iconFontSize: platform === 'ios' ? 30 : 28,
+  iconMargin: 7,
+  iconHeaderSize: platform === 'ios' ? 33 : 24,
+&nbsp;
+  // InputGroup
+  inputFontSize: 17,
+  inputBorderColor: '#D9D5DC',
+  inputSuccessBorderColor: '#2b8339',
+  inputErrorBorderColor: '#ed2f2f',
+&nbsp;
+  get inputColor() {
+<span class="cstat-no" title="statement not covered" >    return this.textCol</span>or;
+  },
+  get inputColorPlaceholder() {
+<span class="cstat-no" title="statement not covered" >    return '#5757</span>57';
+  },
+&nbsp;
+  inputGroupMarginBottom: 10,
+  inputHeightBase: 50,
+  inputPaddingLeft: 5,
+&nbsp;
+  get inputPaddingLeftIcon() {
+<span class="cstat-no" title="statement not covered" >    return this.inputPaddingLeft</span> * 8;
+  },
+&nbsp;
+  // Line Height
+  btnLineHeight: 19,
+  lineHeightH1: 32,
+  lineHeightH2: 27,
+  lineHeightH3: 22,
+  iconLineHeight: platform === 'ios' ? 37 : 30,
+  lineHeight: platform === 'ios' ? 20 : 24,
+&nbsp;
+  // List
+  listBg: '#fff',
+  listBorderColor: '#c9c9c9',
+  listDividerBg: '#f4f4f4',
+  listBtnUnderlayColor: '#DDD',
+&nbsp;
+  // Card
+  cardBorderColor: '#ccc',
+&nbsp;
+  // Changed Variable
+  listItemPadding: platform === 'ios' ? 10 : 12,
+&nbsp;
+  listNoteColor: '#808080',
+  listNoteSize: 13,
+&nbsp;
+  // Progress Bar
+  defaultProgressColor: '#E4202D',
+  inverseProgressColor: '#1A191B',
+&nbsp;
+  // Radio Button
+  radioBtnSize: platform === 'ios' ? 25 : 23,
+  radioSelectedColorAndroid: '#3F51B5',
+&nbsp;
+  // New Variable
+  radioBtnLineHeight: platform === 'ios' ? 29 : 24,
+&nbsp;
+  radioColor: '#7e7e7e',
+&nbsp;
+  get radioSelectedColor() {
+<span class="cstat-no" title="statement not covered" >    return color(this.radioColor)</span>
+      .darken(0.2)
+      .hex();
+  },
+&nbsp;
+  // Spinner
+  defaultSpinnerColor: '#45D56E',
+  inverseSpinnerColor: '#1A191B',
+&nbsp;
+  // Tabs
+  tabBgColor: '#F8F8F8',
+  tabFontSize: 15,
+  tabTextColor: '#222222',
+&nbsp;
+  // Text
+  textColor: '#000',
+  inverseTextColor: '#fff',
+  noteFontSize: 14,
+&nbsp;
+  // Title
+  titleFontfamily: platform === 'ios' ? 'System' : 'Roboto_medium',
+  titleFontSize: platform === 'ios' ? 17 : 19,
+  subTitleFontSize: platform === 'ios' ? 12 : 14,
+  subtitleColor: platform === 'ios' ? '#8e8e93' : '#FFF',
+&nbsp;
+  // New Variable
+  titleFontColor: platform === 'ios' ? '#000' : '#FFF',
+&nbsp;
+  // Other
+  borderRadiusBase: platform === 'ios' ? 5 : 2,
+  borderWidth: 1 / PixelRatio.getPixelSizeForLayoutSize(1),
+  contentPadding: 10,
+&nbsp;
+  get darkenHeader() {
+<span class="cstat-no" title="statement not covered" >    return color(this.tabBgColor)</span>
+      .darken(0.03)
+      .hex();
+  },
+&nbsp;
+  dropdownBg: '#000',
+  dropdownLinkColor: '#414142',
+  inputLineHeight: 24,
+  jumbotronBg: '#C9C9CE',
+  jumbotronPadding: 30,
+  deviceWidth,
+  deviceHeight,
+  isIphoneX,
+&nbsp;
+  // New Variable
+  inputGroupRoundedBorderRadius: 30,
+};
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Feb 28 2018 02:45:13 GMT-0300 (-03)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

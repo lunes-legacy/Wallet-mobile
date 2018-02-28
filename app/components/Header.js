@@ -25,9 +25,12 @@ import { navigate } from '../config/routes';
 import I18N from '../i18n/i18n';
 
 class Header extends React.Component {
-  state = {
-    modalVisible: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalVisible: false,
+    };
+  }
 
   openModal() {
     this.setState({ modalVisible: true });

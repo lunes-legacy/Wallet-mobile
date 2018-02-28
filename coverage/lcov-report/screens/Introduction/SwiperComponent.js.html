@@ -1,0 +1,1037 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for screens/Introduction/SwiperComponent.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">screens/Introduction</a> SwiperComponent.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/107</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/70</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/25</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/54</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >/* eslint-disable */<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>
+import Reac<span class="cstat-no" title="statement not covered" >t, { Component } </span>from 'react'<span class="cstat-no" title="statement not covered" >;</span>
+import {<span class="cstat-no" title="statement not covered" ></span>
+  Dimensions, // Detects screen dimensions
+  Platform, // Detects platform running the app
+  ScrollView, // Handles navigation between screens
+  StyleSheet, // CSS-like styles
+  View, // Container component
+} from 'react-native';
+import I18<span class="cstat-no" title="statement not covered" >N from '../../i18n/i18n';<span class="cstat-no" title="statement not covered" ></span></span>
+import Butto<span class="cstat-no" title="statement not covered" >n from './Button';<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>
+&nbsp;
+// Detect screen width and height
+<span class="cstat-no" title="statement not covered" >const { width, height } = Dimensions.g</span>et('wi<span class="cstat-no" title="statement not covered" >ndow');<span class="cstat-no" title="statement not covered" ></span></span>
+&nbsp;
+export <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >de</span>fault class Swiper <span class="cstat-no" title="statement not covered" >extends Component {<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span></span></span></span>
+  // Props for ScrollView component
+  static defaultProps = {
+    // Arrange screens horizontally
+    horizontal: true,
+    // Scroll exactly to the next screen, instead of continous scrolling
+    pagingEnabled: true,
+    // Hide all scroll indicators
+    showsHorizontalScrollIndicator: false,
+    showsVerticalScrollIndicator: false,
+    // Do not bounce when the end is reached
+    bounces: false,
+    // Do not scroll to top when the status bar is tapped
+    scrollsToTop: false,
+    // Remove offscreen child views
+    removeClippedSubviews: true,
+    // Do not adjust content behind nav-, tab- or toolbars automatically
+    automaticallyAdjustContentInsets: false,
+    // Fisrt is screen is active
+    index: 0,
+  };
+&nbsp;
+  state = this.initState(this.props);
+&nbsp;
+  /**
+   * Initialize the state
+   */
+  initState(props) {
+    // Get the total number of slides passed as children
+    const total = props.children ? props.children.length || 1 : 0,
+      // Current index
+      index = total &gt; 1 ? Math.min(props.index, total - 1) : 0,
+      // Current offset
+      offset = width * index;
+&nbsp;
+    const state = {
+      total,
+      index,
+      offset,
+      width,
+      height,
+    };
+&nbsp;
+    // Component internals as a class property,
+    // and not state to avoid component re-renders when updated
+    this.internals = {
+      isScrolling: false,
+      offset,
+    };
+&nbsp;
+    return state;
+  }
+&nbsp;
+  /**
+   * Scroll begin handler
+   * @param {object} e native event
+   */
+  onScrollBegi<span class="fstat-no" title="function not covered" >n </span>= e =&gt; {
+    // Update internal isScrolling state
+<span class="cstat-no" title="statement not covered" >    this.internals.isScrolling = t</span>rue;
+  };
+&nbsp;
+  /**
+   * Scroll end handler
+   * @param {object} e native event
+   */
+  onScrollEn<span class="fstat-no" title="function not covered" >d </span>= e =&gt; {
+    // Update internal isScrolling state
+<span class="cstat-no" title="statement not covered" >    this.internals.isScrolling = fa</span>lse;
+&nbsp;
+    // Update index
+<span class="cstat-no" title="statement not covered" >    this.updateIndex(</span>
+      e.nativeEvent.contentOffset
+        ? e.nativeEvent.contentOffset.x
+        : // When scrolled with .scrollTo() on Android there is no contentOffset
+          e.nativeEvent.position * this.state.width
+    );
+  };
+&nbsp;
+  /*
+     * Drag end handler
+     * @param {object} e native event
+     */
+  onScrollEndDra<span class="fstat-no" title="function not covered" >g </span>= e =&gt; {
+    const { co<span class="cstat-no" title="statement not covered" >ntentOffset: { x: newOffset } </span>} = e.nativeEvent,
+      { c<span class="cstat-no" title="statement not covered" >hildren } = this.prop</span>s,
+<span class="cstat-no" title="statement not covered" >      { index } = this.s</span>tate,
+      {<span class="cstat-no" title="statement not covered" > offset } = this.intern</span>als;
+&nbsp;
+    // Update internal isScrolling state
+    // if swiped right on the last slide
+    // or left on the first one
+<span class="cstat-no" title="statement not covered" >    if (</span>
+      offset === newOffset &amp;&amp;
+      (index === 0 || index === children.length - 1)
+    ) {
+<span class="cstat-no" title="statement not covered" >      this.internals.isScrolling = </span>false;
+    }
+  };
+&nbsp;
+  /**
+   * Update index after scroll
+   * @param {object} offset content offset
+   */
+  updateInde<span class="fstat-no" title="function not covered" >x </span>= offset =&gt; {
+    const <span class="cstat-no" title="statement not covered" >state = this</span>.state,
+<span class="cstat-no" title="statement not covered" >      diff = offset - this.internal</span>s.offset,
+<span class="cstat-no" title="statement not covered" >      step = stat</span>e.width;
+    let in<span class="cstat-no" title="statement not covered" >dex = state.</span>index;
+&nbsp;
+    // Do nothing if offset didn't change
+<span class="cstat-no" title="statement not covered" >    if (!diff) {</span>
+<span class="cstat-no" title="statement not covered" >      re</span>turn;
+    }
+&nbsp;
+    // Make sure index is always an integer
+<span class="cstat-no" title="statement not covered" >    index = parseInt(index + Math.round(diff / s</span>tep), 10);
+&nbsp;
+    // Update internal offset
+<span class="cstat-no" title="statement not covered" >    this.internals.offset = off</span>set;
+    // Update index in the state
+<span class="cstat-no" title="statement not covered" >    this.setState({</span>
+      index,
+    });
+  };
+&nbsp;
+  /**
+   * Swipe one slide forward
+   */
+  swip<span class="fstat-no" title="function not covered" >e </span>= () =&gt; {
+    // Ignore if already scrolling or if there is less than 2 slides
+<span class="cstat-no" title="statement not covered" >    if (this.internals.isScrolling || this.state.total &lt; 2) {</span>
+<span class="cstat-no" title="statement not covered" >      re</span>turn;
+    }
+&nbsp;
+    const <span class="cstat-no" title="statement not covered" >state = this</span>.state,
+<span class="cstat-no" title="statement not covered" >      diff = this.state.i</span>ndex + 1,
+<span class="cstat-no" title="statement not covered" >      x = diff * st</span>ate.width,
+<span class="cstat-no" title="statement not covered" ></span>      y = 0;
+&nbsp;
+    // Call scrollTo on scrollView component to perform the swipe
+<span class="cstat-no" title="statement not covered" >    this.scrollView &amp;&amp; this.scrollView.scrollTo({ x, y, animated: true</span> });
+&nbsp;
+    // Update internal scroll state
+<span class="cstat-no" title="statement not covered" >    this.internals.isScrolling = t</span>rue;
+&nbsp;
+    // Trigger onScrollEnd manually on android
+<span class="cstat-no" title="statement not covered" >    if (Platform.OS === 'android') {</span>
+<span class="cstat-no" title="statement not covered" >      setImme<span class="fstat-no" title="function not covered" >di</span>ate(() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        this.onScrollEnd({</span>
+          nativeEvent: {
+            position: diff,
+          },
+        });
+      });
+    }
+  };
+&nbsp;
+  /**
+   * Render ScrollView component
+   * @param {array} slides to swipe through
+   */
+  renderScrollVie<span class="fstat-no" title="function not covered" >w </span>= pages =&gt; (<span class="cstat-no" title="statement not covered" ></span>
+    &lt;ScrollView
+      ref={co<span class="fstat-no" title="function not covered" >mpon</span>ent =&gt; {
+<span class="cstat-no" title="statement not covered" >        this.scrollView = co</span>mponent;
+      }}
+      {...this.props}
+      contentContainerStyle={[styles.wrapper, this.props.style]}
+      onScrollBeginDrag={this.onScrollBegin}
+      onMomentumScrollEnd={this.onScrollEnd}
+      onScrollEndDrag={this.onScrollEndDrag}&gt;
+      {pag<span class="fstat-no" title="function not covered" >es</span>.map((page, i) <span class="cstat-no" title="statement not covered" >=&gt; (</span>
+        // Render each slide inside a View
+        &lt;View style={[styles.fullScreen, styles.slide]} key={i}&gt;
+          {page}
+        &lt;/View&gt;
+      ))}
+    &lt;/ScrollView&gt;
+  );
+&nbsp;
+  /**
+   * Render pagination indicators
+   */
+  renderPaginatio<span class="fstat-no" title="function not covered" >n </span>= () =&gt; {
+<span class="cstat-no" title="statement not covered" >    if (this.state.total &lt;= 1) {</span>
+<span class="cstat-no" title="statement not covered" >      return </span>null;
+    }
+&nbsp;
+    const Acti<span class="cstat-no" title="statement not covered" >veDot = &lt;View style={[styles.dot, styles.activeDot]} /&gt;,</span>
+<span class="cstat-no" title="statement not covered" >      Dot = &lt;View style={styles.dot} /&gt;;</span>
+&nbsp;
+    const<span class="cstat-no" title="statement not covered" > do</span>ts = [];
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    for (let key = 0; key &lt; this.state.total; key++) {</span>
+<span class="cstat-no" title="statement not covered" >      dots.push(</span>
+        key === this.state.index
+          ? // Active dot
+            React.cloneElement(ActiveDot, { key })
+          : // Other dots
+            React.cloneElement(Dot, { key })
+      );
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return (</span>
+      &lt;View pointerEvents="none" style={[styles.pagination, styles.fullScreen]}&gt;
+        {dots}
+      &lt;/View&gt;
+    );
+  };
+&nbsp;
+  /**
+   * Render Continue or Done button
+   */
+  renderButto<span class="fstat-no" title="function not covered" >n </span>= () =&gt; {
+    const lastS<span class="cstat-no" title="statement not covered" >creen = this.state.index === this.state.</span>total - 1;
+<span class="cstat-no" title="statement not covered" >    return (</span>
+      &lt;View
+        pointerEvents="box-none"
+        style={[styles.buttonWrapper, styles.fullScreen]}&gt;
+        {lastScreen ? (
+          // Show this button on the last screen
+          // TODO: Add a handler that would send a user to your app after onboarding is complete
+          &lt;Button
+            text={I18N.t('START')}
+            onPre<span class="fstat-no" title="function not covered" >ss={() =</span>&gt; <span class="cstat-no" title="statement not covered" >this.props.redirectToAuthAction()}</span>
+          /&gt;
+        ) : (
+          // Or this one otherwise
+          &lt;Button text={I18N.t('CONTINUE')} onPress={() =&gt; this.swipe()} /&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
+        )}
+      &lt;/View&gt;
+    );
+  };
+&nbsp;
+  /**
+   * Render the component
+   */
+  rende<span class="fstat-no" title="function not covered" >r </span>= ({ children } = t<span class="cstat-no" title="statement not covered" >his.props) =&gt; (<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span></span>
+    &lt;View style={[styles.container, styles.fullScreen]}&gt;
+      {/* Render screens */}
+      {this.renderScrollView(children)}
+      &lt;View style={{ flexDirection: 'row' }}&gt;
+        {this.renderButton()}
+        {/* Render pagination */}
+        {this.renderPagination()}
+        {/* Render Continue or Done button */}
+        {this.renderButton()}<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span></span></span></span></span></span></span></span>
+      &lt;/View&gt;
+    &lt;/View&gt;
+  );
+}
+&nbsp;
+const style<span class="cstat-no" title="statement not covered" >s = StyleSheet.create({</span>
+  // Set width and height to the screen size
+  fullScreen: {
+    width,
+    height,
+  },
+  // Main container
+  container: {
+    backgroundColor: 'transparent',
+    position: 'relative',
+  },
+  // Slide
+  slide: {
+    backgroundColor: 'transparent',
+  },
+  // Pagination indicators
+  pagination: {
+    position: 'absolute',
+    bottom: 110,
+    left: 0,
+    right: 0,
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+    backgroundColor: 'transparent',
+  },
+  // Pagination dot
+  dot: {
+    backgroundColor: 'rgba(0,0,0,.25)',
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    marginLeft: 3,
+    marginRight: 3,
+    marginTop: 3,
+    marginBottom: 3,
+  },
+  // Active dot
+  activeDot: {
+    backgroundColor: '#4CD566',
+  },
+  // Button wrapper
+  buttonWrapper: {
+    backgroundColor: 'transparent',
+    flexDirection: 'column',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    flex: 1,
+    paddingHorizontal: 10,
+    paddingVertical: 40,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+});
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Feb 28 2018 02:45:13 GMT-0300 (-03)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

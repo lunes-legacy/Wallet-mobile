@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for screens/LunesMarket/LunesMarket.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">screens/LunesMarket</a> LunesMarket.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/108</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/55</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/15</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/63</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >/* eslint-disable */<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>
+import Reac<span class="cstat-no" title="statement not covered" >t, { Component } </span>from 'react'<span class="cstat-no" title="statement not covered" >;</span>
+import {<span class="cstat-no" title="statement not covered" ></span>
+  Text,
+  View,
+  StyleSheet,
+  ScrollView,
+  StatusBar,
+  Dimensions,
+} from 'react-native';
+import { Contain<span class="cstat-no" title="statement not covered" >er } from 'native-base'</span>;
+import { Logo, B<span class="cstat-no" title="statement not covered" >ase, Button } from '../../co</span>mponents';
+import LunesTabCoin<span class="cstat-no" title="statement not covered" >s from '../../native-base-theme/components/LunesTabCoins';<span class="cstat-no" title="statement not covered" ></span></span>
+import LunesBalanceTex<span class="cstat-no" title="statement not covered" >t from '../../native-base-theme/components/LunesBalanceText';<span class="cstat-no" title="statement not covered" ></span></span>
+import LunesQuotatio<span class="cstat-no" title="statement not covered" >n from '../../native-base-theme/components/LunesQuotation';<span class="cstat-no" title="statement not covered" ></span></span>
+import LunesLoadin<span class="cstat-no" title="statement not covered" >g from '../../native-base-theme/components/LunesLoading';<span class="cstat-no" title="statement not covered" ></span></span>
+import LunesPaymentButto<span class="cstat-no" title="statement not covered" >n from '../../native-base-theme/components/LunesPaymentButton';<span class="cstat-no" title="statement not covered" ></span></span>
+import LunesChartMai<span class="cstat-no" title="statement not covered" >n from '../../native-base-theme/components/LunesChartMain';<span class="cstat-no" title="statement not covered" ></span></span>
+import LunesSwipe<span class="cstat-no" title="statement not covered" >r from '../../native-base-theme/components/LunesSwiper';<span class="cstat-no" title="statement not covered" ></span></span>
+import BosonColo<span class="cstat-no" title="statement not covered" >rs from '../../native-base-theme/variables/bosonColor';<span class="cstat-no" title="statement not covered" ></span></span>
+&nbsp;
+import I18<span class="cstat-no" title="statement not covered" >N from '../../i18n/i18n';<span class="cstat-no" title="statement not covered" ></span></span>
+import io fr<span class="cstat-no" title="statement not covered" >om 'socket.io-client';<span class="cstat-no" title="statement not covered" ></span></span>
+&nbsp;
+const options = {
+  pingTimeout: 85000,
+  transports: ['websocket'],
+  allowUpgrades: false,
+  cookie: false,
+};
+&nbsp;
+import CCC from '../../uti<span class="cstat-no" title="statement not covered" >ls/ccc-streamer-utilities';<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>
+&nbsp;
+class LunesM<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >ar</span>ket extends Compone<span class="cstat-no" title="statement not covered" >nt {</span></span>
+  constru<span class="fstat-no" title="function not covered" >ctor(props) </span>{<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span>
+    super();
+<span class="cstat-no" title="statement not covered" >    this.exchange = I18N.t('CURRENCY_EXCHANGE');</span>
+<span class="cstat-no" title="statement not covered" >    this.currencyTo = I18N.t('CURRENCY_USER');</span>
+<span class="cstat-no" title="statement not covered" >    this.subscription = [</span>
+      `5~CCCAGG~BTC~${this.currencyTo}`,
+      '5~CCCAGG~ETH~USD',
+      `5~CCCAGG~LTC~${this.currencyTo}`,
+    ];
+    // 1. set url
+<span class="cstat-no" title="statement not covered" >    this.socket = io('https://streamer.cryptocompare.com/', options);</span>
+    // 2. emmit (connect)
+<span class="cstat-no" title="statement not covered" >    this.socket.emit('SubAdd', { subs: this.subscripti<span class="cstat-no" title="statement not covered" >o</span>n });</span>
+<span class="cstat-no" title="statement not covered" >  }<span class="fstat-no" title="function not covered" ></span></span>
+&nbsp;
+  componentDidMount() {
+<span class="cstat-no" title="statement not covered" >    const {</span> requestHistoricData<span class="cstat-no" title="statement not covered" >, updateTicker, requestPric</span>e } = this.pr<span class="cstat-no" title="statement not covered" >ops;<span class="cstat-no" title="statement not covered" ></span></span>
+<span class="cstat-no" title="statement not covered" >    requestHistoricData</span>();
+    // requestPrice();
+<span class="cstat-no" title="statement not covered" >    console.ignoredYellowBox = ['Setting a tim</span>er'];
+<span class="cstat-no" title="statement not covered" >    this.onMessage</span>();
+  }<span class="fstat-no" title="function not covered" ></span>
+&nbsp;
+  onMessage() {
+    const { u<span class="cstat-no" title="statement not covered" >pdateTicker } = this.pro</span>ps;
+    const coin<span class="cstat-no" title="statement not covered" >Pai</span>rs = {};
+&nbsp;
+    // 3. receive messages
+<span class="cstat-no" title="statement not covered" >    this.socket.on(<span class="fstat-no" title="function not covered" >'m</span>', message =&gt; {</span>
+      const mess<span class="cstat-no" title="statement not covered" >ageType = message.substring(0, message.ind</span>exOf('~'));
+<span class="cstat-no" title="statement not covered" >      if (messageType == CCC.STATIC.TYPE.CURRENTAGG) {</span>
+<span class="cstat-no" title="statement not covered" >        const res = CCC.CURRENT.unpack(message);</span>
+<span class="cstat-no" title="statement not covered" >        if (typeof res.PRICE !== 'undefined') {</span>
+          const<span class="cstat-no" title="statement not covered" > fromSymbol = r</span>es.FROMSYMBOL;
+          con<span class="cstat-no" title="statement not covered" >st toSymbol =</span> res.TOSYMBOL;
+<span class="cstat-no" title="statement not covered" >          const fsym = CCC.STATIC.CURRENCY.getSymbol(fromSymbol);</span>
+<span class="cstat-no" title="statement not covered" >          const tsym = CCC.STATIC.CURRENCY.getSymbol(toSymbol);</span>
+<span class="cstat-no" title="statement not covered" >          const pair</span> = fromSymbol;
+&nbsp;
+          // CHANGE24HOUR, CHANGE24HOURPCT, PRICE, CHANGE
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          if (!coinPairs.hasOwnProperty(pair)) {</span>
+<span class="cstat-no" title="statement not covered" >            coinPair</span>s[pair] = {};
+          }
+&nbsp;
+          // CHANGE
+<span class="cstat-no" title="statement not covered" >          if (typeof res.OPEN24HOUR !== 'undefined') {</span>
+<span class="cstat-no" title="statement not covered" >            coinPairs[pair].OPEN24HOUR = re</span>s.OPEN24HOUR;
+          }
+<span class="cstat-no" title="statement not covered" >          coinPairs[pair].CHANGE24HOUR = res.CHANGE2</span>4HOUR || '-';
+<span class="cstat-no" title="statement not covered" >          coinPairs[pair].CHANGE24HOURPCT = res.CHANGE24HO</span>URPCT || '-';
+<span class="cstat-no" title="statement not covered" >          coinPairs[pair].PRICE =</span> res.PRICE;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          if (typeof coinPairs[pair].OPEN24HOUR !== 'undefined') {</span>
+<span class="cstat-no" title="statement not covered" >            coinPairs[pair].CHANGE24HOUR = CCC.convertValueToDisplay(</span>
+              tsym,
+              coinPairs[pair].PRICE - coinPairs[pair].OPEN24HOUR
+            );
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            coinPairs[pair].CHANGE24HOURPCT = `${(</span>
+              (coinPairs[pair].PRICE - coinPairs[pair].OPEN24HOUR) /
+              coinPairs[pair].OPEN24HOUR *
+              100
+            ).toFixed(2)}%`;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (coinPairs[pair].PRICE &gt; coinPairs[pair].OPEN24HOUR) {</span>
+<span class="cstat-no" title="statement not covered" >              coinPairs[pair]</span>.CHANGE = 'up';
+<span class="cstat-no" title="statement not covered" >            } else if (coinPairs[pair].PRICE &lt; coinPairs[pair].OPEN24HOUR) {</span>
+<span class="cstat-no" title="statement not covered" >              coinPairs[pair].C</span>HANGE = 'down';
+            }
+          }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          coinPairs[pair].CURRENTPRICE = CCC.convertValueToDisplay(</span>
+            tsym,
+            coinPairs[pair].PRICE
+          );
+<span class="cstat-no" title="statement not covered" >          coinPairs[pair].DISPLAYPRICE = `1 BTC | ${</span>
+            coinPairs[pair].CURRENTPRICE
+          }`;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          coinPairs[pair].C</span>OIN = pair;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          updateTicker(coinPair</span>s[pair]);
+        }
+      }
+    });
+  }<span class="fstat-no" title="function not covered" ></span>
+&nbsp;
+  componentWillUnmount() {
+<span class="cstat-no" title="statement not covered" >    this.socket.emit('SubRemove', this.subscripti</span>on);
+  }<span class="fstat-no" title="function not covered" ></span>
+&nbsp;
+  getBalance() {
+    const finalBalance =
+<span class="cstat-no" title="statement not covered" >      this.props &amp;&amp; this.props.balanceData</span>
+        ? this.props.balanceData.confirmed_balance
+        : 0;
+<span class="cstat-no" title="statement not covered" >    return finalBalan</span>ce;
+  }<span class="fstat-no" title="function not covered" ></span>
+  render() {
+<span class="cstat-no" title="statement not covered" >    return (</span>
+      &lt;Container&gt;
+        &lt;StatusBar
+          backgroundColor={BosonColors.$bosonPrimary}
+          barStyle="light-content"
+        /&gt;
+        &lt;View style={{ flexDirection: 'row' }}&gt;
+          &lt;LunesTabCoins ticker={this.props.ticker} /&gt;
+        &lt;/View&gt;
+        &lt;View
+          style={{
+            flex: 4,
+            justifyContent: 'space-between',
+            width: Dimensions.get('window').width,
+          }}&gt;
+          &lt;LunesBalanceText balance={this.getBalance()} /&gt;
+          &lt;LunesSwiper
+            dots
+            dotsBottom={0}
+            dotsColor="rgba(255, 255, 255, 0.25)"
+            dotsColorActive="rgba(255, 255, 255, 0.75)"&gt;
+            &lt;LunesChartMain
+              historic={this.props.historic}
+              range={this.props.range}
+              changeRange={this.props.changeRange}
+            /&gt;
+            &lt;LunesQuotation ticker={this.props.ticker} /&gt;
+          &lt;/LunesSwiper&gt;
+        &lt;/View&gt;
+        &lt;View
+          style={{
+            flex: 1,
+          }}&gt;
+          &lt;LunesPaymentButton /&gt;
+        &lt;/View&gt;
+      &lt;/Container&gt;
+    );
+  }<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span>
+}
+&nbsp;
+export default LunesMarket;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Feb 28 2018 02:45:13 GMT-0300 (-03)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

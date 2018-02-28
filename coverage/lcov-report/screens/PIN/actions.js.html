@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for screens/PIN/actions.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">screens/PIN</a> actions.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/96</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/19</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/24</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/50</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >/* eslint-disable */<span class="cstat-no" title="statement not covered" ></span></span>
+import type<span class="cstat-no" title="statement not covered" >s from '../../config/types';<span class="cstat-no" title="statement not covered" ></span></span>
+import { nav<span class="cstat-no" title="statement not covered" >igate } from '../../config/rout</span>es';
+import LunesLi<span class="cstat-no" title="statement not covered" >b from 'lunes-lib';<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span>
+&nbsp;
+async fun<span class="fstat-no" title="function not covered" >ction getBa</span>lance(address, currentUser, dispatch) {<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span></span></span></span>
+  try {
+    const balance = await LunesLib.coins.bitcoin.getBalance(
+      { address }, // TODO remove testnet object on production
+      currentUser.accessToken<span class="cstat-no" title="statement not covered" ></span>
+    );
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    dispatch(confirmSuccess(currentUser</span>));
+<span class="cstat-no" title="statement not covered" >    dispatch(storeBalanceOnUser(balance.data</span>));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    dispatch(requestFinished(</span>));
+<span class="cstat-no" title="statement not covered" >    navigate('Main');<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span></span></span></span>
+  } catch (error) {
+<span class="cstat-no" title="statement not covered" >    dispatch(requestFinished<span class="cstat-no" title="statement not covered" >(</span>));<span class="cstat-no" title="statement not covered" ></span></span>
+    throw error;
+  }
+}
+&nbsp;
+async fun<span class="fstat-no" title="function not covered" >ction crea</span>tePin(pin, currentUser, dispatch) {<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span></span></span></span>
+  try {
+    const pinCreated = await LunesLib.users.createPin(
+      { pin },
+      currentUser.accessToken<span class="cstat-no" title="statement not covered" ></span>
+    );
+<span class="cstat-no" title="statement not covered" >    currentUser.pinIsValidated = </span>true;
+<span class="cstat-no" title="statement not covered" >    dispatch(requestFinished(</span>));
+<span class="cstat-no" title="statement not covered" >    dispatch(showDialogBackupSeed(currentUser.wallet.has<span class="cstat-no" title="statement not covered" >h</span>));<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span></span></span>
+  } catch (error) {
+<span class="cstat-no" title="statement not covered" >    dispatch(requestFinished(</span>));<span class="cstat-no" title="statement not covered" ></span>
+  }
+}
+&nbsp;
+async fun<span class="fstat-no" title="function not covered" >ction confi</span>rmPin(pin, currentUser, wordSeedWasViewed, dispatch) {<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span></span></span></span>
+  try {
+    const pinConfirmed = await LunesLib.users.confirmPin(
+      { pin },
+      currentUser.accessToken<span class="cstat-no" title="statement not covered" ></span>
+    );
+<span class="cstat-no" title="statement not covered" >    currentUser.pinIsValidated = </span>true;
+<span class="cstat-no" title="statement not covered" >    currentUser.wordSeedWasViewed = wordSeedWasVi</span>ewed;
+<span class="cstat-no" title="statement not covered" >    try {</span>
+<span class="cstat-no" title="statement not covered" >      const address = currentUser.wallet.coins[0].addresse</span>s[0].address;
+<span class="cstat-no" title="statement not covered" >      getBalance(address, currentUser, dispatch<span class="fstat-no" title="function not covered" >).</span>catch(error =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        dispatch(requestFinis</span>hed());
+<span class="cstat-no" title="statement not covered" >        navigate('Main');</span>
+      });
+    } catch (error) {
+<span class="cstat-no" title="statement not covered" >      dispatch(requestFinishe</span>d());
+<span class="cstat-no" title="statement not covered" >    }<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span></span></span>
+  } catch (error) {
+<span class="cstat-no" title="statement not covered" >    dispatch(requestFinished<span class="cstat-no" title="statement not covered" >(</span>));<span class="cstat-no" title="statement not covered" ></span></span>
+    throw error;
+  }
+}
+&nbsp;
+export const reque<span class="cstat-no" title="statement not covered" >stAddPIN = (PIN, currentUser) =<span class="fstat-no" title="function not covered" >&gt; dispatch =&gt; </span>{<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span>
+<span class="cstat-no" title="statement not covered" >  dispatch(requestLoading())</span>;
+<span class="cstat-no" title="statement not covered" >  createPin(PIN, currentUser, dispatch).ca<span class="fstat-no" title="function not covered" >tc</span>h(error =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    dispatch(requestFinished(</span>));
+<span class="cstat-no" title="statement not covered" >    dispatch(showError(error</span>));
+  });
+};
+&nbsp;
+export const request<span class="cstat-no" title="statement not covered" >ValidPIN = (<span class="fstat-no" title="function not covered" ></span></span>
+  PIN,
+  currentUser,
+  wordSeedWasViewed<span class="cstat-no" title="statement not covered" ></span>
+<span class="fstat-no" title="function not covered" >) </span>=&gt; dispatch =&gt; {
+<span class="cstat-no" title="statement not covered" >  dispatch(requestLoading())</span>;
+<span class="cstat-no" title="statement not covered" >  confirmPin(PIN, currentUser, wordSeedWasViewed, dispatch).c<span class="fstat-no" title="function not covered" >at</span>ch(error =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    dispatch(requestFinished(</span>));
+<span class="cstat-no" title="statement not covered" >    dispatch(showError(error</span>));
+  });
+};
+&nbsp;
+// Aqui mostra o diloag com a seed word
+export const showTextBackupSe<span class="cstat-no" title="statement not covered" >edAction = seedText =&gt; ({<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span>
+  type: types.SHOW_TEXT_BACKUP_SEED,
+  seedText,
+});
+&nbsp;
+export const closeTextBackupSe<span class="cstat-no" title="statement not covered" >edAction = () =&gt; ({<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span>
+  type: types.CLOSE_TEXT_BACKUP_SEED,
+});
+&nbsp;
+const requestLoadin<span class="cstat-no" title="statement not covered" >g = () =&gt;<span class="fstat-no" title="function not covered" > ({<span class="cstat-no" title="statement not covered" ></span></span></span>
+  type: types.REQUEST_LOADING,
+});
+&nbsp;
+const requestFinishe<span class="cstat-no" title="statement not covered" >d = () =&gt;<span class="fstat-no" title="function not covered" > ({<span class="cstat-no" title="statement not covered" ></span></span></span>
+  type: types.REQUEST_FINISHED,
+});
+&nbsp;
+const showErro<span class="cstat-no" title="statement not covered" >r = error<span class="fstat-no" title="function not covered" > =&gt; ({<span class="cstat-no" title="statement not covered" ></span></span></span>
+  type: types.SHOW_ERROR,
+  error,
+});
+&nbsp;
+// Aqui mostra o diloag informando que é importante ele efetuar o backup
+const showDialogBackupSee<span class="cstat-no" title="statement not covered" >d = seedT<span class="fstat-no" title="function not covered" >ext =&gt; ({<span class="cstat-no" title="statement not covered" ></span></span></span>
+  type: types.SHOW_DIALOG_BACKUP_SEED,
+  seedText,
+});
+&nbsp;
+export const closeShowDialogBa<span class="cstat-no" title="statement not covered" >ckupSeed = () =&gt; ({<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span>
+  type: types.CLOSE_DIALOG_BACKUP_SEED,
+});
+&nbsp;
+const confirmSucces<span class="cstat-no" title="statement not covered" >s = user <span class="fstat-no" title="function not covered" >=&gt; ({<span class="cstat-no" title="statement not covered" ></span></span></span>
+  type: types.CONFIRM_CODE_SUCCESS,
+  user,
+});
+&nbsp;
+const storeBalanceOnUse<span class="cstat-no" title="statement not covered" >r = balan<span class="fstat-no" title="function not covered" >ce =&gt; ({<span class="cstat-no" title="statement not covered" ></span></span></span>
+  type: types.STORE_BALANCE,
+  balance,
+});
+&nbsp;
+export const cl<span class="cstat-no" title="statement not covered" >earError = () =&gt; ({<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span>
+  type: types.CLEAR_ERROR,
+  error: null,
+});
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Feb 28 2018 02:45:13 GMT-0300 (-03)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

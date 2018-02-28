@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for i18n/locales/pt.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">i18n/locales</a> pt.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/1</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >/* eslint-disable */<span class="cstat-no" title="statement not covered" ></span></span>
+export default {
+  greeting: 'Bom dia!',
+  selectCode: 'Selecionar código',
+  chooseCoin: 'Escolher moeda',
+  balance: 'Saldo',
+  BALANCE: 'Saldo',
+  typeYourAmountCoin: 'digite a quantidade de moedas',
+  typeHere: 'digite aqui',
+  optionsSent: 'Formas de Envio',
+  SOMETHING_ERROR: 'Erro no servidor. Verifique com nosso suporte',
+  WRONG_PASSWORD: 'Senha inválida ou insegura. Tente algo mais seguro.',
+  NOT_CONNECTED: 'Você deve estar contectado para acessar sua Lunes Wallet.',
+  USER_NOT_FOUND: 'Usuário não encontrado',
+  ERROR_AUTHENTICATE: 'Erro ao tentar autenticar-se',
+  EMAIL_ALREADY: 'Email já existe',
+  ACCESS_DENIED: 'Acesso negado',
+  SMS_EXPIRED: 'SMS Expirado',
+  TRY_AGAIN: 'Repetir',
+  CHANGE_PASSWORD: 'Redefinir Senha',
+  SIGNIN: 'Login',
+  SIGNUP: 'Cadastro',
+  CHECKING_PIN_FOR_ACTIVATION: 'Checando PIN para ativação',
+  PIN_IS_REQUIRED: 'Por favor, digite seu PIN',
+  ERROR_ON_SAVE_PIN: 'Erro ao salvar PIN',
+  TYPE_PIN_CODE: 'Insira um código de 04 dígitos para',
+  YOUR_PIN: 'seu PIN',
+  WELCOME: 'SEJA BEM-VINDO!',
+  WELCOME_MSG: 'Muito obrigado por escolher a Wallet Lunes como',
+  WELCOME_MSG_2:
+    ' sua carteira multicoin. Aproveite da usabilidade\n\r e tecnologia desta incrível carteira e armazene ',
+  WELCOME_MSG_3: 'suas criptomoedas com alto nível de segurança.',
+  ANALYTICS: 'Análises',
+  ANALYTICS_MSG:
+    'Acompanhe os movimentos de altas e baixas do mercado de criptomoedas com nossos gráficos modernos e práticos.',
+  DO_YOUR_BACKUP: 'Faça seu backup',
+  DO_YOUR_BACKUP_MSG:
+    'Não armazenamos suas moedas em nossos servidores, elas são de sua propriedade e estão em sua posse, por isso não deixe de salvar as ',
+  DO_YOUR_BACKUP_MSG_2: 'suas chaves privadas e fazer seu backup.',
+  BUY_COINS: 'Compre moedas',
+  BUY_COINS_MSG:
+    'Compre criptomoedas de forma rápida e segura, sem burocracia. Adicione créditos pagando por ',
+  BUY_COINS_MSG_2: 'boleto bancário ou com o seu cartão de crédito.',
+  TRANSACTIONS_P2P: 'Transações P2P',
+  TRANSACTIONS_P2P_MSG:
+    'Receba e envie pagamentos de qualquer lugar do mundo, de forma rápida, segura e barata, direto de pessoa para pessoa.',
+  CONTINUE: 'Continue',
+  START: 'Começar',
+  INVALID_EMAIL: 'Email Inválido',
+  INVALID_PASSWORD2: 'Senha inválida, digite pelo menos letras e números',
+  EMAIL: 'Email',
+  PHONE_NUMBER: 'Telefone',
+  HOME_ADDRESS: 'Endereço',
+  BIRTH_DATE: 'Data de Nascimento',
+  FULL_NAME: 'Nome Completo',
+  CITY: 'Cidade',
+  NAME: 'Nome',
+  PASSWORD: 'Senha',
+  CHANGE_PASSWORD: 'Alterar Senha',
+  CHANGE_PASSWORD_TITLE:
+    'Você irá receber em seu email um link para efetuar a alteração de sua senha.',
+  NEW_PASSWORD: 'Nova senha',
+  CONFIRM: 'Confirmar',
+  SEND_PAYEMNT: 'Enviar Pagamento',
+  SCANNER_QRCODE: 'Escanear QRCode',
+  DO_BACKUP: 'Fazer Backup',
+  CONFIRM_BACKUP: 'Eu confirmo Backup',
+  SEED_BACKUP_MSG:
+    'A melhor maneira de garantir que seus fundos estejam seguros durante uma possível divisão, é garantir que você possua suas chaves privadas, backups e certificar-se de que suas frases de recuperação estão bem seguras. Se você tem a posse de suas chaves, você não precisa fazer nada além de ter paciência e "assistir" tudo acontecer',
+  REMEMBER: 'Lembre-se',
+  YOUR_WORDS: 'Suas Palavras',
+  PROFILE: 'Perfil',
+  SEND_PAYMENT: 'Enviar Pagamento',
+  VALUE_CURRENCY_LABEL: 'Valor R$ BRL',
+  PUT_WALLET_ADDRESS: 'Colar o endereço da carteira',
+  SELECT_FORM_TO_SEND: 'Selecione a forma de envio',
+  PASTE_HERE: 'cole aqui',
+  INCORRECT_PIN_NUMBER: 'PIN inválido ou incorreto',
+  PASSWORD_INSECURE: 'Senha Insegura. Tenta algo seguro',
+  ONE_DAY: '1dia',
+  ONE_WEEK: '1semana',
+  ONE_MONTH: '1mês',
+  ONE_YEAR: '1ano',
+  ALL_TIME: 'Todo Período',
+  CURRENCY_USER: 'BRL',
+  CURRENCY_EXCHANGE: 'MercadoBitcoin',
+  UKNOWN: 'Erro desconhecido',
+  WAITING_SMS_CONFIRMATION: 'Aguardando confirmação de código enviado via SMS',
+  YOU_WILL_RECEIVE_CODE_SMS:
+    'Você irá receber um código via SMS para validar seu telefone',
+  RE_SEND_SMS: 'Reenviar SMS',
+  CONFIRMATION_VIA: 'Confirmação via',
+  NEXT: 'Avançar',
+  CONFIRMATION: 'Confirmação',
+  JUST_SENT: 'acabou de enviar',
+  OF_YOUR_WALLET_LUNES: 'de sua Carteira Lunes',
+  YOU_WILL_SEND: 'Você irá enviar',
+  SENT: 'Enviado',
+  COMPLETED: 'Concluído',
+  ADDRESS_TO_RECEIVE: 'Endereço para envio',
+  FEE: 'Taxa',
+  STRONG_PASSWORD: 'Senha Forte',
+  WEAK_PASSWORD: 'Senha Fraca',
+  SELECT_FEE: 'Selecionar Taxa',
+  HIGH: 'Alto',
+  MEDIUM: 'Médio',
+  LOW: 'Baixo',
+  PERSONAL_INFO: 'Informações pessoais',
+  QUOTE: 'Cotação',
+  SEND: 'Enviar',
+  SELL: 'Vender',
+  BUY: 'Comprar',
+  RECEIVE: 'Receber',
+  ADDRESS_COPIED: 'Endereço Copiado',
+  RECEIVE_PAYMENT: 'Receber Pagamento',
+  CLICK_HERE_TO_COPY: 'Clique aqui para copiar',
+  COMING_SOON: 'Em Breve!!!!',
+  BACK: 'voltar',
+  PLEASE_SELECT_FEE: 'Por favor, selecione a taxa',
+  ERROR_TO_CONFIRM_PIN: 'Erro ao confirmar o PIN',
+  ERROR_TO_GET_FEE: 'Erro ao receber as taxas',
+  MENU_WALLETS: 'Carteiras',
+  MENU_ALERT_SYSTEMS: 'Sistema de Alertas',
+  MENU_MULTI_COINS: 'Multi Moedas',
+  MENU_PREPAID_CARDS: 'Cartões Pré-Pago',
+  MENU_INVOICES_PAYMENT: 'Pagamentos',
+  MENU_MOBILE_PHONE_TOPUP: 'Recargas',
+  MENU_INVITE_FRIENDS: 'Convidar Amigos',
+  FILL_FIELDS: 'Por favor, preencher todos os campos',
+  USER_NOT_FOUND: 'Usuário/Email não encontrado',
+  EMAIL_SENT: 'Email Enviado',
+  LOGOUT: 'Sair',
+  SUCCESS: 'Sucesso',
+  OK: 'OK',
+  INVALID_FULLNAME: 'Nome inválido',
+  GOOD_PASSWORD_EXAMPLE:
+    'Uma senha segura deve conter letras maiúsculas e minúsculas, números e caracteres especiais',
+  TRANSACTION_NO_SOLUTION:
+    'Não foi possível efetuar a transação. Erro: TRANSACTION_NO_SOLUTION',
+  SAVE: 'SALVAR',
+  VERSION: 'Versão',
+  VERSION_APP: 'Versão do Aplicativo',
+  ABOUT: 'Sobre',
+  SUPPORT: 'Suporte',
+  ALL_RIGHTS_RESERVED: 'Todos os direitos reservados',
+  CLOSE: 'Fechar',
+  CONFIRM_PASSWORD: 'Confirmar Senha',
+  CONFIRM_PASSWORD_NOT_MATCH: 'Confirmar Senha não confere',
+  ROADMAP: 'Roadmap e ICO',
+  VERSION_AND_UPDATE: 'Versão &amp; Atualização',
+  JANUARY: 'Janeiro',
+  HYBRID_WALLET_BETA: 'Carteira Híbrida BETA - Android',
+  START_PRE_ICO: 'Início da Pré ICO/ICO',
+  HYBRID_WALLET: 'Carteira híbrida',
+  START_ACTIVITIES: 'Início das Atividades',
+  STARTING_POINT: 'Starting Point',
+  WALLET_WIN_LINUX: 'Wallet Win/Linux',
+  PRIVATE_LABEL: 'Cartão Pré-Pago',
+  GATEWAY_PAYMENT: 'Gateway Pagamentos',
+  DATE_26_01: '26/01',
+  DATE_25_02: '25/02',
+  DATE_03_04: '03/04',
+  HISTORIC_TRANSACTION: 'Histórico de Transações',
+  TRANSACTION: 'Transações',
+  EMPTY_TRANSACTION: 'Nenhuma transação até o momento',
+  YOUR_TRANSACTION_HISTORIC: 'Seu historico de transações',
+};
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Feb 28 2018 02:45:13 GMT-0300 (-03)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

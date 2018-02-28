@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for config/types.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">All files</a> / <a href="index.html">config</a> types.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/1</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >export default {<span class="cstat-no" title="statement not covered" ></span></span>
+  // SIGNIN
+  SIGNIN_LOADING: 'SIGNIN_LOADING',
+  SIGNIN_SUCCESS: 'SIGNIN_SUCCESS',
+  SIGNIN_ERROR: 'SIGNIN_ERROR',
+  STORE_BALANCE: 'STORE_BALANCE',
+  // PIN
+  ADD_PIN: 'ADD_PIN',
+  UPDATE_PIN: 'UPDATE_PIN',
+  VALID_PIN: 'VALID_PIN',
+  SHOW_TEXT_BACKUP_SEED: 'SHOW_TEXT_BACKUP_SEED',
+  CLOSE_TEXT_BACKUP_SEED: 'CLOSE_TEXT_BACKUP_SEED',
+  SHOW_DIALOG_BACKUP_SEED: 'SHOW_DIALOG_BACKUP_SEED',
+  CLOSE_DIALOG_BACKUP_SEED: 'CLOSE_DIALOG_BACKUP_SEED',
+  // SIGNUP
+  SIGNUP_LOADING: 'SIGNUP_LOADING',
+  SIGNUP_SUCCESS: 'SIGNUP_SUCCESS',
+  SIGNUP_ERROR: 'SIGNUP_ERROR',
+  // SIGNOUT
+  SIGNOUT_LOADING: 'SIGNOUT_LOADING',
+  SIGNOUT_SUCCESS: 'SIGNOUT_SUCCESS',
+  SIGNOUT_ERROR: 'SIGNOUT_ERROR',
+  TRY_SIGNIN: 'TRY_SIGNIN',
+  // REQUEST
+  REQUEST_LOADING: 'REQUEST_LOADING',
+  REQUEST_FINISHED: 'REQUEST_FINISHED',
+  // STORE USER
+  STORE_USER: 'STORE_USER',
+  CLEAR_ERROR: 'CLEAR_ERROR',
+  // SEND PAYMENT
+  RECEIVE_PAYMENT: 'RECEIVE_PAYMENT',
+  COPY_ADDRESS: 'COPY_ADDRESS',
+  CHOOSE_COINS: 'CHOOSE_COINS',
+  // CONFIRMATION
+  REQUEST_CODE_SUCCESS: 'REQUEST_CODE_SUCCESS',
+  REQUEST_CODE_ERROR: 'REQUEST_CODE_ERROR',
+  CONFIRM_CODE_SUCCESS: 'CONFIRM_SUCCESS',
+  CONFIRM_CODE_ERROR: 'CONFIRM_CODE_ERROR',
+  CLEAR_INVALID_PHONENUMBER: 'CLEAR_INVALID_PHONENUMBER',
+  SHOW_ERROR: 'SHOW_ERROR',
+  // HOME
+  HISTORIC_DATA: 'HISTORIC_DATA',
+  CHANGE_RANGE: 'CHANGE_RANGE',
+  TICKER_UPDATE: 'TICKER_UPDATE',
+  PRICE_DATA: 'PRICE_DATA',
+  // TRANSACTION
+  SHOW_TRANSACTION_SUCCESS: 'SHOW_TRANSACTION_SUCCESS',
+  ERROR_TRANSACTION_SUCCESS: 'ERROR_TRANSACTION_SUCCESS',
+  SHOW_FEE: 'SHOW_FEE',
+  // PROFILE
+  STORE_USER_PROFILE: 'STORE_USER_PROFILE',
+  OBTAIN_USER_PROFILE_ERROR: 'OBTAIN_USER_PROFILE_ERROR',
+  OBTAIN_USER_PROFILE_SUCCESS: 'OBTAIN_USER_PROFILE_SUCCESS',
+  REHYDRATE: 'persist/REHYDRATE',
+  STORE_WALLET: 'STORE_WALLET',
+  STORE_AVATAR_USER: 'STORE_AVATAR_USER',
+  SHOW_SUCCESS: 'SHOW_SUCCESS',
+  CLEAR_SUCCESS: 'CLEAR_SUCCESS',
+  HISTORIC_TRANSACTION: 'HISTORIC_TRANSACTION',
+  CONNECTION_STATUS: 'CONNECTION_STATUS',
+};
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Feb 28 2018 02:45:13 GMT-0300 (-03)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
