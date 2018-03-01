@@ -45,7 +45,7 @@ public class MainApplication extends Application implements ReactApplication {
           new RNI18nPackage(),
           new RCTCameraPackage(),
           new VectorIconsPackage(),
-          new RCTSplashScreenPackage(),
+          //new RCTSplashScreenPackage(),
           new RNFirebasePackage(),
           new RNFirebaseAuthPackage(),
           new RNFirebaseMessagingPackage(),

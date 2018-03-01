@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import App from './app/App';
+import App from 'lunesmobilewallet/app/screens/App';
 
 AppRegistry.registerComponent('LunesMobileWallet', () => App);

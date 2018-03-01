@@ -8,7 +8,6 @@ export default class SplashScreen extends Component {
   render() {
     return (
       <Content>
-        <Logo />
         <Text style={styles.loadingTxt}>{I18N.t('loading')}</Text>
       </Content>
     );

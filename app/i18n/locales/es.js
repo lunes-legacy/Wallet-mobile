@@ -1,4 +1,5 @@
 export default {
+  loading: 'Loading',
   greeting: 'Bom dia!',
   selectCode: 'Selecionar código',
   chooseCoin: 'Escolher moeda',
