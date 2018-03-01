@@ -10,7 +10,6 @@ import fr.bamlab.rnimageresizer.ImageResizerPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
-import com.reactnativecomponent.splashscreen.RCTSplashScreenPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.auth.RNFirebaseAuthPackage;
@@ -37,21 +36,20 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-            new RNSentryPackage(MainApplication.this),
-          new RNFSPackage(),
-          new ImageResizerPackage(),
-          new ImagePickerPackage(),
-          new RNI18nPackage(),
-          new RCTCameraPackage(),
-          new VectorIconsPackage(),
-          //new RCTSplashScreenPackage(),
-          new RNFirebasePackage(),
-          new RNFirebaseAuthPackage(),
-          new RNFirebaseMessagingPackage(),
-          new RNFirebaseDatabasePackage(),
-          new LinearGradientPackage(),
-          new SvgPackage()
+            new MainReactPackage(),
+            new RNSentryPackage(MainApplication.this),            
+            new RNI18nPackage(),
+            new RCTCameraPackage(),
+            new RNFSPackage(),
+            new ImageResizerPackage(),
+            new ImagePickerPackage(),
+            new VectorIconsPackage(),
+            new RNFirebasePackage(),
+            new RNFirebaseAuthPackage(),
+            new RNFirebaseMessagingPackage(),
+            new RNFirebaseDatabasePackage(),
+            new LinearGradientPackage(),
+            new SvgPackage()
       );
     }
 
