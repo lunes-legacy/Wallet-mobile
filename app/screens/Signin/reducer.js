@@ -1,4 +1,4 @@
-import types from '../../config/types';
+import types from 'lunesmobilewallet/app/config/types';
 
 const initialState = {
   authorized: null,

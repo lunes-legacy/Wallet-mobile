@@ -1,17 +1,17 @@
 import { combineReducers } from 'redux';
-import tabsReducer from '../components/tabs/reducer';
-import authReducer from '../screen/Signin/reducer';
-import redirectToAuthReducer from '../screen/Introduction/reducer';
-import confirmationReducer from '../screen/Confirmation/reducer';
-import receivePaymentReducer from '../screen/ReceivePayment/reducer';
-import sendPaymentReducer from '../screen/SendPayment/reducer';
-import changePasswordReducer from '../screen/ChangePassword/reducer';
-import profileReducer from '../screen/Profile/reducer';
-import historicDataReducer from '../screen/LunesMarket/reducer';
-import pinReducer from '../screen/PIN/reducer';
-import confirmTransactionReducer from '../screen/ConfirmTransaction/reducer';
-import historicTransactionReducer from '../screen/HistoricTransaction/reducer';
-import connectionReducer from '../services/connectionService/reducer';
+import tabsReducer from 'lunesmobilewallet/app/components/tabs/reducer';
+import authReducer from 'lunesmobilewallet/app/screens/Signin/reducer';
+import redirectToAuthReducer from 'lunesmobilewallet/app/screens/Introduction/reducer';
+import confirmationReducer from 'lunesmobilewallet/app/screens/Confirmation/reducer';
+import receivePaymentReducer from 'lunesmobilewallet/app/screens/ReceivePayment/reducer';
+import sendPaymentReducer from 'lunesmobilewallet/app/screens/SendPayment/reducer';
+import changePasswordReducer from 'lunesmobilewallet/app/screens/ChangePassword/reducer';
+import profileReducer from 'lunesmobilewallet/app/screens/Profile/reducer';
+import historicDataReducer from 'lunesmobilewallet/app/screens/LunesMarket/reducer';
+import pinReducer from 'lunesmobilewallet/app/screens/PIN/reducer';
+import confirmTransactionReducer from 'lunesmobilewallet/app/screens/ConfirmTransaction/reducer';
+import historicTransactionReducer from 'lunesmobilewallet/app/screens/HistoricTransaction/reducer';
+import connectionReducer from 'lunesmobilewallet/app/services/connectionService/reducer';
 
 const reducers = combineReducers({
   tabsReducer,

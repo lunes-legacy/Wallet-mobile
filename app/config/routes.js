@@ -24,8 +24,8 @@ import { ConfirmSend } from 'lunesmobilewallet/app/screens/ConfirmTransaction';
 import { Profile } from 'lunesmobilewallet/app/screens/Profile';
 import { Roadmap } from 'lunesmobilewallet/app/screens/Roadmap';
 import { AlertMessages } from 'lunesmobilewallet/app/screens/AlertMessages';
-import BosonColors from '../native-base-theme/variables/bosonColor';
-import I18N from '../i18n/i18n';
+import BosonColors from 'lunesmobilewallet/app/native-base-theme/variables/bosonColor';
+import I18N from 'lunesmobilewallet/app/i18n/i18n';
 
 const customHeader = navigation => (
   <View style={{ padding: 20 }}>

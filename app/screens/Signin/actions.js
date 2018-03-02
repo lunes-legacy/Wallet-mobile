@@ -1,7 +1,7 @@
 import { Keyboard } from 'react-native';
 import LunesLib from 'lunes-lib';
-import types from '../../config/types';
-import { navigate } from '../../config/routes';
+import types from 'lunesmobilewallet/app/config/types';
+import { navigate } from 'lunesmobilewallet/app/config/routes';
 
 const signinLoading = () => ({
   type: types.SIGNIN_LOADING,

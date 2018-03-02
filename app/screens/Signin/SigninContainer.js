@@ -1,14 +1,12 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { updateConnectionStatus } from 'lunesmobilewallet/app/services/connectionService/actions';
 import {
   requestLogin,
   requestSignup,
   requestSignout,
   clearError,
 } from './actions';
-
-import { updateConnectionStatus } from '../../services/connectionService/actions';
-
 import Signin from './SigninComponent';
 
 const handleConnectionError = status =>

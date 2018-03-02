@@ -8,13 +8,13 @@ import {
   NetInfo,
 } from 'react-native';
 import { Container, Button, Text, Tab, Tabs } from 'native-base';
-import LunesLogo from '../../native-base-theme/components/LunesLogo';
-import LunesLoginForm from '../../native-base-theme/components/LunesLoginForm';
-import LunesLoading from '../../native-base-theme/components/LunesLoading';
-import I18n from '../../i18n/i18n';
-import { navigate } from '../../config/routes';
-import { handleErrors } from '../../utils/stringUtils';
-import generalConstant from '../../constants/general';
+import LunesLogo from 'lunesmobilewallet/app/native-base-theme/components/LunesLogo';
+import LunesLoginForm from 'lunesmobilewallet/app/native-base-theme/components/LunesLoginForm';
+import LunesLoading from 'lunesmobilewallet/app/native-base-theme/components/LunesLoading';
+import I18n from 'lunesmobilewallet/app/i18n/i18n';
+import { navigate } from 'lunesmobilewallet/app/config/routes';
+import { handleErrors } from 'lunesmobilewallet/app/utils/stringUtils';
+import generalConstant from 'lunesmobilewallet/app/constants/general';
 
 // Keep a reference to ensure there is only one event listener
 // subscribed with BackHandler

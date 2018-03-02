@@ -14,8 +14,8 @@ import {
 } from 'react-native-svg';
 import { AreaChart } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
-import bosonColor from '../../native-base-theme/variables/bosonColor';
-import LunesChartPeriod from '../../native-base-theme/components/LunesChartPeriod';
+import bosonColor from 'lunesmobilewallet/app/native-base-theme/variables/bosonColor';
+import LunesChartPeriod from 'lunesmobilewallet/app/native-base-theme/components/LunesChartPeriod';
 
 const { width } = Dimensions.get('window');
 
