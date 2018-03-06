@@ -4,7 +4,7 @@ import android.app.Application;
 import android.os.Bundle;
 
 import com.facebook.react.ReactApplication;
-import io.sentry.RNSentryPackage;
+// import io.sentry.RNSentryPackage;
 import com.rnfs.RNFSPackage;
 import fr.bamlab.rnimageresizer.ImageResizerPackage;
 import com.imagepicker.ImagePickerPackage;
@@ -37,7 +37,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
-            new RNSentryPackage(MainApplication.this),            
+            // new RNSentryPackage(MainApplication.this),            
             new RNI18nPackage(),
             new RCTCameraPackage(),
             new RNFSPackage(),
