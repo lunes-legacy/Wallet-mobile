@@ -1,0 +1,59 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "react",
+    "react-native",
+    "jsx-a11y",
+    "import",
+    "jest",
+    "flowtype"
+  ],
+  "globals": {
+    "document": true,
+    "window": true,
+    "__DEV__": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+        "jsx": true,
+        "modules": true
+    }
+  },
+  "extends" : [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb-base",
+    "plugin:flowtype/recommended"
+  ],
+  "rules" : {
+    "no-unused-vars": "off",
+    "no-duplicate-imports": 0,
+    "import/no-duplicates": 2,
+    "import/named": 0,
+    "arrow-parens": "off",
+    "arrow-body-style" : "warn",
+    "import/extensions": ["off"],
+    "eslint-plugin-import": ["off", "never"],
+    "import/prefer-default-export": ["off", "never"],
+    "react/jsx-filename-extension": ["off", "never"],
+    "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
+    "react/prop-types": 0,
+    "indent": [2, 2],
+    "react/jsx-indent": [2, 2],
+    "import/no-unresolved": "off",
+    "import/no-extraneous-dependencies": "off",
+    "global-require": "off",
+    "semi": "off",
+    "no-mixed-operators": "off",
+    "react/display-name": [ "off", { "ignoreTranspilerName": true }],
+    "class-methods-use-this": "off",
+    "no-undersco": "off",
+    "no-console": "off",
+    "comma-dangle": "off",
+    "function-paren-newline": "off",
+    "no-prototype-builtins": "off",
+    "guard-for-in": "off",
+    "no-undef": "off",
+    "object-curly-newline": "off"
+  }
+}

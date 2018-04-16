@@ -1,0 +1,4 @@
+export default {
+  RECEIVE_PAYMENT: 'RECEIVE_PAYMENT',
+  COPY_ADDRESS: 'COPY_ADDRESS',
+};
