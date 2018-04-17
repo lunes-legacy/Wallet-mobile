@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "1034963936513",
+    "firebase_url": "https://lunes-wallet-production.firebaseio.com",
+    "project_id": "lunes-wallet-production",
+    "storage_bucket": "lunes-wallet-production.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034963936513:android:121026602476e49d",
+        "android_client_info": {
+          "package_name": "com.luneswallet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id":
+            "1034963936513-bmjahe6bavrvbu2gnfi0beckbamjqv33.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.luneswallet",
+            "certificate_hash": "757ef603fbf024c51a11c51afecb3ee7ff0829d7"
+          }
+        },
+        {
+          "client_id":
+            "1034963936513-evi3i36ks4kmoph5rqav5ripi668ja14.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.luneswallet",
+            "certificate_hash": "c6a99e029441884bb595ab380a4564eefc9f0560"
+          }
+        },
+        {
+          "client_id":
+            "1034963936513-84htgpsntglil8pu81h6ut346lrat7bv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwa0LsWSgWKJXJPtr9K9rGr_IRZvSN6pI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id":
+                "1034963936513-84htgpsntglil8pu81h6ut346lrat7bv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
