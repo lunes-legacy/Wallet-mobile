@@ -1,4 +1,8 @@
 {
-  "name": "LunesMobileWallet",
+
+  "expo": {
+    "sdkVersion": "24.0.1"
+  },
+  "name": "mobilewallet",
   "displayName": "Lunes Wallet"
 }

@@ -1,48 +1,59 @@
 {
   "parser": "babel-eslint",
-  "extends": [
-    "plugin:flowtype/recommended",
-    "plugin:react/recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "prettier",
-    "prettier/flowtype",
-    "prettier/react"
+  "plugins": [
+    "react",
+    "react-native",
+    "jsx-a11y",
+    "import",
+    "jest",
+    "flowtype"
   ],
-  "plugins": ["flowtype", "react", "prettier"],
   "globals": {
-    "document": false
+    "document": true,
+    "window": true,
+    "__DEV__": true
   },
   "parserOptions": {
-    "ecmaVersion": 2017,
-    "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true,
-      "experimentalObjectRestSpread": true,
-      "experimentalDecorators": true
+        "jsx": true,
+        "modules": true
     }
   },
-  "env": {
-    "jest": true,
-    "node": true
-  },
-  "rules": {
-    "no-unused-vars": 1,
+  "extends" : [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb-base",
+    "plugin:flowtype/recommended"
+  ],
+  "rules" : {
+    "no-unused-vars": "off",
     "no-duplicate-imports": 0,
     "import/no-duplicates": 2,
     "import/named": 0,
-    "import/no-unresolved": 0,
-    "react/prop-types": [1, { "skipUndeclared": true }],
-    "react/display-name": 0,
-    "prettier/prettier": [
-      "error",
-      {
-        "tabWidth": 2,
-        "printWidth": 80,
-        "singleQuote": true,
-        "jsxBracketSameLine": true,
-        "trailingComma": "es5"
-      }
-    ]
+    "arrow-parens": "off",
+    "arrow-body-style" : "warn",
+    "import/extensions": ["off"],
+    "eslint-plugin-import": ["off", "never"],
+    "import/prefer-default-export": ["off", "never"],
+    "react/jsx-filename-extension": ["off", "never"],
+    "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
+    "react/prop-types": 0,
+    "indent": [2, 2],
+    "react/jsx-indent": [2, 2],
+    "import/no-unresolved": "off",
+    "import/no-extraneous-dependencies": "off",
+    "global-require": "off",
+    "semi": "off",
+    "no-mixed-operators": "off",
+    "react/display-name": [ "off", { "ignoreTranspilerName": true }],
+    "class-methods-use-this": "off",
+    "no-undersco": "off",
+    "no-console": "off",
+    "comma-dangle": "off",
+    "function-paren-newline": "off",
+    "no-prototype-builtins": "off",
+    "guard-for-in": "off",
+    "no-undef": "off",
+    "object-curly-newline": "off"
   }
 }

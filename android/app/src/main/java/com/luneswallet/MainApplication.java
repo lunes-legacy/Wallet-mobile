@@ -4,18 +4,12 @@ import android.app.Application;
 import android.os.Bundle;
 
 import com.facebook.react.ReactApplication;
-import io.sentry.RNSentryPackage;
-import com.rnfs.RNFSPackage;
-import fr.bamlab.rnimageresizer.ImageResizerPackage;
-import com.imagepicker.ImagePickerPackage;
-import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
-import com.lwansbrough.RCTCamera.RCTCameraPackage;
-import com.reactnativecomponent.splashscreen.RCTSplashScreenPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
-import io.invertase.firebase.RNFirebasePackage;
-import io.invertase.firebase.auth.RNFirebaseAuthPackage;
-import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
-import io.invertase.firebase.database.RNFirebaseDatabasePackage;
+import com.horcrux.svg.SvgPackage;
+import com.BV.LinearGradient.LinearGradientPackage;
+import fr.bamlab.rnimageresizer.ImageResizerPackage;
+import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
+import com.rnfs.RNFSPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -38,20 +32,12 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNSentryPackage(MainApplication.this),
-          new RNFSPackage(),
-          new ImageResizerPackage(),
-          new ImagePickerPackage(),
-          new RNI18nPackage(),
-          new RCTCameraPackage(),
-          new VectorIconsPackage(),
-          new RCTSplashScreenPackage(),
-          new RNFirebasePackage(),
-          new RNFirebaseAuthPackage(),
-          new RNFirebaseMessagingPackage(),
-          new RNFirebaseDatabasePackage(),
-          new LinearGradientPackage(),
-          new SvgPackage()
+            new VectorIconsPackage(),
+            new SvgPackage(),
+            new LinearGradientPackage(),
+            new ImageResizerPackage(),
+            new RNI18nPackage(),
+            new RNFSPackage()
       );
     }
 
