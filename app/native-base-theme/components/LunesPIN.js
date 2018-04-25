@@ -31,6 +31,7 @@ export default class LunesPIN extends React.Component {
       mask2: '',
       mask3: '',
       mask4: '',
+      enablePIN: false,
     };
   }
 
@@ -43,12 +44,14 @@ export default class LunesPIN extends React.Component {
       this.setState({ inputValue3: index.toString(), mask3: '*' });
     } else if (this.state.inputValue4 === '') {
       this.setState({ inputValue4: index.toString(), mask4: '*' });
+      this.state.enablePIN = true;
     }
   }
 
   onDeleteInputValue() {
     if (this.state.inputValue4 !== '') {
       this.setState({ inputValue4: '', mask4: '' });
+      this.state.enablePIN = false;
     } else if (this.state.inputValue3 !== '') {
       this.setState({ inputValue3: '', mask3: '' });
     } else if (this.state.inputValue2 !== '') {
@@ -271,12 +274,12 @@ export default class LunesPIN extends React.Component {
             <View style={[styles.box]}>
               <TouchableOpacity
                 onPress={() => {
-                  this.onSavePIN();
+                  this.state.enablePIN ? this.onSavePIN() : null;
                 }}>
                 <Ionicons
                   name="ios-arrow-dropright-circle"
                   size={35}
-                  color={BosonColors.$bosonLightGreen}
+                  style={this.state.enablePIN ? styles.buttonEnabled : null}
                 />
               </TouchableOpacity>
             </View>
@@ -330,5 +333,11 @@ const styles = StyleSheet.create({
     width: 45,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  buttonDisabled: {
+    color: '#626262',
+  },
+  buttonEnabled: {
+    color: BosonColors.$bosonLightGreen,
   },
 });
