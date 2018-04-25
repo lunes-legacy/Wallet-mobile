@@ -30,15 +30,12 @@ class SideMenuFooter extends Component {
     return (
       <View>
         <View style={styles2.footerContainer}>
-          <View>
-            <Text style={styles2.leftBalance}>
-              <Image
-                width={30}
-                height={30}
-                source={require('../../assets/images/lunes-token-coin.png')}
-              />{' '}
-              {` ${this.getBalance()}`}
-            </Text>
+          <View style={styles2.containerInline}>
+            <Image
+              style={{ width: 26, height: 25 }}
+              source={require('../../assets/images/lunes-token-coin.png')}
+            />
+            <Text style={styles2.text}>{` ${this.getBalance()}`}</Text>
           </View>
         </View>
       </View>
@@ -63,9 +60,16 @@ const styles2 = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderBottomLeftRadius: 30,
   },
-  leftBalance: {
-    color: BosonColors.$bosonWhite,
-    paddingHorizontal: 10,
+  text: {
+    color: '#fff',
+    marginLeft: 10,
+    fontSize: 16,
+  },
+  containerInline: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: 10,
   },
 });
 

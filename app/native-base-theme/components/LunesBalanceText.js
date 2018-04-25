@@ -8,7 +8,7 @@ const LunesBalanceText = ({ balance }) => (
   <View style={styles.container}>
     <View style={styles.containerInline}>
       <Image
-        style={{ width: 20, height: 25 }}
+        style={{ width: 26, height: 25 }}
         source={require('../../assets/images/lunes-token-coin.png')}
       />
       <Text style={styles.text}>{balance}</Text>
