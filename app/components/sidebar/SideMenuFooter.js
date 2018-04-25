@@ -40,12 +40,6 @@ class SideMenuFooter extends Component {
               {` ${this.getBalance()}`}
             </Text>
           </View>
-
-          <View>
-            <Text style={styles2.rightBalance}>
-              {this.props.displayPriceBTC.DISPLAYPRICE}
-            </Text>
-          </View>
         </View>
       </View>
     );

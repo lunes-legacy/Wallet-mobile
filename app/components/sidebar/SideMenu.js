@@ -12,6 +12,7 @@ import { ScrollView, View } from 'react-native';
 import SideMenuItem from './SideMenuItem';
 import SideMenuFooter from './SideMenuFooterContainer';
 import SideMenuAvatar from './SideMenuAvatarContainer';
+import SideMenuLogout from './SideMenuLogoutContainer';
 import I18N from '../../i18n/i18n';
 
 class SideMenu extends Component {
@@ -58,24 +59,6 @@ class SideMenu extends Component {
           </View>
           <View>
             <SideMenuItem
-              screen={'MultiCoinsSystem'}
-              menuOption={I18N.t('MENU_MULTI_COINS')}
-              navigation={navigation}
-              disabled="true"
-              space={24}
-            />
-          </View>
-          <View>
-            <SideMenuItem
-              screen={'CardManager'}
-              menuOption={I18N.t('MENU_PREPAID_CARDS')}
-              navigation={navigation}
-              disabled="true"
-              space={17}
-            />
-          </View>
-          <View>
-            <SideMenuItem
               screen={'BoletoPayments'}
               menuOption={I18N.t('MENU_INVOICES_PAYMENT')}
               navigation={navigation}
@@ -100,6 +83,9 @@ class SideMenu extends Component {
               disabled="true"
               space={29}
             />
+          </View>
+          <View>
+            <SideMenuLogout menuOption={I18N.t('LOGOUT')} space={38} />
           </View>
         </ScrollView>
         <View>

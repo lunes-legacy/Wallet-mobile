@@ -52,24 +52,6 @@ class Header extends React.Component {
     );
   }
 
-  renderDropdown() {
-    const { navigation, onPress } = this.props;
-    return (
-      <TouchableOpacity
-        activeOpacity={1}
-        style={{ position: 'absolute', right: 10 }}
-        onPress={() => {
-          this.openModal();
-        }}>
-        <Entypo
-          name="dots-three-vertical"
-          size={20}
-          color={MenuButton.back.color}
-        />
-      </TouchableOpacity>
-    );
-  }
-
   render() {
     return (
       <View
@@ -80,46 +62,14 @@ class Header extends React.Component {
           backgroundColor: BosonColors.$bosonPrimary,
         }}>
         {this.renderIconHamburguerMenu()}
-        {this.renderDropdown()}
         <TouchableWithoutFeedback
           onPress={() => this.setState({ modalVisible: false })}>
           <Modal
             transparent={true}
             visible={this.state.modalVisible}
             animationType={'fade'}
-            onRequestClose={this.closeModal.bind(this)}>
-            <View style={styles.modalContainer}>
-              <View style={styles.innerContainer}>
-                <TouchableOpacity
-                  style={{
-                    paddingTop: 10,
-                    marginBottom: 20,
-                  }}
-                  onPress={() => {
-                    this.closeModal();
-                  }}>
-                  <Text style={{ textAlign: 'right' }}>
-                    <Entypo
-                      name={'circle-with-cross'}
-                      size={30}
-                      color={'#fff'}
-                    />
-                  </Text>
-                </TouchableOpacity>
-                <Button
-                  block
-                  success
-                  onPress={() => {
-                    const { user, requestSignout } = this.props;
-                    requestSignout(user);
-                    this.closeModal();
-                    navigate('Signin');
-                  }}>
-                  <Text style={{ color: '#fff' }}>{I18N.t('LOGOUT')}</Text>
-                </Button>
-              </View>
-            </View>
-          </Modal>
+            onRequestClose={this.closeModal.bind(this)}
+          />
         </TouchableWithoutFeedback>
       </View>
     );

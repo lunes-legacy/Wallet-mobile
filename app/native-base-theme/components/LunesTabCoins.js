@@ -98,16 +98,15 @@ export default class LunesTabCoin extends React.Component {
 
   render() {
     return (
-      <Animated.View
+      <View
         style={{
           flex: 1,
           flexDirection: 'row',
           alignContent: 'center',
           justifyContent: 'center',
-          transform: [{ scale: this.springValue }],
         }}>
         {this.renderTabs()}
-      </Animated.View>
+      </View>
     );
   }
 }
