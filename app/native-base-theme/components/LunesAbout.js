@@ -7,7 +7,7 @@ import {
   Dimensions,
   Image,
   TouchableOpacity,
-  Linking
+  Linking,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import BosonColors from '../variables/bosonColor';
@@ -43,8 +43,9 @@ export default class LunesAbout extends React.Component {
           />
           {'   '}
           <Text
-            onPress={() => Linking.openURL('https://github.com/Lunes-platform')}
-          >
+            onPress={() =>
+              Linking.openURL('https://github.com/Lunes-platform')
+            }>
             Github
           </Text>
         </Text>
@@ -57,12 +58,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   text: {
     color: BosonColors.$bosonWhite,
     fontSize: 14,
     textAlign: 'center',
-    padding: 10
-  }
+    padding: 10,
+  },
 });

@@ -7,7 +7,7 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  Dimensions
+  Dimensions,
 } from 'react-native';
 import I18N from '../../i18n/i18n';
 import { Button, Text } from 'native-base';
@@ -26,7 +26,7 @@ export default class LunesLoginForm extends React.Component {
       isDisabled: true,
       passwordIsWeak: true,
       showHelpPassword: false,
-      secureTextEntry: true
+      secureTextEntry: true,
     };
   }
 
@@ -54,8 +54,8 @@ export default class LunesLoginForm extends React.Component {
             underlineColorAndroid={'transparent'}
             style={styles.input}
             placeholder={I18N.t('NAME')}
-            placeholderTextColor='rgba(255,255,255,0.7)'
-            autoCapitalize='none'
+            placeholderTextColor="rgba(255,255,255,0.7)"
+            autoCapitalize="none"
             onChangeText={text => this.setState({ name: text })}
             value={this.state.name}
             autoCorrect={false}
@@ -81,7 +81,7 @@ export default class LunesLoginForm extends React.Component {
             ref={input => (this.confirmPasswordInput = input)}
             value={this.state.confirmPassword}
             secureTextEntry={this.state.secureTextEntry}
-            placeholderTextColor='rgba(255,255,255,0.7)'
+            placeholderTextColor="rgba(255,255,255,0.7)"
           />
           {this.renderEyePassword()}
         </View>
@@ -231,7 +231,7 @@ export default class LunesLoginForm extends React.Component {
 
   render() {
     return (
-      <KeyboardAvoidingView behavior='padding'>
+      <KeyboardAvoidingView behavior="padding">
         {this.renderFieldName()}
 
         <View style={styles.container}>
@@ -239,14 +239,14 @@ export default class LunesLoginForm extends React.Component {
             style={styles.input}
             underlineColorAndroid={'transparent'}
             placeholder={I18N.t('EMAIL')}
-            placeholderTextColor='rgba(255,255,255,0.7)'
-            keyboardType='email-address'
+            placeholderTextColor="rgba(255,255,255,0.7)"
+            keyboardType="email-address"
             onChangeText={text => this.setState({ email: text })}
             onSubmitEditing={() => this.passwordInput.focus()}
             value={this.state.email}
             ref={input => (this.emailInput = input)}
             returnKeyType={'next'}
-            autoCapitalize='none'
+            autoCapitalize="none"
             autoCorrect={false}
           />
         </View>
@@ -267,7 +267,7 @@ export default class LunesLoginForm extends React.Component {
               }
             }}
             secureTextEntry={this.state.secureTextEntry}
-            placeholderTextColor='rgba(255,255,255,0.7)'
+            placeholderTextColor="rgba(255,255,255,0.7)"
           />
 
           {this.renderEyePassword()}
@@ -287,14 +287,14 @@ export default class LunesLoginForm extends React.Component {
 const styles = StyleSheet.create({
   container: {
     borderBottomColor: '#9f90c5',
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
   },
   input: {
     width: 300,
-    color: '#fff'
+    color: '#fff',
   },
   containerForcePassword: {
-    marginTop: 5
+    marginTop: 5,
   },
   checkForcePassword: {
     fontSize: 11,
@@ -303,23 +303,23 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     borderRadius: 10,
     textAlign: 'center',
-    width: '100%'
+    width: '100%',
   },
   passwordWeak: {
-    backgroundColor: bosonColor.$bosonLightRed
+    backgroundColor: bosonColor.$bosonLightRed,
   },
   passwordStrong: {
-    backgroundColor: bosonColor.$bosonDarkPurple
+    backgroundColor: bosonColor.$bosonDarkPurple,
   },
   containerHelp: {
     backgroundColor: bosonColor.$bosonDarkPurple,
-    padding: 2
+    padding: 2,
   },
   containerPassword: {
     position: 'absolute',
     top: 4,
     right: 10,
     flex: 1,
-    justifyContent: 'center'
-  }
+    justifyContent: 'center',
+  },
 });

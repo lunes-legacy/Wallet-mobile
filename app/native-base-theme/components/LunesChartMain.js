@@ -7,7 +7,7 @@ import {
   View,
   Image,
   Dimensions,
-  StyleSheet
+  StyleSheet,
 } from 'react-native';
 import { Container, Button, Tab, Tabs } from 'native-base';
 import LunesLogo from '../../native-base-theme/components/LunesLogo';
@@ -32,7 +32,7 @@ import Svg, {
   Symbol,
   Use,
   Defs,
-  Stop
+  Stop,
 } from 'react-native-svg';
 import { AreaChart, YAxis } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
@@ -45,7 +45,7 @@ const { width, height } = Dimensions.get('window');
 export default class LunesChartMain extends React.Component<{}> {
   state = {
     loading: true,
-    reload: 0
+    reload: 0,
   };
 
   loading() {
@@ -60,7 +60,7 @@ export default class LunesChartMain extends React.Component<{}> {
       <ActivityIndicator
         animating={this.state.loading}
         color={BosonColors.$bosonGreen}
-        size='large'
+        size="large"
         style={styles.loading}
       />
     );
@@ -196,12 +196,12 @@ export default class LunesChartMain extends React.Component<{}> {
                 HorizontalLineTop,
                 HorizontalLineBottom,
                 TooltipTop,
-                TooltipBottom
+                TooltipBottom,
               ]}
               renderExtra={({ item, ...args }) => item(args)}
               svg={{
                 stroke: bosonColor.$bosonDarkYellow,
-                strokeWidth: 4
+                strokeWidth: 4,
               }}
               renderDecorator={({ x, y, index, value }) => (
                 <Circle
@@ -247,11 +247,11 @@ export default class LunesChartMain extends React.Component<{}> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   loading: {
     flex: 1,
     alignItems: 'center',
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
 });

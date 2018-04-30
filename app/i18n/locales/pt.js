@@ -164,5 +164,5 @@ export default {
   HISTORIC_TRANSACTION: 'Histórico de Transações',
   TRANSACTION: 'Transações',
   EMPTY_TRANSACTION: 'Nenhuma transação até o momento',
-  YOUR_TRANSACTION_HISTORIC: 'Seu histórico de transações'
+  YOUR_TRANSACTION_HISTORIC: 'Seu histórico de transações',
 };
