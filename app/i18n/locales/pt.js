@@ -124,7 +124,7 @@ export default {
   MENU_ALERT_SYSTEMS: 'Sistema de Alertas',
   MENU_MULTI_COINS: 'Multi Moedas',
   MENU_PREPAID_CARDS: 'Cartões Pré-Pago',
-  MENU_INVOICES_PAYMENT: 'Pagamentos',
+  MENU_INVOICES_PAYMENT: 'Pagamento de Boleto',
   MENU_MOBILE_PHONE_TOPUP: 'Recargas',
   MENU_INVITE_FRIENDS: 'Convidar Amigos',
   FILL_FIELDS: 'Por favor, preencher todos os campos',
@@ -164,5 +164,5 @@ export default {
   HISTORIC_TRANSACTION: 'Histórico de Transações',
   TRANSACTION: 'Transações',
   EMPTY_TRANSACTION: 'Nenhuma transação até o momento',
-  YOUR_TRANSACTION_HISTORIC: 'Seu historico de transações',
+  YOUR_TRANSACTION_HISTORIC: 'Seu histórico de transações'
 };

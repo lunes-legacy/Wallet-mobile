@@ -2,11 +2,18 @@
 // @flow
 import React from 'react';
 import _ from 'lodash';
-import { View, Image, Dimensions, StyleSheet } from 'react-native';
+import {
+  ActivityIndicator,
+  View,
+  Image,
+  Dimensions,
+  StyleSheet
+} from 'react-native';
 import { Container, Button, Tab, Tabs } from 'native-base';
 import LunesLogo from '../../native-base-theme/components/LunesLogo';
 import LunesLoginForm from '../../native-base-theme/components/LunesLoginForm';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
+import BosonColors from '../../native-base-theme/variables/bosonColor';
 import LunesAlert from '../../native-base-theme/components/LunesAlert';
 import I18n from '../../i18n/i18n';
 import { navigate } from '../../config/routes';
@@ -25,7 +32,7 @@ import Svg, {
   Symbol,
   Use,
   Defs,
-  Stop,
+  Stop
 } from 'react-native-svg';
 import { AreaChart, YAxis } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
@@ -36,6 +43,29 @@ import rangeConstant from '../../constants/general';
 const { width, height } = Dimensions.get('window');
 
 export default class LunesChartMain extends React.Component<{}> {
+  state = {
+    loading: true,
+    reload: 0
+  };
+
+  loading() {
+    if (this.state.loading && this.state.reload < 1) {
+      this.setState({ reload: 1 });
+      setTimeout(() => {
+        this.setState({ loading: false });
+      }, 3500);
+    }
+
+    return (
+      <ActivityIndicator
+        animating={this.state.loading}
+        color={BosonColors.$bosonGreen}
+        size='large'
+        style={styles.loading}
+      />
+    );
+  }
+
   render() {
     const dataFormatted =
       this.props.historic && this.props.historic.data
@@ -148,62 +178,80 @@ export default class LunesChartMain extends React.Component<{}> {
       />
     );
 
-    return (
-      <Container>
-        <LunesChartPeriod
-          range={this.props.range}
-          onChangeRange={this.props.changeRange}
-        />
-        <View style={{ position: 'absolute', width, height: '100%' }}>
-          <AreaChart
-            style={{ height: 250 }}
-            dataPoints={data}
-            contentInset={{ top: 30, bottom: 30 }}
-            curve={shape.curveNatural}
-            showGrid={false}
-            extras={[
-              HorizontalLineTop,
-              HorizontalLineBottom,
-              TooltipTop,
-              TooltipBottom,
-            ]}
-            renderExtra={({ item, ...args }) => item(args)}
-            svg={{
-              stroke: bosonColor.$bosonDarkYellow,
-              strokeWidth: 4,
-            }}
-            renderDecorator={({ x, y, index, value }) => (
-              <Circle
-                onPress={value => {
-                  console.log(value.target);
-                }}
-                key={index}
-                cx={x(index)}
-                cy={y(value)}
-                r={3}
-                stroke={'rgb(255, 255, 255)'}
-                fill={'white'}
-              />
-            )}
-            renderGradient={({ id }) => (
-              <LinearGradient id={id} x1={'0%'} y={'0%'} x2={'0%'} y2={test}>
-                <Stop
-                  offset={'0%'}
-                  stopColor={'rgb(255, 195, 0)'}
-                  stopOpacity={0.7}
-                />
-                <Stop
-                  offset={'100%'}
-                  stopColor={'rgb(255, 195, 0)'}
-                  stopOpacity={0}
-                />
-              </LinearGradient>
-            )}
+    const Chart = () => {
+      return (
+        <Container>
+          <LunesChartPeriod
+            range={this.props.range}
+            onChangeRange={this.props.changeRange}
           />
-        </View>
-      </Container>
+          <View style={{ position: 'absolute', width, height: '100%' }}>
+            <AreaChart
+              style={{ height: 250 }}
+              dataPoints={data}
+              contentInset={{ top: 30, bottom: 30 }}
+              curve={shape.curveNatural}
+              showGrid={false}
+              extras={[
+                HorizontalLineTop,
+                HorizontalLineBottom,
+                TooltipTop,
+                TooltipBottom
+              ]}
+              renderExtra={({ item, ...args }) => item(args)}
+              svg={{
+                stroke: bosonColor.$bosonDarkYellow,
+                strokeWidth: 4
+              }}
+              renderDecorator={({ x, y, index, value }) => (
+                <Circle
+                  onPress={value => {
+                    console.log(value.target);
+                  }}
+                  key={index}
+                  cx={x(index)}
+                  cy={y(value)}
+                  r={3}
+                  stroke={'rgb(255, 255, 255)'}
+                  fill={'white'}
+                />
+              )}
+              renderGradient={({ id }) => (
+                <LinearGradient id={id} x1={'0%'} y={'0%'} x2={'0%'} y2={test}>
+                  <Stop
+                    offset={'0%'}
+                    stopColor={'rgb(255, 195, 0)'}
+                    stopOpacity={0.7}
+                  />
+                  <Stop
+                    offset={'100%'}
+                    stopColor={'rgb(255, 195, 0)'}
+                    stopOpacity={0}
+                  />
+                </LinearGradient>
+              )}
+            />
+          </View>
+        </Container>
+      );
+    };
+
+    return (
+      <View style={styles.container}>
+        {this.state.loading && this.loading()}
+        {!this.state.loading && <Chart />}
+      </View>
     );
   }
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  loading: {
+    flex: 1,
+    alignItems: 'center',
+    textAlign: 'center'
+  }
+});
