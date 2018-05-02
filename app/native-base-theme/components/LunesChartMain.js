@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import { Container, Button, Tab, Tabs } from 'native-base';
 import LunesLogo from '../../native-base-theme/components/LunesLogo';
-import LunesLoginForm from '../../native-base-theme/components/LunesLoginForm';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
 import BosonColors from '../../native-base-theme/variables/bosonColor';
 import LunesAlert from '../../native-base-theme/components/LunesAlert';
@@ -53,7 +52,7 @@ export default class LunesChartMain extends React.Component<{}> {
       this.setState({ reload: 1 });
       setTimeout(() => {
         this.setState({ loading: false });
-      }, 3500);
+      }, 6000);
     }
 
     return (
@@ -252,6 +251,5 @@ const styles = StyleSheet.create({
   loading: {
     flex: 1,
     alignItems: 'center',
-    textAlign: 'center',
   },
 });
