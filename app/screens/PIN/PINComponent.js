@@ -71,7 +71,7 @@ export default class PIN extends React.Component {
         <LunesAlert
           isShow={showTextBackupSeed}
           type="info"
-          showCloseIcon={false}          
+          showCloseIcon={false}
           onClose={() => {
             this.props.closeTextBackupSeedAction();
             navigate('Main');

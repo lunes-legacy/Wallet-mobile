@@ -61,9 +61,12 @@ export default class LunesAlert extends React.Component {
           <Button
             rounded
             success
-            onPress={() => { 
-              if (this.props.onPressConfirmation && typeof this.props.onPressConfirmation === 'function') {
-                this.props.onPressConfirmation()
+            onPress={() => {
+              if (
+                this.props.onPressConfirmation &&
+                typeof this.props.onPressConfirmation === 'function'
+              ) {
+                this.props.onPressConfirmation();
                 this.setState({ isVisible: false });
               }
             }}>
@@ -188,7 +191,7 @@ export default class LunesAlert extends React.Component {
 
   // Close Modal
   //  View style={styles.iconClose}>{this.renderCloseIcon()}</View>
- 
+
   renderAlertInfo() {
     const titleMsg = this.props.title ? this.props.title : I18N.t('REMEMBER');
     if (this.props.type === 'info' && this.state.isVisible) {
@@ -202,7 +205,9 @@ export default class LunesAlert extends React.Component {
             <Text style={styles.textHeader}>{titleMsg}</Text>
           </View>
 
-          {this.props.showCloseIcon && <View style={styles.iconClose}>{this.renderCloseIcon()}</View>}
+          {this.props.showCloseIcon && (
+            <View style={styles.iconClose}>{this.renderCloseIcon()}</View>
+          )}
 
           <View style={styles.areaDescription}>
             <Text selectable={true} style={styles.textDescription}>
@@ -226,10 +231,12 @@ export default class LunesAlert extends React.Component {
               {this.renderAlertError()}
               {this.renderAlertWarning()}
               {this.renderAlertInfo()}
-            </View>        
-            <View style={styles.buttonsContainer}>{this.renderConfirmBtn()}</View>
+            </View>
+            <View style={styles.buttonsContainer}>
+              {this.renderConfirmBtn()}
+            </View>
           </View>
-        </View>        
+        </View>
       );
     }
     return null;
@@ -264,15 +271,15 @@ const styles = StyleSheet.create({
     bottom: 0,
     zIndex: 996,
   },
-  
+
   dialogContent: {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  
+
   dialog: {
-    flex: 0.15,  
+    flex: 0.15,
     borderRadius: 20,
     width: width - 50,
     minHeight: 200,
@@ -295,7 +302,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
   },
-  
+
   areaDescription: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -308,10 +315,10 @@ const styles = StyleSheet.create({
     lineHeight: 25,
     marginBottom: 20,
   },
-  
+
   buttonsContainer: {
-    zIndex: 998,    
-    marginTop: -15
+    zIndex: 998,
+    marginTop: -15,
   },
   textConfirmBtn: {
     paddingLeft: 30,

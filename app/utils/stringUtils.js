@@ -30,7 +30,7 @@ function alertError(message, isShow, callbackOnClose, callbackOnConfirmation) {
     <LunesAlert
       isShow={isShow}
       type="error"
-      showCloseIcon={true}      
+      showCloseIcon={true}
       onClose={() => {
         callbackOnClose();
       }}
@@ -54,7 +54,7 @@ function alertSuccess(
     <LunesAlert
       isShow={isShow}
       type="success"
-      showCloseIcon={true}      
+      showCloseIcon={true}
       onClose={() => {
         callbackOnClose();
       }}

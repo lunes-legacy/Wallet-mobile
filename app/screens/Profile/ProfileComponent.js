@@ -171,7 +171,7 @@ export default class Profile extends React.Component {
         <LunesAlert
           isShow={showTextBackupSeed}
           type="info"
-          showCloseIcon={true}          
+          showCloseIcon={true}
           onClose={() => {
             this.props.closeTextBackupSeedAction();
             navigate('Main');

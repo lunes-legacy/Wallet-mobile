@@ -40,7 +40,7 @@ class LunesMarket extends Component {
     this.subscription = [
       `5~CCCAGG~BTC~${this.currencyTo}`,
       '5~CCCAGG~ETH~USD',
-      `5~CCCAGG~LTC~${this.currencyTo}`
+      `5~CCCAGG~LTC~${this.currencyTo}`,
     ];
     // 1. set url
     this.socket = io('https://streamer.cryptocompare.com/', options);
@@ -146,7 +146,7 @@ class LunesMarket extends Component {
       <Container>
         <StatusBar
           backgroundColor={BosonColors.$bosonPrimary}
-          barStyle='light-content'
+          barStyle="light-content"
         />
         <View style={{ flexDirection: 'row' }}>
           <LunesTabCoins ticker={this.props.ticker} />
@@ -155,16 +155,14 @@ class LunesMarket extends Component {
           style={{
             flex: 4,
             justifyContent: 'space-between',
-            width: Dimensions.get('window').width
-          }}
-        >
+            width: Dimensions.get('window').width,
+          }}>
           <LunesBalanceText balance={this.getBalance()} />
           <LunesSwiper
             dots
             dotsBottom={0}
-            dotsColor='rgba(255, 255, 255, 0.25)'
-            dotsColorActive='rgba(255, 255, 255, 0.75)'
-          >
+            dotsColor="rgba(255, 255, 255, 0.25)"
+            dotsColorActive="rgba(255, 255, 255, 0.75)">
             <LunesChartMain
               historic={this.props.historic}
               range={this.props.range}
@@ -175,9 +173,8 @@ class LunesMarket extends Component {
         </View>
         <View
           style={{
-            flex: 1
-          }}
-        >
+            flex: 1,
+          }}>
           <LunesPaymentButton />
         </View>
       </Container>

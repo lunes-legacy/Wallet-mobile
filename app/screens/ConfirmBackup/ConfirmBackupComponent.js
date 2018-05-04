@@ -1,6 +1,14 @@
 /* eslint-disable */
 import React, { Component } from 'react';
-import { Text, TextInput, View, ListView, StatusBar, StyleSheet, Image } from 'react-native';
+import {
+  Text,
+  TextInput,
+  View,
+  ListView,
+  StatusBar,
+  StyleSheet,
+  Image,
+} from 'react-native';
 import { Container } from 'native-base';
 import I18N from '../../i18n/i18n';
 import Swiper from './SwiperContainer';
@@ -8,42 +16,45 @@ import LunesLoading from '../../native-base-theme/components/LunesLoading';
 import BosonColors from '../../native-base-theme/variables/bosonColor';
 
 export default class ConfirmBackup extends Component {
-    state = {
-      words: [{}],
-    }
-  
+  state = {
+    words: [{}],
+  };
+
   componentWillMount() {
     StatusBar.setHidden(true);
   }
 
   wordsToObj() {
-    return (
-      this.props.words.split(' ')
-    )
+    return this.props.words.split(' ');
   }
 
   renderWords() {
-    let words = this.wordsToObj(); words.push('');
-    return(
+    let words = this.wordsToObj();
+    words.push('');
+    return (
       <Swiper>
-        {words.map( (word, index) => (
-          <View key={word} style={[styles.slide2, { backgroundColor: '#4b2c82' }]}>
-            {
-              index !== 12 
-              ? <Text style={styles.header}>Word {index + 1}</Text> 
-              : <Text style={styles.header}>Confirm the backup words:</Text>
-            }
+        {words.map((word, index) => (
+          <View
+            key={word}
+            style={[styles.slide2, { backgroundColor: '#4b2c82' }]}>
+            {index !== 12 ? (
+              <Text style={styles.header}>Word {index + 1}</Text>
+            ) : (
+              <Text style={styles.header}>Confirm the backup words:</Text>
+            )}
 
-            {
-              index !== 12 
-              ? <Text style={styles.word}>{word}</Text> 
-              : <TextInput
-                multiline = {true}
-                numberOfLines = {2}
+            {index !== 12 ? (
+              <Text style={styles.word}>{word}</Text>
+            ) : (
+              <TextInput
+                multiline={true}
+                numberOfLines={2}
                 style={styles.inputText}
-                onChangeText={(inputWords) => {this.verifyWords(inputWords)}}
+                onChangeText={inputWords => {
+                  this.verifyWords(inputWords);
+                }}
               />
-            }
+            )}
             {index === 12 ? this.renderWrongWord() : null}
           </View>
         ))}
@@ -52,33 +63,28 @@ export default class ConfirmBackup extends Component {
   }
 
   verifyWords(input) {
-    let inputWords = input.split(' ')
-    let words = this.wordsToObj()
+    let inputWords = input.split(' ');
+    let words = this.wordsToObj();
 
-    inputWords.map( (word, i) => {
-      if(word === '') {
-        this.setState( prevState => ({
-          words: [...prevState.words, {[i]: '', status: ''}]
-
+    inputWords.map((word, i) => {
+      if (word === '') {
+        this.setState(prevState => ({
+          words: [...prevState.words, { [i]: '', status: '' }],
         }));
-      }
-
-      else if(word !== words[i]) {
-        this.setState ( prevState => {
+      } else if (word !== words[i]) {
+        this.setState(prevState => {
           return {
-            words: [...prevState.words, {[i]: word, status: 'wrong'}]
-          }
+            words: [...prevState.words, { [i]: word, status: 'wrong' }],
+          };
         });
-
-      } else if(word === words[i]) {
-        this.setState ( prevState => ({
-          words: [...prevState.words, {[i]: word, status: 'correct'}]                       
+      } else if (word === words[i]) {
+        this.setState(prevState => ({
+          words: [...prevState.words, { [i]: word, status: 'correct' }],
         }));
       }
     });
 
-    console.log(this.state.words)
-
+    console.log(this.state.words);
   }
 
   renderWrongWord() {
@@ -92,17 +98,13 @@ export default class ConfirmBackup extends Component {
     // </View>
     // );
   }
-  
+
   renderSpinner() {
     return <LunesLoading />;
   }
 
   render() {
-    return (
-      <Container>
-        {this.renderWords()}
-      </Container>
-    )
+    return <Container>{this.renderWords()}</Container>;
   }
 }
 
@@ -150,7 +152,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 20,
     width: '60%',
-    borderBottomColor: BosonColors.$bosonGreen
+    borderBottomColor: BosonColors.$bosonGreen,
   },
   // Images
   introductionImages: {
