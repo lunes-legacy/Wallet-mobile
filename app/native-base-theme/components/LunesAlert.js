@@ -61,15 +61,13 @@ export default class LunesAlert extends React.Component {
           <Button
             rounded
             success
-            onPress={() => this.props.onPressConfirmation()}>
-            <Text
-              style={{
-                paddingLeft: 30,
-                paddingRight: 30,
-                color: '#fff',
-                fontSize: 17,
-                fontWeight: '700',
-              }}>
+            onPress={() => { 
+              if (this.props.onPressConfirmation && typeof this.props.onPressConfirmation === 'function') {
+                this.props.onPressConfirmation()
+                this.setState({ isVisible: false });
+              }
+            }}>
+            <Text style={styles.textConfirmBtn}>
               {this.props.textConfirmation}
             </Text>
           </Button>
@@ -187,6 +185,10 @@ export default class LunesAlert extends React.Component {
       textConfirmation="Repetir"
     />
   */
+
+  // Close Modal
+  //  View style={styles.iconClose}>{this.renderCloseIcon()}</View>
+ 
   renderAlertInfo() {
     const titleMsg = this.props.title ? this.props.title : I18N.t('REMEMBER');
     if (this.props.type === 'info' && this.state.isVisible) {
@@ -200,7 +202,7 @@ export default class LunesAlert extends React.Component {
             <Text style={styles.textHeader}>{titleMsg}</Text>
           </View>
 
-          <View style={styles.iconClose}>{this.renderCloseIcon()}</View>
+          {this.props.showCloseIcon && <View style={styles.iconClose}>{this.renderCloseIcon()}</View>}
 
           <View style={styles.areaDescription}>
             <Text selectable={true} style={styles.textDescription}>
@@ -218,14 +220,16 @@ export default class LunesAlert extends React.Component {
       return (
         <View style={styles.container}>
           <View style={styles.backdrop} />
-          <View style={styles.dialog}>
-            {this.renderAlertSuccess()}
-            {this.renderAlertError()}
-            {this.renderAlertWarning()}
-            {this.renderAlertInfo()}
+          <View style={styles.dialogContent}>
+            <View style={styles.dialog}>
+              {this.renderAlertSuccess()}
+              {this.renderAlertError()}
+              {this.renderAlertWarning()}
+              {this.renderAlertInfo()}
+            </View>        
+            <View style={styles.buttonsContainer}>{this.renderConfirmBtn()}</View>
           </View>
-          <View style={styles.buttonsContainer}>{this.renderConfirmBtn()}</View>
-        </View>
+        </View>        
       );
     }
     return null;
@@ -260,23 +264,22 @@ const styles = StyleSheet.create({
     bottom: 0,
     zIndex: 996,
   },
+  
+  dialogContent: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  
   dialog: {
-    position: 'absolute',
+    flex: 0.15,  
     borderRadius: 20,
     width: width - 50,
     minHeight: 200,
     backgroundColor: '#fff',
     zIndex: 997,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-  buttonsContainer: {
-    width,
-    zIndex: 998,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 210,
-  },
+
   dialogHeader: {
     width: '100%',
     height: 50,
@@ -287,22 +290,35 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
   },
-  areaDescription: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-    paddingBottom: 50,
-  },
   textHeader: {
     fontSize: 20,
     color: '#fff',
     fontWeight: 'bold',
+  },
+  
+  areaDescription: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
   },
   textDescription: {
     color: BosonColors.$bosonMediumGrey,
     fontWeight: 'bold',
     textAlign: 'center',
     lineHeight: 25,
+    marginBottom: 20,
+  },
+  
+  buttonsContainer: {
+    zIndex: 998,    
+    marginTop: -15
+  },
+  textConfirmBtn: {
+    paddingLeft: 30,
+    paddingRight: 30,
+    color: '#fff',
+    fontSize: 17,
+    fontWeight: '700',
   },
   text: {
     color: '#fff',
@@ -311,7 +327,8 @@ const styles = StyleSheet.create({
   },
   iconClose: {
     position: 'absolute',
+    marginTop: 15,
     zIndex: 999,
-    right: 10,
+    right: 15,
   },
 });

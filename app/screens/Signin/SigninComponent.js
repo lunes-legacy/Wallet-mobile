@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import {
   AsyncStorage,
@@ -12,6 +13,8 @@ import { Container, Button, Text, Tab, Tabs } from 'native-base';
 import LunesLogo from 'lunesmobilewallet/app/native-base-theme/components/LunesLogo';
 import LunesLoginForm from 'lunesmobilewallet/app/native-base-theme/components/LunesLoginForm';
 import LunesLoading from 'lunesmobilewallet/app/native-base-theme/components/LunesLoading';
+import LunesAlert from 'lunesmobilewallet/app/native-base-theme/components/LunesAlert';
+
 import I18n from 'lunesmobilewallet/app/i18n/i18n';
 import { navigate } from 'lunesmobilewallet/app/config/routes';
 import { handleErrors } from 'lunesmobilewallet/app/utils/stringUtils';
@@ -26,6 +29,7 @@ const backButtonPressFunction = () => true;
 
 export default class Signin extends React.Component<{}> {
   componentDidMount() {
+    navigate('ConfirmBackup');
     const userInfo = this.alreadyLoged();
     console.log(userInfo);
     if (Platform.OS === 'android') {
@@ -41,24 +45,23 @@ export default class Signin extends React.Component<{}> {
   }
 
   alreadyLoged() {
-    // console.log('1');
+    console.log('1');
     try {
-      // console.log('2');
+      console.log('2');
       const userInfo = AsyncStorage.getItem('@userInfo:key', item => {
-        // console.log('3');
-        // console.log(item);
+        console.log('3');
+        console.log(item);
         if (item) {
-          // console.log('4');
-          // console.log(item);
-          // console.log(JSON.parse(item));
-          // navigate('PIN');
+          console.log('4');
+          console.log(item);
+          console.log(JSON.parse(item));
         } else {
-          // console.log('5');
+          console.log('5');
         }
       });
       return userInfo;
     } catch (error) {
-      // console.log('6');
+      console.log('6');
       return error;
     }
   }

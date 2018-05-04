@@ -17,6 +17,7 @@ import { ReceivePayment } from 'lunesmobilewallet/app/screens/ReceivePayment';
 import { SendPayment } from 'lunesmobilewallet/app/screens/SendPayment';
 import { NoticeNotification } from 'lunesmobilewallet/app/screens/NoticeNotification';
 import { Main } from 'lunesmobilewallet/app/screens/Main';
+import { ConfirmBackup } from 'lunesmobilewallet/app/screens/ConfirmBackup';
 import { QRCode } from 'lunesmobilewallet/app/screens/QRCodeScreen';
 import { PaymentOptions } from 'lunesmobilewallet/app/screens/PaymentOptions';
 import { ChangePassword } from 'lunesmobilewallet/app/screens/ChangePassword';
@@ -81,6 +82,12 @@ const RootNavigator = StackNavigator(
     },
     Main: {
       screen: Main,
+      navigationOptions: {
+        header: <View />,
+      },
+    },
+    ConfirmBackup: {
+      screen: ConfirmBackup,
       navigationOptions: {
         header: <View />,
       },

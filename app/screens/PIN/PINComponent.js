@@ -18,6 +18,7 @@ export default class PIN extends React.Component {
       <LunesAlert
         isShow={isShow}
         type="error"
+        showCloseIcon={false}
         onClose={() => {
           this.props.clearError();
         }}
@@ -46,6 +47,7 @@ export default class PIN extends React.Component {
         <LunesAlert
           isShow={showDialogBackupSeed}
           type="info"
+          showCloseIcon={false}
           onClose={() => {
             this.props.closeShowDialogBackupSeed();
             navigate('Main');
@@ -69,6 +71,7 @@ export default class PIN extends React.Component {
         <LunesAlert
           isShow={showTextBackupSeed}
           type="info"
+          showCloseIcon={false}          
           onClose={() => {
             this.props.closeTextBackupSeedAction();
             navigate('Main');

@@ -147,6 +147,7 @@ export default class Profile extends React.Component {
         <LunesAlert
           isShow={showDialogBackupSeed}
           type="info"
+          showCloseIcon={true}
           onClose={() => {
             this.props.closeShowDialogBackupSeed();
             navigate('Main');
@@ -170,6 +171,7 @@ export default class Profile extends React.Component {
         <LunesAlert
           isShow={showTextBackupSeed}
           type="info"
+          showCloseIcon={true}          
           onClose={() => {
             this.props.closeTextBackupSeedAction();
             navigate('Main');

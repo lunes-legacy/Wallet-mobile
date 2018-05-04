@@ -135,7 +135,7 @@ export default {
   OK: 'OK',
   INVALID_FULLNAME: 'Nome inválido',
   GOOD_PASSWORD_EXAMPLE:
-    'Uma senha segura deve conter letras maiúsculas e minúsculas, números e caracteres especiais',
+    'Uma senha segura deve conter 8 caracteres, letras maiúsculas e minúsculas, números e caracteres especiais',
   TRANSACTION_NO_SOLUTION:
     'Não foi possível efetuar a transação. Erro: TRANSACTION_NO_SOLUTION',
   SAVE: 'SALVAR',
