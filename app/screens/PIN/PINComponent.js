@@ -69,9 +69,7 @@ export default class PIN extends React.Component {
   renderTextSeed() {
     const { showTextBackupSeed, seedText } = this.props;
     if (showTextBackupSeed && seedText) {
-      return (
-        navigate('ConfirmBackup')
-      );
+      return navigate('ConfirmBackup');
     }
     return null;
   }

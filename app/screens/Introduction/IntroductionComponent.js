@@ -1,6 +1,13 @@
 /* eslint-disable */
 import React from 'react';
-import { Text, View, StatusBar, StyleSheet, Image, Dimensions } from 'react-native';
+import {
+  Text,
+  View,
+  StatusBar,
+  StyleSheet,
+  Image,
+  Dimensions,
+} from 'react-native';
 import { Container } from 'native-base';
 import I18N from '../../i18n/i18n';
 import Swiper from './SwiperContainer';

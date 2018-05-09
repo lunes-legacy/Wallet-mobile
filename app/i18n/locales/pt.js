@@ -67,7 +67,7 @@ export default {
   DO_BACKUP: 'Fazer Backup',
   CONFIRM_BACKUP_HEADER: 'Confirmar as palavras de backup',
   CONFIRM_BACKUP: 'Eu confirmo Backup',
-  CONFIRM_WORDS: 'CONFIRMAR PALAVRAS',  
+  CONFIRM_WORDS: 'CONFIRMAR PALAVRAS',
   SEED_BACKUP_MSG:
     'A melhor maneira de garantir que seus fundos estejam seguros durante uma possível divisão, é garantir que você possua suas chaves privadas, backups e certificar-se de que suas frases de recuperação estão bem seguras. Se você tem a posse de suas chaves, você não precisa fazer nada além de ter paciência e "assistir" tudo acontecer',
   REMEMBER: 'Lembre-se',

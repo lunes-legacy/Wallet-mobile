@@ -25,46 +25,49 @@ export default class ConfirmBackup extends Component {
   componentWillMount() {
     StatusBar.setHidden(true);
   }
- 
+
   wordsToObj() {
     return this.props.seedText.split(' ');
   }
 
   renderWords() {
     let words = this.wordsToObj();
-    words.push('') // To confirm words page work
+    words.push(''); // To confirm words page work
     return (
       <Swiper>
-        { words.map((word, index) => (
-          <View key={word} style={[styles.slide2, { backgroundColor: '#4b2c82' }]} >
-            {
-              index < words.length - 1
-              ? ( <Text style={styles.header}>{I18N.t('YOUR_WORDS')} {index + 1}</Text> ) 
-              : ( <Text style={styles.header}>{I18N.t('CONFIRM_BACKUP_HEADER')}</Text> )
-            }
+        {words.map((word, index) => (
+          <View
+            key={word}
+            style={[styles.slide2, { backgroundColor: '#4b2c82' }]}>
+            {index < words.length - 1 ? (
+              <Text style={styles.header}>
+                {I18N.t('YOUR_WORDS')} {index + 1}
+              </Text>
+            ) : (
+              <Text style={styles.header}>
+                {I18N.t('CONFIRM_BACKUP_HEADER')}
+              </Text>
+            )}
 
-            {
-              index < words.length - 1 ? ( <Text style={styles.word}>{word}</Text> )                
-              : (
-                <TextInput
-                  multiline={true}
-                  numberOfLines={2}
-                  style={styles.inputText}
-                  onChangeText={inputWords => {
-                    this.verifyWords(inputWords);
-                  }}
-                />
-              )
-            }
+            {index < words.length - 1 ? (
+              <Text style={styles.word}>{word}</Text>
+            ) : (
+              <TextInput
+                multiline={true}
+                numberOfLines={2}
+                style={styles.inputText}
+                onChangeText={inputWords => {
+                  this.verifyWords(inputWords);
+                }}
+              />
+            )}
 
-            {
-              index === words.length - 1
-              ? ( <View>
-                  { this.renderWordStatus() }
-                  { this.renderConfirmButton() }
-                </View>
-              ) : null
-            }
+            {index === words.length - 1 ? (
+              <View>
+                {this.renderWordStatus()}
+                {this.renderConfirmButton()}
+              </View>
+            ) : null}
           </View>
         ))}
       </Swiper>
@@ -75,21 +78,19 @@ export default class ConfirmBackup extends Component {
     let inputWords = input.split(' ');
     let words = this.wordsToObj();
 
-    if(inputWords.length <= 12) {
+    if (inputWords.length <= 12) {
       inputWords.map((word, i) => {
-        if (word === "") {
+        if (word === '') {
           delete this.state.words[i];
-
         } else if (word !== words[i]) {
           this.setState(prevState => {
             return {
-              words: {...prevState.words, [i]: {word, status: 'wrongWord'}},
+              words: { ...prevState.words, [i]: { word, status: 'wrongWord' } },
             };
           });
-
         } else if (word === words[i]) {
           this.setState(prevState => ({
-            words: {...prevState.words, [i]: {word, status: 'correctWord'}},
+            words: { ...prevState.words, [i]: { word, status: 'correctWord' } },
           }));
         }
       });
@@ -101,44 +102,43 @@ export default class ConfirmBackup extends Component {
     return (
       <View>
         <Text style={styles.wordsLimit}>
-          { Object.keys(this.state.words).length + '/' + words.length }
+          {Object.keys(this.state.words).length + '/' + words.length}
         </Text>
 
-        {
-          Object.keys(this.state.words).map( i => (
-            <Text key={i} style={styles[this.state.words[i].status]}>{this.state.words[i].word}</Text>
-          ))
-        }
+        {Object.keys(this.state.words).map(i => (
+          <Text key={i} style={styles[this.state.words[i].status]}>
+            {this.state.words[i].word}
+          </Text>
+        ))}
       </View>
     );
   }
 
   renderConfirmButton() {
     let words = this.state.words;
-    this.state.correctWords = true
+    this.state.correctWords = true;
 
-    Object.keys(words).map( i => {
+    Object.keys(words).map(i => {
       if (words[i].status === 'wrongWord') {
-        this.state.correctWords = false
+        this.state.correctWords = false;
       }
     });
 
-    if (Object.keys(this.state.words).length === 12 && this.state.correctWords) {
+    if (
+      Object.keys(this.state.words).length === 12 &&
+      this.state.correctWords
+    ) {
       return (
         <Button
           text={I18N.t('CONFIRM_WORDS')}
-          onPress={ () => navigate('Main') }
+          onPress={() => navigate('Main')}
         />
-      )
+      );
     }
   }
 
   render() {
-    return (
-      <Container>
-        { this.renderWords() }
-      </Container>
-    )
+    return <Container>{this.renderWords()}</Container>;
   }
 }
 
@@ -204,5 +204,5 @@ const styles = StyleSheet.create({
     width: 270,
     marginTop: 40,
     marginBottom: 40,
-  }
+  },
 });
