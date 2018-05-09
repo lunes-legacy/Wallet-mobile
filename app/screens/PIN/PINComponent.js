@@ -2,6 +2,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Container } from 'native-base';
+import ConfirmBackup from '../../screens/ConfirmBackup';
 import LunesPIN from '../../native-base-theme/components/LunesPIN';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
 import LunesAlert from '../../native-base-theme/components/LunesAlert';
@@ -48,6 +49,7 @@ export default class PIN extends React.Component {
           isShow={showDialogBackupSeed}
           type="info"
           showCloseIcon={false}
+          minHeighModal={250}
           onClose={() => {
             this.props.closeShowDialogBackupSeed();
             navigate('Main');
@@ -66,24 +68,9 @@ export default class PIN extends React.Component {
 
   renderTextSeed() {
     const { showTextBackupSeed, seedText } = this.props;
-    if (showTextBackupSeed) {
+    if (showTextBackupSeed && seedText) {
       return (
-        <LunesAlert
-          isShow={showTextBackupSeed}
-          type="info"
-          showCloseIcon={false}
-          onClose={() => {
-            this.props.closeTextBackupSeedAction();
-            navigate('Main');
-          }}
-          onPressConfirmation={() => {
-            this.props.closeTextBackupSeedAction();
-            navigate('Main');
-          }}
-          title={I18N.t('YOUR_WORDS')}
-          message={seedText}
-          textConfirmation={I18N.t('CONFIRM_BACKUP')}
-        />
+        navigate('ConfirmBackup')
       );
     }
     return null;

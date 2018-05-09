@@ -226,7 +226,7 @@ export default class LunesAlert extends React.Component {
         <View style={styles.container}>
           <View style={styles.backdrop} />
           <View style={styles.dialogContent}>
-            <View style={styles.dialog}>
+            <View style={[styles.dialog, { minHeight: this.props.minHeighModal ? this.props.minHeighModal : 200 } ]}>
               {this.renderAlertSuccess()}
               {this.renderAlertError()}
               {this.renderAlertWarning()}
@@ -282,7 +282,7 @@ const styles = StyleSheet.create({
     flex: 0.15,
     borderRadius: 20,
     width: width - 50,
-    minHeight: 200,
+    // minHeight: 200,
     backgroundColor: '#fff',
     zIndex: 997,
   },

@@ -7,8 +7,7 @@ import { redirectToAuthAction } from './actions';
 import ConfirmBackup from './ConfirmBackupComponent';
 
 const mapStateToProps = state => ({
-  words:
-    'simply dummy text printing typesetting industry Lorem Ipsum printer unknown release versions',
+  seedText: state.auth.user.wallet.hash,
 });
 
 const mapDispatchToProps = dispatch =>

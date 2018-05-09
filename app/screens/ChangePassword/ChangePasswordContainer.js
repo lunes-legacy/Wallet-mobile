@@ -6,9 +6,9 @@ import { changePasswordAction, clearError, clearSuccess } from './actions';
 import ChangePassword from './ChangePasswordComponent';
 
 const mapStateToProps = state => ({
-  loading: state.changePasswordReducer.loading,
-  error: state.changePasswordReducer.error,
-  success: state.changePasswordReducer.success,
+  // loading: state.changePasswordReducer.loading,
+  // error: state.changePasswordReducer.error,
+  // success: state.changePasswordReducer.success,
 });
 
 const mapDispatchToProps = dispatch =>

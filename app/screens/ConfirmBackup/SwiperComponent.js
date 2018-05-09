@@ -202,17 +202,13 @@ export default class Swiper extends Component {
       <View
         pointerEvents="box-none"
         style={[styles.buttonWrapper, styles.fullScreen]}>
-        {lastScreen ? (
+        {
           // Show this button on the last screen
           // TODO: Add a handler that would send a user to your app after onboarding is complete
-          <Button
-            text="CORFIRM WORDS"
-            onPress={() => this.props.redirectToAuthAction()}
-          />
-        ) : (
-          // Or this one otherwise
-          <Button text="NEXT" onPress={() => this.swipe()} />
-        )}
+          lastScreen ? ( null )
+          //If not
+          : ( <Button text={I18N.t('NEXT')} onPress={() => this.swipe()} /> )
+        }
       </View>
     );
   };

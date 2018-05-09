@@ -1,10 +1,12 @@
 /* eslint-disable */
 import React from 'react';
-import { Text, View, StatusBar, StyleSheet, Image } from 'react-native';
+import { Text, View, StatusBar, StyleSheet, Image, Dimensions } from 'react-native';
 import { Container } from 'native-base';
 import I18N from '../../i18n/i18n';
 import Swiper from './SwiperContainer';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
+
+const { height } = Dimensions.get('window');
 
 export default class Introduction extends React.Component {
   componentWillMount() {
@@ -109,6 +111,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start', // Center vertically
     alignItems: 'center', // Center horizontally
     paddingTop: 5,
+    alignItems: 'center',
   },
   // Header styles
   header: {
@@ -129,9 +132,9 @@ const styles = StyleSheet.create({
   },
   // Images
   introductionImages: {
-    height: 270,
+    height: height < 550 ? 200 : 270,
     width: 270,
-    marginTop: 40,
-    marginBottom: 40,
+    marginTop: 30,
+    marginBottom: 20,
   },
 });

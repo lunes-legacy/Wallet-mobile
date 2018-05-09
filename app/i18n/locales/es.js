@@ -13,7 +13,9 @@ export default {
   EMAIL_ALREADY: 'Email já existe',
   ACCESS_DENIED: 'Acesso negado',
   TRY_AGAIN: 'Repetir',
+  FORGOT_PASSWORD: 'Restablecer Contraseña',
   CHANGE_PASSWORD: 'Redefinir Senha',
+  MENU_BACKUP: 'Copia de seguridad',
   SIGNIN: 'Login',
   SIGNUP: 'Cadastro',
   PHONE_NUMBER: 'Teléfono',
@@ -33,6 +35,8 @@ export default {
   ANALYTICS_MSG:
     'Acompañe los movimientos de altas y bajas del mercado de criptomoedas con nuestros gráficos modernos y prácticos.',
   DO_YOUR_BACKUP: 'Haga su copia de seguridad',
+  CONFIRM_BACKUP_HEADER: 'Confirmar las palabras de respaldo',
+  CONFIRM_WORDS: 'CONFIRMAR PALABRAS',
   DO_YOUR_BACKUP_MSG:
     'No almacenamos sus monedas en nuestros servidores, que son de su propiedad y están en su posesión, así que no deje de guardar sus claves privadas y hacer su copia de seguridad.',
   BUY_COINS: 'Comprar monedas',
