@@ -13,7 +13,11 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import BosonColors from '../../native-base-theme/variables/bosonColor';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
 import LunesAlert from '../../native-base-theme/components/LunesAlert';
-import { ValidateEmail, handleErrors, handleSuccess } from '../../utils/stringUtils';
+import {
+  ValidateEmail,
+  handleErrors,
+  handleSuccess,
+} from '../../utils/stringUtils';
 import I18n from '../../i18n/i18n';
 import { navigate } from '../../config/routes';
 
@@ -28,13 +32,25 @@ export default class ChangePassword extends React.Component {
 
   renderError() {
     const { error, clearError } = this.props;
-    if(this.props.error) return handleErrors(error, clearError, clearError)
-    if(this.state.emailError) return this.alertMessage('warning', I18n.t('CHANGE_PASSWORD'), I18n.t('INVALID_EMAIL'), I18n.t('OK'));
+    if (this.props.error) return handleErrors(error, clearError, clearError);
+    if (this.state.emailError)
+      return this.alertMessage(
+        'warning',
+        I18n.t('CHANGE_PASSWORD'),
+        I18n.t('INVALID_EMAIL'),
+        I18n.t('OK')
+      );
   }
 
   renderSuccess() {
     const { success, clearSuccess } = this.props;
-    if(this.props.success) return this.alertMessage('success', I18n.t('CHANGE_PASSWORD'), I18n.t('CHANGE_PASSWORD_TITLE'), I18n.t('OK'));
+    if (this.props.success)
+      return this.alertMessage(
+        'success',
+        I18n.t('CHANGE_PASSWORD'),
+        I18n.t('CHANGE_PASSWORD_TITLE'),
+        I18n.t('OK')
+      );
   }
 
   renderLoading() {
@@ -48,11 +64,11 @@ export default class ChangePassword extends React.Component {
         type={type}
         showCloseIcon={true}
         onClose={() => {
-          this.setState({ emailError: false, emailSuccess: false});
+          this.setState({ emailError: false, emailSuccess: false });
           this.props.clearError();
         }}
         onPressConfirmation={() => {
-          this.setState({ emailError: false, emailSuccess: false});
+          this.setState({ emailError: false, emailSuccess: false });
           this.props.clearError();
           if (type === 'success') {
             navigate('Signin');
@@ -78,7 +94,7 @@ export default class ChangePassword extends React.Component {
           <StatusBar
             backgroundColor={BosonColors.$bosonPrimary}
             barStyle="light-content"
-          />          
+          />
           <Root>
             <View style={styles.container}>
               <Text
@@ -108,11 +124,11 @@ export default class ChangePassword extends React.Component {
                   success
                   onPress={() => {
                     if (!this.state.email || !ValidateEmail(this.state.email)) {
-                      this.setState({ emailError: true }) 
+                      this.setState({ emailError: true });
                       return;
                     }
 
-                    this.setState({ emailError: false }) 
+                    this.setState({ emailError: false });
                     this.props.changePasswordAction(this.state.email);
                     return;
                   }}>
