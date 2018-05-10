@@ -38,26 +38,26 @@ export default class ConfirmBackup extends Component {
       <Swiper style={styles.container}>
         {words.map((word, index) => (
           <View key={word} style={styles.slide}>
-
-            { index === 0 && 
+            {index === 0 && (
               <View style={styles.backupMessage}>
-                <Text style={styles.header}>{ I18N.t('REMEMBER')}</Text>
-                <Text style={styles.defaultText}>{ I18N.t('SEED_BACKUP_MSG') }</Text>
-              </View>             
-            }
-
-            {
-              index < words.length - 1 && index !== 0 &&
-              <View style={styles.backupMessage}>
-                <Text style={styles.header}>
-                  {I18N.t('YOUR_WORDS')} {index}
+                <Text style={styles.header}>{I18N.t('REMEMBER')}</Text>
+                <Text style={styles.defaultText}>
+                  {I18N.t('SEED_BACKUP_MSG')}
                 </Text>
-                <Text style={styles.individualWord}>{word}</Text>
               </View>
-            }
+            )}
 
-            {
-              index === words.length - 1 &&
+            {index < words.length - 1 &&
+              index !== 0 && (
+                <View style={styles.backupMessage}>
+                  <Text style={styles.header}>
+                    {I18N.t('YOUR_WORDS')} {index}
+                  </Text>
+                  <Text style={styles.individualWord}>{word}</Text>
+                </View>
+              )}
+
+            {index === words.length - 1 && (
               <View>
                 <View style={styles.backupMessage}>
                   {this.renderWordStatus()}
@@ -66,22 +66,18 @@ export default class ConfirmBackup extends Component {
                   {this.renderConfirmButton()}
                 </View>
               </View>
-            }
-
+            )}
           </View>
         ))}
       </Swiper>
     );
   }
 
-  
   renderWordStatus() {
     let words = this.wordsToObj();
     return (
       <View style={styles.verifyWords}>
-        <Text style={styles.header}>
-        {I18N.t('CONFIRM_BACKUP_HEADER')}
-        </Text>
+        <Text style={styles.header}>{I18N.t('CONFIRM_BACKUP_HEADER')}</Text>
 
         <TextInput
           multiline={true}
@@ -93,23 +89,22 @@ export default class ConfirmBackup extends Component {
             this.verifyWords(inputWords);
           }}
         />
-          
+
         <Text style={styles.wordsLimit}>
-          { Object.keys(this.state.words).length + '/' + words.length }
+          {Object.keys(this.state.words).length + '/' + words.length}
         </Text>
-        
+
         {Object.keys(this.state.words).map(i => {
           return (
             <Text key={i} style={styles[this.state.words[i].status]}>
-              { this.state.words[i].word }
+              {this.state.words[i].word}
             </Text>
           );
         })}
-
       </View>
     );
   }
-    
+
   verifyWords(input) {
     let inputWords = input.split(' ');
     let words = this.wordsToObj();
@@ -118,7 +113,7 @@ export default class ConfirmBackup extends Component {
       inputWords.map((word, i) => {
         if (word === '') {
           delete this.state.words[i];
-          this.setState( () => {
+          this.setState(() => {
             return {
               words: this.state.words,
             };
@@ -156,7 +151,7 @@ export default class ConfirmBackup extends Component {
     ) {
       return (
         <Button
-          style={{width: 250}}
+          style={{ width: 250 }}
           text={I18N.t('CONFIRM_WORDS')}
           onPress={() => navigate('Main')}
         />
@@ -179,7 +174,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center', // Center vertically
     alignItems: 'center', // Center horizontally
     paddingTop: 5,
-    backgroundColor: '#4b2c82'
+    backgroundColor: '#4b2c82',
   },
 
   backupMessage: {
@@ -231,7 +226,7 @@ const styles = StyleSheet.create({
   },
 
   // Check words
-  wordsLimit: {  
+  wordsLimit: {
     color: '#FFFFFF',
     fontFamily: 'Roboto-Regular',
     marginHorizontal: 25,
@@ -251,5 +246,5 @@ const styles = StyleSheet.create({
 
   confirmButton: {
     alignItems: 'center',
-  }
+  },
 });

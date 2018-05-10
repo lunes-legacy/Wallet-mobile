@@ -57,10 +57,7 @@ class SideMenu extends Component {
             />
           </View>
           <View>
-            <SideMenuLogout 
-              menuOption={I18N.t('LOGOUT')} 
-              space={38} 
-            />
+            <SideMenuLogout menuOption={I18N.t('LOGOUT')} space={38} />
           </View>
         </ScrollView>
         <View>
