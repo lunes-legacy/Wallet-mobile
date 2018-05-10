@@ -277,7 +277,7 @@ export default class Profile extends React.Component {
               underlineColorAndroid={'transparent'}
               style={styles.fullname}
               placeholder={fullname || I18N.t('FULL_NAME')}
-              placeholderTextColor="rgba(255,255,255,0.7)"
+              placeholderTextColor={fullname ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.2)"}              
               autoCapitalize="none"
               onChangeText={text => this.setState({ fullname: text })}
               value={this.state.fullname}
@@ -289,10 +289,9 @@ export default class Profile extends React.Component {
               underlineColorAndroid={'transparent'}
               style={styles.fullname}
               placeholder={city || I18N.t('CITY')}
-              placeholderTextColor="rgba(255,255,255,0.7)"
+              placeholderTextColor={city ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.2)"}
               autoCapitalize="none"
               onChangeText={text => this.setState({ city: text })}
-              value={this.state.city}
               autoCorrect={false}
               returnKeyType={'next'}
             />
@@ -340,13 +339,13 @@ export default class Profile extends React.Component {
             <TextInput
               maxLength={60}
               underlineColorAndroid={'transparent'}
-              style={styles.input}
+              style={styles.input}       
+              value={this.state.email}
               placeholder={email || I18N.t('EMAIL')}
-              placeholderTextColor="rgba(255,255,255,0.7)"
+              placeholderTextColor={email ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.2)"}
               autoCapitalize="none"
               editable={false}
               onChangeText={text => this.setState({ email: text })}
-              value={this.state.email}
               autoCorrect={false}
               returnKeyType={'next'}
             />
@@ -358,7 +357,7 @@ export default class Profile extends React.Component {
               underlineColorAndroid={'transparent'}
               style={styles.input}
               placeholder={phoneNumber || I18N.t('PHONE_NUMBER')}
-              placeholderTextColor="rgba(255,255,255,0.7)"
+              placeholderTextColor={phoneNumber ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.2)"}
               autoCapitalize="none"
               onChangeText={text => this.setState({ phoneNumber: text })}
               value={this.state.phoneNumber}
@@ -377,10 +376,9 @@ export default class Profile extends React.Component {
               underlineColorAndroid={'transparent'}
               style={styles.input}
               placeholder={birthDate || I18N.t('BIRTH_DATE')}
-              placeholderTextColor="rgba(255,255,255,0.7)"
+              placeholderTextColor={birthDate ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.2)"}
               autoCapitalize="none"
               onChangeText={text => this.setState({ birthDate: text })}
-              value={this.state.birthDate}
               autoCorrect={false}
               returnKeyType={'next'}
             />
@@ -392,7 +390,7 @@ export default class Profile extends React.Component {
               underlineColorAndroid={'transparent'}
               style={styles.input}
               placeholder={homeAddress || I18N.t('HOME_ADDRESS')}
-              placeholderTextColor="rgba(255,255,255,0.7)"
+              placeholderTextColor={homeAddress ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.2)"}              
               autoCapitalize="none"
               onChangeText={text =>
                 this.setState({
@@ -468,7 +466,7 @@ export default class Profile extends React.Component {
                   userInfo: this.props.userInfo,
                 })
               }>
-              <Text style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)' }}>
+              <Text style={{ fontSize: 16, color: 'rgba(255,255,255,1)' }}>
                 {I18N.t('SAVE').toUpperCase()}
               </Text>
             </Button>

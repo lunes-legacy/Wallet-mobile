@@ -63,7 +63,7 @@ export default class LoginForm extends React.Component {
     const text = this.props.modeAuth === 'SIGNUP' ? 'Sign Up' : 'Sign In';
 
     return (
-      <View style={{ marginTop: 90 }}>
+      <View style={{ marginTop: 20 }}>
         <Button rounded block success onPress={() => this.onSubmit()}>
           <Text>{text}</Text>
         </Button>
