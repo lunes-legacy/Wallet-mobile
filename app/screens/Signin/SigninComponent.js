@@ -28,6 +28,8 @@ const backButtonPressFunction = () => true;
 
 export default class Signin extends React.Component<{}> {
   componentDidMount() {
+    this.props.redirectToIntroduction();    
+    this.checkLoggedUser();
     if (Platform.OS === 'android') {
       BackHandler.addEventListener('hardwareBackPress', () =>
         backButtonPressFunction()
@@ -43,8 +45,19 @@ export default class Signin extends React.Component<{}> {
   componentWillUnmount() {
     NetInfo.isConnected.removeEventListener(
       'connectionChange',
-      this.networkConnectionChange
+      this.networkConnectionChange,
     );
+  }
+
+  
+  checkLoggedUser() {
+    AsyncStorage.getItem('storedUser').then((storedUser: string) => {
+      if (storedUser) {
+        return this.props.redirectToPIN();
+      } else {
+        return;
+      }
+    })
   }
 
   networkConnectionChange = isConnected =>

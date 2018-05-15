@@ -7,7 +7,7 @@ import { redirectToAuthAction } from './actions';
 import ConfirmBackup from './ConfirmBackupComponent';
 
 const mapStateToProps = state => ({
-  seedText: state.auth.user.wallet.hash,
+  seedText: state.auth.userInfo.wallet.hash,
 });
 
 const mapDispatchToProps = dispatch =>

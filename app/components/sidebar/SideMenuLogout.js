@@ -20,7 +20,7 @@ class SideMenuLogout extends Component {
         style={styles.navItemStyle}
         onPress={() => {
           const { userInfo } = this.props;
-          requestSignout(userInfo);
+          this.props.requestSignout(userInfo);
           navigate('Signin');
         }}>
         <Text>{`${menuOption}${getSpace(space)}`}</Text>

@@ -44,12 +44,9 @@ export default class PIN extends React.Component {
   renderConfirmBackup() {
     const { showDialogBackupSeed, seedText } = this.props;
     if (showDialogBackupSeed && seedText) {
-      console.log('FOI');
       return navigate('ConfirmBackup');
-    } else {
-      console.log('Não');
     }
-    return null;
+    return null
   }
 
   render() {

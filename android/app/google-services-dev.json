@@ -1,0 +1,43 @@
+{
+  "project_info": {
+    "project_number": "785816406134",
+    "firebase_url": "https://lunes-mobile-wallet-dev.firebaseio.com",
+    "project_id": "lunes-mobile-wallet-dev",
+    "storage_bucket": "lunes-mobile-wallet-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:785816406134:android:121026602476e49d",
+        "android_client_info": {
+          "package_name": "com.luneswallet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id":
+            "785816406134-4dn4pvrrhel6goqu9buj1c1n50lu1mdc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtaULaOh5xIWmnDJVhuN4R2WqEFGCgX_Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

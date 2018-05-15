@@ -179,6 +179,7 @@ export default class LunesChartMain extends React.Component<{}> {
 
     const Chart = () => {
       return (
+        this.state.loading ? this.loading() :
         <Container>
           <LunesChartPeriod
             range={this.props.range}
@@ -237,8 +238,7 @@ export default class LunesChartMain extends React.Component<{}> {
 
     return (
       <View style={styles.container}>
-        {this.state.loading && this.loading()}
-        {!this.state.loading && <Chart />}
+        <Chart />
       </View>
     );
   }
