@@ -72,7 +72,7 @@ export const clearError = () => ({
 export const redirectToPIN = () => dispatch => {
   try {
     dispatch(signinLoading());
-    AsyncStorage.getItem('storedUser').then((storedUser) => {
+    AsyncStorage.getItem('storedUser').then(storedUser => {
       const user = JSON.parse(storedUser);
       dispatch(storeUser());
       dispatch(requestFinished());
