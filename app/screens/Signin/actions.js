@@ -1,5 +1,5 @@
 /* eslint-disable */
-// @flow
+/* @flow */
 import { AsyncStorage, Keyboard } from 'react-native';
 import LunesLib from 'lunes-lib';
 import types from 'lunesmobilewallet/app/config/types';
