@@ -46,7 +46,7 @@ export default class PIN extends React.Component {
     if (showDialogBackupSeed && seedText) {
       return navigate('ConfirmBackup');
     }
-    return null
+    return null;
   }
 
   render() {
