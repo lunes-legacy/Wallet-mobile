@@ -1,5 +1,4 @@
 /* eslint-disable */
-/* @flow */
 import { AsyncStorage, Keyboard } from 'react-native';
 import LunesLib from 'lunes-lib';
 import types from 'lunesmobilewallet/app/config/types';
@@ -72,7 +71,7 @@ export const clearError = () => ({
 export const redirectToPIN = () => dispatch => {
   try {
     dispatch(signinLoading());
-    AsyncStorage.getItem('storedUser').then(storedUser => {
+    AsyncStorage.getItem('storedUser').then((storedUser: string) => {
       const user = JSON.parse(storedUser);
       dispatch(storeUser());
       dispatch(requestFinished());
