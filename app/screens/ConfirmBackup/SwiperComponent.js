@@ -38,8 +38,8 @@ export default class Swiper extends Component {
   state = this.initState(this.props);
 
   /**
-   * Initialize the state
-   */
+  * Initialize the state
+  */
   initState(props) {
     // Get the total number of slides passed as children
     const total = props.children ? props.children.length || 1 : 0,
@@ -67,18 +67,18 @@ export default class Swiper extends Component {
   }
 
   /**
-   * Scroll begin handler
-   * @param {object} e native event
-   */
+  * Scroll begin handler
+  * @param {object} e native event
+  */
   onScrollBegin = e => {
     // Update internal isScrolling state
     this.internals.isScrolling = true;
   };
 
   /**
-   * Scroll end handler
-   * @param {object} e native event
-   */
+  * Scroll end handler
+  * @param {object} e native event
+  */
   onScrollEnd = e => {
     // Update internal isScrolling state
     this.internals.isScrolling = false;
@@ -93,9 +93,9 @@ export default class Swiper extends Component {
   };
 
   /*
-     * Drag end handler
-     * @param {object} e native event
-     */
+    * Drag end handler
+    * @param {object} e native event
+    */
   onScrollEndDrag = e => {
     const { contentOffset: { x: newOffset } } = e.nativeEvent,
       { children } = this.props,
@@ -114,9 +114,9 @@ export default class Swiper extends Component {
   };
 
   /**
-   * Update index after scroll
-   * @param {object} offset content offset
-   */
+  * Update index after scroll
+  * @param {object} offset content offset
+  */
   updateIndex = offset => {
     const state = this.state,
       diff = offset - this.internals.offset,
@@ -140,8 +140,8 @@ export default class Swiper extends Component {
   };
 
   /**
-   * Swipe one slide forward
-   */
+  * Swipe one slide forward
+  */
   swipe = () => {
     // Ignore if already scrolling or if there is less than 2 slides
     if (this.internals.isScrolling || this.state.total < 2) {
@@ -172,9 +172,9 @@ export default class Swiper extends Component {
   };
 
   /**
-   * Render ScrollView component
-   * @param {array} slides to swipe through
-   */
+  * Render ScrollView component
+  * @param {array} slides to swipe through
+  */
   renderScrollView = pages => (
     <ScrollView
       ref={component => {
@@ -194,8 +194,8 @@ export default class Swiper extends Component {
   );
 
   /**
-   * Render Continue or Done button
-   */
+  * Render Continue or Done button
+  */
   renderButton = () => {
     const lastScreen = this.state.index === this.state.total - 1;
     return (
@@ -213,8 +213,8 @@ export default class Swiper extends Component {
   };
 
   /**
-   * Render the component
-   */
+  * Render the component
+  */
   render = ({ children } = this.props) => (
     <View style={[styles.container, styles.fullScreen]}>
       {/* Render screens */}
