@@ -23,12 +23,12 @@ function toNumber(notNum) {
 
 export default {
   /**
-  * Convert Satoshi to Bitcoin
-  * @param {number|string} satoshi Amount of Satoshi to convert. Must be a whole number
-  * @throws {TypeError} Thrown if input is not a number or string
-  * @throws {TypeError} Thrown if input is not a whole number or string format whole number
-  * @returns {number}
-  */
+   * Convert Satoshi to Bitcoin
+   * @param {number|string} satoshi Amount of Satoshi to convert. Must be a whole number
+   * @throws {TypeError} Thrown if input is not a number or string
+   * @throws {TypeError} Thrown if input is not a whole number or string format whole number
+   * @returns {number}
+   */
   toBitcoin(satoshi) {
     // validate arg
     let satoshiType = typeof satoshi;
@@ -52,11 +52,11 @@ export default {
   },
 
   /**
-  * Convert Bitcoin to Satoshi
-  * @param {number|string} bitcoin Amount of Bitcoin to convert
-  * @throws {TypeError} Thrown if input is not a number or string
-  * @returns {number}
-  */
+   * Convert Bitcoin to Satoshi
+   * @param {number|string} bitcoin Amount of Bitcoin to convert
+   * @throws {TypeError} Thrown if input is not a number or string
+   * @returns {number}
+   */
   toSatoshi(bitcoin) {
     // validate arg
     let bitcoinType = typeof bitcoin;

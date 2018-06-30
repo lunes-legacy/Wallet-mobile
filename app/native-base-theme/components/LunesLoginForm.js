@@ -126,8 +126,8 @@ export default class LunesLoginForm extends React.Component {
   }
 
   /**
-  * Show a example message how to write a good password
-  */
+   * Show a example message how to write a good password
+   */
   renderHelpPasswordExample() {
     return (
       <View>
@@ -144,8 +144,8 @@ export default class LunesLoginForm extends React.Component {
   }
 
   /**
-  * Show a error if the password was different to confirm password
-  */
+   * Show a error if the password was different to confirm password
+   */
   renderErrorConfirmPassword() {
     if (
       this.invalidPasswordMatch() &&

@@ -11,8 +11,8 @@ async function generateAddressBySeedWords(
 ) {
   try {
     /**
-    * 4. Nesse passo eu não sei qual a função que recebe a SEED WORDS e converte para o ENDEREÇO
-    */
+     * 4. Nesse passo eu não sei qual a função que recebe a SEED WORDS e converte para o ENDEREÇO
+     */
     const address = await services.wallet.validateMnemonic(seedWordsText);
     dispatch(storeAddressOnDevice(address));
   } catch (error) {
@@ -25,14 +25,14 @@ export const generateNewSeed = currentUser => dispatch => {};
 
 export const importSeed = (seedWordsText, currentUser) => dispatch => {
   /**
-  * 1. Dispatch alguma ação de loading, etc
-  */
+   * 1. Dispatch alguma ação de loading, etc
+   */
   //dispatch()
 
   /**
-  * 2. Chamar aqui o serviço pra gerar o endereço a partir das palavras chaves
-  *
-  */
+   * 2. Chamar aqui o serviço pra gerar o endereço a partir das palavras chaves
+   *
+   */
   generateAddressBySeedWords(seedWordsText, currentUser, dispatch).catch(
     error => {
       //3.
