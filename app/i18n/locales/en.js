@@ -5,7 +5,6 @@ export default {
   chooseCoin: 'Choose coin',
   balance: 'balance',
   BALANCE: 'Balance',
-  ATENTION: 'Atention',
   typeYourAmountCoin: 'type your amount coin',
   typeHere: 'type here',
   optionsSent: 'Options to send',
@@ -73,7 +72,6 @@ export default {
     'The best way to ensure your funds are secure during a possible split is to make sure you have your private keys and backups. Make sure your recovery phrases are safe. If you have possession of your keys, you do not have to do anything but sit back and relax "watching" everything happen',
   REMEMBER: 'Remember',
   YOUR_WORDS: 'Word',
-  YOUR_WORDS_PLACEHOLDER: 'Digit your words',
   PROFILE: 'Profile',
   SEND_PAYMENT: 'Send Payment',
   VALUE_CURRENCY_LABEL: 'Value $ USD',
@@ -170,4 +168,13 @@ export default {
   TRANSACTION: 'Transaction',
   EMPTY_TRANSACTION: 'No transaction so far',
   YOUR_TRANSACTION_HISTORIC: 'Your transactions historic',
+  FAST_SAFE_SMART: 'Fast, safe and smart!',
+  IF_YOU_NOT_GENERATE_YOUR_SEED:
+    'If you already generated your seed, type below',
+  IF_YOU_NOT_HAVE_SEED_GENERATE:
+    'If you not has a seed to import, generate the seed',
+  GENERATE_NEW_SEED: 'Generate New Seed',
+  IMPORT_SEED: 'Import Seed',
+  INSERT_YOURS_SEEDS: 'Insert yours SeedWords',
+  ADDRESS: 'Address',
 };

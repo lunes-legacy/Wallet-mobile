@@ -7,6 +7,7 @@ import CardManager from 'lunesmobilewallet/app/screens/CardManager';
 import BoletoPayments from 'lunesmobilewallet/app/screens/BoletoPayments';
 import PhoneRecharges from 'lunesmobilewallet/app/screens/PhoneRecharges';
 import HistoricTransaction from 'lunesmobilewallet/app/screens/HistoricTransaction';
+import ImportSeed from 'lunesmobilewallet/app/screens/ImportSeed';
 import Header from '../Header';
 import SideMenu from './SideMenu';
 
@@ -68,6 +69,13 @@ const HistoricTransactionStack = StackNavigator({
   },
 });
 
+const ImportSeedStack = StackNavigator({
+  ImportSeed: {
+    screen: ImportSeed,
+    navigationOptions: getStackNavOption,
+  },
+});
+
 export default DrawerNavigator(
   {
     LunesMarket: { screen: LunesMarketStack },
@@ -77,6 +85,7 @@ export default DrawerNavigator(
     BoletoPayments: { screen: BoletoPaymentsStack },
     PhoneRecharges: { screen: PhoneRechargesStack },
     HistoricTransaction: { screen: HistoricTransactionStack },
+    ImportSeed: { screen: ImportSeedStack },
   },
   {
     contentComponent: SideMenu,

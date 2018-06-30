@@ -50,6 +50,14 @@ class SideMenu extends Component {
           </View>
           <View>
             <SideMenuItem
+              screen={'ImportSeed'}
+              menuOption={I18N.t('IMPORT_SEED')}
+              navigation={navigation}
+              space={38}
+            />
+          </View>
+          <View>
+            <SideMenuItem
               screen={'ConfirmBackup'}
               menuOption={I18N.t('MENU_BACKUP')}
               navigation={navigation}

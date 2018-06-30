@@ -12,6 +12,7 @@ import pinReducer from 'lunesmobilewallet/app/screens/PIN/reducer';
 import confirmTransactionReducer from 'lunesmobilewallet/app/screens/ConfirmTransaction/reducer';
 import historicTransactionReducer from 'lunesmobilewallet/app/screens/HistoricTransaction/reducer';
 import connectionReducer from 'lunesmobilewallet/app/services/connectionService/reducer';
+import importSeedReducer from 'lunesmobilewallet/app/screens/ImportSeed/reducer';
 
 const reducers = combineReducers({
   tabsReducer,
@@ -27,6 +28,7 @@ const reducers = combineReducers({
   confirmTransactionReducer,
   historicTransactionReducer,
   connectionReducer,
+  importSeedReducer,
 });
 
 export default reducers;
