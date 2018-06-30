@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { AsyncStorage } from 'react-native';
 import types from './types';
 import { navigate } from '../../config/routes';
