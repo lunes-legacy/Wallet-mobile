@@ -1,9 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { updateConnectionStatus } from 'lunesmobilewallet/app/services/connectionService/actions';
-import { redirectToIntroduction } from '../Introduction/actions';
 import {
-  redirectToPIN,
   requestLogin,
   requestSignup,
   requestSignout,
@@ -29,13 +27,11 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      redirectToPIN,
       requestLogin,
       requestSignup,
       requestSignout,
       clearError,
       updateConnectionStatus,
-      redirectToIntroduction,
     },
     dispatch
   );

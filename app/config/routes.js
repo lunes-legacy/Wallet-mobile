@@ -56,14 +56,14 @@ const customHomeHeader = navigation => (
 
 const RootNavigator = StackNavigator(
   {
-    Signin: {
-      screen: SigninContainer,
+    Introduction: {
+      screen: Introduction,
       navigationOptions: {
         header: <View />,
       },
     },
-    Introduction: {
-      screen: Introduction,
+    Signin: {
+      screen: SigninContainer,
       navigationOptions: {
         header: <View />,
       },

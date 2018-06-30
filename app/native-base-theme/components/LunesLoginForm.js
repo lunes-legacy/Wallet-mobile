@@ -119,7 +119,7 @@ export default class LunesLoginForm extends React.Component {
   renderDisabledButton() {
     const text = this.getTextButton();
     return (
-      <View style={{ marginTop: 20 }}>
+      <View style={{ marginTop: 90 }}>
         <LunesGradientButton text={text} />
       </View>
     );

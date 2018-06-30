@@ -6,7 +6,6 @@ export default {
   chooseCoin: 'Escolher moeda',
   balance: 'Saldo',
   BALANCE: 'Saldo',
-  ATENTION: 'Atenção',
   typeYourAmountCoin: 'digite a quantidade de moedas',
   typeHere: 'digite aqui',
   optionsSent: 'Formas de Envio',
@@ -73,7 +72,6 @@ export default {
     'A melhor maneira de garantir que seus fundos estejam seguros durante uma possível divisão, é garantir que você possua suas chaves privadas, backups e certificar-se de que suas frases de recuperação estão bem seguras. Se você tem a posse de suas chaves, você não precisa fazer nada além de ter paciência e "assistir" tudo acontecer',
   REMEMBER: 'Lembre-se',
   YOUR_WORDS: 'Palavra',
-  YOUR_WORDS_PLACEHOLDER: 'Digite suas palavras',
   PROFILE: 'Perfil',
   SEND_PAYMENT: 'Enviar Pagamento',
   VALUE_CURRENCY_LABEL: 'Valor R$ BRL',
@@ -170,4 +168,13 @@ export default {
   TRANSACTION: 'Transações',
   EMPTY_TRANSACTION: 'Nenhuma transação até o momento',
   YOUR_TRANSACTION_HISTORIC: 'Seu histórico de transações',
+  FAST_SAFE_SMART: 'Rapida, Segura e inteligente!',
+  IF_YOU_NOT_GENERATE_YOUR_SEED:
+    'Se você já gerou sua semenente, insira-a abaixo',
+  IF_YOU_NOT_HAVE_SEED_GENERATE:
+    'Se você não tiver uma semente para importar, gere a semente',
+  GENERATE_NEW_SEED: 'Gerar Nova Senha',
+  IMPORT_SEED: 'Importar SEMENTE',
+  INSERT_YOURS_SEEDS: 'Insira suas SeedWords',
+  ADDRESS: 'Endereço',
 };

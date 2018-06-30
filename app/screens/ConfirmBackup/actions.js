@@ -8,5 +8,5 @@ export const showTextBackupSeedAction = seedText => ({
 
 export const redirectToAuthAction = () => dispatch => {
   dispatch(showTextBackupSeedAction());
-  navigate('Signin');
+  navigate('Singin');
 };

@@ -12,73 +12,29 @@ import { Container, Root, Button } from 'native-base';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import BosonColors from '../../native-base-theme/variables/bosonColor';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
-import LunesAlert from '../../native-base-theme/components/LunesAlert';
-import {
-  ValidateEmail,
-  handleErrors,
-  handleSuccess,
-} from '../../utils/stringUtils';
+import { handleErrors, handleSuccess } from '../../utils/stringUtils';
 import I18n from '../../i18n/i18n';
-import { navigate } from '../../config/routes';
 
 export default class ChangePassword extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
-      emailError: false,
     };
   }
 
   renderError() {
     const { error, clearError } = this.props;
-    if (this.props.error) return handleErrors(error, clearError, clearError);
-    if (this.state.emailError)
-      return this.alertMessage(
-        'warning',
-        I18n.t('CHANGE_PASSWORD'),
-        I18n.t('INVALID_EMAIL'),
-        I18n.t('OK')
-      );
+    return handleErrors(error, clearError, clearError);
   }
 
   renderSuccess() {
     const { success, clearSuccess } = this.props;
-    if (this.props.success)
-      return this.alertMessage(
-        'success',
-        I18n.t('CHANGE_PASSWORD'),
-        I18n.t('CHANGE_PASSWORD_TITLE'),
-        I18n.t('OK')
-      );
+    return handleSuccess(success, clearSuccess, clearSuccess);
   }
 
   renderLoading() {
     return <LunesLoading />;
-  }
-
-  alertMessage(type, header, message, button) {
-    return (
-      <LunesAlert
-        isShow={true}
-        type={type}
-        showCloseIcon={true}
-        onClose={() => {
-          this.setState({ emailError: false, emailSuccess: false });
-          this.props.clearError();
-        }}
-        onPressConfirmation={() => {
-          this.setState({ emailError: false, emailSuccess: false });
-          this.props.clearError();
-          if (type === 'success') {
-            navigate('Signin');
-          }
-        }}
-        titleHeader={header}
-        message={message}
-        textConfirmation={button}
-      />
-    );
   }
 
   render() {
@@ -123,14 +79,11 @@ export default class ChangePassword extends React.Component {
                   block
                   success
                   onPress={() => {
-                    if (!this.state.email || !ValidateEmail(this.state.email)) {
-                      this.setState({ emailError: true });
+                    if (!this.state.email) {
+                      alert('Todos os campos são obrigatorios');
                       return;
                     }
-
-                    this.setState({ emailError: false });
                     this.props.changePasswordAction(this.state.email);
-                    return;
                   }}>
                   <Text style={styles.title}>{I18n.t('CONFIRM')}</Text>
                 </Button>

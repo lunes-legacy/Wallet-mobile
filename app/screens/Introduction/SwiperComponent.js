@@ -93,9 +93,9 @@ export default class Swiper extends Component {
   };
 
   /*
-     * Drag end handler
-     * @param {object} e native event
-     */
+    * Drag end handler
+    * @param {object} e native event
+    */
   onScrollEndDrag = e => {
     const { contentOffset: { x: newOffset } } = e.nativeEvent,
       { children } = this.props,

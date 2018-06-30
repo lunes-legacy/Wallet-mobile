@@ -41,9 +41,34 @@ export default class PIN extends React.Component {
     return null;
   }
 
-  renderConfirmBackup() {
-    const { showDialogBackupSeed, seedText } = this.props;
-    if (showDialogBackupSeed && seedText) {
+  renderAlertInfoBackupSeed() {
+    const { showDialogBackupSeed } = this.props;
+    if (showDialogBackupSeed) {
+      return (
+        <LunesAlert
+          isShow={showDialogBackupSeed}
+          type="info"
+          showCloseIcon={false}
+          minHeighModal={250}
+          onClose={() => {
+            this.props.closeShowDialogBackupSeed();
+            navigate('Main');
+          }}
+          onPressConfirmation={() => {
+            this.props.closeShowDialogBackupSeed();
+            this.props.showTextBackupSeedAction(this.props.seedText);
+          }}
+          message={I18N.t('SEED_BACKUP_MSG')}
+          textConfirmation={I18N.t('DO_BACKUP')}
+        />
+      );
+    }
+    return null;
+  }
+
+  renderTextSeed() {
+    const { showTextBackupSeed, seedText } = this.props;
+    if (showTextBackupSeed && seedText) {
       return navigate('ConfirmBackup');
     }
     return null;
@@ -57,7 +82,8 @@ export default class PIN extends React.Component {
       <Container>
         {this.props.loading ? this.renderLoading() : null}
         {this.renderError()}
-        {this.renderConfirmBackup()}
+        {this.renderAlertInfoBackupSeed()}
+        {this.renderTextSeed()}
         <LunesPIN
           toValidate={isLogged}
           onSavePIN={PIN => {

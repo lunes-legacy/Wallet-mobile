@@ -4,8 +4,6 @@ export default {
   selectCode: 'Selecionar código',
   chooseCoin: 'Escolher moeda',
   balance: 'Saldo',
-  BALANCE: 'Saldo',
-  ATENTION: 'Atención',
   typeYourAmountCoin: 'digite a quantidade de moedas',
   typeHere: 'digite aqui',
   optionsSent: 'Formas de Envio',
@@ -39,7 +37,6 @@ export default {
   DO_YOUR_BACKUP: 'Haga su copia de seguridad',
   CONFIRM_BACKUP_HEADER: 'Confirmar las palabras de respaldo',
   CONFIRM_WORDS: 'CONFIRMAR PALABRAS',
-  YOUR_WORDS_PLACEHOLDER: 'Digite sus palabras',
   DO_YOUR_BACKUP_MSG:
     'No almacenamos sus monedas en nuestros servidores, que son de su propiedad y están en su posesión, así que no deje de guardar sus claves privadas y hacer su copia de seguridad.',
   BUY_COINS: 'Comprar monedas',

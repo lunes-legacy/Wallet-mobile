@@ -1,5 +1,4 @@
 /* eslint-disable */
-import { AsyncStorage } from 'react-native';
 import types from '../../config/types';
 import { navigate } from '../../config/routes';
 import LunesLib from 'lunes-lib';
@@ -33,8 +32,6 @@ async function createPin(pin, currentUser, dispatch) {
     dispatch(showDialogBackupSeed(currentUser.wallet.hash));
   } catch (error) {
     dispatch(requestFinished());
-    AsyncStorage.removeItem('storedUser');
-    navigate('Signin');
   }
 }
 
@@ -54,8 +51,6 @@ async function confirmPin(pin, currentUser, wordSeedWasViewed, dispatch) {
       });
     } catch (error) {
       dispatch(requestFinished());
-      AsyncStorage.removeItem('storedUser');
-      navigate('Signin');
     }
   } catch (error) {
     dispatch(requestFinished());

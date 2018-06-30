@@ -1,5 +1,4 @@
 /* eslint-disable */
-/* @flow */
 import React from 'react';
 import {
   AsyncStorage,
@@ -29,8 +28,8 @@ const backButtonPressFunction = () => true;
 
 export default class Signin extends React.Component<{}> {
   componentDidMount() {
-    this.props.redirectToIntroduction();
-    this.checkLoggedUser();
+    const userInfo = this.alreadyLoged();
+    console.log(userInfo);
     if (Platform.OS === 'android') {
       BackHandler.addEventListener('hardwareBackPress', () =>
         backButtonPressFunction()
@@ -43,21 +42,33 @@ export default class Signin extends React.Component<{}> {
     );
   }
 
+  alreadyLoged() {
+    // console.log('1');
+    try {
+      // console.log('2');
+      const userInfo = AsyncStorage.getItem('@userInfo:key', item => {
+        // console.log('3');
+        // console.log(item);
+        if (item) {
+          // console.log('4');
+          // console.log(item);
+          // console.log(JSON.parse(item));
+        } else {
+          // console.log('5');
+        }
+      });
+      return userInfo;
+    } catch (error) {
+      // console.log('6');
+      return error;
+    }
+  }
+
   componentWillUnmount() {
     NetInfo.isConnected.removeEventListener(
       'connectionChange',
       this.networkConnectionChange
     );
-  }
-
-  checkLoggedUser() {
-    AsyncStorage.getItem('storedUser').then((storedUser: string) => {
-      if (storedUser) {
-        return this.props.redirectToPIN();
-      } else {
-        return;
-      }
-    });
   }
 
   networkConnectionChange = isConnected =>

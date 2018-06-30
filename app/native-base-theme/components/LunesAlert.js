@@ -81,8 +81,8 @@ export default class LunesAlert extends React.Component {
   }
 
   /**
-   * How to render
-   * <LunesAlert
+  * How to render
+  * <LunesAlert
         type="error"
         onPressConfirmation={() => {
           alert('backup');
@@ -116,8 +116,8 @@ export default class LunesAlert extends React.Component {
   }
 
   /**
-   * How to render
-   * <LunesAlert
+  * How to render
+  * <LunesAlert
         type="success"
         onPressConfirmation={() => {
           alert('backup');
@@ -177,8 +177,8 @@ export default class LunesAlert extends React.Component {
   }
 
   /**
-   * How to render
-   * <LunesAlert
+  * How to render
+  * <LunesAlert
       type="info"
       onPressConfirmation={() => {
         alert('backup');

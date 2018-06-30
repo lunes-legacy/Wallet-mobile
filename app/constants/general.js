@@ -1,6 +1,6 @@
 export default {
-  VERSION_CODE: '18',
-  VERSION_NAME: '1.18',
+  VERSION_CODE: '17',
+  VERSION_NAME: '1.17',
   PERIOD: {
     RANGE_1D: 'RANGE_1D',
     RANGE_1W: 'RANGE_1W',

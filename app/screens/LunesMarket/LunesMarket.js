@@ -54,6 +54,15 @@ class LunesMarket extends Component {
     // requestPrice();
     console.ignoredYellowBox = ['Setting a timer'];
     this.onMessage();
+    this.storeCurrentUser(this.props.userInfo);
+  }
+
+  storeCurrentUser(userInfo) {
+    try {
+      AsyncStorage.setItem('@userInfo:key', JSON.stringify(userInfo));
+    } catch (error) {
+      console.log('Erro ao capturar o usuário: ' + error);
+    }
   }
 
   onMessage() {

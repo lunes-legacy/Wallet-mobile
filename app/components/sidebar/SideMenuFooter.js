@@ -33,10 +33,7 @@ class SideMenuFooter extends Component {
           <View style={styles2.containerInline}>
             <Image
               style={{ width: 26, height: 25 }}
-              source={{
-                uri:
-                  'http://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png',
-              }}
+              source={require('../../assets/images/lunes-token-coin.png')}
             />
             <Text style={styles2.text}>{` ${this.getBalance()}`}</Text>
           </View>
