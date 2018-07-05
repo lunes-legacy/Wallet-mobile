@@ -51,15 +51,17 @@ async function confirmPin(pin, currentUser, wordSeedWasViewed, dispatch) {
        * Aqui eu preciso verificar no aparelho se ele ja importou a SEED e se
        * existe o address salvo localmente.
        * Caso sim, então eu tento pegar o balance do usuario a partir do endereço da carteira
-      */
-      const addressFromDevice = ""; // ver uma forma de recuperar do storage do device o endereço
-      getBalance(addressFromDevice, currentUser, dispatch).catch(error => {
-        dispatch(requestFinished());
-        navigate('Main');
-      }).catch(error => {
-        dispatch(requestFinished());
-        navigate('Main');
-      });
+       */
+      const addressFromDevice = ''; // ver uma forma de recuperar do storage do device o endereço
+      getBalance(addressFromDevice, currentUser, dispatch)
+        .catch(error => {
+          dispatch(requestFinished());
+          navigate('Main');
+        })
+        .catch(error => {
+          dispatch(requestFinished());
+          navigate('Main');
+        });
     } catch (error) {
       dispatch(requestFinished());
       AsyncStorage.removeItem('storedUser');

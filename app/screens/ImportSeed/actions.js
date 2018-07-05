@@ -21,18 +21,25 @@ async function generateAddressBySeedWords(
   dispatch
 ) {
   try {
-    const isValidMnemonic = await services.wallet.mnemonic.validateMnemonic(seedWordsText);
+    const isValidMnemonic = await services.wallet.mnemonic.validateMnemonic(
+      seedWordsText
+    );
     if (isValidMnemonic) {
-      const addressGeneratedByMnemonic = await services.wallet.lns.wallet.newAddress(seedWordsText, {}).catch(error => {
-        console.log(error);
-      });
-      AsyncStorage.setItem('addressLunesUser', JSON.stringify(addressGeneratedByMnemonic));
+      const addressGeneratedByMnemonic = await services.wallet.lns.wallet
+        .newAddress(seedWordsText, {})
+        .catch(error => {
+          console.log(error);
+        });
+      AsyncStorage.setItem(
+        'addressLunesUser',
+        JSON.stringify(addressGeneratedByMnemonic)
+      );
       dispatch(storeAddressOnDevice(addressGeneratedByMnemonic));
       return;
     }
 
     // TODO - to refactor after test
-    alert("invalid mnemonic");
+    alert('invalid mnemonic');
     //dispatch(alertInvalidMnemonic(address));
   } catch (error) {
     throw error;
@@ -40,11 +47,9 @@ async function generateAddressBySeedWords(
 }
 
 export const generateNewSeed = currentUser => dispatch => {
-  generateNewSeedWords(dispatch).catch(
-    error => {
-      alert('error on generate seed word');
-    }
-  );
+  generateNewSeedWords(dispatch).catch(error => {
+    alert('error on generate seed word');
+  });
 };
 
 export const importSeed = (seedWordsText, currentUser) => dispatch => {

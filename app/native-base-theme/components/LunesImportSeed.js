@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   textArea: {
-    color: '#fff'
+    color: '#fff',
   },
   textFastSafeSmart: {
     fontSize: 25,
