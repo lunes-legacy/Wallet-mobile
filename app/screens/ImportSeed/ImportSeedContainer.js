@@ -10,6 +10,7 @@ const mapStateToProps = state => {
     loading: state.pinReducer.loading,
     userInfo: state.auth && state.auth.userInfo,
     error: state.pinReducer.error,
+    newSeedWords: state.importSeedReducer.newSeedWords
   };
 };
 

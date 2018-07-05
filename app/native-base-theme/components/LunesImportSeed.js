@@ -25,9 +25,18 @@ export default class LunesImportSeed extends React.Component {
   }
 
   importSeed() {
-    debugger;
-    console.log(this.props);
-    this.props.importSeed(this.state.seedWords, this.props.userInfo);
+    if (this.state.seedWords) {
+      this.props.importSeed(this.state.seedWords, this.props.userInfo);
+      return;
+    }
+
+    if (this.props.newSeedWords) {
+      this.props.importSeed(this.props.newSeedWords, this.props.userInfo);
+    }
+  }
+
+  generateNewSeed() {
+    this.props.generateNewSeed();
   }
 
   render() {
@@ -48,12 +57,18 @@ export default class LunesImportSeed extends React.Component {
           onChangeText={seedWords => {
             this.setState({ seedWords });
           }}
+          style={styles.textArea}
           rowSpan={5}
           bordered
-          placeholder="Textarea"
+          placeholder={this.props.newSeedWords}
         />
         <View style={styles.importButton}>
-          <LunesGradientButton text={I18N.t('GENERATE_NEW_SEED')} />
+          <TouchableOpacity
+            onPress={() => {
+              this.generateNewSeed();
+            }}>
+            <LunesGradientButton text={I18N.t('GENERATE_NEW_SEED')} />
+          </TouchableOpacity>
         </View>
         <Button
           rounded
@@ -66,7 +81,7 @@ export default class LunesImportSeed extends React.Component {
         <View style={[styles.textCenter, styles.areaAddress]}>
           <Text>{I18N.t('ADDRESS')}</Text>
           <Text selectable={true} style={styles.outputAddress}>
-            dsdsds
+            --
           </Text>
         </View>
       </View>
@@ -82,6 +97,9 @@ const styles = StyleSheet.create({
     borderBottomColor: '#fff',
     color: '#fff',
     padding: 10,
+  },
+  textArea: {
+    color: '#fff'
   },
   textFastSafeSmart: {
     fontSize: 25,

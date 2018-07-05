@@ -47,8 +47,16 @@ async function confirmPin(pin, currentUser, wordSeedWasViewed, dispatch) {
     currentUser.pinIsValidated = true;
     currentUser.wordSeedWasViewed = wordSeedWasViewed;
     try {
-      const address = currentUser.wallet.coins[0].addresses[0].address;
-      getBalance(address, currentUser, dispatch).catch(error => {
+      /**
+       * Aqui eu preciso verificar no aparelho se ele ja importou a SEED e se
+       * existe o address salvo localmente.
+       * Caso sim, então eu tento pegar o balance do usuario a partir do endereço da carteira
+      */
+      const addressFromDevice = ""; // ver uma forma de recuperar do storage do device o endereço
+      getBalance(addressFromDevice, currentUser, dispatch).catch(error => {
+        dispatch(requestFinished());
+        navigate('Main');
+      }).catch(error => {
         dispatch(requestFinished());
         navigate('Main');
       });

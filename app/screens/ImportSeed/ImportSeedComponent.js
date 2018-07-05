@@ -10,21 +10,16 @@ import { navigate } from '../../config/routes';
 
 export default class ImportSeed extends React.Component {
   constructor(props) {
-    //...
     super(props);
-    //...
-    console.log('');
-    console.log(this.props);
-    //...
   }
 
   render() {
-    debugger;
-    console.log(this.props);
     return (
       <Container>
         <LunesImportSeed
+          newSeedWords={this.props.newSeedWords}
           importSeed={this.props.importSeed}
+          generateNewSeed={this.props.generateNewSeed}
           userInfo={this.props.userInfo}
         />
       </Container>

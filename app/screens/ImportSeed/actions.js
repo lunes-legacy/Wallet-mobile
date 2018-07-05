@@ -1,8 +1,19 @@
 /* eslint-disable */
+import { AsyncStorage } from 'react-native';
 import types from '../../config/types';
 import { navigate } from '../../config/routes';
 import { coins, services, networks } from 'lunes-lib';
 import { TabHeading } from 'native-base';
+
+async function generateNewSeedWords(dispatch) {
+  try {
+    debugger;
+    const newSeedWords = await services.wallet.mnemonic.generateMnemonic();
+    dispatch(addNewSeedWords(newSeedWords));
+  } catch (error) {
+    throw error;
+  }
+}
 
 async function generateAddressBySeedWords(
   seedWordsText,
@@ -10,34 +21,36 @@ async function generateAddressBySeedWords(
   dispatch
 ) {
   try {
-    /**
-     * 4. Nesse passo eu não sei qual a função que recebe a SEED WORDS e converte para o ENDEREÇO
-     */
-    const address = await services.wallet.validateMnemonic(seedWordsText);
-    dispatch(storeAddressOnDevice(address));
+    const isValidMnemonic = await services.wallet.mnemonic.validateMnemonic(seedWordsText);
+    if (isValidMnemonic) {
+      const addressGeneratedByMnemonic = await services.wallet.lns.wallet.newAddress(seedWordsText, {}).catch(error => {
+        console.log(error);
+      });
+      AsyncStorage.setItem('addressLunesUser', JSON.stringify(addressGeneratedByMnemonic));
+      dispatch(storeAddressOnDevice(addressGeneratedByMnemonic));
+      return;
+    }
+
+    // TODO - to refactor after test
+    alert("invalid mnemonic");
+    //dispatch(alertInvalidMnemonic(address));
   } catch (error) {
-    // dispatch(requestFinished());
     throw error;
   }
 }
 
-export const generateNewSeed = currentUser => dispatch => {};
+export const generateNewSeed = currentUser => dispatch => {
+  generateNewSeedWords(dispatch).catch(
+    error => {
+      alert('error on generate seed word');
+    }
+  );
+};
 
 export const importSeed = (seedWordsText, currentUser) => dispatch => {
-  /**
-   * 1. Dispatch alguma ação de loading, etc
-   */
-  //dispatch()
-
-  /**
-   * 2. Chamar aqui o serviço pra gerar o endereço a partir das palavras chaves
-   *
-   */
   generateAddressBySeedWords(seedWordsText, currentUser, dispatch).catch(
     error => {
-      //3.
-      alert('error on generate seed word');
-      //dispatch();
+      alert('error on generate address by seed words');
     }
   );
 };
@@ -45,4 +58,9 @@ export const importSeed = (seedWordsText, currentUser) => dispatch => {
 const storeAddressOnDevice = address => ({
   type: types.STORE_ADDRESS_ON_DEVICE,
   address,
+});
+
+const addNewSeedWords = newSeedWords => ({
+  type: types.NEW_SEED_WORD,
+  newSeedWords,
 });

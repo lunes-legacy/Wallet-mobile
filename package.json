@@ -35,7 +35,7 @@
     "axios": "^0.17.1",
     "big.js": "^5.0.3",
     "lodash": "^4.17.4",
-    "lunes-lib": "^0.0.29",
+    "lunes-lib": "git://github.com/Lunes-platform/lunes-lib.git#react-native",
     "native-base": "^2.3.5",
     "prop-types": "^15.6.0",
     "pubnub": "^4.20.0",
