@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { generateNewSeed, importSeed } from './actions';
+import { generateNewSeed, importSeed, closeAlert } from './actions';
 import ImportSeed from './ImportSeedComponent';
 
 const mapStateToProps = state => {
@@ -10,11 +10,16 @@ const mapStateToProps = state => {
     loading: state.pinReducer.loading,
     userInfo: state.auth && state.auth.userInfo,
     error: state.pinReducer.error,
-    newSeedWords: state.importSeedReducer.newSeedWords,
+    seedWords: state.importSeedReducer.seedWords,
+    address: state.importSeedReducer.address,
+    showSuccess: state.importSeedReducer.showSuccess,
+    showError: state.importSeedReducer.showError,
+    msgError: state.importSeedReducer.msgError,
+    msgSuccess: state.importSeedReducer.msgSuccess
   };
 };
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ generateNewSeed, importSeed }, dispatch);
+  bindActionCreators({ generateNewSeed, importSeed, closeAlert }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ImportSeed);

@@ -4,6 +4,12 @@ import types from '../../config/types';
 import { navigate } from '../../config/routes';
 import LunesLib from 'lunes-lib';
 
+const checkAddressOnDevice = async currentUser => {
+  AsyncStorage.getItem('addressLunesUser').then((addressFromDevice: string) => {
+    return addressFromDevice;
+  });
+};
+
 async function getBalance(address, currentUser, dispatch) {
   try {
     const balance = await LunesLib.coins.bitcoin.getBalance(
@@ -47,21 +53,12 @@ async function confirmPin(pin, currentUser, wordSeedWasViewed, dispatch) {
     currentUser.pinIsValidated = true;
     currentUser.wordSeedWasViewed = wordSeedWasViewed;
     try {
-      /**
-       * Aqui eu preciso verificar no aparelho se ele ja importou a SEED e se
-       * existe o address salvo localmente.
-       * Caso sim, então eu tento pegar o balance do usuario a partir do endereço da carteira
-       */
-      const addressFromDevice = ''; // ver uma forma de recuperar do storage do device o endereço
+      const addressFromDevice = await checkAddressOnDevice(currentUser, dispatch);
       getBalance(addressFromDevice, currentUser, dispatch)
-        .catch(error => {
-          dispatch(requestFinished());
-          navigate('Main');
-        })
-        .catch(error => {
-          dispatch(requestFinished());
-          navigate('Main');
-        });
+      .catch(error => {
+        dispatch(requestFinished());
+        navigate('Main');
+      });
     } catch (error) {
       dispatch(requestFinished());
       AsyncStorage.removeItem('storedUser');
@@ -81,15 +78,13 @@ export const requestAddPIN = (PIN, currentUser) => dispatch => {
   });
 };
 
-export const requestValidPIN = (
-  PIN,
-  currentUser,
-  wordSeedWasViewed
-) => dispatch => {
+export const requestValidPIN = (PIN, currentUser, wordSeedWasViewed) => dispatch => {
   dispatch(requestLoading());
   confirmPin(PIN, currentUser, wordSeedWasViewed, dispatch).catch(error => {
     dispatch(requestFinished());
     dispatch(showError(error));
+    AsyncStorage.removeItem('storedUser');
+    navigate('Signin');
   });
 };
 

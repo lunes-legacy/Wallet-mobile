@@ -30,12 +30,16 @@ export default class LunesImportSeed extends React.Component {
       return;
     }
 
-    if (this.props.newSeedWords) {
-      this.props.importSeed(this.props.newSeedWords, this.props.userInfo);
+    if (this.props.seedWords) {
+      this.props.importSeed(this.props.seedWords, this.props.userInfo);
+      return;
     }
   }
 
   generateNewSeed() {
+    this.setState({
+      seedWords: ''
+    })
     this.props.generateNewSeed();
   }
 
@@ -53,15 +57,18 @@ export default class LunesImportSeed extends React.Component {
             {I18N.t('INSERT_YOURS_SEEDS')}
           </Text>
         </View>
-        <Textarea
-          onChangeText={seedWords => {
-            this.setState({ seedWords });
-          }}
-          style={styles.textArea}
-          rowSpan={5}
-          bordered
-          placeholder={this.props.newSeedWords}
-        />
+        <View style={styles.textArea}>
+          <TextInput
+            multiline={true}
+            underlineColorAndroid='rgba(0,0,0,0)'
+            onChangeText={seedWords => {
+              this.setState({ seedWords });
+            }}
+            style={styles.textInputArea}
+            numberOfLines={5}
+            value={this.state.seedWords || this.props.seedWords}
+          />
+        </View>
         <View style={styles.importButton}>
           <TouchableOpacity
             onPress={() => {
@@ -70,19 +77,21 @@ export default class LunesImportSeed extends React.Component {
             <LunesGradientButton text={I18N.t('GENERATE_NEW_SEED')} />
           </TouchableOpacity>
         </View>
-        <Button
-          rounded
-          block
-          success
-          style={styles.touchable}
-          onPress={() => this.importSeed()}>
-          <Text style={{ fontSize: 12 }}>{I18N.t('IMPORT_SEED')}</Text>
-        </Button>
+
+        <View>
+          <Button
+            rounded
+            block
+            success
+            style={styles.touchable}
+            onPress={() => this.importSeed()}>
+            <Text style={{ fontSize: 12 }}>{I18N.t('IMPORT_SEED')}</Text>
+          </Button>
+        </View>
+
         <View style={[styles.textCenter, styles.areaAddress]}>
           <Text>{I18N.t('ADDRESS')}</Text>
-          <Text selectable={true} style={styles.outputAddress}>
-            --
-          </Text>
+          <Text selectable={true} style={styles.outputAddress}> {this.props.address} </Text>
         </View>
       </View>
     );
@@ -99,7 +108,15 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   textArea: {
-    color: '#fff',
+    borderColor: BosonColors.$bosonLightGreen,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderRadius: 5
+  },
+  textInputArea: {
+    color: BosonColors.$bosonLightGreen,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   textFastSafeSmart: {
     fontSize: 25,
@@ -125,6 +142,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 20,
+    elevation: 0
   },
   outputAddress: {
     borderBottomColor: BosonColors.$bosonLightGreen,

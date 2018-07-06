@@ -7,7 +7,6 @@ import { TabHeading } from 'native-base';
 
 async function generateNewSeedWords(dispatch) {
   try {
-    debugger;
     const newSeedWords = await services.wallet.mnemonic.generateMnemonic();
     dispatch(addNewSeedWords(newSeedWords));
   } catch (error) {
@@ -21,9 +20,7 @@ async function generateAddressBySeedWords(
   dispatch
 ) {
   try {
-    const isValidMnemonic = await services.wallet.mnemonic.validateMnemonic(
-      seedWordsText
-    );
+    const isValidMnemonic = await services.wallet.mnemonic.validateMnemonic(seedWordsText);
     if (isValidMnemonic) {
       const addressGeneratedByMnemonic = await services.wallet.lns.wallet
         .newAddress(seedWordsText, {})
@@ -35,12 +32,10 @@ async function generateAddressBySeedWords(
         JSON.stringify(addressGeneratedByMnemonic)
       );
       dispatch(storeAddressOnDevice(addressGeneratedByMnemonic));
+      dispatch(showSuccessOnImportSeed('SUCCESS_ON_GENERATE_ADDRESS'));
       return;
     }
-
-    // TODO - to refactor after test
-    alert('invalid mnemonic');
-    //dispatch(alertInvalidMnemonic(address));
+    dispatch(showErrorOnImportSeed('INVALID_WORDS'));
   } catch (error) {
     throw error;
   }
@@ -48,16 +43,20 @@ async function generateAddressBySeedWords(
 
 export const generateNewSeed = currentUser => dispatch => {
   generateNewSeedWords(dispatch).catch(error => {
-    alert('error on generate seed word');
+    dispatch(showErrorOnImportSeed('ERROR_GENERATE_NEW_SEED'));
   });
 };
 
 export const importSeed = (seedWordsText, currentUser) => dispatch => {
   generateAddressBySeedWords(seedWordsText, currentUser, dispatch).catch(
     error => {
-      alert('error on generate address by seed words');
+      dispatch(showErrorOnImportSeed('ERROR_ADDRESS_BY_SEED'));
     }
   );
+};
+
+export const closeAlert = () => dispatch => {
+  dispatch(doCloseAlert());
 };
 
 const storeAddressOnDevice = address => ({
@@ -68,4 +67,18 @@ const storeAddressOnDevice = address => ({
 const addNewSeedWords = newSeedWords => ({
   type: types.NEW_SEED_WORD,
   newSeedWords,
+});
+
+const showSuccessOnImportSeed = msgSuccess => ({
+  type: types.SUCCESS_TO_IMPORT_SEED,
+  msgSuccess
+});
+
+const showErrorOnImportSeed = msgError => ({
+  type: types.ERROR_TO_IMPORT_SEED,
+  msgError
+});
+
+const doCloseAlert = () => ({
+  type: types.CLOSE_ALERT
 });

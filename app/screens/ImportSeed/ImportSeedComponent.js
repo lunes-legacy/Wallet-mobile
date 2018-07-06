@@ -13,11 +13,60 @@ export default class ImportSeed extends React.Component {
     super(props);
   }
 
+  renderSuccess() {
+    const { showSuccess, msgSuccess } = this.props;
+    if (showSuccess) {
+      return (
+        <LunesAlert
+          isShow={showSuccess}
+          type="success"
+          showCloseIcon={true}
+          onClose={() => {
+            this.props.closeAlert();
+          }}
+          onPressConfirmation={() => {
+            this.props.closeAlert();
+          }}
+          title={I18N.t('YOUR_WORDS')}
+          message={I18N.t(msgSuccess)}
+          textConfirmation={I18N.t('OK')}
+        />
+      );
+    }
+    return null;
+  }
+
+  renderError() {
+    const { showError, msgError } = this.props;
+    if (showError) {
+      return (
+        <LunesAlert
+          isShow={showError}
+          type="error"
+          showCloseIcon={true}
+          onClose={() => {
+            this.props.closeAlert();
+          }}
+          onPressConfirmation={() => {
+            this.props.closeAlert();
+          }}
+          title={I18N.t('YOUR_WORDS')}
+          message={I18N.t(msgError)}
+          textConfirmation={I18N.t('OK')}
+        />
+      );
+    }
+    return null;
+  }
+
   render() {
     return (
       <Container>
+        {this.renderSuccess()}
+        {this.renderError()}
         <LunesImportSeed
-          newSeedWords={this.props.newSeedWords}
+          address={this.props.address}
+          seedWords={this.props.seedWords}
           importSeed={this.props.importSeed}
           generateNewSeed={this.props.generateNewSeed}
           userInfo={this.props.userInfo}
