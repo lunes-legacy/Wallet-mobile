@@ -53,9 +53,11 @@ async function confirmPin(pin, currentUser, wordSeedWasViewed, dispatch) {
     currentUser.pinIsValidated = true;
     currentUser.wordSeedWasViewed = wordSeedWasViewed;
     try {
-      const addressFromDevice = await checkAddressOnDevice(currentUser, dispatch);
-      getBalance(addressFromDevice, currentUser, dispatch)
-      .catch(error => {
+      const addressFromDevice = await checkAddressOnDevice(
+        currentUser,
+        dispatch
+      );
+      getBalance(addressFromDevice, currentUser, dispatch).catch(error => {
         dispatch(requestFinished());
         navigate('Main');
       });
@@ -78,7 +80,11 @@ export const requestAddPIN = (PIN, currentUser) => dispatch => {
   });
 };
 
-export const requestValidPIN = (PIN, currentUser, wordSeedWasViewed) => dispatch => {
+export const requestValidPIN = (
+  PIN,
+  currentUser,
+  wordSeedWasViewed
+) => dispatch => {
   dispatch(requestLoading());
   confirmPin(PIN, currentUser, wordSeedWasViewed, dispatch).catch(error => {
     dispatch(requestFinished());

@@ -8,7 +8,7 @@ const initialState = {
   msgSuccess: '',
   seedWords: '',
   newSeedWords: '',
-  address: ''
+  address: '',
 };
 
 const seedReducer = (state = initialState, action) => {
@@ -22,7 +22,14 @@ const seedReducer = (state = initialState, action) => {
     case types.ERROR_TO_IMPORT_SEED:
       return { ...state, showError: true, msgError: action.msgError };
     case types.CLOSE_ALERT:
-      return { ...state, loading: false, showSuccess: false, showError: false, msgError: '', msgSuccess: '' };
+      return {
+        ...state,
+        loading: false,
+        showSuccess: false,
+        showError: false,
+        msgError: '',
+        msgSuccess: '',
+      };
     default:
       return state;
   }

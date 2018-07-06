@@ -20,7 +20,9 @@ async function generateAddressBySeedWords(
   dispatch
 ) {
   try {
-    const isValidMnemonic = await services.wallet.mnemonic.validateMnemonic(seedWordsText);
+    const isValidMnemonic = await services.wallet.mnemonic.validateMnemonic(
+      seedWordsText
+    );
     if (isValidMnemonic) {
       const addressGeneratedByMnemonic = await services.wallet.lns.wallet
         .newAddress(seedWordsText, {})
@@ -71,14 +73,14 @@ const addNewSeedWords = newSeedWords => ({
 
 const showSuccessOnImportSeed = msgSuccess => ({
   type: types.SUCCESS_TO_IMPORT_SEED,
-  msgSuccess
+  msgSuccess,
 });
 
 const showErrorOnImportSeed = msgError => ({
   type: types.ERROR_TO_IMPORT_SEED,
-  msgError
+  msgError,
 });
 
 const doCloseAlert = () => ({
-  type: types.CLOSE_ALERT
+  type: types.CLOSE_ALERT,
 });

@@ -38,8 +38,8 @@ export default class LunesImportSeed extends React.Component {
 
   generateNewSeed() {
     this.setState({
-      seedWords: ''
-    })
+      seedWords: '',
+    });
     this.props.generateNewSeed();
   }
 
@@ -60,7 +60,7 @@ export default class LunesImportSeed extends React.Component {
         <View style={styles.textArea}>
           <TextInput
             multiline={true}
-            underlineColorAndroid='rgba(0,0,0,0)'
+            underlineColorAndroid="rgba(0,0,0,0)"
             onChangeText={seedWords => {
               this.setState({ seedWords });
             }}
@@ -91,7 +91,10 @@ export default class LunesImportSeed extends React.Component {
 
         <View style={[styles.textCenter, styles.areaAddress]}>
           <Text>{I18N.t('ADDRESS')}</Text>
-          <Text selectable={true} style={styles.outputAddress}> {this.props.address} </Text>
+          <Text selectable={true} style={styles.outputAddress}>
+            {' '}
+            {this.props.address}{' '}
+          </Text>
         </View>
       </View>
     );
@@ -111,7 +114,7 @@ const styles = StyleSheet.create({
     borderColor: BosonColors.$bosonLightGreen,
     borderWidth: 1,
     borderStyle: 'solid',
-    borderRadius: 5
+    borderRadius: 5,
   },
   textInputArea: {
     color: BosonColors.$bosonLightGreen,
@@ -142,7 +145,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 20,
-    elevation: 0
+    elevation: 0,
   },
   outputAddress: {
     borderBottomColor: BosonColors.$bosonLightGreen,

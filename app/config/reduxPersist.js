@@ -16,7 +16,7 @@ const REDUX_PERSIST = {
       'historicDataReducer',
       'confirmTransactionReducer',
       'authSMS',
-      'importSeedReducer'
+      'importSeedReducer',
     ],
   },
 };

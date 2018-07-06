@@ -181,5 +181,5 @@ export default {
   ERROR_GENERATE_NEW_SEED: 'Error on generate new seed',
   INVALID_WORDS: 'Invalid Words',
   ERROR_ADDRESS_BY_SEED: 'Error on generate address',
-  SUCCESS_ON_GENERATE_ADDRESS: 'Success on generate address'
+  SUCCESS_ON_GENERATE_ADDRESS: 'Success on generate address',
 };

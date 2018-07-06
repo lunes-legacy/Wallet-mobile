@@ -15,7 +15,7 @@ const mapStateToProps = state => {
     showSuccess: state.importSeedReducer.showSuccess,
     showError: state.importSeedReducer.showError,
     msgError: state.importSeedReducer.msgError,
-    msgSuccess: state.importSeedReducer.msgSuccess
+    msgSuccess: state.importSeedReducer.msgSuccess,
   };
 };
 
