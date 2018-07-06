@@ -25,7 +25,6 @@ async function generateAddressBySeedWords(
       seedWordsText
     );
     if (isValidMnemonic) {
-
       StoreSeed.store(seedWordsText);
 
       const addressGeneratedByMnemonic = await services.wallet.lns.wallet
