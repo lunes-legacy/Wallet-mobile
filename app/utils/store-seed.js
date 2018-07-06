@@ -1,9 +1,9 @@
 import * as Keychain from 'react-native-keychain';
 
-const seed_encrypted = 'seed_encrypted';
+const seedEncrypted = 'seed_encrypted';
 
 async function store(seed) {
-  await Keychain.setGenericPassword(seed_encrypted, seed);
+  await Keychain.setGenericPassword(seedEncrypted, seed);
 }
 
 async function retrieveSeed() {
