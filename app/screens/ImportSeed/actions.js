@@ -1,9 +1,10 @@
 /* eslint-disable */
 import { AsyncStorage } from 'react-native';
 import types from '../../config/types';
-import { navigate } from '../../config/routes';
 import { coins, services, networks } from 'lunes-lib';
 import { TabHeading } from 'native-base';
+import { navigate } from '../../config/routes';
+import * as StoreSeed from '../../utils/store-seed';
 
 async function generateNewSeedWords(dispatch) {
   try {
@@ -24,6 +25,9 @@ async function generateAddressBySeedWords(
       seedWordsText
     );
     if (isValidMnemonic) {
+
+      StoreSeed.store(seedWordsText);
+
       const addressGeneratedByMnemonic = await services.wallet.lns.wallet
         .newAddress(seedWordsText, {})
         .catch(error => {

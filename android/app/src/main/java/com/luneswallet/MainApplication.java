@@ -21,6 +21,7 @@ import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.horcrux.svg.SvgPackage;
+import com.oblador.keychain.KeychainPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -49,7 +50,8 @@ public class MainApplication extends Application implements ReactApplication {
             new RNFirebaseMessagingPackage(),
             new RNFirebaseDatabasePackage(),
             new LinearGradientPackage(),
-            new SvgPackage()
+            new SvgPackage(),
+            new KeychainPackage()
       );
     }
 
