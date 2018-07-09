@@ -36,6 +36,7 @@ async function generateAddressBySeedWords(
         'addressLunesUser',
         JSON.stringify(addressGeneratedByMnemonic)
       );
+      dispatch(setSeedOnUserInfo(seedWordsText));
       dispatch(storeAddressOnDevice(addressGeneratedByMnemonic));
       dispatch(showSuccessOnImportSeed('SUCCESS_ON_GENERATE_ADDRESS'));
       return;
@@ -64,6 +65,10 @@ export const closeAlert = () => dispatch => {
   dispatch(doCloseAlert());
 };
 
+export const clearSeedWords = () => ({
+  type: types.CLEAR_SEED_WORDS,
+});
+
 const storeAddressOnDevice = address => ({
   type: types.STORE_ADDRESS_ON_DEVICE,
   address,
@@ -86,4 +91,9 @@ const showErrorOnImportSeed = msgError => ({
 
 const doCloseAlert = () => ({
   type: types.CLOSE_ALERT,
+});
+
+const setSeedOnUserInfo = seed => ({
+  type: types.SET_SEED_USER,
+  seed
 });

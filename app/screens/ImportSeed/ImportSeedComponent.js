@@ -69,6 +69,7 @@ export default class ImportSeed extends React.Component {
           seedWords={this.props.seedWords}
           importSeed={this.props.importSeed}
           generateNewSeed={this.props.generateNewSeed}
+          clearSeedWords={this.props.clearSeedWords}
           userInfo={this.props.userInfo}
         />
       </Container>

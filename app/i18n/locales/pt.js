@@ -182,4 +182,5 @@ export default {
   INVALID_WORDS: 'Palavras Inválidas',
   ERROR_ADDRESS_BY_SEED: 'Erro ao gerar endereço',
   SUCCESS_ON_GENERATE_ADDRESS: 'Sucesso ao gerar endereço',
+  YOUR_WORDS_PLACEHOLDER: 'Palavra',
 };

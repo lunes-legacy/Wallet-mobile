@@ -6,9 +6,11 @@ import { bindActionCreators } from 'redux';
 import { redirectToAuthAction } from './actions';
 import ConfirmBackup from './ConfirmBackupComponent';
 
-const mapStateToProps = state => ({
-  seedText: state.auth.userInfo.wallet.hash,
-});
+const mapStateToProps = state => {
+  return {
+    seedText: state.auth.seed,
+  }
+};
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ redirectToAuthAction }, dispatch);

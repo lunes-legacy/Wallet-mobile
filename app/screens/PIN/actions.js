@@ -2,6 +2,7 @@
 import { AsyncStorage } from 'react-native';
 import types from '../../config/types';
 import { navigate } from '../../config/routes';
+import * as StoreSeed from '../../utils/store-seed';
 import LunesLib from 'lunes-lib';
 
 const checkAddressOnDevice = async currentUser => {
@@ -57,6 +58,8 @@ async function confirmPin(pin, currentUser, wordSeedWasViewed, dispatch) {
         currentUser,
         dispatch
       );
+      const seed = await StoreSeed.retrieveSeed();
+      dispatch(setSeedOnUserInfo(seed));
       getBalance(addressFromDevice, currentUser, dispatch).catch(error => {
         dispatch(requestFinished());
         navigate('Main');
@@ -102,6 +105,11 @@ export const showTextBackupSeedAction = seedText => ({
 
 export const closeTextBackupSeedAction = () => ({
   type: types.CLOSE_TEXT_BACKUP_SEED,
+});
+
+const setSeedOnUserInfo = seed => ({
+  type: types.SET_SEED_USER,
+  seed
 });
 
 const requestLoading = () => ({

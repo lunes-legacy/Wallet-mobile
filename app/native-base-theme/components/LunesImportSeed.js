@@ -62,6 +62,9 @@ export default class LunesImportSeed extends React.Component {
             multiline={true}
             underlineColorAndroid="rgba(0,0,0,0)"
             onChangeText={seedWords => {
+              if (seedWords === '') {
+                this.props.clearSeedWords();
+              }
               this.setState({ seedWords });
             }}
             style={styles.textInputArea}

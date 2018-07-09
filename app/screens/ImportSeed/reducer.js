@@ -21,6 +21,8 @@ const seedReducer = (state = initialState, action) => {
       return { ...state, showSuccess: true, msgSuccess: action.msgSuccess };
     case types.ERROR_TO_IMPORT_SEED:
       return { ...state, showError: true, msgError: action.msgError };
+    case types.CLEAR_SEED_WORDS:
+      return { ...state, seedWords: '' };
     case types.CLOSE_ALERT:
       return {
         ...state,

@@ -7,6 +7,7 @@ const initialState = {
   trySignin: false,
   trySignup: false,
   balance: null,
+  seed: ''
 };
 
 const authReducer = (state = initialState, action) => {
@@ -25,6 +26,11 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         userInfo: action.user,
+      };
+    case types.SET_SEED_USER:
+      return {
+        ...state,
+        seed: action.seed,
       };
     case types.STORE_BALANCE:
       return {
