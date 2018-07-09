@@ -9,7 +9,7 @@ import ConfirmBackup from './ConfirmBackupComponent';
 const mapStateToProps = state => {
   return {
     seedText: state.auth.seed,
-  }
+  };
 };
 
 const mapDispatchToProps = dispatch =>

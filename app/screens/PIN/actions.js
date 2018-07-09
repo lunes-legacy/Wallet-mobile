@@ -109,7 +109,7 @@ export const closeTextBackupSeedAction = () => ({
 
 const setSeedOnUserInfo = seed => ({
   type: types.SET_SEED_USER,
-  seed
+  seed,
 });
 
 const requestLoading = () => ({

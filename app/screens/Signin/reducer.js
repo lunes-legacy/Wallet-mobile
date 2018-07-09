@@ -7,7 +7,7 @@ const initialState = {
   trySignin: false,
   trySignup: false,
   balance: null,
-  seed: ''
+  seed: '',
 };
 
 const authReducer = (state = initialState, action) => {

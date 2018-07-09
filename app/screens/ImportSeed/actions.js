@@ -95,5 +95,5 @@ const doCloseAlert = () => ({
 
 const setSeedOnUserInfo = seed => ({
   type: types.SET_SEED_USER,
-  seed
+  seed,
 });
