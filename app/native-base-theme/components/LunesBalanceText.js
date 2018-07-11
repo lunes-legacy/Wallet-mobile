@@ -4,14 +4,13 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import BosonColors from '../variables/bosonColor';
 
-const LunesBalanceText = ({ balance }) => (
+const LunesBalanceText = ({ balance, icon }) => (
   <View style={styles.container}>
     <View style={styles.containerInline}>
       <Image
         style={{ width: 26, height: 25 }}
         source={{
-          uri:
-            'http://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png',
+          uri: icon,
         }}
       />
       <Text style={styles.text}>{balance}</Text>

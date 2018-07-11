@@ -70,14 +70,13 @@ export default class LunesTabCoin extends React.Component {
                 onPress={() => {
                   if (
                     tabCoin.name === 'LTC' ||
-                    tabCoin.name === 'LNS' ||
                     tabCoin.name === 'ETH'
                   ) {
                     navigate('AlertMessages');
                   }
 
                   if (this.props.doAction) {
-                    // this.props.doAction(tabCoin);
+                    this.props.doAction(tabCoin);
                   }
                 }}>
                 <View>

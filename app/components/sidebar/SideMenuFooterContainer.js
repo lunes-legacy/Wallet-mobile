@@ -6,6 +6,7 @@ import SideMenuFooter from './SideMenuFooter';
 const mapStateToProps = state => ({
   userInfo: state.auth.userInfo || {},
   balanceData: state.auth.balance,
+  currentCoinSelected: state.auth.currentCoinSelected,
   displayPriceBTC: state.historicDataReducer.ticker.BTC,
 });
 

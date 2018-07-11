@@ -19,6 +19,7 @@ import LunesPaymentButton from '../../native-base-theme/components/LunesPaymentB
 import LunesChartMain from '../../native-base-theme/components/LunesChartMain';
 import LunesSwiper from '../../native-base-theme/components/LunesSwiper';
 import BosonColors from '../../native-base-theme/variables/bosonColor';
+import * as BalanceUtils from '../../utils/balance-utils';
 
 import I18N from '../../i18n/i18n';
 import io from 'socket.io-client';
@@ -126,12 +127,14 @@ class LunesMarket extends Component {
   }
 
   getBalance() {
-    const finalBalance =
-      this.props && this.props.balanceData
-        ? this.props.balanceData.confirmed_balance
-        : 0;
-    return finalBalance;
+    const { currentCoinSelected, balanceData } = this.props;
+    return BalanceUtils.getBalance(currentCoinSelected, balanceData);
   }
+
+  renderIconCoin() {
+    return BalanceUtils.getIconCoin(this.props.currentCoinSelected);
+  }
+
   render() {
     return (
       <Container>
@@ -140,7 +143,7 @@ class LunesMarket extends Component {
           barStyle="light-content"
         />
         <View style={{ flexDirection: 'row' }}>
-          <LunesTabCoins ticker={this.props.ticker} />
+          <LunesTabCoins ticker={this.props.ticker} doAction={this.props.doAction} />
         </View>
         <View
           style={{
@@ -148,7 +151,7 @@ class LunesMarket extends Component {
             justifyContent: 'space-between',
             width: Dimensions.get('window').width,
           }}>
-          <LunesBalanceText balance={this.getBalance()} />
+          <LunesBalanceText icon={this.renderIconCoin()} balance={this.getBalance()} />
           <LunesSwiper
             dots
             dotsBottom={0}

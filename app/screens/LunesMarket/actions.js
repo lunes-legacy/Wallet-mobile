@@ -7,10 +7,10 @@ import I18N from '../../i18n/i18n';
 import rangeConstant from '../../constants/general';
 import CCC from '../../utils/ccc-streamer-utilities';
 
-async function getHistory(dispatch) {
+async function getHistory(tabCoin = { name: 'BTC' }, dispatch) {
   try {
     const queryObj = {
-      fromSymbol: 'BTC',
+      fromSymbol: tabCoin.name,
       toSymbol: I18N.t('CURRENCY_USER'),
       range: rangeConstant.PERIOD.RANGE_1D,
     };
@@ -71,8 +71,15 @@ async function getPrice(dispatch) {
   }
 }
 
+export const doAction = tabCoin => dispatch => {
+  dispatch(selectCurrentCoin(tabCoin.name));
+  getHistory(tabCoin, dispatch).catch(error => {
+    console.log(error);
+  });
+};
+
 export const requestHistoricData = () => dispatch => {
-  getHistory(dispatch).catch(error => {
+  getHistory({ name: 'BTC' }, dispatch).catch(error => {
     // alert('error on get historic');
   });
 };
@@ -96,6 +103,15 @@ export const changeRange = range => dispatch => {
     alert('error');
   });
 };
+
+export const selectCoin = coin => dispatch => {
+  dispatch(selectCurrentCoin(coin));
+};
+
+const selectCurrentCoin = currentCoinSelected => ({
+  type: types.CURRENT_COIN_SELECTED,
+  currentCoinSelected
+});
 
 const changeColumnPeriod = range => ({
   type: types.CHANGE_RANGE,

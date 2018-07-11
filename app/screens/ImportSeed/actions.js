@@ -6,6 +6,15 @@ import { TabHeading } from 'native-base';
 import { navigate } from '../../config/routes';
 import * as StoreSeed from '../../utils/store-seed';
 
+async function getBalance(address, currentUser, dispatch) {
+  try {
+    const balance = await services.wallet.lns.balance(address, networks.LNS);
+    dispatch(storeBalanceOnUser(balance.data));
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function generateNewSeedWords(dispatch) {
   try {
     const newSeedWords = await services.wallet.mnemonic.generateMnemonic();
@@ -21,27 +30,29 @@ async function generateAddressBySeedWords(
   dispatch
 ) {
   try {
-    const isValidMnemonic = await services.wallet.mnemonic.validateMnemonic(
+    /*const isValidMnemonic = await services.wallet.mnemonic.validateMnemonic(
       seedWordsText
+    );*/
+    StoreSeed.store(seedWordsText);
+    const addressGeneratedByMnemonic = await services.wallet.lns.wallet
+      .newAddress(seedWordsText, {})
+      .catch(error => {
+        console.log(error);
+      });
+    AsyncStorage.setItem(
+      'addressLunesUser',
+      JSON.stringify(addressGeneratedByMnemonic)
     );
-    if (isValidMnemonic) {
-      StoreSeed.store(seedWordsText);
+    dispatch(setSeedOnUserInfo(seedWordsText));
+    dispatch(storeAddressOnDevice(addressGeneratedByMnemonic));
+    dispatch(showSuccessOnImportSeed('SUCCESS_ON_GENERATE_ADDRESS'));
+    getBalance(addressGeneratedByMnemonic, currentUser, dispatch).catch(error => {
+      dispatch(requestFinished());
+      navigate('Main');
+    });
+    return;
 
-      const addressGeneratedByMnemonic = await services.wallet.lns.wallet
-        .newAddress(seedWordsText, {})
-        .catch(error => {
-          console.log(error);
-        });
-      AsyncStorage.setItem(
-        'addressLunesUser',
-        JSON.stringify(addressGeneratedByMnemonic)
-      );
-      dispatch(setSeedOnUserInfo(seedWordsText));
-      dispatch(storeAddressOnDevice(addressGeneratedByMnemonic));
-      dispatch(showSuccessOnImportSeed('SUCCESS_ON_GENERATE_ADDRESS'));
-      return;
-    }
-    dispatch(showErrorOnImportSeed('INVALID_WORDS'));
+    //dispatch(showErrorOnImportSeed('INVALID_WORDS'));
   } catch (error) {
     throw error;
   }
@@ -67,6 +78,11 @@ export const closeAlert = () => dispatch => {
 
 export const clearSeedWords = () => ({
   type: types.CLEAR_SEED_WORDS,
+});
+
+const storeBalanceOnUser = balance => ({
+  type: types.STORE_BALANCE,
+  balance,
 });
 
 const storeAddressOnDevice = address => ({

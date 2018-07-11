@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { AsyncStorage, Keyboard } from 'react-native';
-import LunesLib from 'lunes-lib';
+import LunesLib, { networks, services } from 'lunes-lib';
 import types from 'lunesmobilewallet/app/config/types';
 import { navigate } from 'lunesmobilewallet/app/config/routes';
 
@@ -97,6 +97,7 @@ async function login(email, password, dispatch) {
     dispatch(signinLoading());
     const user = await LunesLib.users.login({ email, password });
     AsyncStorage.setItem('storedUser', JSON.stringify(user));
+
     dispatch(requestFinished());
     dispatch(signinSuccess(user));
     dispatch(storeUser(user));

@@ -5,6 +5,7 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import styles from '../styles/SideMenu';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import BosonColors from '../../native-base-theme/variables/bosonColor';
+import * as BalanceUtils from '../../utils/balance-utils';
 // import {getAmountOfCoins} from 'API COINS'
 
 const FAKE_AMOUNT = 10000;
@@ -19,12 +20,14 @@ const getMyDolarAmount = () => getMyAmount().amount * 3;
 
 class SideMenuFooter extends Component {
   getBalance() {
-    const finalBalance =
-      this.props && this.props.balanceData
-        ? this.props.balanceData.confirmed_balance
-        : 0;
-    return finalBalance;
+    const { currentCoinSelected, balanceData } = this.props;
+    return BalanceUtils.getBalance(currentCoinSelected, balanceData);
   }
+
+  renderIconCoin() {
+    return BalanceUtils.getIconCoin(this.props.currentCoinSelected);
+  }
+
   render() {
     const { amount } = getMyAmount();
     return (
@@ -34,8 +37,7 @@ class SideMenuFooter extends Component {
             <Image
               style={{ width: 26, height: 25 }}
               source={{
-                uri:
-                  'http://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png',
+                uri: this.renderIconCoin(),
               }}
             />
             <Text style={styles2.text}>{` ${this.getBalance()}`}</Text>

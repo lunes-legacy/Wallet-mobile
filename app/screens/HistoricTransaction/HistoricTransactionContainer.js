@@ -9,7 +9,9 @@ const mapStateToProps = state => ({
   user: state.auth.user,
   loading: state.authSMS.loading,
   error: state.authSMS.error,
-  transactions: state.historicTransactionReducer.transactions,
+  balance: state.auth.balance,
+  currentCoinSelected: state.auth.currentCoinSelected,
+  history: state.historicTransactionReducer.history,
 });
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ getHistoric }, dispatch);

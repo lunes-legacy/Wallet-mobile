@@ -27,6 +27,10 @@ export default class ConfirmBackup extends Component {
   }
 
   wordsToObj() {
+    if (!this.props.seedText) {
+      navigate('ImportSeed');
+      return [];
+    }
     return this.props.seedText.split(' ');
   }
 

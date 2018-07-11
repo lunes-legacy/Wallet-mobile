@@ -3,24 +3,61 @@ import { AsyncStorage } from 'react-native';
 import types from '../../config/types';
 import { navigate } from '../../config/routes';
 import * as StoreSeed from '../../utils/store-seed';
-import LunesLib from 'lunes-lib';
+import LunesLib, { coins, services, networks } from 'lunes-lib';
 
-const checkAddressOnDevice = async currentUser => {
-  AsyncStorage.getItem('addressLunesUser').then((addressFromDevice: string) => {
-    return addressFromDevice;
-  });
-};
-
-async function getBalance(address, currentUser, dispatch) {
+async function generateAddress(currentUser, dispatch) {
   try {
-    const balance = await LunesLib.coins.bitcoin.getBalance(
-      { address }, // TODO remove testnet object on production
-      currentUser.accessToken
-    );
+    const seed = await StoreSeed.retrieveSeed();
+    if (seed) {
+      dispatch(setSeedOnUserInfo(seed));
 
+      const addressBTC = await services.wallet.btc.wallet
+        .newAddress(seed, networks.BTC)
+        .catch(error => {
+          console.log(error);
+        });
+
+      const addressLNS = await services.wallet.lns.wallet
+        .newAddress(seed, networks.LNS)
+        .catch(error => {
+          console.log(error);
+        });
+
+      if (!currentUser.wallet.coin.LNS) {
+        currentUser.wallet.coin.LNS = {
+          address: addressLNS
+        };
+      }
+
+      if (!currentUser.wallet.coin.BTC) {
+        currentUser.wallet.coin.BTC = {
+          address: addressBTC
+        };
+      }
+
+      getBalance(currentUser.wallet.coin, currentUser, dispatch)
+        .catch(error => {
+          dispatch(requestFinished());
+          navigate('Main');
+        });
+    } else {
+      dispatch(requestFinished());
+      navigate('Main');
+    }
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getBalance(walletCoins, currentUser, dispatch) {
+  try {
+    const balanceLNS = await services.wallet.lns.balance(walletCoins.LNS.address, networks.LNS);
+    const balanceBTC = await services.wallet.btc.balance(walletCoins.BTC.address, networks.BTC);
     dispatch(confirmSuccess(currentUser));
-    dispatch(storeBalanceOnUser(balance.data));
-
+    dispatch(storeBalanceOnUser({
+      BTC: balanceBTC.data,
+      LNS: balanceLNS.data
+    }));
     dispatch(requestFinished());
     navigate('Main');
   } catch (error) {
@@ -36,6 +73,13 @@ async function createPin(pin, currentUser, dispatch) {
       currentUser.accessToken
     );
     currentUser.pinIsValidated = true;
+    const addressGeneratedByMnemonic = await generateAddress(currentUser, dispatch);
+    getBalance(addressGeneratedByMnemonic, currentUser, dispatch)
+      .catch(error => {
+        dispatch(requestFinished());
+        navigate('Main');
+      });
+
     dispatch(requestFinished());
     dispatch(showDialogBackupSeed(currentUser.wallet.hash));
   } catch (error) {
@@ -54,16 +98,7 @@ async function confirmPin(pin, currentUser, wordSeedWasViewed, dispatch) {
     currentUser.pinIsValidated = true;
     currentUser.wordSeedWasViewed = wordSeedWasViewed;
     try {
-      const addressFromDevice = await checkAddressOnDevice(
-        currentUser,
-        dispatch
-      );
-      const seed = await StoreSeed.retrieveSeed();
-      dispatch(setSeedOnUserInfo(seed));
-      getBalance(addressFromDevice, currentUser, dispatch).catch(error => {
-        dispatch(requestFinished());
-        navigate('Main');
-      });
+      generateAddress(currentUser, dispatch);
     } catch (error) {
       dispatch(requestFinished());
       AsyncStorage.removeItem('storedUser');

@@ -23,9 +23,11 @@ export default class ImportSeed extends React.Component {
           showCloseIcon={true}
           onClose={() => {
             this.props.closeAlert();
+            navigate('Main');
           }}
           onPressConfirmation={() => {
             this.props.closeAlert();
+            navigate('Main');
           }}
           title={I18N.t('YOUR_WORDS')}
           message={I18N.t(msgSuccess)}

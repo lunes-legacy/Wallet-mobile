@@ -7,11 +7,13 @@ import {
   changeRange,
   updateTicker,
   requestPrice,
+  doAction,
 } from './actions';
 
 const mapStateToProps = state => ({
   userInfo: state.auth.user || {},
   balanceData: state.auth.balance,
+  currentCoinSelected: state.auth.currentCoinSelected,
   historic: state.historicDataReducer.historic,
   range: state.historicDataReducer.range,
   ticker: state.historicDataReducer.ticker,
@@ -24,6 +26,7 @@ const mapDispatchToProps = dispatch =>
       changeRange,
       updateTicker,
       requestPrice,
+      doAction,
     },
     dispatch
   );

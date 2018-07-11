@@ -7,11 +7,15 @@ const initialState = {
   trySignin: false,
   trySignup: false,
   balance: null,
+  balance: {},
   seed: '',
+  currentCoinSelected: 'BTC'
 };
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.CURRENT_COIN_SELECTED:
+      return { ...state, currentCoinSelected: action.currentCoinSelected };
     case types.REQUEST_LOADING:
       return {
         ...state,

@@ -3,7 +3,7 @@ import types from '../../config/types';
 const initialState = {
   loading: false,
   error: '',
-  transactions: [],
+  history: [],
 };
 
 const historicTransactionReducer = (state = initialState, action) => {
@@ -21,7 +21,7 @@ const historicTransactionReducer = (state = initialState, action) => {
     case types.HISTORIC_TRANSACTION:
       return {
         ...state,
-        transactions: action.transactions,
+        history: action.history,
       };
     default:
       return state;

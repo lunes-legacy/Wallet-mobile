@@ -1,5 +1,5 @@
 /* eslint-disable */
-import LunesLib from 'lunes-lib';
+import LunesLib, { coins, networks, services } from 'lunes-lib';
 import types from '../../config/types';
 import { navigate } from '../../config/routes';
 import I18N from '../../i18n/i18n';
@@ -23,29 +23,28 @@ const showError = error => ({
   error,
 });
 
-const showTransactions = historicTransactions => ({
+const showTransactions = data => ({
   type: types.HISTORIC_TRANSACTION,
-  transactions: historicTransactions,
+  history: data.history,
 });
 
-async function _getHistoric(user, dispatch) {
+async function _getHistoric(user, balance, currentCoinSelected, dispatch) {
   try {
-    const address = user.wallet.coins[0].addresses[0].address;
-    const historicTransactions = await LunesLib.coins.bitcoin.getHistory(
-      { address },
-      user.accessToken
-    );
+    const address = balance[currentCoinSelected].address;
+    const historicTransactions = await coins.services.history({address: address, network: currentCoinSelected})
     dispatch(requestFinished());
-    dispatch(showTransactions(historicTransactions));
+    if (historicTransactions && historicTransactions.data) {
+      dispatch(showTransactions(historicTransactions.data));
+    }
   } catch (error) {
     dispatch(requestFinished());
     throw new Error(error);
   }
 }
 
-export const getHistoric = user => dispatch => {
+export const getHistoric = (user, balance, currentCoinSelected) => dispatch => {
   dispatch(requestLoading());
-  _getHistoric(user, dispatch).catch(error => {
+  _getHistoric(user, balance, currentCoinSelected, dispatch).catch(error => {
     dispatch(requestFinished());
     console.log(error);
   });
