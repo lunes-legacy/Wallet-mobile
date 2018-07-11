@@ -9,7 +9,7 @@ const initialState = {
   balance: null,
   balance: {},
   seed: '',
-  currentCoinSelected: 'BTC'
+  currentCoinSelected: 'BTC',
 };
 
 const authReducer = (state = initialState, action) => {

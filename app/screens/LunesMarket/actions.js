@@ -110,7 +110,7 @@ export const selectCoin = coin => dispatch => {
 
 const selectCurrentCoin = currentCoinSelected => ({
   type: types.CURRENT_COIN_SELECTED,
-  currentCoinSelected
+  currentCoinSelected,
 });
 
 const changeColumnPeriod = range => ({

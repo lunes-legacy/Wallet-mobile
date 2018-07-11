@@ -34,8 +34,7 @@ export default class HistoricTransaction extends React.Component {
       <View key={index} style={styles.containerItemTransaction}>
         <View style={styles.itemTransaction}>
           <Text>
-            {I18N.t('TRANSACTION')}{' '}
-            {moment(item.date).format('MMM DD, YYYY')}
+            {I18N.t('TRANSACTION')} {moment(item.date).format('MMM DD, YYYY')}
           </Text>
           <Text style={styles.itemValueTransaction}>{item.value}</Text>
         </View>

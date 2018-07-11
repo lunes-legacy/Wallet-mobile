@@ -143,7 +143,10 @@ class LunesMarket extends Component {
           barStyle="light-content"
         />
         <View style={{ flexDirection: 'row' }}>
-          <LunesTabCoins ticker={this.props.ticker} doAction={this.props.doAction} />
+          <LunesTabCoins
+            ticker={this.props.ticker}
+            doAction={this.props.doAction}
+          />
         </View>
         <View
           style={{
@@ -151,7 +154,10 @@ class LunesMarket extends Component {
             justifyContent: 'space-between',
             width: Dimensions.get('window').width,
           }}>
-          <LunesBalanceText icon={this.renderIconCoin()} balance={this.getBalance()} />
+          <LunesBalanceText
+            icon={this.renderIconCoin()}
+            balance={this.getBalance()}
+          />
           <LunesSwiper
             dots
             dotsBottom={0}

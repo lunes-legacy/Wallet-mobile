@@ -31,7 +31,10 @@ const showTransactions = data => ({
 async function _getHistoric(user, balance, currentCoinSelected, dispatch) {
   try {
     const address = balance[currentCoinSelected].address;
-    const historicTransactions = await coins.services.history({address: address, network: currentCoinSelected})
+    const historicTransactions = await coins.services.history({
+      address: address,
+      network: currentCoinSelected,
+    });
     dispatch(requestFinished());
     if (historicTransactions && historicTransactions.data) {
       dispatch(showTransactions(historicTransactions.data));

@@ -46,10 +46,12 @@ async function generateAddressBySeedWords(
     dispatch(setSeedOnUserInfo(seedWordsText));
     dispatch(storeAddressOnDevice(addressGeneratedByMnemonic));
     dispatch(showSuccessOnImportSeed('SUCCESS_ON_GENERATE_ADDRESS'));
-    getBalance(addressGeneratedByMnemonic, currentUser, dispatch).catch(error => {
-      dispatch(requestFinished());
-      navigate('Main');
-    });
+    getBalance(addressGeneratedByMnemonic, currentUser, dispatch).catch(
+      error => {
+        dispatch(requestFinished());
+        navigate('Main');
+      }
+    );
     return;
 
     //dispatch(showErrorOnImportSeed('INVALID_WORDS'));

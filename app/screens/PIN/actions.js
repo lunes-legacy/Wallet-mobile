@@ -25,21 +25,22 @@ async function generateAddress(currentUser, dispatch) {
 
       if (!currentUser.wallet.coin.LNS) {
         currentUser.wallet.coin.LNS = {
-          address: addressLNS
+          address: addressLNS,
         };
       }
 
       if (!currentUser.wallet.coin.BTC) {
         currentUser.wallet.coin.BTC = {
-          address: addressBTC
+          address: addressBTC,
         };
       }
 
-      getBalance(currentUser.wallet.coin, currentUser, dispatch)
-        .catch(error => {
+      getBalance(currentUser.wallet.coin, currentUser, dispatch).catch(
+        error => {
           dispatch(requestFinished());
           navigate('Main');
-        });
+        }
+      );
     } else {
       dispatch(requestFinished());
       navigate('Main');
@@ -51,13 +52,21 @@ async function generateAddress(currentUser, dispatch) {
 
 async function getBalance(walletCoins, currentUser, dispatch) {
   try {
-    const balanceLNS = await services.wallet.lns.balance(walletCoins.LNS.address, networks.LNS);
-    const balanceBTC = await services.wallet.btc.balance(walletCoins.BTC.address, networks.BTC);
+    const balanceLNS = await services.wallet.lns.balance(
+      walletCoins.LNS.address,
+      networks.LNS
+    );
+    const balanceBTC = await services.wallet.btc.balance(
+      walletCoins.BTC.address,
+      networks.BTC
+    );
     dispatch(confirmSuccess(currentUser));
-    dispatch(storeBalanceOnUser({
-      BTC: balanceBTC.data,
-      LNS: balanceLNS.data
-    }));
+    dispatch(
+      storeBalanceOnUser({
+        BTC: balanceBTC.data,
+        LNS: balanceLNS.data,
+      })
+    );
     dispatch(requestFinished());
     navigate('Main');
   } catch (error) {
@@ -73,12 +82,16 @@ async function createPin(pin, currentUser, dispatch) {
       currentUser.accessToken
     );
     currentUser.pinIsValidated = true;
-    const addressGeneratedByMnemonic = await generateAddress(currentUser, dispatch);
-    getBalance(addressGeneratedByMnemonic, currentUser, dispatch)
-      .catch(error => {
+    const addressGeneratedByMnemonic = await generateAddress(
+      currentUser,
+      dispatch
+    );
+    getBalance(addressGeneratedByMnemonic, currentUser, dispatch).catch(
+      error => {
         dispatch(requestFinished());
         navigate('Main');
-      });
+      }
+    );
 
     dispatch(requestFinished());
     dispatch(showDialogBackupSeed(currentUser.wallet.hash));
