@@ -6,7 +6,6 @@ const initialState = {
   error: '',
   trySignin: false,
   trySignup: false,
-  balance: null,
   balance: {},
   seed: '',
   currentCoinSelected: 'BTC',
