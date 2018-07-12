@@ -8,6 +8,8 @@ import ReceivePayment from './ReceivePaymentComponent';
 const mapStateToProps = state => ({
   loading: state.receivePaymentReducer.loading,
   wallet: state.receivePaymentReducer.wallet,
+  currentCoinSelected: state.auth.currentCoinSelected,
+  addressLNS: state.importSeedReducer.address
 });
 
 const mapDispatchToProps = dispatch =>

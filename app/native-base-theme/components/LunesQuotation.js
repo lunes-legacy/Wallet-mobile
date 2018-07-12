@@ -60,7 +60,7 @@ export default class LunesQuotation extends React.Component {
         <View>
           <Text style={styles.textQuotation}>{I18N.t('QUOTE')}</Text>
           <Text style={styles.textQuotationPrice}>
-            {this.props.ticker.BTC.DISPLAYPRICE}
+            {this.props.ticker[this.props.currentCoinSelected].DISPLAYPRICE}
           </Text>
         </View>
       );
@@ -151,4 +151,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#fff',
   },
+  textQuotationPriceSmall: {
+    backgroundColor: 'transparent',
+    textAlign: 'center',
+    fontSize: 14,
+    color: '#fff',
+  }
 });

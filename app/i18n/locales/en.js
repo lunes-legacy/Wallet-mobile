@@ -182,5 +182,8 @@ export default {
   INVALID_WORDS: 'Invalid Words',
   ERROR_ADDRESS_BY_SEED: 'Error on generate address',
   SUCCESS_ON_GENERATE_ADDRESS: 'Success on generate address',
-  YOUR_WORDS_PLACEHOLDER: 'Palavra',
+  YOUR_WORDS_PLACEHOLDER: 'Word',
+  ID: 'Id',
+  VALUE: 'Value',
+  FORMAT_DATE: 'MM/DD/YYYY'
 };

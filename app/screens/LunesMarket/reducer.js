@@ -20,6 +20,7 @@ const initialState = {
     BTC: coinPair,
     ETH: coinPair,
     LTC: coinPair,
+    LNS: { ...coinPair, DISPLAYPRICE: '1 LNS | $ 0.08' }
   },
 };
 

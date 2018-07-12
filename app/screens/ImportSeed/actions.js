@@ -9,7 +9,7 @@ import * as StoreSeed from '../../utils/store-seed';
 async function getBalance(address, currentUser, dispatch) {
   try {
     const balance = await services.wallet.lns.balance(address, networks.LNS);
-    dispatch(storeBalanceOnUser(balance.data));
+    dispatch(storeBalanceLNSOnUser(balance.data));
   } catch (error) {
     throw error;
   }
@@ -82,9 +82,9 @@ export const clearSeedWords = () => ({
   type: types.CLEAR_SEED_WORDS,
 });
 
-const storeBalanceOnUser = balance => ({
-  type: types.STORE_BALANCE,
-  balance,
+const storeBalanceLNSOnUser = balanceLNS => ({
+  type: types.STORE_BALANCE_LNS,
+  balanceLNS,
 });
 
 const storeAddressOnDevice = address => ({

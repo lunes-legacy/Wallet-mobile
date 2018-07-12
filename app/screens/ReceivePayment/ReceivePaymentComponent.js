@@ -60,7 +60,7 @@ export default class ReceivePayment extends React.Component {
     const { wallet } = this.props;
     try {
       // eslint-disable-next-line
-      const address = wallet.coins[0].addresses[0].address;
+      const address = wallet.coin.LNS.address;
       return address;
     } catch (error) {
       return '';
@@ -83,6 +83,8 @@ export default class ReceivePayment extends React.Component {
               fgColor="white"
             />
           </View>
+
+          <Text style={styles.input}>{I18N.t('ADDRESS')} Lunes</Text>
 
           <Text style={styles.input} selectable={true}>
             {address}

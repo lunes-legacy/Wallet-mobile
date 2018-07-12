@@ -158,18 +158,9 @@ class LunesMarket extends Component {
             icon={this.renderIconCoin()}
             balance={this.getBalance()}
           />
-          <LunesSwiper
-            dots
-            dotsBottom={0}
-            dotsColor="rgba(255, 255, 255, 0.25)"
-            dotsColorActive="rgba(255, 255, 255, 0.75)">
-            <LunesChartMain
-              historic={this.props.historic}
-              range={this.props.range}
-              changeRange={this.props.changeRange}
-            />
-            <LunesQuotation ticker={this.props.ticker} />
-          </LunesSwiper>
+          <LunesQuotation
+            ticker={this.props.ticker}
+            currentCoinSelected={this.props.currentCoinSelected} />
         </View>
         <View
           style={{

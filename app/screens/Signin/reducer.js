@@ -35,6 +35,11 @@ const authReducer = (state = initialState, action) => {
         ...state,
         seed: action.seed,
       };
+    case types.STORE_BALANCE_LNS:
+      return {
+        ...state,
+        balance: { ...state.balance, LNS: action.balanceLNS }
+      };
     case types.STORE_BALANCE:
       return {
         ...state,
