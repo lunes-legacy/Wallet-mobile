@@ -185,5 +185,5 @@ export default {
   YOUR_WORDS_PLACEHOLDER: 'Word',
   ID: 'Id',
   VALUE: 'Value',
-  FORMAT_DATE: 'MM/DD/YYYY'
+  FORMAT_DATE: 'MM/DD/YYYY',
 };

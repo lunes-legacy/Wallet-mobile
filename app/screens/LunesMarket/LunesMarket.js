@@ -160,7 +160,8 @@ class LunesMarket extends Component {
           />
           <LunesQuotation
             ticker={this.props.ticker}
-            currentCoinSelected={this.props.currentCoinSelected} />
+            currentCoinSelected={this.props.currentCoinSelected}
+          />
         </View>
         <View
           style={{

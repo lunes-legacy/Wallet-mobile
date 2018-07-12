@@ -1,12 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import { coins } from 'lunes-lib';
-import {
-  View,
-  StyleSheet,
-  Dimensions,
-  ScrollView,
-} from 'react-native';
+import { View, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import moment from 'moment';
 import _ from 'lodash';
 import { Container, Item, Input, Spinner, Text } from 'native-base';
@@ -33,12 +28,13 @@ export default class HistoricTransaction extends React.Component {
       <View key={index} style={styles.subAreaTransactions}>
         <View style={styles.itemTransaction}>
           <Text style={styles.textFooterTransaction}>
-          {I18N.t('ID')} - {item.txid}
+            {I18N.t('ID')} - {item.txid}
           </Text>
         </View>
         <View style={styles.itemTransaction}>
           <Text style={styles.textFooterTransaction}>
-            {I18N.t('VALUE')} - {coins.util.unitConverter.toBitcoin(item.nativeAmount)}
+            {I18N.t('VALUE')} -{' '}
+            {coins.util.unitConverter.toBitcoin(item.nativeAmount)}
           </Text>
         </View>
         {item.type === 'RECEIVED' ? (
@@ -57,9 +53,11 @@ export default class HistoricTransaction extends React.Component {
     return Object.keys(grouped).map((item, index) => (
       <View key={index} style={styles.containerItemTransaction}>
         <View style={styles.roundedAreaTransactions}>
-          <Text>{ item } - {I18N.t('TRANSACTION')}(s): { grouped[item].length }</Text>
+          <Text>
+            {item} - {I18N.t('TRANSACTION')}(s): {grouped[item].length}
+          </Text>
         </View>
-        { this.renderSubItems(grouped[item]) }
+        {this.renderSubItems(grouped[item])}
       </View>
     ));
   }
@@ -90,7 +88,8 @@ export default class HistoricTransaction extends React.Component {
         <ScrollView style={styles.containerScroll}>
           <View style={styles.container}>
             <Text style={styles.titleTransaction}>
-              {I18N.t('YOUR_TRANSACTION_HISTORIC')} - {this.getCurrentCoinName()}
+              {I18N.t('YOUR_TRANSACTION_HISTORIC')} -{' '}
+              {this.getCurrentCoinName()}
             </Text>
             {this.renderSpinner()}
             {this.renderItems()}

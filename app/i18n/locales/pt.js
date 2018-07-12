@@ -184,5 +184,5 @@ export default {
   SUCCESS_ON_GENERATE_ADDRESS: 'Sucesso ao gerar endereço',
   YOUR_WORDS_PLACEHOLDER: 'Palavra',
   VALUE: 'Valor',
-  FORMAT_DATE: 'DD/MM/YYYY'
+  FORMAT_DATE: 'DD/MM/YYYY',
 };
