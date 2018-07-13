@@ -8,7 +8,7 @@ export const RenderColorCoinUtil = coinName => {
   switch (coinName) {
     case 'BTC':
       return BosonColors.$bosonMediumYellow;
-    case 'LUN':
+    case 'LNS':
       return BosonColors.$bosonLightGreen;
     case 'ETH':
       return BosonColors.$bosonLightGrey;

@@ -29,6 +29,8 @@ const LunesTabCoinsPrice = ({ tabCoinPrice }) => (
 const styles = StyleSheet.create({
   price: {
     fontSize: 8,
+    textAlign: 'center',
+    marginLeft: 10,
   },
 });
 

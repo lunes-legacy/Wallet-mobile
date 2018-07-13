@@ -8,6 +8,12 @@ import BosonColors from '../../native-base-theme/variables/bosonColor';
 import * as BalanceUtils from '../../utils/balance-utils';
 // import {getAmountOfCoins} from 'API COINS'
 
+// CONVERT DECIMALS
+import { MoneyClass } from '../../utils/moneyConvert';
+import { numeral } from '../../utils/numeral';
+
+const money = new MoneyClass();
+
 const FAKE_AMOUNT = 10000;
 
 // Requisição para API em ComponentWillMount e ComponentWillReceiveProps
@@ -40,7 +46,11 @@ class SideMenuFooter extends Component {
                 uri: this.renderIconCoin(),
               }}
             />
-            <Text style={styles2.text}>{` ${this.getBalance()}`}</Text>
+            <Text style={styles2.text}>
+              {numeral(money.conevertCoin('btc', this.getBalance())).format(
+                '0,0.00000000'
+              )}
+            </Text>
           </View>
         </View>
       </View>

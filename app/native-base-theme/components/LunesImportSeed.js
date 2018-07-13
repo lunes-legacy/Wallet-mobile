@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TextInput,
   View,
+  ScrollView,
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
@@ -47,58 +48,67 @@ export default class LunesImportSeed extends React.Component {
     return (
       <View>
         <LunesLogo size={40} />
-        <View style={styles.textCenter}>
-          <Text style={styles.textFastSafeSmart}>
-            {I18N.t('FAST_SAFE_SMART')}
-          </Text>
-          <Text>{I18N.t('IF_YOU_NOT_GENERATE_YOUR_SEED')}</Text>
-          <Text>{I18N.t('IF_YOU_NOT_HAVE_SEED_GENERATE')}</Text>
-          <Text style={styles.textYourSeedWords}>
-            {I18N.t('INSERT_YOURS_SEEDS')}
-          </Text>
-        </View>
-        <View style={styles.textArea}>
-          <TextInput
-            multiline={true}
-            underlineColorAndroid="rgba(0,0,0,0)"
-            onChangeText={seedWords => {
-              if (seedWords === '') {
-                this.props.clearSeedWords();
-              }
-              this.setState({ seedWords });
-            }}
-            style={styles.textInputArea}
-            numberOfLines={5}
-            value={this.state.seedWords || this.props.seedWords}
-          />
-        </View>
-        <View style={styles.importButton}>
-          <TouchableOpacity
-            onPress={() => {
-              this.generateNewSeed();
-            }}>
-            <LunesGradientButton text={I18N.t('GENERATE_NEW_SEED')} />
-          </TouchableOpacity>
-        </View>
 
-        <View>
-          <Button
-            rounded
-            block
-            success
-            style={styles.touchable}
-            onPress={() => this.importSeed()}>
-            <Text style={{ fontSize: 12 }}>{I18N.t('IMPORT_SEED')}</Text>
-          </Button>
-        </View>
+        <ScrollView>
+          <View style={styles.textCenter}>
+            <Text style={styles.textFastSafeSmart}>
+              {I18N.t('FAST_SAFE_SMART')}
+            </Text>
 
-        <View style={[styles.textCenter, styles.areaAddress]}>
-          <Text>{I18N.t('ADDRESS')}</Text>
-          <Text selectable={true} style={styles.outputAddress}>
-            {' '}
-            {this.props.address}{' '}
-          </Text>
-        </View>
+            <Text style={{ textAlign: 'center' }}>
+              {I18N.t('IF_YOU_NOT_GENERATE_YOUR_SEED')}
+            </Text>
+            <Text style={{ textAlign: 'center' }}>
+              {I18N.t('IF_YOU_NOT_HAVE_SEED_GENERATE')}
+            </Text>
+
+            <Text style={styles.textYourSeedWords}>
+              {I18N.t('INSERT_YOURS_SEEDS')}
+            </Text>
+          </View>
+          <View style={styles.textArea}>
+            <TextInput
+              multiline={true}
+              underlineColorAndroid="rgba(0,0,0,0)"
+              onChangeText={seedWords => {
+                if (seedWords === '') {
+                  this.props.clearSeedWords();
+                }
+                this.setState({ seedWords });
+              }}
+              style={styles.textInputArea}
+              numberOfLines={5}
+              value={this.state.seedWords || this.props.seedWords}
+            />
+          </View>
+          <View style={styles.importButton}>
+            <TouchableOpacity
+              onPress={() => {
+                this.generateNewSeed();
+              }}>
+              <LunesGradientButton text={I18N.t('GENERATE_NEW_SEED')} />
+            </TouchableOpacity>
+          </View>
+
+          <View>
+            <Button
+              rounded
+              block
+              success
+              style={styles.touchable}
+              onPress={() => this.importSeed()}>
+              <Text style={{ fontSize: 12 }}>{I18N.t('IMPORT_SEED')}</Text>
+            </Button>
+          </View>
+
+          <View style={[styles.textCenter, styles.areaAddress]}>
+            <Text>{I18N.t('ADDRESS')}</Text>
+            <Text selectable={true} style={styles.outputAddress}>
+              {' '}
+              {this.props.address}{' '}
+            </Text>
+          </View>
+        </ScrollView>
       </View>
     );
   }
@@ -125,7 +135,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textFastSafeSmart: {
-    fontSize: 25,
+    fontSize: 22,
     color: BosonColors.$bosonLightGreen,
     marginTop: 10,
     marginBottom: 10,
@@ -144,10 +154,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   touchable: {
-    width: Dimensions.get('window').width - 50,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 10,
     elevation: 0,
   },
   outputAddress: {

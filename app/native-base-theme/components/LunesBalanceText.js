@@ -4,6 +4,12 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import BosonColors from '../variables/bosonColor';
 
+// CONVERT DECIMALS
+import { MoneyClass } from '../../utils/moneyConvert';
+import { numeral } from '../../utils/numeral';
+
+const money = new MoneyClass();
+
 const LunesBalanceText = ({ balance, icon }) => (
   <View style={styles.container}>
     <View style={styles.containerInline}>
@@ -13,7 +19,9 @@ const LunesBalanceText = ({ balance, icon }) => (
           uri: icon,
         }}
       />
-      <Text style={styles.text}>{balance}</Text>
+      <Text style={styles.text}>
+        {numeral(money.conevertCoin('btc', balance)).format('0,0.00000000')}
+      </Text>
     </View>
   </View>
 );

@@ -168,12 +168,11 @@ export default {
   TRANSACTION: 'Transações',
   EMPTY_TRANSACTION: 'Nenhuma transação até o momento',
   YOUR_TRANSACTION_HISTORIC: 'Seu histórico de transações',
-  FAST_SAFE_SMART: 'Rapida, Segura e inteligente!',
-  IF_YOU_NOT_GENERATE_YOUR_SEED:
-    'Se você já gerou sua semenente, insira-a abaixo',
+  FAST_SAFE_SMART: 'Rápida, Segura e Inteligente!',
+  IF_YOU_NOT_GENERATE_YOUR_SEED: 'Se você já gerou sua seed, insira-a abaixo',
   IF_YOU_NOT_HAVE_SEED_GENERATE:
     'Se você não tiver uma seed para importar, gere a seed',
-  GENERATE_NEW_SEED: 'Gerar Nova Senha',
+  GENERATE_NEW_SEED: 'Gerar Nova Seed',
   IMPORT_SEED: 'Importar Seed',
   INSERT_YOURS_SEEDS: 'Insira suas SeedWords',
   ADDRESS: 'Endereço',

@@ -21,7 +21,9 @@ const renderFontSizeKPI = kpi => {
 const LunesTabCoinsKPI = ({ kpi }) => (
   <View style={styles.container}>
     <View style={{ paddingRight: 5 }}>{renderIconKPI(kpi.price.status)}</View>
-    <Text style={[renderFontSizeKPI(kpi)]}>{kpi.name}</Text>
+    <Text style={[renderFontSizeKPI(kpi)]}>
+      {kpi.name === 'LNS' ? 'LUNES' : kpi.name}
+    </Text>
   </View>
 );
 
