@@ -63,7 +63,7 @@ export default class LunesPaymentButton extends React.Component {
 
             <TouchableOpacity onPress={() => this.redirect('ReceivePayment')}>
               <View style={[styles.iconButtonOpened, { paddingRight: 50 }]}>
-              <LunesIconReceivePayment
+                <LunesIconReceivePayment
                   size={SIZE_ICON}
                   color={BosonColors.$bosonWhite}
                 />

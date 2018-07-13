@@ -9,13 +9,13 @@ export default {
     RANGE_MAX: 'RANGE_MAX',
   },
   STORAGE: {
-    storedUser: 'storedUser'
+    storedUser: 'storedUser',
   },
   SCREEN_NAMES: {
     pin: 'PIN',
     signin: 'Signin',
     main: 'Main',
-    importSeed: 'ImportSeed'
+    importSeed: 'ImportSeed',
   },
   PUBNUB: {
     channelDefault: 'Channel-192o23v9m',

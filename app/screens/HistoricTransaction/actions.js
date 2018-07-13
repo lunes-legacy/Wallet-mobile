@@ -17,7 +17,7 @@ const showTransactions = data => ({
 
 const selectCoin = currentCoinSelected => ({
   type: types.CURRENT_COIN_SELECTED,
-  currentCoinSelected
+  currentCoinSelected,
 });
 
 async function _getHistoric(user, balance, currentCoinSelected, dispatch) {

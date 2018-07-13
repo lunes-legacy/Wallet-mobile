@@ -73,19 +73,21 @@ export const clearError = () => ({
 export const redirectToPIN = () => dispatch => {
   try {
     dispatch(signinLoading());
-    AsyncStorage.getItem(GeneralConstants.STORAGE.storedUser).then((storedUser: string) => {
-      const user = JSON.parse(storedUser);
-      dispatch(storeUser());
-      dispatch(requestFinished());
-      dispatch(signinSuccess(user));
-      dispatch(storeUser(user));
-      dispatch(storeAddress(user.wallet));
-      if (user && !user.pinIsValidated) {
-        navigate(GeneralConstants.SCREEN_NAMES.pin);
-      } else {
-        navigate(GeneralConstants.SCREEN_NAMES.pin, { isLogged: true });
+    AsyncStorage.getItem(GeneralConstants.STORAGE.storedUser).then(
+      (storedUser: string) => {
+        const user = JSON.parse(storedUser);
+        dispatch(storeUser());
+        dispatch(requestFinished());
+        dispatch(signinSuccess(user));
+        dispatch(storeUser(user));
+        dispatch(storeAddress(user.wallet));
+        if (user && !user.pinIsValidated) {
+          navigate(GeneralConstants.SCREEN_NAMES.pin);
+        } else {
+          navigate(GeneralConstants.SCREEN_NAMES.pin, { isLogged: true });
+        }
       }
-    });
+    );
   } catch (error) {
     dispatch(requestFinished());
     AsyncStorage.removeItem(GeneralConstants.STORAGE.storedUser);
@@ -98,7 +100,10 @@ async function login(email, password, dispatch) {
   try {
     dispatch(signinLoading());
     const user = await LunesLib.users.login({ email, password });
-    AsyncStorage.setItem(GeneralConstants.STORAGE.storedUser, JSON.stringify(user));
+    AsyncStorage.setItem(
+      GeneralConstants.STORAGE.storedUser,
+      JSON.stringify(user)
+    );
 
     dispatch(requestFinished());
     dispatch(signinSuccess(user));

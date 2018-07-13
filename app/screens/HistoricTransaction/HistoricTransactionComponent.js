@@ -29,7 +29,7 @@ export default class HistoricTransaction extends React.Component {
     return items.map((item, index) => (
       <View key={index} style={styles.subAreaTransactions}>
         <View style={styles.itemTransaction}>
-          { item.type === 'RECEIVED' ? (
+          {item.type === 'RECEIVED' ? (
             <MaterialIcons
               name="arrow-upward"
               size={15}
@@ -41,7 +41,7 @@ export default class HistoricTransaction extends React.Component {
               size={15}
               color={bosonColor.$bosonLightRed}
             />
-          ) }
+          )}
 
           <Text style={styles.textFooterTransaction} numberOfLines={1}>
             {item.txid}
@@ -99,7 +99,7 @@ export default class HistoricTransaction extends React.Component {
             <View style={{ flexDirection: 'row' }}>
               <LunesTabCoins
                 ticker={this.props.ticker}
-                doAction={(tabCoin) => {
+                doAction={tabCoin => {
                   const { user, balance, doAction } = this.props;
                   doAction(user, balance, tabCoin.name);
                 }}
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   titleTransaction: {
     fontSize: 18,
     marginBottom: 40,
-    marginTop: 20
+    marginTop: 20,
   },
   subAreaTransactions: {
     marginTop: 5,
