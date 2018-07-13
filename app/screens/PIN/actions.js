@@ -1,9 +1,10 @@
 /* eslint-disable */
 import { AsyncStorage } from 'react-native';
+import LunesLib, { coins, services, networks } from 'lunes-lib';
 import types from '../../config/types';
 import { navigate } from '../../config/routes';
 import * as StoreSeed from '../../utils/store-seed';
-import LunesLib, { coins, services, networks } from 'lunes-lib';
+import GeneralConstants from '../../constants/general';
 
 async function generateAddress(currentUser, dispatch) {
   try {
@@ -23,6 +24,10 @@ async function generateAddress(currentUser, dispatch) {
           console.log(error);
         });
 
+      if (!currentUser.wallet.coin) {
+        currentUser.wallet.coin = {};
+      }
+
       if (!currentUser.wallet.coin.LNS) {
         currentUser.wallet.coin.LNS = {
           address: addressLNS,
@@ -38,12 +43,12 @@ async function generateAddress(currentUser, dispatch) {
       getBalance(currentUser.wallet.coin, currentUser, dispatch).catch(
         error => {
           dispatch(requestFinished());
-          navigate('Main');
+          navigate(GeneralConstants.SCREEN_NAMES.main);
         }
       );
     } else {
       dispatch(requestFinished());
-      navigate('Main');
+      navigate(GeneralConstants.SCREEN_NAMES.importSeed);
     }
   } catch (error) {
     throw error;
@@ -68,7 +73,7 @@ async function getBalance(walletCoins, currentUser, dispatch) {
       })
     );
     dispatch(requestFinished());
-    navigate('Main');
+    navigate(GeneralConstants.SCREEN_NAMES.main);
   } catch (error) {
     dispatch(requestFinished());
     throw error;
@@ -89,7 +94,7 @@ async function createPin(pin, currentUser, dispatch) {
     getBalance(addressGeneratedByMnemonic, currentUser, dispatch).catch(
       error => {
         dispatch(requestFinished());
-        navigate('Main');
+        navigate(GeneralConstants.SCREEN_NAMES.main);
       }
     );
 
@@ -97,8 +102,8 @@ async function createPin(pin, currentUser, dispatch) {
     dispatch(showDialogBackupSeed(currentUser.wallet.hash));
   } catch (error) {
     dispatch(requestFinished());
-    AsyncStorage.removeItem('storedUser');
-    navigate('Signin');
+    AsyncStorage.removeItem(GeneralConstants.STORAGE.storedUser);
+    navigate(GeneralConstants.SCREEN_NAMES.signin);
   }
 }
 
@@ -111,11 +116,14 @@ async function confirmPin(pin, currentUser, wordSeedWasViewed, dispatch) {
     currentUser.pinIsValidated = true;
     currentUser.wordSeedWasViewed = wordSeedWasViewed;
     try {
-      generateAddress(currentUser, dispatch);
+      generateAddress(currentUser, dispatch).catch(error => {
+        dispatch(requestFinished());
+        alert('error on generate address');
+      });
     } catch (error) {
       dispatch(requestFinished());
-      AsyncStorage.removeItem('storedUser');
-      navigate('Signin');
+      AsyncStorage.removeItem(GeneralConstants.STORAGE.storedUser);
+      navigate(GeneralConstants.SCREEN_NAMES.signin);
     }
   } catch (error) {
     dispatch(requestFinished());
@@ -140,8 +148,8 @@ export const requestValidPIN = (
   confirmPin(PIN, currentUser, wordSeedWasViewed, dispatch).catch(error => {
     dispatch(requestFinished());
     dispatch(showError(error));
-    AsyncStorage.removeItem('storedUser');
-    navigate('Signin');
+    AsyncStorage.removeItem(GeneralConstants.STORAGE.storedUser);
+    navigate(GeneralConstants.SCREEN_NAMES.signin);
   });
 };
 

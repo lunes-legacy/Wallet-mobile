@@ -1,8 +1,10 @@
 /* eslint-disable */
 import { AsyncStorage, Keyboard } from 'react-native';
 import LunesLib, { networks, services } from 'lunes-lib';
+import * as Keychain from 'react-native-keychain';
 import types from 'lunesmobilewallet/app/config/types';
 import { navigate } from 'lunesmobilewallet/app/config/routes';
+import GeneralConstants from '../../constants/general';
 
 const signinLoading = () => ({
   type: types.SIGNIN_LOADING,
@@ -71,7 +73,7 @@ export const clearError = () => ({
 export const redirectToPIN = () => dispatch => {
   try {
     dispatch(signinLoading());
-    AsyncStorage.getItem('storedUser').then((storedUser: string) => {
+    AsyncStorage.getItem(GeneralConstants.STORAGE.storedUser).then((storedUser: string) => {
       const user = JSON.parse(storedUser);
       dispatch(storeUser());
       dispatch(requestFinished());
@@ -79,15 +81,15 @@ export const redirectToPIN = () => dispatch => {
       dispatch(storeUser(user));
       dispatch(storeAddress(user.wallet));
       if (user && !user.pinIsValidated) {
-        navigate('PIN');
+        navigate(GeneralConstants.SCREEN_NAMES.pin);
       } else {
-        navigate('PIN', { isLogged: true });
+        navigate(GeneralConstants.SCREEN_NAMES.pin, { isLogged: true });
       }
     });
   } catch (error) {
     dispatch(requestFinished());
-    AsyncStorage.removeItem('storedUser');
-    navigate('Signin');
+    AsyncStorage.removeItem(GeneralConstants.STORAGE.storedUser);
+    navigate(GeneralConstants.SCREEN_NAMES.signin);
     throw error;
   }
 };
@@ -96,7 +98,7 @@ async function login(email, password, dispatch) {
   try {
     dispatch(signinLoading());
     const user = await LunesLib.users.login({ email, password });
-    AsyncStorage.setItem('storedUser', JSON.stringify(user));
+    AsyncStorage.setItem(GeneralConstants.STORAGE.storedUser, JSON.stringify(user));
 
     dispatch(requestFinished());
     dispatch(signinSuccess(user));
@@ -104,13 +106,13 @@ async function login(email, password, dispatch) {
     dispatch(storeAddress(user.wallet));
     Keyboard.dismiss();
     if (user && !user.pinIsValidated) {
-      navigate('PIN');
+      navigate(GeneralConstants.SCREEN_NAMES.pin);
     } else {
-      navigate('PIN', { isLogged: true });
+      navigate(GeneralConstants.SCREEN_NAMES.pin, { isLogged: true });
     }
   } catch (error) {
     dispatch(requestFinished());
-    AsyncStorage.removeItem('storedUser');
+    AsyncStorage.removeItem(GeneralConstants.STORAGE.storedUser);
     throw error;
   }
 }
@@ -121,8 +123,8 @@ export const requestLogin = values => {
     login(values.email, values.password, dispatch).catch(error => {
       dispatch(requestFinished());
       dispatch(signinError(error));
-      AsyncStorage.removeItem('storedUser');
-      navigate('Signin');
+      AsyncStorage.removeItem(GeneralConstants.STORAGE.storedUser);
+      navigate(GeneralConstants.SCREEN_NAMES.signin);
     });
   };
 };
@@ -137,16 +139,16 @@ async function createUser(userData, dispatch) {
       dispatch(signupSuccess(user));
       dispatch(storeUser(user));
       dispatch(storeAddress(user.wallet));
-      navigate('PIN');
+      navigate(GeneralConstants.SCREEN_NAMES.pin);
     } else {
       dispatch(signupError());
-      AsyncStorage.removeItem('storedUser');
-      navigate('Signin');
+      AsyncStorage.removeItem(GeneralConstants.STORAGE.storedUser);
+      navigate(GeneralConstants.SCREEN_NAMES.signin);
     }
   } catch (error) {
     dispatch(requestFinished());
-    AsyncStorage.removeItem('storedUser');
-    navigate('Signin');
+    AsyncStorage.removeItem(GeneralConstants.STORAGE.storedUser);
+    navigate(GeneralConstants.SCREEN_NAMES.signin);
     throw error;
   }
 }
@@ -165,8 +167,8 @@ export const requestSignup = values => {
     createUser(userData, dispatch).catch(error => {
       dispatch(requestFinished());
       dispatch(signupError(error));
-      AsyncStorage.removeItem('storedUser');
-      navigate('Signin');
+      AsyncStorage.removeItem(GeneralConstants.STORAGE.storedUser);
+      navigate(GeneralConstants.SCREEN_NAMES.signin);
     });
   };
 };
@@ -175,12 +177,13 @@ export const requestSignout = user => dispatch => {
   try {
     dispatch(signoutLoading());
     LunesLib.users.logout(user.accessToken);
-    AsyncStorage.removeItem('storedUser');
+    AsyncStorage.removeItem(GeneralConstants.STORAGE.storedUser);
+    Keychain.resetGenericPassword();
     dispatch(signoutSuccess());
-    navigate('Signin');
+    navigate(GeneralConstants.SCREEN_NAMES.signin);
   } catch (error) {
     dispatch(signoutError(error));
-    AsyncStorage.removeItem('storedUser');
-    navigate('Signin');
+    AsyncStorage.removeItem(GeneralConstants.STORAGE.storedUser);
+    navigate(GeneralConstants.SCREEN_NAMES.signin);
   }
 };

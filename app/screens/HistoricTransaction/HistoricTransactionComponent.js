@@ -4,10 +4,12 @@ import { coins } from 'lunes-lib';
 import { View, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import moment from 'moment';
 import _ from 'lodash';
-import { Container, Item, Input, Spinner, Text } from 'native-base';
+import { Container, Spinner, Text } from 'native-base';
 import FontAwesomeIcon from 'react-native-vector-icons/dist/FontAwesome';
+import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import I18N from '../../i18n/i18n';
 import bosonColor from '../../native-base-theme/variables/bosonColor';
+import LunesTabCoins from '../../native-base-theme/components/LunesTabCoins';
 
 const { width, height } = Dimensions.get('window');
 const widthSpacePadding = width - 40;
@@ -27,21 +29,28 @@ export default class HistoricTransaction extends React.Component {
     return items.map((item, index) => (
       <View key={index} style={styles.subAreaTransactions}>
         <View style={styles.itemTransaction}>
-          <Text style={styles.textFooterTransaction}>
-            {I18N.t('ID')} - {item.txid}
+          { item.type === 'RECEIVED' ? (
+            <MaterialIcons
+              name="arrow-upward"
+              size={15}
+              color={bosonColor.$bosonLightGreen}
+            />
+          ) : (
+            <MaterialIcons
+              name="arrow-downward"
+              size={15}
+              color={bosonColor.$bosonLightRed}
+            />
+          ) }
+
+          <Text style={styles.textFooterTransaction} numberOfLines={1}>
+            {item.txid}
           </Text>
-        </View>
-        <View style={styles.itemTransaction}>
+
           <Text style={styles.textFooterTransaction}>
-            {I18N.t('VALUE')} -{' '}
             {coins.util.unitConverter.toBitcoin(item.nativeAmount)}
           </Text>
         </View>
-        {item.type === 'RECEIVED' ? (
-          <View style={[styles.footerLine, styles.footerLineReceived]} />
-        ) : (
-          <View style={[styles.footerLine, styles.footerLinePending]} />
-        )}
       </View>
     ));
   }
@@ -87,6 +96,16 @@ export default class HistoricTransaction extends React.Component {
       <Container>
         <ScrollView style={styles.containerScroll}>
           <View style={styles.container}>
+            <View style={{ flexDirection: 'row' }}>
+              <LunesTabCoins
+                ticker={this.props.ticker}
+                doAction={(tabCoin) => {
+                  const { user, balance, doAction } = this.props;
+                  doAction(user, balance, tabCoin.name);
+                }}
+              />
+            </View>
+
             <Text style={styles.titleTransaction}>
               {I18N.t('YOUR_TRANSACTION_HISTORIC')} -{' '}
               {this.getCurrentCoinName()}
@@ -126,6 +145,7 @@ const styles = StyleSheet.create({
   titleTransaction: {
     fontSize: 18,
     marginBottom: 40,
+    marginTop: 20
   },
   subAreaTransactions: {
     marginTop: 5,
@@ -141,6 +161,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   textFooterTransaction: {
+    flex: 1,
     fontSize: 12,
   },
   footerLine: {

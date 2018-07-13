@@ -34,10 +34,10 @@ export const LunesTabCoinsConstant = [
     isActive: true, // to show or not on the device
     isCoinSelected: false, // to show chart or not
     price: {
-      displayPrice: '0.00',
-      displayPercent: '0%',
+      displayPrice: '$ 0.08',
+      displayPercent: '-',
       display: `${this.displayPrice} ${this.displayPercent}`,
-      percent: '0 (0%)',
+      percent: '0 (0.0%)',
       status: '-', // up, down
     },
   },

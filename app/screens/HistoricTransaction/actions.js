@@ -1,9 +1,6 @@
 /* eslint-disable */
-import LunesLib, { coins, networks, services } from 'lunes-lib';
+import { coins } from 'lunes-lib';
 import types from '../../config/types';
-import { navigate } from '../../config/routes';
-import I18N from '../../i18n/i18n';
-import generalConstant from '../../constants/general';
 
 const requestLoading = () => ({
   type: types.REQUEST_LOADING,
@@ -13,19 +10,14 @@ const requestFinished = () => ({
   type: types.REQUEST_FINISHED,
 });
 
-const showSuccess = transactionId => ({
-  type: types.SHOW_TRANSACTION_SUCCESS,
-  transactionId,
-});
-
-const showError = error => ({
-  type: types.ERROR_TRANSACTION_SUCCESS,
-  error,
-});
-
 const showTransactions = data => ({
   type: types.HISTORIC_TRANSACTION,
   history: data.history,
+});
+
+const selectCoin = currentCoinSelected => ({
+  type: types.CURRENT_COIN_SELECTED,
+  currentCoinSelected
 });
 
 async function _getHistoric(user, balance, currentCoinSelected, dispatch) {
@@ -47,6 +39,15 @@ async function _getHistoric(user, balance, currentCoinSelected, dispatch) {
 
 export const getHistoric = (user, balance, currentCoinSelected) => dispatch => {
   dispatch(requestLoading());
+  _getHistoric(user, balance, currentCoinSelected, dispatch).catch(error => {
+    dispatch(requestFinished());
+    console.log(error);
+  });
+};
+
+export const doAction = (user, balance, currentCoinSelected) => dispatch => {
+  dispatch(requestLoading());
+  dispatch(selectCoin(currentCoinSelected));
   _getHistoric(user, balance, currentCoinSelected, dispatch).catch(error => {
     dispatch(requestFinished());
     console.log(error);

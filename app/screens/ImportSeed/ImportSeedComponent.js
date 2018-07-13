@@ -30,7 +30,7 @@ export default class ImportSeed extends React.Component {
             navigate('Main');
           }}
           title={I18N.t('YOUR_WORDS')}
-          message={I18N.t(msgSuccess)}
+          message={`${I18N.t(msgSuccess)} - ${this.props.address}`}
           textConfirmation={I18N.t('OK')}
         />
       );

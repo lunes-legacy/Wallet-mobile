@@ -10,14 +10,10 @@ import {
   Dimensions,
 } from 'react-native';
 import { Container } from 'native-base';
-import { Logo, Base, Button } from '../../components';
 import LunesTabCoins from '../../native-base-theme/components/LunesTabCoins';
 import LunesBalanceText from '../../native-base-theme/components/LunesBalanceText';
 import LunesQuotation from '../../native-base-theme/components/LunesQuotation';
-import LunesLoading from '../../native-base-theme/components/LunesLoading';
 import LunesPaymentButton from '../../native-base-theme/components/LunesPaymentButton';
-import LunesChartMain from '../../native-base-theme/components/LunesChartMain';
-import LunesSwiper from '../../native-base-theme/components/LunesSwiper';
 import BosonColors from '../../native-base-theme/variables/bosonColor';
 import * as BalanceUtils from '../../utils/balance-utils';
 

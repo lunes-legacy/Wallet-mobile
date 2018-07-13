@@ -1,7 +1,7 @@
 // @flow
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getHistoric } from './actions';
+import { getHistoric, doAction } from './actions';
 
 import HistoricTransaction from './HistoricTransactionComponent';
 
@@ -12,9 +12,10 @@ const mapStateToProps = state => ({
   balance: state.auth.balance,
   currentCoinSelected: state.auth.currentCoinSelected,
   history: state.historicTransactionReducer.history,
+  ticker: state.historicDataReducer.ticker,
 });
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ getHistoric }, dispatch);
+  bindActionCreators({ getHistoric, doAction }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(
   HistoricTransaction

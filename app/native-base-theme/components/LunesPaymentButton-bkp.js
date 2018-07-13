@@ -52,7 +52,7 @@ export default class LunesPaymentButton extends React.Component {
               { flexDirection: 'row', justifyContent: 'space-between' },
             ]}>
             <TouchableOpacity onPress={() => this.redirect('SendPayment')}>
-              <View style={[styles.iconButtonOpened, { paddingLeft: 50 }]}>
+              <View style={styles.iconButtonOpened}>
                 <LunesIconSendPayment
                   size={SIZE_ICON}
                   color={BosonColors.$bosonWhite}
@@ -62,12 +62,34 @@ export default class LunesPaymentButton extends React.Component {
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => this.redirect('ReceivePayment')}>
-              <View style={[styles.iconButtonOpened, { paddingRight: 50 }]}>
-              <LunesIconReceivePayment
+              <View style={[styles.iconButtonOpened, { paddingLeft: 13 }]}>
+                <LunesIconReceivePayment
                   size={SIZE_ICON}
                   color={BosonColors.$bosonWhite}
                 />
                 <Text style={styles.textItemIcons}>{I18N.t('RECEIVE')}</Text>
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => this.redirect('AlertMessages')}>
+              <View style={[styles.iconButtonOpened, { paddingLeft: 70 }]}>
+                <Icon
+                  name="money"
+                  size={SIZE_ICON}
+                  color={BosonColors.$bosonWhite}
+                />
+                <Text style={styles.textItemIcons}>{I18N.t('BUY')}</Text>
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => this.redirect('AlertMessages')}>
+              <View style={[styles.iconButtonOpened, { paddingRight: 10 }]}>
+                <Icon
+                  name="line-chart"
+                  size={SIZE_ICON}
+                  color={BosonColors.$bosonWhite}
+                />
+                <Text style={styles.textItemIcons}>{I18N.t('SELL')}</Text>
               </View>
             </TouchableOpacity>
           </View>

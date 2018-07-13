@@ -1,12 +1,21 @@
 export default {
-  VERSION_CODE: '30',
-  VERSION_NAME: '1.30',
+  VERSION_CODE: '31',
+  VERSION_NAME: '1.31',
   PERIOD: {
     RANGE_1D: 'RANGE_1D',
     RANGE_1W: 'RANGE_1W',
     RANGE_1M: 'RANGE_1M',
     RANGE_1Y: 'RANGE_1Y',
     RANGE_MAX: 'RANGE_MAX',
+  },
+  STORAGE: {
+    storedUser: 'storedUser'
+  },
+  SCREEN_NAMES: {
+    pin: 'PIN',
+    signin: 'Signin',
+    main: 'Main',
+    importSeed: 'ImportSeed'
   },
   PUBNUB: {
     channelDefault: 'Channel-192o23v9m',

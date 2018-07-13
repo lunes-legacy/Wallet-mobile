@@ -1,8 +1,6 @@
 /* eslint-disable */
 import LunesLib from 'lunes-lib';
-import _ from 'lodash';
 import types from '../../config/types';
-import { navigate } from '../../config/routes';
 import I18N from '../../i18n/i18n';
 import rangeConstant from '../../constants/general';
 import CCC from '../../utils/ccc-streamer-utilities';
@@ -120,6 +118,11 @@ const changeColumnPeriod = range => ({
 
 const historicData = historic => ({
   type: types.HISTORIC_DATA,
+  historic,
+});
+
+const historicTransaction = historic => ({
+  type: types.HISTORIC_TRANSACTION,
   historic,
 });
 
