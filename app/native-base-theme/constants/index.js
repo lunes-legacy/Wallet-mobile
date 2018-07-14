@@ -19,26 +19,26 @@ export const AllCoins = {
     name: 'BTC',
     label: 'Bitcoin',
     initials: 'BTC',
-    price: 0
+    price: 0,
   },
   LTC: {
     name: 'LTC',
     label: 'Litecoin',
     initials: 'LTC',
-    price: 0
+    price: 0,
   },
   LNS: {
     name: 'LNS',
     label: 'Lunes',
     initials: 'LNS',
-    price: 0.08
+    price: 0.08,
   },
   ETH: {
     name: 'ETH',
     label: 'Ethereum',
     initials: 'ETH',
-    price: 0
-  }
+    price: 0,
+  },
 };
 
 export const LunesTabCoinsConstant = [

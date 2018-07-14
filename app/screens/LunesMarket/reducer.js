@@ -21,7 +21,11 @@ const initialState = {
     BTC: coinPair,
     ETH: coinPair,
     LTC: coinPair,
-    LNS: { ...coinPair, DISPLAYPRICE: `1 ${AllCoins.LNS.label} | ${AllCoins.LNS.price}`, PRICE: AllCoins.LNS.price },
+    LNS: {
+      ...coinPair,
+      DISPLAYPRICE: `1 ${AllCoins.LNS.label} | ${AllCoins.LNS.price}`,
+      PRICE: AllCoins.LNS.price,
+    },
   },
 };
 

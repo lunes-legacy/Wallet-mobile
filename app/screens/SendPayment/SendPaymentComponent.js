@@ -96,7 +96,7 @@ export default class SendPayment extends React.Component {
     this.state = {
       showToast: false,
       amountToSend: '0.00000000',
-      parcialValue: 0.00
+      parcialValue: 0.0,
     };
   }
 
@@ -107,7 +107,8 @@ export default class SendPayment extends React.Component {
   }
 
   getValueTotal(value) {
-    const currentPrice = this.props.ticker[this.props.currentCoinSelected].PRICE;
+    const currentPrice = this.props.ticker[this.props.currentCoinSelected]
+      .PRICE;
     let res = parseFloat(value) * currentPrice;
 
     if (res === 0) {
@@ -115,7 +116,7 @@ export default class SendPayment extends React.Component {
     }
 
     if (parseFloat(value) === 0) {
-      res = 0.00;
+      res = 0.0;
     }
 
     this.setState({ amountToSend: value, parcialValue: res });
@@ -123,9 +124,9 @@ export default class SendPayment extends React.Component {
 
   getBalanceTotal() {
     const { balanceData, currentCoinSelected } = this.props;
-    const balance = (balanceData[currentCoinSelected])
+    const balance = balanceData[currentCoinSelected]
       ? balanceData[currentCoinSelected].confirmed
-      : 0
+      : 0;
     return numeral(money.conevertCoin('btc', balance)).format('0,0.00000000');
   }
 
@@ -167,7 +168,8 @@ export default class SendPayment extends React.Component {
               <View style={{ flexDirection: 'row' }}>
                 <LunesTabCoins
                   ticker={this.props.ticker}
-                  doAction={this.props.doAction} />
+                  doAction={this.props.doAction}
+                />
               </View>
 
               {/* AMOUNT AVAIALABLE */}
@@ -195,7 +197,10 @@ export default class SendPayment extends React.Component {
                   </View>
                   <View>
                     <Text style={styles.text}>
-                      {this.props.ticker[this.props.currentCoinSelected].DISPLAYPRICE}
+                      {
+                        this.props.ticker[this.props.currentCoinSelected]
+                          .DISPLAYPRICE
+                      }
                     </Text>
                   </View>
                 </View>
@@ -211,7 +216,9 @@ export default class SendPayment extends React.Component {
                   maxLength={10}
                   keyboardType="numeric"
                   value={this.state.amountToSend}
-                  onChangeText={value => { this.getValueTotal(value) }}
+                  onChangeText={value => {
+                    this.getValueTotal(value);
+                  }}
                   placeholder={I18n.t('typeHere')}
                   underlineColorAndroid={'transparent'}
                   placeholderTextColor="rgba(255,255,255,0.7)"
@@ -221,7 +228,7 @@ export default class SendPayment extends React.Component {
               {/* AMOUNT COIN to TYPE */}
               <View style={styles.containerInner}>
                 <View style={{ flexDirection: 'row' }}>
-                  {/*<LunesPickerCountry selectable={false} />*/}
+                  {/* <LunesPickerCountry selectable={false} /> */}
                   <View style={styles.quotationAmount}>
                     <Text style={styles.textAmountToType}>
                       {I18n.t('VALUE_CURRENCY_LABEL')}

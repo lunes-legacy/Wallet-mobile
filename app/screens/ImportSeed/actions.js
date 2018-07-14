@@ -7,7 +7,10 @@ import * as StoreSeed from '../../utils/store-seed';
 
 async function getBalance(address, currentUser, dispatch) {
   try {
-    const balance = await services.wallet.lns.balance(address, networks.LNSTESTNET);
+    const balance = await services.wallet.lns.balance(
+      address,
+      networks.LNSTESTNET
+    );
     dispatch(storeBalanceLNSOnUser(balance.data));
   } catch (error) {
     throw error;

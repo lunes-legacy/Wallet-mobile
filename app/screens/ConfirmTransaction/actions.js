@@ -37,7 +37,6 @@ async function _createTransactionData(
   dispatch
 ) {
   try {
-
     const seed = await StoreSeed.retrieveSeed();
 
     // TRAZER A MOEDA CORRENTE
@@ -47,7 +46,7 @@ async function _createTransactionData(
       testnet: isTestNet(),
       toAddress,
       amount: coins.util.unitConverter.toSatoshi(amount),
-      fee: coins.util.unitConverter.toSatoshi(fee)
+      fee: coins.util.unitConverter.toSatoshi(fee),
     };
 
     const res = await coins.services.transaction(a).catch(error => {
@@ -88,14 +87,7 @@ async function _createTransactionData(
   }
 }
 
-async function _confirmPin(
-  pin,
-  currentUser,
-  toAddress,
-  amount,
-  fee,
-  dispatch
-) {
+async function _confirmPin(pin, currentUser, toAddress, amount, fee, dispatch) {
   try {
     const pinConfirmed = await LunesLib.users.confirmPin(
       { pin },
@@ -140,17 +132,19 @@ export const confirmTransactionSend = (
 };
 
 async function _getFee(coinSelected, dispatch) {
-  const fee = await coins.services.networkFees({
-    network: coinSelected.toLowerCase(),
-    testnet: isTestNet()
-  }).catch(error => {
-    throw error;
-  });
+  const fee = await coins.services
+    .networkFees({
+      network: coinSelected.toLowerCase(),
+      testnet: isTestNet(),
+    })
+    .catch(error => {
+      throw error;
+    });
   dispatch(requestFinished());
   dispatch(showFee(fee));
 }
 
-export const getFee = (coinSelected) => dispatch => {
+export const getFee = coinSelected => dispatch => {
   dispatch(requestLoading());
   _getFee(coinSelected, dispatch).catch(error => {
     dispatch(requestFinished());

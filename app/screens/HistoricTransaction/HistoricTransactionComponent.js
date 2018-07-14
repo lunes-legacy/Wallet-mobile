@@ -39,10 +39,7 @@ export default class HistoricTransaction extends React.Component {
 
   renderSubItems(items) {
     return items.map((item, index) => (
-      <View
-        key={index}
-        style={styles.subAreaTransactions}
-        >
+      <View key={index} style={styles.subAreaTransactions}>
         <View style={styles.itemTransaction}>
           {item.type === 'RECEIVED' ? (
             <MaterialIcons
@@ -66,9 +63,12 @@ export default class HistoricTransaction extends React.Component {
             )}
           </Text>
 
-          <Text style={styles.textFooterTransaction} numberOfLines={1} onPress={() => {
-          Linking.openURL(`https://blockexplorer.lunes.io/tx/${item.txid}`);
-        }}>
+          <Text
+            style={styles.textFooterTransaction}
+            numberOfLines={1}
+            onPress={() => {
+              Linking.openURL(`https://blockexplorer.lunes.io/tx/${item.txid}`);
+            }}>
             {item.txid}
           </Text>
         </View>

@@ -27,7 +27,7 @@ async function _getHistoric(user, balance, currentCoinSelected, dispatch) {
     const historicTransactions = await coins.services.history({
       address: address,
       network: currentCoinSelected,
-      testnet: generalConstant.TESTNET
+      testnet: generalConstant.TESTNET,
     });
     dispatch(requestFinished());
     if (historicTransactions && historicTransactions.data) {

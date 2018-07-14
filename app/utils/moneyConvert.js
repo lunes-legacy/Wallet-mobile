@@ -11,7 +11,7 @@ export class MoneyClass {
     } else if (to === 'wei') {
       return this.convertToWei(amount);
     }
-  }
+  };
 
   // Converte o valor em UNIS para LUNES
   convertToLunes = value => {

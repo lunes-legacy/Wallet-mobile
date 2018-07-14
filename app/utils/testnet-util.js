@@ -8,16 +8,16 @@ function isTestNet() {
 function networkTestNet(coin) {
   if (isTestNet()) {
     switch (coin.toLowerCase()) {
-      case "lns":
+      case 'lns':
         return networks.LNSTESTNET;
-      case "btc":
+      case 'btc':
         return networks.BTCTESTNET;
     }
   } else {
     switch (coin.toLowerCase()) {
-      case "lns":
+      case 'lns':
         return networks.LNS;
-      case "btc":
+      case 'btc':
         return networks.BTC;
     }
   }
