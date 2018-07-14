@@ -1,9 +1,9 @@
 /* eslint-disable */
-import LunesLib from 'lunes-lib';
+import LunesLib, { coins } from 'lunes-lib';
 import types from '../../config/types';
-import { navigate } from '../../config/routes';
 import I18N from '../../i18n/i18n';
-import generalConstant from '../../constants/general';
+import * as StoreSeed from '../../utils/store-seed';
+import { isTestNet } from '../../utils/testnet-util';
 
 const requestLoading = () => ({
   type: types.REQUEST_LOADING,
@@ -31,13 +31,33 @@ const showFee = fee => ({
 async function _createTransactionData(
   pin,
   currentUser,
-  senderAddress,
+  toAddress,
   amount,
   fee,
-  accessToken,
   dispatch
 ) {
   try {
+
+    const seed = await StoreSeed.retrieveSeed();
+
+    // TRAZER A MOEDA CORRENTE
+    const a = {
+      mnemonic: seed,
+      network: 'LNS',
+      testnet: isTestNet(),
+      toAddress,
+      amount: coins.util.unitConverter.toSatoshi(amount),
+      fee: coins.util.unitConverter.toSatoshi(fee)
+    };
+
+    const res = await coins.services.transaction(a).catch(error => {
+      throw error;
+    });
+
+    console.log(res);
+    return;
+
+    /*
     const obj = {
       email: currentUser.email,
       pin,
@@ -47,9 +67,10 @@ async function _createTransactionData(
       amount,
       fee,
     };
+
     const confirm = await LunesLib.coins.bitcoin.createTransaction(
       obj,
-      accessToken
+      ''
     );
     dispatch(requestFinished());
     dispatch(showSuccess(confirm));
@@ -59,8 +80,8 @@ async function _createTransactionData(
       amountToSend: amount,
       addressToSend: senderAddress,
       transactionId: confirm.txID,
-      status: generalConstant.STATUS_TRANSACTION.warning,
-    });
+      status: GeneralConstants.STATUS_TRANSACTION.warning,
+    });*/
   } catch (error) {
     dispatch(requestFinished());
     throw error;
@@ -70,7 +91,7 @@ async function _createTransactionData(
 async function _confirmPin(
   pin,
   currentUser,
-  senderAddress,
+  toAddress,
   amount,
   fee,
   dispatch
@@ -88,10 +109,9 @@ async function _confirmPin(
     _createTransactionData(
       pin,
       currentUser,
-      senderAddress,
+      toAddress,
       amount,
       fee,
-      currentUser.accessToken,
       dispatch
     ).catch(error => {
       dispatch(requestFinished());
@@ -106,12 +126,12 @@ async function _confirmPin(
 export const confirmTransactionSend = (
   pin,
   currentUser,
-  senderAddress,
+  toAddress,
   amount,
   fee
 ) => dispatch => {
   dispatch(requestLoading());
-  _confirmPin(pin, currentUser, senderAddress, amount, fee, dispatch).catch(
+  _confirmPin(pin, currentUser, toAddress, amount, fee, dispatch).catch(
     error => {
       dispatch(requestFinished());
       alert(I18N.t('ERROR_TO_CONFIRM_PIN'));
@@ -119,15 +139,20 @@ export const confirmTransactionSend = (
   );
 };
 
-async function _getFee(dispatch) {
-  const fee = await LunesLib.coins.getFees();
+async function _getFee(coinSelected, dispatch) {
+  const fee = await coins.services.networkFees({
+    network: coinSelected.toLowerCase(),
+    testnet: isTestNet()
+  }).catch(error => {
+    throw error;
+  });
   dispatch(requestFinished());
   dispatch(showFee(fee));
 }
 
-export const getFee = () => dispatch => {
+export const getFee = (coinSelected) => dispatch => {
   dispatch(requestLoading());
-  _getFee(dispatch).catch(error => {
+  _getFee(coinSelected, dispatch).catch(error => {
     dispatch(requestFinished());
     alert(I18N.t('ERROR_TO_GET_FEE'));
   });

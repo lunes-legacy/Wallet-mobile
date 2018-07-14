@@ -58,7 +58,7 @@ export default class ConfirmSend extends React.Component {
   // end TODO
 
   componentDidMount() {
-    this.props.getFee();
+    this.props.getFee(this.props.currentCoinSelected);
     const { state } = this.props.navigation;
     const amountToSend = state.params ? state.params.amountToSend : 0;
     const addressToSend = state.params ? state.params.addressToSend : 0;
@@ -79,7 +79,7 @@ export default class ConfirmSend extends React.Component {
   renderFeesPicker() {
     return this.state.fees.map(fee => {
       if (this.props.fee) {
-        const valueFee = this.toBitcoin(this.props.fee[fee.name]);
+        const valueFee = this.toBitcoin(this.props.fee.data[fee.name]);
         return (
           <Picker.Item
             label={`${fee.label} - ${valueFee}`}

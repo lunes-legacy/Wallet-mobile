@@ -1,6 +1,7 @@
 /* eslint-disable */
 import types from '../../config/types';
 import rangeConstant from '../../constants/general';
+import { AllCoins } from '../../native-base-theme/constants';
 
 const coinPair = {
   CHANGE: '',
@@ -20,7 +21,7 @@ const initialState = {
     BTC: coinPair,
     ETH: coinPair,
     LTC: coinPair,
-    LNS: { ...coinPair, DISPLAYPRICE: '1 LUNES | $ 0.08' },
+    LNS: { ...coinPair, DISPLAYPRICE: `1 ${AllCoins.LNS.label} | ${AllCoins.LNS.price}`, PRICE: AllCoins.LNS.price },
   },
 };
 

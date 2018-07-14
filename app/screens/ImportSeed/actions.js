@@ -2,13 +2,12 @@
 import { AsyncStorage } from 'react-native';
 import types from '../../config/types';
 import { coins, services, networks } from 'lunes-lib';
-import { TabHeading } from 'native-base';
 import { navigate } from '../../config/routes';
 import * as StoreSeed from '../../utils/store-seed';
 
 async function getBalance(address, currentUser, dispatch) {
   try {
-    const balance = await services.wallet.lns.balance(address, networks.LNS);
+    const balance = await services.wallet.lns.balance(address, networks.LNSTESTNET);
     dispatch(storeBalanceLNSOnUser(balance.data));
   } catch (error) {
     throw error;
@@ -30,12 +29,9 @@ async function generateAddressBySeedWords(
   dispatch
 ) {
   try {
-    /*const isValidMnemonic = await services.wallet.mnemonic.validateMnemonic(
-      seedWordsText
-    );*/
     StoreSeed.store(seedWordsText);
     const addressGeneratedByMnemonic = await services.wallet.lns.wallet
-      .newAddress(seedWordsText, {})
+      .newAddress(seedWordsText, networks.LNSTESTNET)
       .catch(error => {
         console.log(error);
       });

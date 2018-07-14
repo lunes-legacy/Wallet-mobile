@@ -21,7 +21,10 @@ import LunesTabCoins from '../../native-base-theme/components/LunesTabCoins';
 import LunesPickerCountry from '../../native-base-theme/components/LunesPickerCountry';
 import { navigate } from '../../config/routes';
 import I18n from '../../i18n/i18n';
-import SatoshiBTC from '../../utils/btcConverter';
+import { MoneyClass } from '../../utils/moneyConvert';
+import { numeral } from '../../utils/numeral';
+
+const money = new MoneyClass();
 
 const styles = StyleSheet.create({
   container: {
@@ -93,6 +96,7 @@ export default class SendPayment extends React.Component {
     this.state = {
       showToast: false,
       amountToSend: '0.00000000',
+      parcialValue: 0.00
     };
   }
 
@@ -102,19 +106,27 @@ export default class SendPayment extends React.Component {
     }
   }
 
-  getQuotationAmount() {
-    if (
-      this.props.displayPriceBTC &&
-      this.props.displayPriceBTC.DISPLAYPRICE &&
-      this.props.balanceData &&
-      this.props.balanceData.confirmed_balance > 0
-    ) {
-      const btc =
-        this.props.displayPriceBTC.DISPLAYPRICE *
-        this.props.balanceData.confirmed_balance;
-      return btc.toFixed(2);
+  getValueTotal(value) {
+    const currentPrice = this.props.ticker[this.props.currentCoinSelected].PRICE;
+    let res = parseFloat(value) * currentPrice;
+
+    if (res === 0) {
+      res = currentPrice;
     }
-    return '0.00';
+
+    if (parseFloat(value) === 0) {
+      res = 0.00;
+    }
+
+    this.setState({ amountToSend: value, parcialValue: res });
+  }
+
+  getBalanceTotal() {
+    const { balanceData, currentCoinSelected } = this.props;
+    const balance = (balanceData[currentCoinSelected])
+      ? balanceData[currentCoinSelected].confirmed
+      : 0
+    return numeral(money.conevertCoin('btc', balance)).format('0,0.00000000');
   }
 
   redirectToQRCodeScreen() {
@@ -153,7 +165,9 @@ export default class SendPayment extends React.Component {
 
               {/* TAB COINS */}
               <View style={{ flexDirection: 'row' }}>
-                {/* <LunesTabCoins doAction={this.props.chooseCoinAction} /> */}
+                <LunesTabCoins
+                  ticker={this.props.ticker}
+                  doAction={this.props.doAction} />
               </View>
 
               {/* AMOUNT AVAIALABLE */}
@@ -176,14 +190,12 @@ export default class SendPayment extends React.Component {
                       style={{ paddingRight: 10 }}
                     />
                     <Text style={styles.textAmount}>
-                      {this.props.balanceData
-                        ? this.props.balanceData.confirmed_balance
-                        : 0}
+                      {this.getBalanceTotal()}
                     </Text>
                   </View>
                   <View>
                     <Text style={styles.text}>
-                      {this.props.displayPriceBTC.DISPLAYPRICE}
+                      {this.props.ticker[this.props.currentCoinSelected].DISPLAYPRICE}
                     </Text>
                   </View>
                 </View>
@@ -196,10 +208,10 @@ export default class SendPayment extends React.Component {
                 </Text>
                 <TextInput
                   style={styles.inputText}
-                  maxLength={9}
+                  maxLength={10}
                   keyboardType="numeric"
                   value={this.state.amountToSend}
-                  onChangeText={value => this.setState({ amountToSend: value })}
+                  onChangeText={value => { this.getValueTotal(value) }}
                   placeholder={I18n.t('typeHere')}
                   underlineColorAndroid={'transparent'}
                   placeholderTextColor="rgba(255,255,255,0.7)"
@@ -209,13 +221,13 @@ export default class SendPayment extends React.Component {
               {/* AMOUNT COIN to TYPE */}
               <View style={styles.containerInner}>
                 <View style={{ flexDirection: 'row' }}>
-                  <LunesPickerCountry selectable={false} />
+                  {/*<LunesPickerCountry selectable={false} />*/}
                   <View style={styles.quotationAmount}>
                     <Text style={styles.textAmountToType}>
                       {I18n.t('VALUE_CURRENCY_LABEL')}
                     </Text>
                     <Text style={styles.textQuotationAmount}>
-                      {I18n.t('CURRENCY_USER')} {this.getQuotationAmount()}
+                      {I18n.t('CURRENCY_USER')} {this.state.parcialValue}
                     </Text>
                   </View>
                 </View>

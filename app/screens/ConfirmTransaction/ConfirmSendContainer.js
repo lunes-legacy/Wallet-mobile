@@ -12,6 +12,7 @@ const mapStateToProps = state => ({
   loading: state.confirmTransactionReducer.loading,
   error: state.authSMS.error,
   fee: state.confirmTransactionReducer.fee,
+  currentCoinSelected: state.auth.currentCoinSelected,
 });
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ confirmTransactionSend, getFee }, dispatch);

@@ -1,6 +1,7 @@
 export default {
   VERSION_CODE: '31',
   VERSION_NAME: '1.31',
+  TESTNET: true,
   PERIOD: {
     RANGE_1D: 'RANGE_1D',
     RANGE_1W: 'RANGE_1W',

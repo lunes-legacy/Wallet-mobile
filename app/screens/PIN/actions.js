@@ -5,6 +5,7 @@ import types from '../../config/types';
 import { navigate } from '../../config/routes';
 import * as StoreSeed from '../../utils/store-seed';
 import GeneralConstants from '../../constants/general';
+import { networkTestNet } from '../../utils/testnet-util';
 
 async function generateAddress(currentUser, dispatch) {
   try {
@@ -13,16 +14,20 @@ async function generateAddress(currentUser, dispatch) {
       dispatch(setSeedOnUserInfo(seed));
 
       const addressBTC = await services.wallet.btc.wallet
-        .newAddress(seed, networks.BTC)
+        .newAddress(seed, networkTestNet('btc'))
         .catch(error => {
           console.log(error);
         });
 
       const addressLNS = await services.wallet.lns.wallet
-        .newAddress(seed, networks.LNS)
+        .newAddress(seed, networkTestNet('lns'))
         .catch(error => {
           console.log(error);
         });
+
+      if (!currentUser.wallet) {
+        currentUser.wallet = {};
+      }
 
       if (!currentUser.wallet.coin) {
         currentUser.wallet.coin = {};
@@ -59,11 +64,11 @@ async function getBalance(walletCoins, currentUser, dispatch) {
   try {
     const balanceLNS = await services.wallet.lns.balance(
       walletCoins.LNS.address,
-      networks.LNS
+      networkTestNet('lns')
     );
     const balanceBTC = await services.wallet.btc.balance(
       walletCoins.BTC.address,
-      networks.BTC
+      networkTestNet('btc')
     );
     dispatch(confirmSuccess(currentUser));
     dispatch(
