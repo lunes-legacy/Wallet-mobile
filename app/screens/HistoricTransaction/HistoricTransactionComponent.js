@@ -13,6 +13,7 @@ import _ from 'lodash';
 import { Container, Spinner, Text } from 'native-base';
 import FontAwesomeIcon from 'react-native-vector-icons/dist/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
+import EvilIcons from 'react-native-vector-icons/dist/EvilIcons';
 import I18N from '../../i18n/i18n';
 import bosonColor from '../../native-base-theme/variables/bosonColor';
 import LunesTabCoins from '../../native-base-theme/components/LunesTabCoins';
@@ -69,6 +70,7 @@ export default class HistoricTransaction extends React.Component {
             onPress={() => {
               Linking.openURL(`https://blockexplorer.lunes.io/tx/${item.txid}`);
             }}>
+            <EvilIcons color={"#fff"} name="external-link" size={15} />
             {item.txid}
           </Text>
         </View>

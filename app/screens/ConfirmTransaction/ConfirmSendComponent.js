@@ -170,7 +170,8 @@ export default class ConfirmSend extends React.Component {
                 this.props.user,
                 this.state.addressToSend,
                 this.state.amountToSend,
-                this.state.feeSelected
+                this.state.feeSelected,
+                this.props.currentCoinSelected
               );
             }}
           />

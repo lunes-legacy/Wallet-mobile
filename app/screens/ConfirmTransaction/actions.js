@@ -4,6 +4,8 @@ import types from '../../config/types';
 import I18N from '../../i18n/i18n';
 import * as StoreSeed from '../../utils/store-seed';
 import { isTestNet } from '../../utils/testnet-util';
+import GeneralConstants from '../../constants/general';
+import { navigate } from '../../config/routes';
 
 const requestLoading = () => ({
   type: types.REQUEST_LOADING,
@@ -34,60 +36,42 @@ async function _createTransactionData(
   toAddress,
   amount,
   fee,
+  currentCoinSelected,
   dispatch
 ) {
   try {
     const seed = await StoreSeed.retrieveSeed();
 
-    // TRAZER A MOEDA CORRENTE
-    const a = {
+    const obj = {
       mnemonic: seed,
-      network: 'LNS',
+      network: currentCoinSelected,
       testnet: isTestNet(),
       toAddress,
       amount: coins.util.unitConverter.toSatoshi(amount),
       fee: coins.util.unitConverter.toSatoshi(fee),
     };
 
-    const res = await coins.services.transaction(a).catch(error => {
+    const result = await coins.services.transaction(obj).catch(error => {
       throw error;
     });
 
-    console.log(res);
-    return;
-
-    /*
-    const obj = {
-      email: currentUser.email,
-      pin,
-      mnemonic: currentUser.wallet.hash,
-      senderAddress: currentUser.wallet.coins[0].addresses[0].address,
-      receivingAddress: senderAddress,
-      amount,
-      fee,
-    };
-
-    const confirm = await LunesLib.coins.bitcoin.createTransaction(
-      obj,
-      ''
-    );
     dispatch(requestFinished());
-    dispatch(showSuccess(confirm));
+    dispatch(showSuccess(result));
     navigate('NoticeNotification', {
       title: I18N.t('COMPLETED'),
       userName: currentUser.fullname,
       amountToSend: amount,
-      addressToSend: senderAddress,
-      transactionId: confirm.txID,
+      addressToSend: toAddress,
+      transactionId: result.data.txID,
       status: GeneralConstants.STATUS_TRANSACTION.warning,
-    });*/
+    });
   } catch (error) {
     dispatch(requestFinished());
     throw error;
   }
 }
 
-async function _confirmPin(pin, currentUser, toAddress, amount, fee, dispatch) {
+async function _confirmPin(pin, currentUser, toAddress, amount, fee, currentCoinSelected, dispatch) {
   try {
     const pinConfirmed = await LunesLib.users.confirmPin(
       { pin },
@@ -104,6 +88,7 @@ async function _confirmPin(pin, currentUser, toAddress, amount, fee, dispatch) {
       toAddress,
       amount,
       fee,
+      currentCoinSelected,
       dispatch
     ).catch(error => {
       dispatch(requestFinished());
@@ -120,10 +105,11 @@ export const confirmTransactionSend = (
   currentUser,
   toAddress,
   amount,
-  fee
+  fee,
+  currentCoinSelected
 ) => dispatch => {
   dispatch(requestLoading());
-  _confirmPin(pin, currentUser, toAddress, amount, fee, dispatch).catch(
+  _confirmPin(pin, currentUser, toAddress, amount, fee, currentCoinSelected, dispatch).catch(
     error => {
       dispatch(requestFinished());
       alert(I18N.t('ERROR_TO_CONFIRM_PIN'));
