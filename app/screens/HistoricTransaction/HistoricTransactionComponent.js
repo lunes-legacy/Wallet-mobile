@@ -70,7 +70,7 @@ export default class HistoricTransaction extends React.Component {
             onPress={() => {
               Linking.openURL(`https://blockexplorer.lunes.io/tx/${item.txid}`);
             }}>
-            <EvilIcons color={"#fff"} name="external-link" size={15} />
+            <EvilIcons color={'#fff'} name="external-link" size={15} />
             {item.txid}
           </Text>
         </View>

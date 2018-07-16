@@ -71,7 +71,15 @@ async function _createTransactionData(
   }
 }
 
-async function _confirmPin(pin, currentUser, toAddress, amount, fee, currentCoinSelected, dispatch) {
+async function _confirmPin(
+  pin,
+  currentUser,
+  toAddress,
+  amount,
+  fee,
+  currentCoinSelected,
+  dispatch
+) {
   try {
     const pinConfirmed = await LunesLib.users.confirmPin(
       { pin },
@@ -109,12 +117,18 @@ export const confirmTransactionSend = (
   currentCoinSelected
 ) => dispatch => {
   dispatch(requestLoading());
-  _confirmPin(pin, currentUser, toAddress, amount, fee, currentCoinSelected, dispatch).catch(
-    error => {
-      dispatch(requestFinished());
-      alert(I18N.t('ERROR_TO_CONFIRM_PIN'));
-    }
-  );
+  _confirmPin(
+    pin,
+    currentUser,
+    toAddress,
+    amount,
+    fee,
+    currentCoinSelected,
+    dispatch
+  ).catch(error => {
+    dispatch(requestFinished());
+    alert(I18N.t('ERROR_TO_CONFIRM_PIN'));
+  });
 };
 
 async function _getFee(coinSelected, dispatch) {
