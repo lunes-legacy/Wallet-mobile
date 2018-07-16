@@ -12,12 +12,16 @@ function networkTestNet(coin) {
         return networks.LNSTESTNET;
       case 'btc':
         return networks.BTCTESTNET;
+      default:
+        return false;
     }
   } else {
     switch (coin.toLowerCase()) {
       case 'lns':
         return networks.LNS;
       case 'btc':
+        return networks.BTC;
+      default:
         return networks.BTC;
     }
   }
