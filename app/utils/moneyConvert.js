@@ -10,44 +10,43 @@ export class MoneyClass {
       return this.convertToEth(amount);
     } else if (to === 'wei') {
       return this.convertToWei(amount);
-    } else {
-      return amount;
     }
+    return amount;
   };
 
   // Converte o valor em UNIS para LUNES
   convertToLunes = value => {
-    value = value.toString();
-    return coins.util.unitConverter.toBitcoin(value);
+    const newValue = value.toString();
+    return coins.util.unitConverter.toBitcoin(newValue);
   };
 
   // Converte o valor em LUNES para UNIS
   convertToUnis = value => {
-    value = value.toString();
-    return coins.util.unitConverter.toSatoshi(value);
+    const newValue = value.toString();
+    return coins.util.unitConverter.toSatoshi(newValue);
   };
 
   // Converte o valor em satoshis para BTC
   convertToBtc = value => {
     value = value.toString();
-    return coins.util.unitConverter.toBitcoin(value);
+    return coins.util.unitConverter.toBitcoin(newValue);
   };
 
   // Converte o valor em BTC para satoshis
   convertToSatoshi = value => {
-    value = value.toString();
-    return coins.util.unitConverter.toSatoshi(value);
+    const newValue = value.toString();
+    return coins.util.unitConverter.toSatoshi(newValue);
   };
 
   // Converte o valor em Wei para ETH
   convertToEth = value => {
-    value = value.toString();
-    return coins.util.unitConverter.toEth(value);
+    const newValue = value.toString();
+    return coins.util.unitConverter.toEth(newValue);
   };
 
   // Converte o valor em ETH para Wei
   convertToWei = value => {
-    value = value.toString();
-    return coins.util.unitConverter.toWei(value);
+    const newValue = value.toString();
+    return coins.util.unitConverter.toWei(newValue);
   };
 }
