@@ -25,6 +25,7 @@ import { ConfirmSend } from 'lunesmobilewallet/app/screens/ConfirmTransaction';
 import { Profile } from 'lunesmobilewallet/app/screens/Profile';
 import { Roadmap } from 'lunesmobilewallet/app/screens/Roadmap';
 import { AlertMessages } from 'lunesmobilewallet/app/screens/AlertMessages';
+import { LeasingStart } from 'lunesmobilewallet/app/screens/LeasingStart';
 import BosonColors from 'lunesmobilewallet/app/native-base-theme/variables/bosonColor';
 import I18N from 'lunesmobilewallet/app/i18n/i18n';
 
@@ -208,6 +209,19 @@ const RootNavigator = StackNavigator(
         headerStyle: {
           backgroundColor: BosonColors.$bosonLightGreen,
           elevation: 20,
+        },
+        headerLeft: customHeader(navigation),
+      }),
+    },
+    // LEASING
+    LeasingStart: {
+      screen: LeasingStart,
+      navigationOptions: ({ navigation, screenProps }) => ({
+        title: I18N.t('LEASING_BT_START'),
+        headerTintColor: '#fff',
+        headerStyle: {
+          backgroundColor: BosonColors.$bosonPrimary,
+          elevation: 0,
         },
         headerLeft: customHeader(navigation),
       }),
