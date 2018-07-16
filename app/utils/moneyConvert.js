@@ -10,6 +10,8 @@ export class MoneyClass {
       return this.convertToEth(amount);
     } else if (to === 'wei') {
       return this.convertToWei(amount);
+    } else {
+      return amount;
     }
   };
 
