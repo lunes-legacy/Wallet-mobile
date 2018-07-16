@@ -28,7 +28,7 @@ export class MoneyClass {
 
   // Converte o valor em satoshis para BTC
   convertToBtc = value => {
-    value = value.toString();
+    const newValue = value.toString();
     return coins.util.unitConverter.toBitcoin(newValue);
   };
 
