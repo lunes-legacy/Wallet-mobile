@@ -217,7 +217,7 @@ const RootNavigator = StackNavigator(
     LeasingStart: {
       screen: LeasingStart,
       navigationOptions: ({ navigation, screenProps }) => ({
-        title: I18N.t('LEASING_BT_START'),
+        title: '',
         headerTintColor: '#fff',
         headerStyle: {
           backgroundColor: BosonColors.$bosonPrimary,

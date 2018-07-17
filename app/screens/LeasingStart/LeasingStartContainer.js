@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import LeasingStart from './LeasingStartComponent';
 
 const mapStateToProps = state => ({
-  resume: state.leasingReducer.resume,
+  balanceData: state.auth.balance.LNS.confirmed,
 });
 
 // const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch);

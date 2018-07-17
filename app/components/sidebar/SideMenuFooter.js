@@ -60,9 +60,10 @@ class SideMenuFooter extends Component {
 
 const styles2 = StyleSheet.create({
   footerContainer: {
+    backgroundColor: 'rgba(0,0,0,.1)',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     height: 50,
   },
   rightBalance: {
@@ -88,4 +89,7 @@ const styles2 = StyleSheet.create({
   },
 });
 
-export default connect(null, null)(SideMenuFooter);
+export default connect(
+  null,
+  null
+)(SideMenuFooter);
