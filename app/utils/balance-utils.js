@@ -22,6 +22,7 @@ function getIconCoin(currentCoinSelected) {
 
 async function prepareObjectWallet(seed, currentUser) {
   try {
+    const currentUserCloned = JSON.parse(JSON.stringify(currentUser));
     const addressBTC = await services.wallet.btc.wallet
       .newAddress(seed, networkTestNet('btc'))
       .catch(error => {
@@ -37,27 +38,27 @@ async function prepareObjectWallet(seed, currentUser) {
     AsyncStorage.setItem('addressLunesUser', JSON.stringify(addressLNS));
     AsyncStorage.setItem('addressBitcoinUser', JSON.stringify(addressBTC));
 
-    if (!currentUser.wallet) {
-      currentUser.wallet = {};
+    if (!currentUserCloned.wallet) {
+      currentUserCloned.wallet = {};
     }
 
-    if (!currentUser.wallet.coin) {
-      currentUser.wallet.coin = {};
+    if (!currentUserCloned.wallet.coin) {
+      currentUserCloned.wallet.coin = {};
     }
 
-    if (!currentUser.wallet.coin.LNS) {
-      currentUser.wallet.coin.LNS = {
+    if (!currentUserCloned.wallet.coin.LNS) {
+      currentUserCloned.wallet.coin.LNS = {
         address: addressLNS,
       };
     }
 
-    if (!currentUser.wallet.coin.BTC) {
-      currentUser.wallet.coin.BTC = {
+    if (!currentUserCloned.wallet.coin.BTC) {
+      currentUserCloned.wallet.coin.BTC = {
         address: addressBTC,
       };
     }
 
-    return currentUser.wallet;
+    return currentUserCloned.wallet;
   } catch (error) {
     throw error;
   }
