@@ -95,9 +95,7 @@ export default class ReceivePayment extends React.Component {
               }}
             />
           </View>
-          <Text style={styles.titleReceivePayment}>
-            {' '}
-          </Text>
+          <Text style={styles.titleReceivePayment}> </Text>
           <View style={styles.wrapperQRCode}>
             <QRCode
               value={address}
@@ -107,7 +105,9 @@ export default class ReceivePayment extends React.Component {
             />
           </View>
 
-          <Text style={styles.input}>{I18N.t('ADDRESS')} {this.getInitialCoinName()}</Text>
+          <Text style={styles.input}>
+            {I18N.t('ADDRESS')} {this.getInitialCoinName()}
+          </Text>
 
           <Text style={styles.input} selectable={true}>
             {address}

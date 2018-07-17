@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   container2: {
     flex: 1,
     margin: 0,
-    padding: 0
+    padding: 0,
   },
   preview: {
     flex: 1,
@@ -85,7 +85,9 @@ export default class QRCode extends React.Component {
         <View style={styles.container2}>
           <Camera
             permissionDialogTitle={'Permission to use camera'}
-            permissionDialogMessage={'We need your permission to use your camera phone'}
+            permissionDialogMessage={
+              'We need your permission to use your camera phone'
+            }
             style={styles.preview}
             onBarCodeRead={e => {
               this.onSuccess(e);

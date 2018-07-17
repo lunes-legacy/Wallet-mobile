@@ -5,7 +5,10 @@ import types from '../../config/types';
 import { navigate } from '../../config/routes';
 import * as StoreSeed from '../../utils/store-seed';
 import GeneralConstants from '../../constants/general';
-import { prepareObjectWallet, getAddressAndBalance } from '../../utils/balance-utils';
+import {
+  prepareObjectWallet,
+  getAddressAndBalance,
+} from '../../utils/balance-utils';
 
 async function generateAddress(currentUser, dispatch) {
   try {
@@ -13,9 +16,11 @@ async function generateAddress(currentUser, dispatch) {
     if (seed) {
       dispatch(setSeedOnUserInfo(seed));
 
-      currentUser.wallet = await prepareObjectWallet(seed, currentUser).catch(error => {
-        return null;
-      });
+      currentUser.wallet = await prepareObjectWallet(seed, currentUser).catch(
+        error => {
+          return null;
+        }
+      );
 
       if (!currentUser.wallet) {
         alert('error on prepare wallet');

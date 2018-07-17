@@ -3,14 +3,19 @@ import types from '../../config/types';
 import { services } from 'lunes-lib';
 import { navigate } from '../../config/routes';
 import * as StoreSeed from '../../utils/store-seed';
-import { prepareObjectWallet, getAddressAndBalance } from '../../utils/balance-utils';
+import {
+  prepareObjectWallet,
+  getAddressAndBalance,
+} from '../../utils/balance-utils';
 import GeneralConstants from '../../constants/general';
 
 async function getBalance(walletCoins, currentUser, dispatch) {
   try {
-    const addressAndBalance = await getAddressAndBalance(walletCoins).catch(error => {
-      throw error;
-    });
+    const addressAndBalance = await getAddressAndBalance(walletCoins).catch(
+      error => {
+        throw error;
+      }
+    );
     dispatch(showSuccessOnImportSeed('SUCCESS_ON_GENERATE_ADDRESS'));
     dispatch(storeBalanceOnUser(addressAndBalance));
     dispatch(requestFinished());
@@ -39,7 +44,10 @@ async function generateAddressBySeedWords(
     StoreSeed.store(seedWordsText);
     dispatch(setSeedOnUserInfo(seedWordsText));
 
-    currentUser.wallet = await prepareObjectWallet(seedWordsText, currentUser).catch(error => {
+    currentUser.wallet = await prepareObjectWallet(
+      seedWordsText,
+      currentUser
+    ).catch(error => {
       return null;
     });
 
@@ -48,12 +56,10 @@ async function generateAddressBySeedWords(
       return;
     }
 
-    getBalance(currentUser.wallet.coin, currentUser, dispatch).catch(
-      error => {
-        dispatch(requestFinished());
-        navigate(GeneralConstants.SCREEN_NAMES.main);
-      }
-    );
+    getBalance(currentUser.wallet.coin, currentUser, dispatch).catch(error => {
+      dispatch(requestFinished());
+      navigate(GeneralConstants.SCREEN_NAMES.main);
+    });
   } catch (error) {
     throw error;
   }

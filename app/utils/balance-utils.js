@@ -84,5 +84,4 @@ async function getAddressAndBalance(walletCoins) {
   }
 }
 
-
 export { getBalance, getIconCoin, prepareObjectWallet, getAddressAndBalance };
