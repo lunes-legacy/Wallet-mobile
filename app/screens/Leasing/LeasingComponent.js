@@ -123,7 +123,15 @@ export default class Leasing extends React.Component {
             <Text style={{ color: '#fff', fontSize: 10 }}>
               {new Date(obj.date).toLocaleDateString()}
             </Text>
-            <Text style={{ color: '#fff', fontSize: 12 }}>{obj.txid}</Text>
+            <Text
+              style={{ color: '#fff', fontSize: 12 }}
+              onPress={() => {
+                Linking.openURL(
+                  `https://blockexplorer.lunes.io/tx/${obj.txid}`
+                );
+              }}>
+              {obj.txid}
+            </Text>
             <Text style={styles.lunesAmount}>{nativeAmount} LUNES</Text>
           </View>
           <View style={{ flexDirection: 'column' }}>
@@ -161,7 +169,7 @@ export default class Leasing extends React.Component {
                   fontSize: 24,
                   color: bosonColor.$bosonLightGreen,
                 }}>
-                {this.formatStyleLunes(this.props.resume.available)}
+                {this.formatStyleLunes(this.props.balanceData)}
               </Text>
             </View>
             <View
