@@ -37,6 +37,7 @@
     "lodash": "^4.17.4",
     "lunes-lib": "git://github.com/Lunes-platform/lunes-lib.git#react-native",
     "native-base": "^2.3.5",
+    "numeral": "^2.0.6",
     "prop-types": "^15.6.0",
     "pubnub": "^4.20.0",
     "pubnub-react": "^1.2.0",
@@ -65,8 +66,7 @@
     "redux-persist": "^3.5.0",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
-    "socket.io-client": "^2.0.4",
-    "numeral": "^2.0.6"
+    "socket.io-client": "^2.0.4"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

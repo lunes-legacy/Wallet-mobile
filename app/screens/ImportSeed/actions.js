@@ -1,18 +1,22 @@
 /* eslint-disable */
-import { AsyncStorage } from 'react-native';
 import types from '../../config/types';
-import { coins, services, networks } from 'lunes-lib';
+import { services } from 'lunes-lib';
 import { navigate } from '../../config/routes';
 import * as StoreSeed from '../../utils/store-seed';
+import { prepareObjectWallet, getAddressAndBalance } from '../../utils/balance-utils';
+import GeneralConstants from '../../constants/general';
 
-async function getBalance(address, currentUser, dispatch) {
+async function getBalance(walletCoins, currentUser, dispatch) {
   try {
-    const balance = await services.wallet.lns.balance(
-      address,
-      networks.LNSTESTNET
-    );
-    dispatch(storeBalanceLNSOnUser(balance.data));
+    const addressAndBalance = await getAddressAndBalance(walletCoins).catch(error => {
+      throw error;
+    });
+    dispatch(showSuccessOnImportSeed('SUCCESS_ON_GENERATE_ADDRESS'));
+    dispatch(storeBalanceOnUser(addressAndBalance));
+    dispatch(requestFinished());
+    //navigate(GeneralConstants.SCREEN_NAMES.main);
   } catch (error) {
+    dispatch(requestFinished());
     throw error;
   }
 }
@@ -33,27 +37,23 @@ async function generateAddressBySeedWords(
 ) {
   try {
     StoreSeed.store(seedWordsText);
-    const addressGeneratedByMnemonic = await services.wallet.lns.wallet
-      .newAddress(seedWordsText, networks.LNSTESTNET)
-      .catch(error => {
-        console.log(error);
-      });
-    AsyncStorage.setItem(
-      'addressLunesUser',
-      JSON.stringify(addressGeneratedByMnemonic)
-    );
     dispatch(setSeedOnUserInfo(seedWordsText));
-    dispatch(storeAddressOnDevice(addressGeneratedByMnemonic));
-    dispatch(showSuccessOnImportSeed('SUCCESS_ON_GENERATE_ADDRESS'));
-    getBalance(addressGeneratedByMnemonic, currentUser, dispatch).catch(
+
+    currentUser.wallet = await prepareObjectWallet(seedWordsText, currentUser).catch(error => {
+      return null;
+    });
+
+    if (!currentUser.wallet) {
+      alert('error on prepare wallet');
+      return;
+    }
+
+    getBalance(currentUser.wallet.coin, currentUser, dispatch).catch(
       error => {
         dispatch(requestFinished());
-        navigate('Main');
+        navigate(GeneralConstants.SCREEN_NAMES.main);
       }
     );
-    return;
-
-    //dispatch(showErrorOnImportSeed('INVALID_WORDS'));
   } catch (error) {
     throw error;
   }
@@ -66,8 +66,10 @@ export const generateNewSeed = currentUser => dispatch => {
 };
 
 export const importSeed = (seedWordsText, currentUser) => dispatch => {
+  dispatch(requestLoading());
   generateAddressBySeedWords(seedWordsText, currentUser, dispatch).catch(
     error => {
+      dispatch(requestFinished());
       dispatch(showErrorOnImportSeed('ERROR_ADDRESS_BY_SEED'));
     }
   );
@@ -81,19 +83,22 @@ export const clearSeedWords = () => ({
   type: types.CLEAR_SEED_WORDS,
 });
 
-const storeBalanceLNSOnUser = balanceLNS => ({
-  type: types.STORE_BALANCE_LNS,
-  balanceLNS,
+const requestLoading = () => ({
+  type: types.REQUEST_LOADING,
 });
 
-const storeAddressOnDevice = address => ({
-  type: types.STORE_ADDRESS_ON_DEVICE,
-  address,
+const requestFinished = () => ({
+  type: types.REQUEST_FINISHED,
 });
 
 const addNewSeedWords = newSeedWords => ({
   type: types.NEW_SEED_WORD,
   newSeedWords,
+});
+
+const storeBalanceOnUser = balance => ({
+  type: types.STORE_BALANCE,
+  balance,
 });
 
 const showSuccessOnImportSeed = msgSuccess => ({

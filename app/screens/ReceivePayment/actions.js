@@ -9,6 +9,11 @@ const requestFinished = () => ({
   type: types.REQUEST_FINISHED,
 });
 
+const selectCoin = currentCoinSelected => ({
+  type: types.CURRENT_COIN_SELECTED,
+  currentCoinSelected,
+});
+
 export const requestAddPIN = () => dispatch => {
   dispatch(requestLoading());
 
@@ -25,4 +30,9 @@ export const requestValidPIN = () => dispatch => {
     dispatch(requestFinished());
     navigate('Main');
   }, 5000);
+};
+
+export const doAction = (user, balance, currentCoinSelected) => dispatch => {
+  dispatch(requestLoading());
+  dispatch(selectCoin(currentCoinSelected));
 };

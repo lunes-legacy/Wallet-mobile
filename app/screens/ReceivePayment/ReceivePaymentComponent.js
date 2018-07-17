@@ -4,6 +4,7 @@ import { Container, Root } from 'native-base';
 import QRCode from 'react-native-qrcode';
 import BosonColors from '../../native-base-theme/variables/bosonColor';
 import LunesPaymentButton from '../../native-base-theme/components/LunesPaymentButton';
+import LunesTabCoins from '../../native-base-theme/components/LunesTabCoins';
 import I18N from '../../i18n/i18n';
 
 const styles = StyleSheet.create({
@@ -57,11 +58,24 @@ export default class ReceivePayment extends React.Component {
   };
 
   getAddressWallet() {
-    const { wallet } = this.props;
+    const { balance, currentCoinSelected } = this.props;
     try {
       // eslint-disable-next-line
-      const address = wallet.coin.LNS.address;
-      return address;
+      return balance[currentCoinSelected].address;
+    } catch (error) {
+      return '';
+    }
+  }
+
+  getInitialCoinName() {
+    const { currentCoinSelected } = this.props;
+    try {
+      // eslint-disable-next-line
+      if (currentCoinSelected === 'LNS') {
+        return 'Lunes';
+      } else if (currentCoinSelected === 'BTC') {
+        return 'Bitcoin';
+      }
     } catch (error) {
       return '';
     }
@@ -72,8 +86,17 @@ export default class ReceivePayment extends React.Component {
     return (
       <Container>
         <View style={styles.container}>
+          <View style={{ flexDirection: 'row' }}>
+            <LunesTabCoins
+              ticker={this.props.ticker}
+              doAction={tabCoin => {
+                const { user, balance, doAction } = this.props;
+                doAction(user, balance, tabCoin.name);
+              }}
+            />
+          </View>
           <Text style={styles.titleReceivePayment}>
-            {I18N.t('RECEIVE_PAYMENT')}
+            {' '}
           </Text>
           <View style={styles.wrapperQRCode}>
             <QRCode
@@ -84,7 +107,7 @@ export default class ReceivePayment extends React.Component {
             />
           </View>
 
-          <Text style={styles.input}>{I18N.t('ADDRESS')} Lunes</Text>
+          <Text style={styles.input}>{I18N.t('ADDRESS')} {this.getInitialCoinName()}</Text>
 
           <Text style={styles.input} selectable={true}>
             {address}

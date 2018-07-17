@@ -186,6 +186,7 @@ export default {
   ID: 'Id',
   VALUE: 'Value',
   FORMAT_DATE: 'MM/DD/YYYY',
+  LOADING: 'Loading...',
 
   LEASING_TITLE: 'Leasing',
   LEASING_TITLE_AVAILABLE: 'Available',

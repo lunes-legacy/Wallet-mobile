@@ -61,9 +61,14 @@ export default class ImportSeed extends React.Component {
     return null;
   }
 
+  renderLoading() {
+    return <LunesLoading text={I18N.t('LOADING')} />;
+  }
+
   render() {
     return (
       <Container>
+        {this.props.loading ? this.renderLoading() : null}
         {this.renderSuccess()}
         {this.renderError()}
         <LunesImportSeed

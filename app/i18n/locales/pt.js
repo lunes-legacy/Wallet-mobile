@@ -184,6 +184,7 @@ export default {
   YOUR_WORDS_PLACEHOLDER: 'Palavra',
   VALUE: 'Valor',
   FORMAT_DATE: 'DD/MM/YYYY',
+  LOADING: 'Carregando...',
 
   LEASING_TITLE: 'Leasing',
   LEASING_TITLE_AVAILABLE: 'Disponível',

@@ -49,6 +49,7 @@ async function _createTransactionData(
       toAddress,
       amount: coins.util.unitConverter.toSatoshi(amount),
       fee: coins.util.unitConverter.toSatoshi(fee),
+      feePerByte: coins.util.unitConverter.toSatoshi(fee),
     };
 
     const result = await coins.services.transaction(obj).catch(error => {

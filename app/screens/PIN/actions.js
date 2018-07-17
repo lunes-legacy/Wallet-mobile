@@ -1,11 +1,11 @@
 /* eslint-disable */
 import { AsyncStorage } from 'react-native';
-import LunesLib, { coins, services, networks } from 'lunes-lib';
+import LunesLib from 'lunes-lib';
 import types from '../../config/types';
 import { navigate } from '../../config/routes';
 import * as StoreSeed from '../../utils/store-seed';
 import GeneralConstants from '../../constants/general';
-import { networkTestNet } from '../../utils/testnet-util';
+import { prepareObjectWallet, getAddressAndBalance } from '../../utils/balance-utils';
 
 async function generateAddress(currentUser, dispatch) {
   try {
@@ -13,36 +13,13 @@ async function generateAddress(currentUser, dispatch) {
     if (seed) {
       dispatch(setSeedOnUserInfo(seed));
 
-      const addressBTC = await services.wallet.btc.wallet
-        .newAddress(seed, networkTestNet('btc'))
-        .catch(error => {
-          console.log(error);
-        });
-
-      const addressLNS = await services.wallet.lns.wallet
-        .newAddress(seed, networkTestNet('lns'))
-        .catch(error => {
-          console.log(error);
-        });
+      currentUser.wallet = await prepareObjectWallet(seed, currentUser).catch(error => {
+        return null;
+      });
 
       if (!currentUser.wallet) {
-        currentUser.wallet = {};
-      }
-
-      if (!currentUser.wallet.coin) {
-        currentUser.wallet.coin = {};
-      }
-
-      if (!currentUser.wallet.coin.LNS) {
-        currentUser.wallet.coin.LNS = {
-          address: addressLNS,
-        };
-      }
-
-      if (!currentUser.wallet.coin.BTC) {
-        currentUser.wallet.coin.BTC = {
-          address: addressBTC,
-        };
+        alert('error on prepare wallet');
+        return;
       }
 
       getBalance(currentUser.wallet.coin, currentUser, dispatch).catch(
@@ -62,21 +39,9 @@ async function generateAddress(currentUser, dispatch) {
 
 async function getBalance(walletCoins, currentUser, dispatch) {
   try {
-    const balanceLNS = await services.wallet.lns.balance(
-      walletCoins.LNS.address,
-      networkTestNet('lns')
-    );
-    const balanceBTC = await services.wallet.btc.balance(
-      walletCoins.BTC.address,
-      networkTestNet('btc')
-    );
+    const addressAndBalance = await getAddressAndBalance(walletCoins);
     dispatch(confirmSuccess(currentUser));
-    dispatch(
-      storeBalanceOnUser({
-        BTC: balanceBTC.data,
-        LNS: balanceLNS.data,
-      })
-    );
+    dispatch(storeBalanceOnUser(addressAndBalance));
     dispatch(requestFinished());
     navigate(GeneralConstants.SCREEN_NAMES.main);
   } catch (error) {
