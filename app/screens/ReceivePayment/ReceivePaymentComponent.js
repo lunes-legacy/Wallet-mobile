@@ -76,6 +76,7 @@ export default class ReceivePayment extends React.Component {
       } else if (currentCoinSelected === 'BTC') {
         return 'Bitcoin';
       }
+      return '';
     } catch (error) {
       return '';
     }
