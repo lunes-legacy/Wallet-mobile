@@ -14,6 +14,7 @@ const mapStateToProps = state => ({
   list: state.leasingReducer.list,
   resume: state.leasingReducer.resume,
   balance: state.auth.balance,
+  userBalance: state.auth.balance.LNS.confirmed,
 });
 
 const mapDispatchToProps = dispatch => {

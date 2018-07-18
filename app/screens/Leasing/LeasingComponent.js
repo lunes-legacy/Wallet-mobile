@@ -70,7 +70,6 @@ export default class Leasing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.wallet_info = {};
   }
 
   doSomething = txid => {
@@ -82,13 +81,14 @@ export default class Leasing extends React.Component {
   };
 
   componentDidMount = () => {
-    this.props.getLeasingValue({ address: this.props.balance.LNS.address });
+    
     this.props.getLeasingHistory({ address: this.props.balance.LNS.address });
   };
 
   componentWillMount = () => {
     //this.props.setLeasingAmount();
     //this.props.getLeasingHistory();
+    this.props.getLeasingValue({ address: this.props.balance.LNS.address, balance: this.props.userBalance });
   };
 
   normalizeStatus = status => {
@@ -191,7 +191,7 @@ export default class Leasing extends React.Component {
                   fontSize: 24,
                   color: bosonColor.$bosonLightGreen,
                 }}>
-                {this.formatStyleLunes(this.props.resume.availableBalance)}
+                {this.props.resume.availableBalance}
               </Text>
             </View>
             <View
@@ -203,13 +203,17 @@ export default class Leasing extends React.Component {
                 <Text style={{ fontSize: 10, opacity: 0.5 }}>
                   {I18N.t('LEASING_TITLE_LEASING')}
                 </Text>
-                <Text>{this.formatStyleLunes(this.props.resume.leaseBalance)}</Text>
+                <Text>
+                  {this.props.resume.leaseBalance}
+                </Text>
               </View>
               <View style={{ alignItems: 'flex-end' }}>
                 <Text style={{ fontSize: 10, opacity: 0.5 }}>
                   {I18N.t('LEASING_TITLE_TOTAL')}
                 </Text>
-                <Text>{this.formatStyleLunes(this.props.resume.totalBalance)}</Text>
+                <Text>
+                  {this.props.resume.totalBalance}
+                </Text>
               </View>
             </View>
           </View>

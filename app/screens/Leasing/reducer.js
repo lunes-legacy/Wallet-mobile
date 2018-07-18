@@ -3,9 +3,9 @@ import types from '../../config/types';
 const initialState = {
   loading: true,
   resume: {
-    totalBalance: 1,
-    leaseBalance: 2,
-    availableBalance: 3,
+    totalBalance: 0,
+    leaseBalance: 0,
+    availableBalance: 0,
   },
   list: [],
   lastLeasing: {

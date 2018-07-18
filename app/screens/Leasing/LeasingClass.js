@@ -1,4 +1,4 @@
-import { coins } from 'lunes-lib';
+import { coins, services } from 'lunes-lib';
 import { MoneyClass } from '../../utils/moneyConvert';
 import generalConstant from '../../constants/general';
 
@@ -8,35 +8,42 @@ export default class LeasingClass {
     const money = new MoneyClass();
 
     try {
+      // isso nao funciona no mobile, verrificar ....
       //   const lunesValue = await coins.services.balance(
       //     'LNS',
       //     lunesAddress,
       //     generalConstant.TESTNET
       //   );
 
-      //   const leaseValue = await coins.services.leaseBalance({
-      //     address: lunesAddress,
-      //     testnet: generalConstant.TESTNET,
-      //   });
+      //
+      const lunesValue = {
+        data: {
+          confirmed: data.balance,
+        },
+      };
 
-      //   // const availableBalance = lunesValue.data.confirmed - leaseValue.data.leaseBalance;
+      const leaseValue = await coins.services.leaseBalance({
+        address: lunesAddress,
+        testnet: generalConstant.TESTNET,
+      });
 
-      //   const totalBalance =
-      //     lunesValue.data.confirmed + leaseValue.data.leaseBalance;
+      // const availableBalance = lunesValue.data.confirmed - leaseValue.data.leaseBalance;
 
-      //   return {
-      //     totalBalance: await money.convertToBtc(totalBalance),
-      //     leaseBalance: await money.convertToBtc(leaseValue.data.leaseBalance),
-      //     availableBalance: await money.convertToBtc(lunesValue.data.confirmed),
-      //   };
+      const totalBalance =
+        lunesValue.data.confirmed + leaseValue.data.leaseBalance;
 
       return {
-        totalBalance: 9,
-        leaseBalance: 8,
-        availableBalance: 7,
+        totalBalance: await money.convertToBtc(totalBalance),
+        leaseBalance: await money.convertToBtc(leaseValue.data.leaseBalance),
+        availableBalance: await money.convertToBtc(lunesValue.data.confirmed),
       };
     } catch (err) {
-      // return 'GETLEASEBALANCE_ERROR';
+      console.log(`ERRO: ${err}`);
+      return {
+        totalBalance: 0,
+        leaseBalance: 0,
+        availableBalance: 0,
+      };
     }
   };
 
