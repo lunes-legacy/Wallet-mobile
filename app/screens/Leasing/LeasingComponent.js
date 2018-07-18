@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import {
   View,
@@ -39,17 +40,15 @@ const styles = StyleSheet.create({
     backgroundColor: bosonColor.$bosonDarkPurple,
   },
   footer: {
+    marginTop: 16,
+  },
+  containerScroll: {
     width: widthSpacePadding,
-    paddingTop: 16,
   },
   boxLeasing: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 16,
-  },
-  containerScroll: {
-    width: widthSpacePadding,
-    height: height - 20,
   },
   emptyTransactions: {
     flex: 2,
@@ -71,12 +70,26 @@ export default class Leasing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.wallet_info = {};
   }
 
-  doSomething() {
-    /** Não estava conseguindo dar push por conta que da mensage "alert is not defined" */
-    //alert('cancelar');
-  }
+  doSomething = txid => {
+    // let payload = {
+    //   wallet_info: this.wallet_info, // wallet info ainda nao vem de lugar algum
+    //   key: txid,
+    // };
+    // this.props.cancelLeasing(payload);
+  };
+
+  componentDidMount = () => {
+    this.props.getLeasingValue({ address: this.props.balance.LNS.address });
+    this.props.getLeasingHistory({ address: this.props.balance.LNS.address });
+  };
+
+  componentWillMount = () => {
+    //this.props.setLeasingAmount();
+    //this.props.getLeasingHistory();
+  };
 
   normalizeStatus = status => {
     if (status === 'active') {
@@ -92,7 +105,7 @@ export default class Leasing extends React.Component {
           // icon cancel
           <TouchableOpacity
             onPress={() => {
-              this.doSomething();
+              this.doSomething(id);
             }}
             style={styles.btCancel}>
             <View>
@@ -138,7 +151,7 @@ export default class Leasing extends React.Component {
                   `https://blockexplorer.lunes.io/tx/${obj.txid}`
                 );
               }}>
-              {obj.txid}
+              {`${obj.txid.substring(0, 25)}...`}
             </Text>
             <Text style={styles.lunesAmount}>{nativeAmount} LUNES</Text>
           </View>
@@ -178,7 +191,7 @@ export default class Leasing extends React.Component {
                   fontSize: 24,
                   color: bosonColor.$bosonLightGreen,
                 }}>
-                {this.formatStyleLunes(this.props.balanceData)}
+                {this.formatStyleLunes(this.props.resume.availableBalance)}
               </Text>
             </View>
             <View
@@ -190,13 +203,13 @@ export default class Leasing extends React.Component {
                 <Text style={{ fontSize: 10, opacity: 0.5 }}>
                   {I18N.t('LEASING_TITLE_LEASING')}
                 </Text>
-                <Text>{this.formatStyleLunes(this.props.resume.leasing)}</Text>
+                <Text>{this.formatStyleLunes(this.props.resume.leaseBalance)}</Text>
               </View>
               <View style={{ alignItems: 'flex-end' }}>
                 <Text style={{ fontSize: 10, opacity: 0.5 }}>
                   {I18N.t('LEASING_TITLE_TOTAL')}
                 </Text>
-                <Text>{this.formatStyleLunes(this.props.resume.total)}</Text>
+                <Text>{this.formatStyleLunes(this.props.resume.totalBalance)}</Text>
               </View>
             </View>
           </View>
@@ -211,7 +224,8 @@ export default class Leasing extends React.Component {
               rounded
               block
               success
-              onPress={() => navigate('LeasingStart')}>
+              onPress={() => navigate('LeasingStart')}
+              style={{ width: widthSpacePadding }}>
               <Text>{I18N.t('LEASING_BT_START')}</Text>
             </Button>
           </View>

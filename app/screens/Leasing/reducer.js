@@ -1,54 +1,40 @@
 import types from '../../config/types';
 
 const initialState = {
-  loading: false,
+  loading: true,
   resume: {
-    available: 100000000,
-    leasing: 8000000,
-    total: 18000000,
+    totalBalance: 1,
+    leaseBalance: 2,
+    availableBalance: 3,
   },
-  list: [
-    {
-      txid: 'asdasdasdasdasdasd',
-      date: '2018/08/01',
-      nativeAmount: 90000,
-      otherParams: {
-        status: 'active',
-        type: 8,
-      },
-    },
-    {
-      txid: 'k34k32kj234h2j34h2j3h4',
-      date: '2018/08/01',
-      nativeAmount: 5000,
-      otherParams: {
-        status: 'active',
-        type: 8,
-      },
-    },
-    {
-      txid: 'k34k32kj234h2j34h2j3h4',
-      date: '2018/08/01',
-      nativeAmount: 5000,
-      otherParams: {
-        status: 'inactive',
-        type: 8,
-      },
-    },
-    {
-      txid: 'k34k32kj234h2j34h2j3h4',
-      date: '2018/08/01',
-      nativeAmount: 5000,
-      otherParams: {
-        status: 'inactive',
-        type: 9,
-      },
-    },
-  ],
+  list: [],
+  lastLeasing: {
+    amount: 0,
+  },
 };
 
 const leasingReducer = (state = initialState, action) => {
   switch (action.type) {
+    case 'ADD_LEASING_FULFIILLED':
+      return {
+        ...state,
+        lastLeasing: action.payload,
+      };
+    case 'GET_LEASING':
+      return {
+        ...state,
+        list: action.payload,
+        loading: false,
+      };
+    case 'CANCEL_LEASING_FULFILLED':
+      return {
+        ...state,
+      };
+    case 'GET_LEASING_RESUME':
+      return {
+        ...state,
+        resume: action.payload,
+      };
     default:
       return state;
   }
