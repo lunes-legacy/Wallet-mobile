@@ -86,7 +86,7 @@ export default class Leasing extends React.Component {
         return (
           // icon cancel
           <TouchableOpacity
-            onPress={() => alert('cancelar')}
+            onPress={() => { alert('cancelar') }}
             style={styles.btCancel}>
             <View>
               <FontAwesomeIcon name={'cogs'} size={28} color={'#fff'} />
