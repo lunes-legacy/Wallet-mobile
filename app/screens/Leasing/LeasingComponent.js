@@ -104,6 +104,7 @@ export default class Leasing extends React.Component {
         </TouchableOpacity>
       );
     }
+    return null;
   };
 
   formatStyleLunes = val => {
