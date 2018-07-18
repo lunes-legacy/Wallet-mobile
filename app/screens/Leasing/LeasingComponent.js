@@ -73,6 +73,10 @@ export default class Leasing extends React.Component {
     this.state = {};
   }
 
+  doSomething() {
+    alert('cancelar');
+  }
+
   normalizeStatus = status => {
     if (status === 'active') {
       return true;
@@ -86,7 +90,9 @@ export default class Leasing extends React.Component {
         return (
           // icon cancel
           <TouchableOpacity
-            onPress={() => { alert('cancelar') }}
+            onPress={() => {
+              this.doSomething();
+            }}
             style={styles.btCancel}>
             <View>
               <FontAwesomeIcon name={'cogs'} size={28} color={'#fff'} />
