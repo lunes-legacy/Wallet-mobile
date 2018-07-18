@@ -100,7 +100,7 @@ export default class LeasingStart extends React.Component {
                 this.setState(...this.state, { nodeaddress: text })
               }
               value={this.state.nodeaddress}
-              ref={(input) => (this.nodeaddress = input)}
+              ref={input => { this.nodeaddress = input }}
               returnKeyType={'done'}
             />
           </View>

@@ -154,6 +154,7 @@ export default class Leasing extends React.Component {
         </View>
       );
     }
+    return null;
   };
 
   render() {
