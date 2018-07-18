@@ -161,8 +161,6 @@ export default class SendPayment extends React.Component {
           />
           <Root>
             <View style={styles.container}>
-              {/* CHOOSE COINS */}
-              {/* this.renderChooseCoin() */}
 
               {/* TAB COINS */}
               <View style={{ flexDirection: 'row' }}>

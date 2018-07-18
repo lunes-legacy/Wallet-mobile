@@ -30,7 +30,7 @@ export default class ImportSeed extends React.Component {
             navigate('Main');
           }}
           title={I18N.t('YOUR_WORDS')}
-          message={`${I18N.t(msgSuccess)} - ${this.props.address}`}
+          message={`${I18N.t(msgSuccess)}`}
           textConfirmation={I18N.t('OK')}
         />
       );
@@ -72,7 +72,7 @@ export default class ImportSeed extends React.Component {
         {this.renderSuccess()}
         {this.renderError()}
         <LunesImportSeed
-          address={this.props.address}
+          address={this.props.balance['LNS'].address}
           seedWords={this.props.seedWords}
           importSeed={this.props.importSeed}
           generateNewSeed={this.props.generateNewSeed}

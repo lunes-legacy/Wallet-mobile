@@ -25,6 +25,14 @@ const showError = error => ({
   error,
 });
 
+const doShowAlert = () => ({
+  type: types.SHOW_ALERT_FEE
+});
+
+const doCloseAlert = () => ({
+  type: types.CLOSE_ALERT_FEE
+});
+
 const showFee = fee => ({
   type: types.SHOW_FEE,
   fee,
@@ -151,4 +159,12 @@ export const getFee = coinSelected => dispatch => {
     dispatch(requestFinished());
     alert(I18N.t('ERROR_TO_GET_FEE'));
   });
+};
+
+export const showAlertFee = () => dispatch => {
+  dispatch(doShowAlert());
+};
+
+export const closeAlertFee = () => dispatch => {
+  dispatch(doCloseAlert());
 };

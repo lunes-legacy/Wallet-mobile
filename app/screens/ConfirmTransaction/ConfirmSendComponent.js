@@ -12,10 +12,9 @@ import {
 } from 'react-native';
 import { Container, Button, Text, Picker, Content, Spinner } from 'native-base';
 import { LunesIconSendPayment } from '../../native-base-theme/components/LunesCustomIcon';
-import Big from 'big.js';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
 import LunesPIN from '../../native-base-theme/components/LunesPIN';
-import { handleErrors } from '../../utils/stringUtils';
+import LunesAlert from '../../native-base-theme/components/LunesAlert';
 import I18N from '../../i18n/i18n';
 import bosonColor from '../../native-base-theme/variables/bosonColor';
 import LunesGradientButton from '../../native-base-theme/components/LunesGradientButton';
@@ -32,6 +31,10 @@ export default class ConfirmSend extends React.Component {
       feeSelected: '',
       fees: [
         {
+          label: I18N.t('SELECT_FEE'),
+          name: '',
+        },
+        {
           label: I18N.t('HIGH'),
           name: 'high',
         },
@@ -45,6 +48,29 @@ export default class ConfirmSend extends React.Component {
         },
       ],
     };
+  }
+
+  alertError() {
+    if (this.props.isShowAlertFee) {
+      return (
+        <LunesAlert
+          isShow={this.props.isShowAlertFee}
+          type="error"
+          showCloseIcon={false}
+          onClose={() => {
+            this.props.closeAlertFee();
+          }}
+          onPressConfirmation={() => {
+            this.props.closeAlertFee();
+          }}
+          titleHeader={I18N.t('ACCESS_DENIED')}
+          message={I18N.t('PLEASE_SELECT_FEE')}
+          textConfirmation={I18N.t('TRY_AGAIN')}
+        />
+      );
+    } else {
+      return null;
+    }
   }
 
   // TODO - improve logic in this block, either put in lunes-lib or search another alternative
@@ -69,6 +95,10 @@ export default class ConfirmSend extends React.Component {
   }
 
   showPIN() {
+    if (!this.state.feeSelected) {
+      this.props.showAlertFee();
+      return;
+    }
     this.setState({ showPIN: true });
   }
 
@@ -79,7 +109,10 @@ export default class ConfirmSend extends React.Component {
   renderFeesPicker() {
     return this.state.fees.map(fee => {
       if (this.props.fee) {
-        const valueFee = this.toBitcoin(this.props.fee.data[fee.name]);
+        let valueFee = '';
+        if (this.props.fee.data[fee.name]) {
+          valueFee = this.toBitcoin(this.props.fee.data[fee.name]);
+        }
         return (
           <Picker.Item
             label={`${fee.label} - ${valueFee}`}
@@ -185,6 +218,7 @@ export default class ConfirmSend extends React.Component {
     return (
       <Container>
         {this.props.loading ? <LunesLoading /> : null}
+        {this.alertError()}
         {this.renderConfirmation()}
         {this.renderPIN()}
       </Container>

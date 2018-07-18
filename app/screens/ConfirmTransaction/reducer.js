@@ -5,6 +5,7 @@ const initialState = {
   error: '',
   transactionId: '',
   fee: '',
+  isShowAlertFee: false
 };
 
 const confirmTransactionReducer = (state = initialState, action) => {
@@ -33,6 +34,16 @@ const confirmTransactionReducer = (state = initialState, action) => {
       return {
         ...state,
         fee: action.fee,
+      };
+    case types.SHOW_ALERT_FEE:
+      return {
+        ...state,
+        isShowAlertFee: true,
+      };
+    case types.CLOSE_ALERT_FEE:
+      return {
+        ...state,
+        isShowAlertFee: false,
       };
     default:
       return state;
