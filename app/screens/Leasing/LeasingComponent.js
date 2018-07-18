@@ -74,7 +74,8 @@ export default class Leasing extends React.Component {
   }
 
   doSomething() {
-    alert('cancelar');
+    /** Não estava conseguindo dar push por conta que da mensage "alert is not defined" */
+    //alert('cancelar');
   }
 
   normalizeStatus = status => {
