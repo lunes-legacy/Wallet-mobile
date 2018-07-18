@@ -5,7 +5,7 @@ const initialState = {
   error: '',
   transactionId: '',
   fee: '',
-  isShowAlertFee: false
+  isShowAlertFee: false,
 };
 
 const confirmTransactionReducer = (state = initialState, action) => {

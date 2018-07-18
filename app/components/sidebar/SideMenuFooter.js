@@ -89,7 +89,4 @@ const styles2 = StyleSheet.create({
   },
 });
 
-export default connect(
-  null,
-  null
-)(SideMenuFooter);
+export default connect(null, null)(SideMenuFooter);

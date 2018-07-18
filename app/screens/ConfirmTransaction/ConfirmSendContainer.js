@@ -1,7 +1,12 @@
 // @flow
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { confirmTransactionSend, getFee, showAlertFee, closeAlertFee } from './actions';
+import {
+  confirmTransactionSend,
+  getFee,
+  showAlertFee,
+  closeAlertFee,
+} from './actions';
 
 import ConfirmSend from './ConfirmSendComponent';
 
@@ -16,6 +21,14 @@ const mapStateToProps = state => ({
   isShowAlertFee: state.confirmTransactionReducer.isShowAlertFee,
 });
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ confirmTransactionSend, getFee, showAlertFee, closeAlertFee }, dispatch);
+  bindActionCreators(
+    {
+      confirmTransactionSend,
+      getFee,
+      showAlertFee,
+      closeAlertFee,
+    },
+    dispatch
+  );
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConfirmSend);

@@ -26,11 +26,11 @@ const showError = error => ({
 });
 
 const doShowAlert = () => ({
-  type: types.SHOW_ALERT_FEE
+  type: types.SHOW_ALERT_FEE,
 });
 
 const doCloseAlert = () => ({
-  type: types.CLOSE_ALERT_FEE
+  type: types.CLOSE_ALERT_FEE,
 });
 
 const showFee = fee => ({
