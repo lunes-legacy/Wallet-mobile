@@ -263,7 +263,9 @@ export default class Leasing extends React.Component {
                   fontSize: 24,
                   color: bosonColor.$bosonLightGreen,
                 }}>
-                {this.props.resume.availableBalance}
+                {numeral(this.props.resume.availableBalance).format(
+                  '0,0.00000000'
+                )}
               </Text>
             </View>
             <View
@@ -275,13 +277,21 @@ export default class Leasing extends React.Component {
                 <Text style={{ fontSize: 10, opacity: 0.5 }}>
                   {I18N.t('LEASING_TITLE_LEASING')}
                 </Text>
-                <Text>{this.props.resume.leaseBalance}</Text>
+                <Text>
+                  {numeral(this.props.resume.leaseBalance).format(
+                    '0,0.00000000'
+                  )}
+                </Text>
               </View>
               <View style={{ alignItems: 'flex-end' }}>
                 <Text style={{ fontSize: 10, opacity: 0.5 }}>
                   {I18N.t('LEASING_TITLE_TOTAL')}
                 </Text>
-                <Text>{this.props.resume.totalBalance}</Text>
+                <Text>
+                  {numeral(this.props.resume.totalBalance).format(
+                    '0,0.00000000'
+                  )}
+                </Text>
               </View>
             </View>
           </View>

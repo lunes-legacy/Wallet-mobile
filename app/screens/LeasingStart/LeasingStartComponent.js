@@ -34,7 +34,7 @@ export default class LeasingStart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      amount: undefined,
+      amount: '0.00000000',
       nodeaddress: '',
       fee: 0.001,
     };
@@ -91,12 +91,17 @@ export default class LeasingStart extends React.Component {
   doStartLeasing() {
     const data = {
       toAddress: this.state.nodeaddress,
-      amount: this.state.amount,
+      amount: parseFloat(this.state.amount),
       fee: this.state.fee,
       testnet: isTestNet(),
     };
     this.props.startLeasing(data);
   }
+
+  formatInputAmount = value => {
+    const rest = numeral(value).format('0,0.00000000');
+    this.setState(...this.state, { amount: rest });
+  };
 
   render() {
     const { resume } = this.props;
@@ -140,9 +145,7 @@ export default class LeasingStart extends React.Component {
               style={{ color: '#fff', backgroundColor: 'rgba(0,0,0,.1)' }}
               underlineColorAndroid={'transparent'}
               autoCapitalize="none"
-              onChangeText={text =>
-                this.setState(...this.state, { amount: text })
-              }
+              onChangeText={text => this.formatInputAmount(text)}
               value={this.state.amount}
               onSubmitEditing={() => this.nodeaddress.focus()}
               returnKeyType={'next'}
@@ -179,10 +182,8 @@ export default class LeasingStart extends React.Component {
             <Text>{I18N.t('FEE')}</Text>
             <Text>{this.state.fee}</Text>
           </View>
-        </View>
 
-        {/* button start leasing */}
-        <View style={{ width: widthSpacePadding }}>
+          {/* button start leasing */}
           <Button
             rounded
             block
