@@ -34,7 +34,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Leasing);
+export default connect(mapStateToProps, mapDispatchToProps)(Leasing);

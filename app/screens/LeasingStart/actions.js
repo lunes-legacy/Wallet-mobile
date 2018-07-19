@@ -2,16 +2,16 @@ import LeasingClass from '../Leasing/LeasingClass';
 import types from '../../config/types';
 
 const showError = () => ({
-  type: types.ERROR_LEASE
+  type: types.ERROR_LEASE,
 });
 
 const showSuccess = () => ({
-  type: types.SUCCESS_LEASE
+  type: types.SUCCESS_LEASE,
 });
 
 const confirmLeasing = data => ({
   type: types.START_LEASING,
-  payload: data
+  payload: data,
 });
 
 const doStartLease = async (data, dispatch) => {
@@ -33,5 +33,5 @@ export const startLeasing = data => dispatch => {
 };
 
 export const closeAlert = () => ({
-  type: types.CLOSE_ALERT_LEASE
+  type: types.CLOSE_ALERT_LEASE,
 });

@@ -21,7 +21,7 @@ export default class LeasingClass {
         networkTestNet('lns')
       ).catch(error => {
         throw error;
-      });*/
+      }); */
 
       const lunesValue = {
         data: {
@@ -29,12 +29,14 @@ export default class LeasingClass {
         },
       };
 
-      const leaseValue = await coins.services.leaseBalance({
-        address: lunesAddress,
-        testnet: generalConstant.TESTNET,
-      }).catch(error => {
-        throw error;
-      });
+      const leaseValue = await coins.services
+        .leaseBalance({
+          address: lunesAddress,
+          testnet: generalConstant.TESTNET,
+        })
+        .catch(error => {
+          throw error;
+        });
 
       // const availableBalance = lunesValue.data.confirmed - leaseValue.data.leaseBalance;
 
@@ -77,7 +79,7 @@ export default class LeasingClass {
     return consultLeasing;
   };
 
-  startLease = async (data) => {
+  startLease = async data => {
     try {
       const money = new MoneyClass();
 
@@ -90,10 +92,10 @@ export default class LeasingClass {
         fee: coins.util.unitConverter.toSatoshi(fee),
         testnet,
         amount: await money.convertToSatoshi(amount),
-        mnemonic: walletInfo.seed
+        mnemonic: walletInfo.seed,
       };
 
-      let lease = await coins.services.lease(leaseData).catch(error => {
+      const lease = await coins.services.lease(leaseData).catch(error => {
         throw error;
       });
 
@@ -103,24 +105,26 @@ export default class LeasingClass {
     }
   };
 
-  cancelLease = async (data) => {
-    let wallet_info = { seed: await StoreSeed.retrieveSeed() };
+  cancelLease = async data => {
+    const wallet_info = { seed: await StoreSeed.retrieveSeed() };
 
     const cancelLeasingData = {
-        mnemonic: wallet_info.seed,
-        txID: data.key,
-        fee: coins.util.unitConverter.toSatoshi(0.001),
-        testnet: isTestNet()
+      mnemonic: wallet_info.seed,
+      txID: data.key,
+      fee: coins.util.unitConverter.toSatoshi(0.001),
+      testnet: isTestNet(),
     };
 
-    const cancelLeaseResult = await coins.services.leaseCancel(cancelLeasingData).then((e)=>{
-        return e
-    }).catch((e)=>{
-        //console.log(e);
-        return false
-    });
+    const cancelLeaseResult = await coins.services
+      .leaseCancel(cancelLeasingData)
+      .then(e => {
+        return e;
+      })
+      .catch(e => {
+        // console.log(e);
+        return false;
+      });
 
     return cancelLeaseResult;
   };
-
 }

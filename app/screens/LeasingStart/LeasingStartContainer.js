@@ -7,15 +7,16 @@ import LeasingStart from './LeasingStartComponent';
 const mapStateToProps = state => ({
   balanceData: state.auth.balance.LNS.confirmed,
   isShowError: state.leasingStartReducer.isShowError,
-  isShowSuccess: state.leasingStartReducer.isShowSuccess
+  isShowSuccess: state.leasingStartReducer.isShowSuccess,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  startLeasing,
-  closeAlert
-}, dispatch);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      startLeasing,
+      closeAlert,
+    },
+    dispatch
+  );
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(LeasingStart);
+export default connect(mapStateToProps, mapDispatchToProps)(LeasingStart);

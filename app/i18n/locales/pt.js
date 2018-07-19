@@ -197,5 +197,5 @@ export default {
   LEASING_STATUS_CANCELED: 'CANCELADO',
   LEASING_MINING_NODE_ADDRESS: 'Endereço Lunes p/ Leasing',
   ERROR_ON_SET_LEASE: 'Erro ao confirmar leasing',
-  SUCCESS_ON_SET_LEASE: 'Sucesso ao confirmar leasing'
+  SUCCESS_ON_SET_LEASE: 'Sucesso ao confirmar leasing',
 };

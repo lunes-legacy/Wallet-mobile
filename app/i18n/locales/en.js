@@ -199,5 +199,5 @@ export default {
   LEASING_STATUS_CANCELED: 'CANCELED',
   LEASING_MINING_NODE_ADDRESS: 'Mining Lunes Address',
   ERROR_ON_SET_LEASE: 'Error to confirm leasing',
-  SUCCESS_ON_SET_LEASE: 'Success to confirm leasing'
+  SUCCESS_ON_SET_LEASE: 'Success to confirm leasing',
 };

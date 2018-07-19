@@ -93,7 +93,7 @@ export default class LeasingStart extends React.Component {
       toAddress: this.state.nodeaddress,
       amount: this.state.amount,
       fee: this.state.fee,
-      testnet: isTestNet()
+      testnet: isTestNet(),
     };
     this.props.startLeasing(data);
   }

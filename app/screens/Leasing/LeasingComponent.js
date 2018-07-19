@@ -81,14 +81,16 @@ export default class Leasing extends React.Component {
   };
 
   componentDidMount = () => {
-
     this.props.getLeasingHistory({ address: this.props.balance.LNS.address });
   };
 
   componentWillMount = () => {
     //this.props.setLeasingAmount();
     //this.props.getLeasingHistory();
-    this.props.getLeasingValue({ address: this.props.balance.LNS.address, balance: this.props.userBalance });
+    this.props.getLeasingValue({
+      address: this.props.balance.LNS.address,
+      balance: this.props.userBalance,
+    });
   };
 
   normalizeStatus = status => {
@@ -203,17 +205,13 @@ export default class Leasing extends React.Component {
                 <Text style={{ fontSize: 10, opacity: 0.5 }}>
                   {I18N.t('LEASING_TITLE_LEASING')}
                 </Text>
-                <Text>
-                  {this.props.resume.leaseBalance}
-                </Text>
+                <Text>{this.props.resume.leaseBalance}</Text>
               </View>
               <View style={{ alignItems: 'flex-end' }}>
                 <Text style={{ fontSize: 10, opacity: 0.5 }}>
                   {I18N.t('LEASING_TITLE_TOTAL')}
                 </Text>
-                <Text>
-                  {this.props.resume.totalBalance}
-                </Text>
+                <Text>{this.props.resume.totalBalance}</Text>
               </View>
             </View>
           </View>

@@ -3,7 +3,7 @@ import types from '../../config/types';
 const initialState = {
   loading: true,
   isShowError: false,
-  isShowSuccess: false
+  isShowSuccess: false,
 };
 
 const leasingStartReducer = (state = initialState, action) => {
@@ -17,7 +17,7 @@ const leasingStartReducer = (state = initialState, action) => {
       return {
         ...state,
         isShowError: false,
-        isShowSuccess: false
+        isShowSuccess: false,
       };
     case types.SUCCESS_LEASE:
       return {
@@ -27,7 +27,7 @@ const leasingStartReducer = (state = initialState, action) => {
     case types.ERROR_LEASE:
       return {
         ...state,
-        isShowError: true
+        isShowError: true,
       };
     default:
       return state;
