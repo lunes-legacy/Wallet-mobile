@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { coins, services } from 'lunes-lib';
 import { MoneyClass } from '../../utils/moneyConvert';
 import generalConstant from '../../constants/general';
