@@ -86,10 +86,7 @@ export default class LeasingClass {
       const walletInfo = { seed: await StoreSeed.retrieveSeed() };
 
       const {
-        toAddress,
-        amount,
-        fee,
-        testnet
+        toAddress, amount, fee, testnet
       } = data;
 
       const leaseData = {
