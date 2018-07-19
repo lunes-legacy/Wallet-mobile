@@ -200,4 +200,9 @@ export default {
   LEASING_MINING_NODE_ADDRESS: 'Mining Lunes Address',
   ERROR_ON_SET_LEASE: 'Error to confirm leasing',
   SUCCESS_ON_SET_LEASE: 'Success to confirm leasing',
+  ERROR_ON_CANCEL_LEASE: 'Error to cancel leasing',
+  SUCCESS_ON_CANCEL_LEASE: 'Success to cancel leasing',
+  CONFIRM_CANCEL_LEASE_TITLE: 'Cancel leasing',
+  CONFIRM_CANCEL_LEASE_TEXT: 'Do you confirm the cancel of leasing?',
+  CANCEL: 'Cancel',
 };

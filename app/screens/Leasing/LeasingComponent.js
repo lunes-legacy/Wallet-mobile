@@ -8,12 +8,14 @@ import {
   TouchableOpacity,
   Linking,
   Image,
+  Alert,
 } from 'react-native';
 
 import { Container, Spinner, Text, Button } from 'native-base';
 import FontAwesomeIcon from 'react-native-vector-icons/dist/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import EvilIcons from 'react-native-vector-icons/dist/EvilIcons';
+import LunesAlert from '../../native-base-theme/components/LunesAlert';
 import I18N from '../../i18n/i18n';
 import bosonColor from '../../native-base-theme/variables/bosonColor';
 import { navigate } from '../../config/routes';
@@ -72,21 +74,87 @@ export default class Leasing extends React.Component {
     this.state = {};
   }
 
+  renderError = () => {
+    const { isShowError } = this.props;
+    if (isShowError) {
+      return (
+        <LunesAlert
+          isShow={isShowError}
+          type="error"
+          showCloseIcon={true}
+          onClose={() => {
+            this.props.closeAlert();
+          }}
+          onPressConfirmation={() => {
+            this.props.closeAlert();
+          }}
+          title={I18N.t('ERROR')}
+          message={I18N.t('ERROR_ON_CANCEL_LEASE')}
+          textConfirmation={I18N.t('OK')}
+        />
+      );
+    }
+    return null;
+  };
+
+  renderSuccess = () => {
+    const { isShowSuccess } = this.props;
+    if (isShowSuccess) {
+      return (
+        <LunesAlert
+          isShow={isShowSuccess}
+          type="success"
+          showCloseIcon={true}
+          onClose={() => {
+            this.props.closeAlert();
+            //navigate('Leasing');
+          }}
+          onPressConfirmation={() => {
+            this.props.closeAlert();
+            //navigate('Leasing');
+          }}
+          title={I18N.t('SUCCESS')}
+          message={I18N.t('SUCCESS_ON_CANCEL_LEASE')}
+          textConfirmation={I18N.t('OK')}
+        />
+      );
+    }
+    return null;
+  };
+
   doCancelLeasing = txid => {
-    // let payload = {
-    //   wallet_info: this.wallet_info, // wallet info ainda nao vem de lugar algum
-    //   key: txid,
-    // };
-    // this.props.cancelLeasing(payload);
+    Alert.alert(
+      I18N.t('CONFIRM_CANCEL_LEASE_TITLE'),
+      I18N.t('CONFIRM_CANCEL_LEASE_TEXT'),
+      [
+        {
+          text: I18N.t('CANCEL'),
+          onPress: () => {},
+          style: 'cancel',
+        },
+        {
+          text: I18N.t('CONFIRM'),
+          onPress: () => {
+            this.props.cancelLeasing({
+              key: txid,
+              address: this.props.balance.LNS.address,
+              balance: this.props.userBalance,
+            });
+          },
+        },
+      ],
+      { cancelable: false }
+    );
   };
 
   componentDidMount = () => {
-    this.props.getLeasingHistory({ address: this.props.balance.LNS.address });
+    this.loadLeasing();
   };
 
-  componentWillMount = () => {
-    //this.props.setLeasingAmount();
-    //this.props.getLeasingHistory();
+  componentWillMount = () => {};
+
+  loadLeasing = () => {
+    this.props.getLeasingHistory({ address: this.props.balance.LNS.address });
     this.props.getLeasingValue({
       address: this.props.balance.LNS.address,
       balance: this.props.userBalance,
@@ -182,6 +250,8 @@ export default class Leasing extends React.Component {
   render() {
     return (
       <Container>
+        {this.renderError()}
+        {this.renderSuccess()}
         <View style={styles.container}>
           <View style={styles.header}>
             <View style={{ alignItems: 'center' }}>

@@ -5,6 +5,7 @@ import {
   getLeasingHistory,
   cancelLeasing,
   getLeasingValue,
+  closeAlert,
 } from './actions';
 
 import Leasing from './LeasingComponent';
@@ -15,12 +16,14 @@ const mapStateToProps = state => ({
   resume: state.leasingReducer.resume,
   balance: state.auth.balance,
   userBalance: state.auth.balance.LNS.confirmed,
+  isShowError: state.leasingReducer.isShowError,
+  isShowSuccess: state.leasingReducer.isShowSuccess,
 });
 
 const mapDispatchToProps = dispatch => {
   return {
-    setLeasingAmount: () => {
-      dispatch(setLeasingAmount());
+    closeAlert: () => {
+      dispatch(closeAlert());
     },
     getLeasingHistory: data => {
       dispatch(getLeasingHistory(data));

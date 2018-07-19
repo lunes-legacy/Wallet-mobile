@@ -195,7 +195,12 @@ export default {
   LEASING_BT_START: 'INICIAR LEASING',
   LEASING_STATUS_CANCEL: 'CANCELAR',
   LEASING_STATUS_CANCELED: 'CANCELADO',
-  LEASING_MINING_NODE_ADDRESS: 'Endereço Lunes p/ Leasing',
+  LEASING_MINING_NODE_ADDRESS: 'Endereço Lunes para leasing',
   ERROR_ON_SET_LEASE: 'Erro ao confirmar leasing',
   SUCCESS_ON_SET_LEASE: 'Sucesso ao confirmar leasing',
+  ERROR_ON_CANCEL_LEASE: 'Erro ao cancelar leasing',
+  SUCCESS_ON_CANCEL_LEASE: 'Sucesso ao cancelar leasing',
+  CONFIRM_CANCEL_LEASE_TITLE: 'Cancelar leasing',
+  CONFIRM_CANCEL_LEASE_TEXT: 'Confirmar cancelamento de leasing?',
+  CANCEL: 'Cancelar',
 };

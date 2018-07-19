@@ -33,7 +33,7 @@ export default class LeasingClass {
       const leaseValue = await coins.services
         .leaseBalance({
           address: lunesAddress,
-          testnet: generalConstant.TESTNET,
+          testnet: isTestNet(),
         })
         .catch(error => {
           throw error;
@@ -66,7 +66,7 @@ export default class LeasingClass {
       .leaseHistory({
         address: lunesAddress,
         network: 'LNS',
-        testnet: generalConstant.TESTNET,
+        testnet: isTestNet(),
       })
       .then(e => {
         if (e.length > 0) {
@@ -119,10 +119,10 @@ export default class LeasingClass {
     const cancelLeaseResult = await coins.services
       .leaseCancel(cancelLeasingData)
       .then(e => {
-        return e;
+        //return e;
+        return true;
       })
       .catch(e => {
-        // console.log(e);
         return false;
       });
 
