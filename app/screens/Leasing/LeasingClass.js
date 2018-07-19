@@ -1,6 +1,12 @@
 import { coins, services } from 'lunes-lib';
 import { MoneyClass } from '../../utils/moneyConvert';
 import generalConstant from '../../constants/general';
+import * as StoreSeed from '../../utils/store-seed';
+import { isTestNet, networkTestNet } from '../../utils/testnet-util';
+import {
+  prepareObjectWallet,
+  getAddressAndBalance,
+} from '../../utils/balance-utils';
 
 export default class LeasingClass {
   getLeasingValues = async data => {
@@ -8,14 +14,15 @@ export default class LeasingClass {
     const money = new MoneyClass();
 
     try {
-      // isso nao funciona no mobile, verrificar ....
-      //   const lunesValue = await coins.services.balance(
-      //     'LNS',
-      //     lunesAddress,
-      //     generalConstant.TESTNET
-      //   );
+      /* Se necessario trazer o balanço, essa funcao está ok
 
-      //
+      const balanceLNS = await services.wallet.lns.balance(
+        lunesAddress,
+        networkTestNet('lns')
+      ).catch(error => {
+        throw error;
+      });*/
+
       const lunesValue = {
         data: {
           confirmed: data.balance,
@@ -25,6 +32,8 @@ export default class LeasingClass {
       const leaseValue = await coins.services.leaseBalance({
         address: lunesAddress,
         testnet: generalConstant.TESTNET,
+      }).catch(error => {
+        throw error;
       });
 
       // const availableBalance = lunesValue.data.confirmed - leaseValue.data.leaseBalance;
@@ -68,47 +77,50 @@ export default class LeasingClass {
     return consultLeasing;
   };
 
-  // startLease = async (data) => {
-  //   try {
-  //     const money = new MoneyClass();
+  startLease = async (data) => {
+    try {
+      const money = new MoneyClass();
 
-  //     const walletInfo = JSON.parse(decrypt(localStorage.getItem('WALLET-INFO')));
+      const walletInfo = { seed: await StoreSeed.retrieveSeed() };
 
-  //     const { toAddress, amount, fee, testnet } = data;
+      const { toAddress, amount, fee, testnet } = data;
 
-  //     const leaseData = {
-  //       toAddress,
-  //       fee,
-  //       testnet,
-  //       amount: await money.convertToSatoshi(amount),
-  //       mnemonic: walletInfo.seed
-  //     }
+      const leaseData = {
+        toAddress,
+        fee: coins.util.unitConverter.toSatoshi(fee),
+        testnet,
+        amount: await money.convertToSatoshi(amount),
+        mnemonic: walletInfo.seed
+      };
 
-  //     let lease = await coins.services.lease(leaseData);
+      let lease = await coins.services.lease(leaseData).catch(error => {
+        throw error;
+      });
 
-  //     return lease;
-  //   } catch (err) {
-  //     return errorPattern(`Error on trying to start lease`, 500, "STARTLEASE_ERROR", err);
-  //   }
-  // }
+      return lease;
+    } catch (err) {
+      throw err;
+    }
+  };
 
-  // cancelLease = async (data) => {
-  //     let wallet_info = JSON.parse(decrypt(data.wallet_info));
+  cancelLease = async (data) => {
+    let wallet_info = { seed: await StoreSeed.retrieveSeed() };
 
-  //     const cancelLeasingData = {
-  //         mnemonic: wallet_info.seed,
-  //         txID: data.key,
-  //         fee: "100000",
-  //         testnet: TESTNET //TESTNET
-  //     };
+    const cancelLeasingData = {
+        mnemonic: wallet_info.seed,
+        txID: data.key,
+        fee: coins.util.unitConverter.toSatoshi(0.001),
+        testnet: isTestNet()
+    };
 
-  //     const cancelLeaseResult = await coins.services.leaseCancel(cancelLeasingData).then((e)=>{
-  //         return e
-  //     }).catch((e)=>{
-  //         //console.log(e);
-  //         return false
-  //     });
+    const cancelLeaseResult = await coins.services.leaseCancel(cancelLeasingData).then((e)=>{
+        return e
+    }).catch((e)=>{
+        //console.log(e);
+        return false
+    });
 
-  //     return cancelLeaseResult;
-  // }
+    return cancelLeaseResult;
+  };
+
 }

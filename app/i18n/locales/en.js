@@ -23,6 +23,7 @@ export default {
   SIGNUP: 'Sign Up',
   CHECKING_PIN_FOR_ACTIVATION: 'Checking PIN to activate',
   PIN_IS_REQUIRED: 'Please type in your PIN',
+  ERROR: 'Error',
   ERROR_ON_SAVE_PIN: 'Error on save PIN',
   TYPE_PIN_CODE: 'Type a code of 4 digits for',
   YOUR_PIN: 'your PIN',
@@ -187,6 +188,7 @@ export default {
   VALUE: 'Value',
   FORMAT_DATE: 'MM/DD/YYYY',
   LOADING: 'Loading...',
+  AMOUNT: 'Quantidade',
 
   LEASING_TITLE: 'Leasing',
   LEASING_TITLE_AVAILABLE: 'Available',
@@ -195,4 +197,7 @@ export default {
   LEASING_BT_START: 'START LEASING',
   LEASING_STATUS_CANCEL: 'CANCEL',
   LEASING_STATUS_CANCELED: 'CANCELED',
+  LEASING_MINING_NODE_ADDRESS: 'Mining Lunes Address',
+  ERROR_ON_SET_LEASE: 'Error to confirm leasing',
+  SUCCESS_ON_SET_LEASE: 'Success to confirm leasing'
 };

@@ -72,7 +72,7 @@ export default class Leasing extends React.Component {
     this.state = {};
   }
 
-  doSomething = txid => {
+  doCancelLeasing = txid => {
     // let payload = {
     //   wallet_info: this.wallet_info, // wallet info ainda nao vem de lugar algum
     //   key: txid,
@@ -81,7 +81,7 @@ export default class Leasing extends React.Component {
   };
 
   componentDidMount = () => {
-    
+
     this.props.getLeasingHistory({ address: this.props.balance.LNS.address });
   };
 
@@ -105,7 +105,7 @@ export default class Leasing extends React.Component {
           // icon cancel
           <TouchableOpacity
             onPress={() => {
-              this.doSomething(id);
+              this.doCancelLeasing(id);
             }}
             style={styles.btCancel}>
             <View>

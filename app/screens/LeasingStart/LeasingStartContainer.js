@@ -1,17 +1,21 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-// import {nome_da_acao} from './actions';
+import { startLeasing, closeAlert } from './actions';
 
 import LeasingStart from './LeasingStartComponent';
 
 const mapStateToProps = state => ({
   balanceData: state.auth.balance.LNS.confirmed,
+  isShowError: state.leasingStartReducer.isShowError,
+  isShowSuccess: state.leasingStartReducer.isShowSuccess
 });
 
-// const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({
+  startLeasing,
+  closeAlert
+}, dispatch);
 
 export default connect(
-  mapStateToProps
-  // mapStateToProps,
-  // mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(LeasingStart);

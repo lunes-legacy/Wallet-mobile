@@ -13,6 +13,7 @@ export default {
   WRONG_PASSWORD: 'Senha inválida ou insegura. Tente algo mais seguro.',
   NOT_CONNECTED: 'Você deve estar contectado para acessar sua Lunes Wallet.',
   USER_NOT_FOUND: 'Usuário não encontrado',
+  ERROR: 'Erro',
   ERROR_AUTHENTICATE: 'Erro ao tentar autenticar-se',
   EMAIL_ALREADY: 'Email já existe',
   ACCESS_DENIED: 'Acesso negado',
@@ -185,6 +186,7 @@ export default {
   VALUE: 'Valor',
   FORMAT_DATE: 'DD/MM/YYYY',
   LOADING: 'Carregando...',
+  AMOUNT: 'Quantidade',
 
   LEASING_TITLE: 'Leasing',
   LEASING_TITLE_AVAILABLE: 'Disponível',
@@ -193,4 +195,7 @@ export default {
   LEASING_BT_START: 'INICIAR LEASING',
   LEASING_STATUS_CANCEL: 'CANCELAR',
   LEASING_STATUS_CANCELED: 'CANCELADO',
+  LEASING_MINING_NODE_ADDRESS: 'Endereço Lunes p/ Leasing',
+  ERROR_ON_SET_LEASE: 'Erro ao confirmar leasing',
+  SUCCESS_ON_SET_LEASE: 'Sucesso ao confirmar leasing'
 };

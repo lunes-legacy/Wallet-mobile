@@ -14,6 +14,7 @@ import historicTransactionReducer from 'lunesmobilewallet/app/screens/HistoricTr
 import connectionReducer from 'lunesmobilewallet/app/services/connectionService/reducer';
 import importSeedReducer from 'lunesmobilewallet/app/screens/ImportSeed/reducer';
 import leasingReducer from 'lunesmobilewallet/app/screens/Leasing/reducer';
+import leasingStartReducer from 'lunesmobilewallet/app/screens/LeasingStart/reducer';
 
 const reducers = combineReducers({
   tabsReducer,
@@ -31,6 +32,7 @@ const reducers = combineReducers({
   connectionReducer,
   importSeedReducer,
   leasingReducer,
+  leasingStartReducer,
 });
 
 export default reducers;
