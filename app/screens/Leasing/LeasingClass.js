@@ -85,7 +85,12 @@ export default class LeasingClass {
 
       const walletInfo = { seed: await StoreSeed.retrieveSeed() };
 
-      const { toAddress, amount, fee, testnet } = data;
+      const {
+        toAddress,
+        amount,
+        fee,
+        testnet
+      } = data;
 
       const leaseData = {
         toAddress,
@@ -106,10 +111,10 @@ export default class LeasingClass {
   };
 
   cancelLease = async data => {
-    const wallet_info = { seed: await StoreSeed.retrieveSeed() };
+    const walletInfo = { seed: await StoreSeed.retrieveSeed() };
 
     const cancelLeasingData = {
-      mnemonic: wallet_info.seed,
+      mnemonic: walletInfo.seed,
       txID: data.key,
       fee: coins.util.unitConverter.toSatoshi(0.001),
       testnet: isTestNet(),
