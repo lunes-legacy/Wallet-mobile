@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Dimensions,
-  Image,
-  TextInput,
-} from 'react-native';
+import { View, Dimensions, Image, TextInput } from 'react-native';
 
 import { Container, Text, Button } from 'native-base';
 import LunesAlert from '../../native-base-theme/components/LunesAlert';
@@ -185,7 +180,7 @@ export default class LeasingStart extends React.Component {
             rounded
             block
             success
-            style={{elevation: 0}}
+            style={{ elevation: 0 }}
             onPress={() => {
               this.doStartLeasing();
             }}>
