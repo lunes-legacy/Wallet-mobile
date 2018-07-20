@@ -65,6 +65,23 @@ export const requestUpdate = values => dispatch => {
     ) {
       values.userInfo.avatar.small = values.updates.small;
     }
+
+    if (values.updates && values.updates.phoneNumber) {
+      values.userInfo.phoneNumber = values.updates.phoneNumber;
+    }
+
+    if (values.updates && values.updates.city) {
+      values.userInfo.city = values.updates.city;
+    }
+
+    if (values.updates && values.updates.birthDate) {
+      values.userInfo.birthDate = values.updates.birthDate;
+    }
+
+    if (values.updates && values.updates.homeAddress) {
+      values.userInfo.homeAddress = values.updates.homeAddress;
+    }
+
     dispatch(storeUserProfile(values.userInfo));
     updateProfile(
       {

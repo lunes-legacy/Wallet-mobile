@@ -1,24 +1,16 @@
 import React from 'react';
 import {
   View,
-  StyleSheet,
   Dimensions,
-  ScrollView,
-  TouchableOpacity,
-  Linking,
   Image,
   TextInput,
 } from 'react-native';
 
-import { Container, Spinner, Text, Button } from 'native-base';
-import FontAwesomeIcon from 'react-native-vector-icons/dist/FontAwesome';
-import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
-import EvilIcons from 'react-native-vector-icons/dist/EvilIcons';
+import { Container, Text, Button } from 'native-base';
 import LunesAlert from '../../native-base-theme/components/LunesAlert';
 import I18N from '../../i18n/i18n';
-import bosonColor from '../../native-base-theme/variables/bosonColor';
 import { navigate } from '../../config/routes';
-import * as BalanceUtils from '../../utils/balance-utils';
+import LunesLoading from '../../native-base-theme/components/LunesLoading';
 import { isTestNet } from '../../utils/testnet-util';
 
 // CONVERT DECIMALS
@@ -88,6 +80,10 @@ export default class LeasingStart extends React.Component {
     return null;
   }
 
+  renderLoading() {
+    return <LunesLoading />;
+  }
+
   doStartLeasing() {
     const data = {
       toAddress: this.state.nodeaddress,
@@ -107,6 +103,7 @@ export default class LeasingStart extends React.Component {
     const { resume } = this.props;
     return (
       <Container>
+        {this.props.loading ? this.renderLoading() : null}
         {this.renderError()}
         {this.renderSuccess()}
         <View style={{ flex: 1, width: widthSpacePadding }}>
@@ -188,6 +185,7 @@ export default class LeasingStart extends React.Component {
             rounded
             block
             success
+            style={{elevation: 0}}
             onPress={() => {
               this.doStartLeasing();
             }}>

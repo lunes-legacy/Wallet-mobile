@@ -307,7 +307,7 @@ export default class Leasing extends React.Component {
               block
               success
               onPress={() => navigate('LeasingStart')}
-              style={{ width: widthSpacePadding }}>
+              style={{ width: widthSpacePadding, elevation: 0 }}>
               <Text>{I18N.t('LEASING_BT_START')}</Text>
             </Button>
           </View>

@@ -1,7 +1,7 @@
 import types from '../../config/types';
 
 const initialState = {
-  loading: true,
+  loading: false,
   isShowError: false,
   isShowSuccess: false,
 };
@@ -28,6 +28,16 @@ const leasingStartReducer = (state = initialState, action) => {
       return {
         ...state,
         isShowError: true,
+      };
+    case types.SHOW_LOADING_LEASE:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.HIDE_LOADING_LEASE:
+      return {
+        ...state,
+        loading: false,
       };
     default:
       return state;

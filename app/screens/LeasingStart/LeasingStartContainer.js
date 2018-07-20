@@ -8,6 +8,7 @@ const mapStateToProps = state => ({
   balanceData: state.auth.balance.LNS.confirmed,
   isShowError: state.leasingStartReducer.isShowError,
   isShowSuccess: state.leasingStartReducer.isShowSuccess,
+  loading: state.leasingStartReducer.loading,
 });
 
 const mapDispatchToProps = dispatch =>
