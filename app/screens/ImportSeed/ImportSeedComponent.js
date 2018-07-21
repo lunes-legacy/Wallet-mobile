@@ -65,6 +65,13 @@ export default class ImportSeed extends React.Component {
     return <LunesLoading text={I18N.t('LOADING')} />;
   }
 
+  getAddressLNS() {
+    if (this.props.balance && this.props.balance['LNS'] && this.props.balance['LNS'].address) {
+      return this.props.balance['LNS'].address;
+    }
+    return '';
+  }
+
   render() {
     return (
       <Container>
@@ -72,7 +79,7 @@ export default class ImportSeed extends React.Component {
         {this.renderSuccess()}
         {this.renderError()}
         <LunesImportSeed
-          address={this.props.balance['LNS'].address}
+          address={this.getAddressLNS()}
           seedWords={this.props.seedWords}
           importSeed={this.props.importSeed}
           generateNewSeed={this.props.generateNewSeed}

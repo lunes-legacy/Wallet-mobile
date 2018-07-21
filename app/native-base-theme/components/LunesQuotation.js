@@ -9,7 +9,7 @@ import {
   Animated,
   Easing,
 } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import LunesBalanceText from './LunesBalanceText';
 import {
   LunesIconSendPayment,
   LunesIconReceivePayment,
@@ -57,11 +57,16 @@ export default class LunesQuotation extends React.Component {
   renderContent() {
     if (!this.props.icon) {
       return (
-        <View>
+        <View style={styles.areaPrice}>
           <Text style={styles.textQuotation}>{I18N.t('QUOTE')}</Text>
           <Text style={styles.textQuotationPrice}>
             {this.props.ticker[this.props.currentCoinSelected].DISPLAYPRICE}
           </Text>
+          <LunesBalanceText
+            style={{marginTop: 30}}
+            icon={this.props.iconBalance}
+            balance={this.props.balance}
+          />
         </View>
       );
     }
@@ -131,6 +136,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  areaPrice: {},
   textQuotation: {
     backgroundColor: 'transparent',
     textAlign: 'center',

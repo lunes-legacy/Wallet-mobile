@@ -8,10 +8,8 @@ import {
   View,
   ScrollView,
   TouchableOpacity,
-  Dimensions,
 } from 'react-native';
-import { Input, Text, Textarea, Button } from 'native-base';
-import commonColor from './../variables/commonColor';
+import { Text, Button } from 'native-base';
 import BosonColors from './../variables/bosonColor';
 import I18N from '../../i18n/i18n';
 import LunesLogo from './LunesLogo';
@@ -133,6 +131,7 @@ const styles = StyleSheet.create({
     color: BosonColors.$bosonLightGreen,
     justifyContent: 'center',
     alignItems: 'center',
+    textAlign: 'center'
   },
   textFastSafeSmart: {
     fontSize: 22,

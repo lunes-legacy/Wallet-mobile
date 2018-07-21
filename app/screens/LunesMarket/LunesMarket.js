@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import { Container } from 'native-base';
 import LunesTabCoins from '../../native-base-theme/components/LunesTabCoins';
-import LunesBalanceText from '../../native-base-theme/components/LunesBalanceText';
 import LunesQuotation from '../../native-base-theme/components/LunesQuotation';
 import LunesPaymentButton from '../../native-base-theme/components/LunesPaymentButton';
 import BosonColors from '../../native-base-theme/variables/bosonColor';
@@ -149,12 +148,11 @@ class LunesMarket extends Component {
             flex: 4,
             justifyContent: 'space-between',
             width: Dimensions.get('window').width,
+            marginTop: 30
           }}>
-          <LunesBalanceText
-            icon={this.renderIconCoin()}
-            balance={this.getBalance()}
-          />
           <LunesQuotation
+            iconBalance={this.renderIconCoin()}
+            balance={this.getBalance()}
             ticker={this.props.ticker}
             currentCoinSelected={this.props.currentCoinSelected}
           />

@@ -13,6 +13,8 @@ const initialState = {
 
 const pinReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.CLEAR_ALL_INFO:
+      return initialState;
     case types.REQUEST_LOADING:
       return { ...state, loading: true };
     case types.REQUEST_FINISHED:

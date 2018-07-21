@@ -14,6 +14,8 @@ const initialState = {
 
 const leasingReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.CLEAR_ALL_INFO:
+      return initialState;
     case types.GET_LEASING:
       return {
         ...state,

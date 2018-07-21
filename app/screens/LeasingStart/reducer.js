@@ -8,6 +8,8 @@ const initialState = {
 
 const leasingStartReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.CLEAR_ALL_INFO:
+      return initialState;
     case types.START_LEASING:
       return {
         ...state,

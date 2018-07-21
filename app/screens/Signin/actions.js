@@ -65,6 +65,10 @@ const storeAddress = wallet => ({
   wallet,
 });
 
+const clearAllInfo = () => ({
+  type: types.CLEAR_ALL_INFO
+});
+
 export const clearError = () => ({
   type: types.CLEAR_ERROR,
   error: null,
@@ -185,6 +189,7 @@ export const requestSignout = user => dispatch => {
     AsyncStorage.removeItem(GeneralConstants.STORAGE.storedUser);
     Keychain.resetGenericPassword();
     dispatch(signoutSuccess());
+    dispatch(clearAllInfo());
     navigate(GeneralConstants.SCREEN_NAMES.signin);
   } catch (error) {
     dispatch(signoutError(error));

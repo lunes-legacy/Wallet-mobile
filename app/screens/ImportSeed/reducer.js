@@ -13,6 +13,8 @@ const initialState = {
 
 const seedReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.CLEAR_ALL_INFO:
+      return initialState;
     case types.STORE_ADDRESS_ON_DEVICE:
       return { ...state, address: action.address };
     case types.NEW_SEED_WORD:
