@@ -202,6 +202,9 @@ export default class Leasing extends React.Component {
   };
 
   renderList = () => {
+    if (!this.props.list) return;
+    if (this.props.list.length === 0) return;
+
     return this.props.list.map((obj, index) => {
       const nativeAmount = this.formatStyleLunes(obj.nativeAmount);
       const status = this.normalizeStatus(obj.otherParams.status);
@@ -236,15 +239,38 @@ export default class Leasing extends React.Component {
   renderSpinner = () => {
     if (this.props.loading) {
       return <Spinner />;
-    } else if (this.props.list.length === 0) {
-      return (
-        <View style={styles.emptyTransactions}>
-          <FontAwesomeIcon name={'list-alt'} size={40} color={'#fff'} />
-          <Text style={{ marginTop: 20 }}>{I18N.t('EMPTY_TRANSACTION')}</Text>
-        </View>
-      );
+    } else if (
+      this.props.list.length === 0 ||
+      this.props.list === undefined ||
+      this.props.list === false
+    ) {
+      return this.renderEmptyBlock();
     }
     return null;
+  };
+
+  renderEmptyBlock = () => {
+    return (
+      <View style={styles.emptyTransactions}>
+        <FontAwesomeIcon name={'list-alt'} size={40} color={'#fff'} />
+        <Text style={{ marginTop: 20 }}>{I18N.t('EMPTY_TRANSACTION')}</Text>
+      </View>
+    );
+  };
+
+  renderBtStartLeasing = () => {
+    if (!this.props.resume.availableBalance) return;
+    if (this.props.resume.availableBalance <= 0) return;
+    return (
+      <Button
+        rounded
+        block
+        success
+        onPress={() => navigate('LeasingStart')}
+        style={{ width: widthSpacePadding, elevation: 0 }}>
+        <Text>{I18N.t('LEASING_BT_START')}</Text>
+      </Button>
+    );
   };
 
   render() {
@@ -301,16 +327,7 @@ export default class Leasing extends React.Component {
             {this.renderList()}
           </ScrollView>
 
-          <View style={styles.footer}>
-            <Button
-              rounded
-              block
-              success
-              onPress={() => navigate('LeasingStart')}
-              style={{ width: widthSpacePadding, elevation: 0 }}>
-              <Text>{I18N.t('LEASING_BT_START')}</Text>
-            </Button>
-          </View>
+          <View style={styles.footer}>{this.renderBtStartLeasing()}</View>
         </View>
       </Container>
     );
