@@ -44,16 +44,28 @@ class LunesMarket extends Component {
     this.socket.emit('SubAdd', { subs: this.subscription });
   }
 
+  componentWillMount = () => {
+    const { getLunesPrice } = this.props;
+    getLunesPrice();
+  };
+
   componentDidMount() {
-    const { requestHistoricData, updateTicker, requestPrice } = this.props;
+    const {
+      requestHistoricData,
+      updateTicker,
+      requestPrice,
+      getLunesPrice,
+      doAction,
+    } = this.props;
     requestHistoricData();
     // requestPrice();
+    doAction({ name: 'LNS' }); // pra conseguir chamar os valores no carregamento
     console.ignoredYellowBox = ['Setting a timer'];
     this.onMessage();
   }
 
   onMessage() {
-    const { updateTicker } = this.props;
+    const { updateTicker, getLunesPrice } = this.props;
     const coinPairs = {};
 
     // 3. receive messages
@@ -112,6 +124,7 @@ class LunesMarket extends Component {
           coinPairs[pair].COIN = pair;
 
           updateTicker(coinPairs[pair]);
+          getLunesPrice();
         }
       }
     });

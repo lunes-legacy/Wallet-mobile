@@ -21,11 +21,12 @@ const initialState = {
     BTC: coinPair,
     ETH: coinPair,
     LTC: coinPair,
-    LNS: {
-      ...coinPair,
-      DISPLAYPRICE: `1 ${AllCoins.LNS.label} | ${AllCoins.LNS.price}`,
-      PRICE: AllCoins.LNS.price,
-    },
+    LNS: coinPair,
+    // LNS: {
+    //   ...coinPair,
+    //   DISPLAYPRICE: `1 ${AllCoins.LNS.label} | ${AllCoins.LNS.price}`,
+    //   PRICE: AllCoins.LNS.price,
+    // },
   },
 };
 
@@ -64,6 +65,9 @@ const historicDataReducer = (state = initialState, action) => {
       if (value.COIN === 'LTC') {
         state.ticker.LTC = { ...state.ticker.LTC, ...value };
       }
+      if (value.COIN === 'LNS') {
+        state.ticker.LNS = { ...state.ticker.LNS, ...value };
+      }
 
       return {
         ...state,
@@ -80,6 +84,9 @@ const historicDataReducer = (state = initialState, action) => {
       }
       if (value.COIN === 'LTC') {
         state.ticker.LTC = { ...state.ticker.LTC, ...value };
+      }
+      if (value.COIN === 'LNS') {
+        state.ticker.LNS = { ...state.ticker.LNS, ...value };
       }
       return {
         ...state,

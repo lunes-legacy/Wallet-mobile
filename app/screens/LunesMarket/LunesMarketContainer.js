@@ -8,6 +8,7 @@ import {
   updateTicker,
   requestPrice,
   doAction,
+  getLunesPrice,
 } from './actions';
 
 const mapStateToProps = state => ({
@@ -27,6 +28,7 @@ const mapDispatchToProps = dispatch =>
       updateTicker,
       requestPrice,
       doAction,
+      getLunesPrice,
     },
     dispatch
   );

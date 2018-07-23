@@ -31,7 +31,7 @@ export const AllCoins = {
     name: 'LNS',
     label: 'Lunes',
     initials: 'LNS',
-    price: 0.08,
+    price: 0,
   },
   ETH: {
     name: 'ETH',
@@ -46,7 +46,7 @@ export const LunesTabCoinsConstant = [
     name: AllCoins.BTC.name,
     label: AllCoins.BTC.label,
     isActive: true,
-    isCoinSelected: true, // to show chart or not
+    isCoinSelected: false, // to show chart or not
     price: {
       displayPrice: '0.00',
       displayPercent: '0%',
