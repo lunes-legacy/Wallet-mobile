@@ -148,7 +148,7 @@ class LunesMarket extends Component {
             flex: 4,
             justifyContent: 'space-between',
             width: Dimensions.get('window').width,
-            marginTop: 30
+            marginTop: 30,
           }}>
           <LunesQuotation
             iconBalance={this.renderIconCoin()}

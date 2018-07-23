@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     color: BosonColors.$bosonLightGreen,
     justifyContent: 'center',
     alignItems: 'center',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   textFastSafeSmart: {
     fontSize: 22,

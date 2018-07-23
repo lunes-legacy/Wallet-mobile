@@ -66,7 +66,7 @@ const storeAddress = wallet => ({
 });
 
 const clearAllInfo = () => ({
-  type: types.CLEAR_ALL_INFO
+  type: types.CLEAR_ALL_INFO,
 });
 
 export const clearError = () => ({

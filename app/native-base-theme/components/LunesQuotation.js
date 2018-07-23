@@ -63,7 +63,7 @@ export default class LunesQuotation extends React.Component {
             {this.props.ticker[this.props.currentCoinSelected].DISPLAYPRICE}
           </Text>
           <LunesBalanceText
-            style={{marginTop: 30}}
+            style={{ marginTop: 30 }}
             icon={this.props.iconBalance}
             balance={this.props.balance}
           />

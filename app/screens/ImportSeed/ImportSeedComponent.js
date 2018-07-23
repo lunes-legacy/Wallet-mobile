@@ -66,7 +66,11 @@ export default class ImportSeed extends React.Component {
   }
 
   getAddressLNS() {
-    if (this.props.balance && this.props.balance['LNS'] && this.props.balance['LNS'].address) {
+    if (
+      this.props.balance &&
+      this.props.balance['LNS'] &&
+      this.props.balance['LNS'].address
+    ) {
       return this.props.balance['LNS'].address;
     }
     return '';
