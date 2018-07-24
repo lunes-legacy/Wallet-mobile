@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 10,
+    paddingHorizontal: 24,
     backgroundColor: BosonColors.$bosonDarkPurple,
     width: Dimensions.get('window').width,
   },
@@ -107,6 +108,9 @@ export default class SendPayment extends React.Component {
   }
 
   getValueTotal(value) {
+    if (!value || value == null || value == '') {
+      value = 0;
+    }
     const currentPrice = this.props.ticker[this.props.currentCoinSelected]
       .PRICE;
     let res = parseFloat(value) * currentPrice;
@@ -118,7 +122,7 @@ export default class SendPayment extends React.Component {
     if (parseFloat(value) === 0) {
       res = 0.0;
     }
-
+    res = numeral(res).format('0,0.000');
     this.setState({ amountToSend: value, parcialValue: res });
   }
 
@@ -176,6 +180,8 @@ export default class SendPayment extends React.Component {
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                     padding: 10,
+                    paddingHorizontal: 24,
+                    marginTop: 16,
                   }}>
                   <Text style={styles.text}>{I18n.t('BALANCE')}</Text>
                   <Text style={styles.text}>{I18n.t('QUOTE')}</Text>
