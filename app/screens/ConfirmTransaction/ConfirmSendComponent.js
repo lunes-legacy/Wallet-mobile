@@ -153,17 +153,25 @@ export default class ConfirmSend extends React.Component {
 
           <View style={styles.separator} />
 
-          <Text style={styles.text}>{I18N.t('YOU_WILL_SEND')}</Text>
-          <Text style={styles.text}>{this.state.amountToSend}</Text>
+          <Text style={[styles.text, { opacity: 0.7 }]}>
+            {I18N.t('YOU_WILL_SEND')}
+          </Text>
+          <Text style={[styles.text, { fontSize: 18, fontWeight: 'bold' }]}>
+            {this.state.amountToSend}
+          </Text>
 
           <View style={styles.separator} />
 
-          <Text style={styles.text}>{I18N.t('ADDRESS_TO_RECEIVE')}</Text>
-          <Text style={styles.text}>{this.state.addressToSend}</Text>
+          <Text style={[styles.text, { opacity: 0.7 }]}>
+            {I18N.t('ADDRESS_TO_RECEIVE')}
+          </Text>
+          <Text style={[styles.text, { fontSize: 12, textAlign: 'center' }]}>
+            {this.state.addressToSend}
+          </Text>
 
           <View style={styles.separator} />
 
-          <Text style={styles.text}>{I18N.t('FEE')}</Text>
+          <Text style={[styles.text, { opacity: 0.7 }]}>{I18N.t('FEE')}</Text>
           <View>{this.renderFees()}</View>
 
           <View>

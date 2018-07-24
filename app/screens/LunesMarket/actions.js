@@ -119,6 +119,7 @@ async function getLunesPriceAction(dispatch) {
       CHANGEHOURPCT: percent,
       CHANGE: change,
       COIN: 'LNS',
+      PRICE: lnsUsdValue,
     };
 
     // retornar pro redux
