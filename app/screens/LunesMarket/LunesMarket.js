@@ -52,14 +52,10 @@ class LunesMarket extends Component {
   componentDidMount() {
     const {
       requestHistoricData,
-      updateTicker,
-      requestPrice,
-      getLunesPrice,
       doAction,
     } = this.props;
     requestHistoricData();
-    // requestPrice();
-    doAction({ name: 'LNS' }); // pra conseguir chamar os valores no carregamento
+    doAction({ name: 'BTC' }); // pra conseguir chamar os valores no carregamento
     console.ignoredYellowBox = ['Setting a timer'];
     this.onMessage();
   }
@@ -127,6 +123,9 @@ class LunesMarket extends Component {
           getLunesPrice();
         }
       }
+
+      // Fechando conexão para fazer a chamada apenas uma vez
+      this.socket.close();
     });
   }
 

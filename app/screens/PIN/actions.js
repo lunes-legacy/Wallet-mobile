@@ -66,6 +66,10 @@ async function createPin(pin, currentUser, dispatch) {
       currentUser,
       dispatch
     );
+    if (!addressGeneratedByMnemonic) {
+      dispatch(requestFinished());
+      return;
+    }
     getBalance(addressGeneratedByMnemonic, currentUser, dispatch).catch(
       error => {
         dispatch(requestFinished());

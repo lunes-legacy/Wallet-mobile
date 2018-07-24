@@ -80,18 +80,26 @@ async function getLunesPriceAction(dispatch) {
       toSymbol,
       exchange: I18N.t('CURRENCY_EXCHANGE'),
     };
-    const priceData = await LunesLib.coins.getPrice(queryObj);
+    //const priceData = await LunesLib.coins.getPrice(queryObj);
 
-    // Get LUNES price in BTC
     let LUNESData = await axios.get(
-      `https://exrates.me/public/coinmarketcap/ticker`
+      `https://broker.newc.com.br/api/trade/price`
     );
-    LUNESData = LUNESData.data.LNS_BTC;
-    let lnsUsdValue = priceData[toSymbol] * LUNESData.last;
-    let percent = LUNESData.percentChange;
+
+    let dolarPrice = await axios.get(
+      `http://api.promasters.net.br/cotacao/v1/valores?moedas=USD&alt=json`
+    );
+
+    LUNESData = LUNESData.data.currencies.filter(currency => {
+      return currency.nome === 'LUNES';
+    });
+    let lnsUsdValue = (dolarPrice.data.valores.USD.valor * LUNESData[0].ultPreco).toFixed(2);
+    let percent = (typeof LUNESData[0].percentChange !== 'undefined') ? LUNESData[0].percentChange : 0;
     let change = 'up';
     if (percent < 0) {
       change = 'down';
+    } else if (percent === 0) {
+      change = '-';
     }
 
     // formata
@@ -102,7 +110,7 @@ async function getLunesPriceAction(dispatch) {
     const ticker = {
       DISPLAYPRICE: displayPrice,
       CURRENTPRICE: lnsUsdValue,
-      CHANGE24HOUR: '-',
+      CHANGE24HOUR: `$ ${lnsUsdValue}`,
       CHANGEHOURPCT: percent,
       CHANGE: change,
       COIN: 'LNS',
@@ -136,13 +144,13 @@ export const updateTicker = ticker => dispatch => {
 
 export const requestPrice = () => dispatch => {
   getPrice(dispatch).catch(error => {
-    alert('error on get price');
+    //console.log('error on get price');
   });
 };
 
 export const getLunesPrice = () => dispatch => {
   getLunesPriceAction(dispatch).catch(error => {
-    alert('error on get lunes price');
+    //console.log('error on get lunes price');
   });
 };
 
@@ -152,7 +160,7 @@ export const getLunesPrice = () => dispatch => {
 export const changeRange = range => dispatch => {
   dispatch(changeColumnPeriod(range));
   getNewPeriod(range, dispatch).catch(error => {
-    alert('error');
+    console.log('error');
   });
 };
 

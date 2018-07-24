@@ -51,7 +51,7 @@ export default class LunesTabCoin extends React.Component {
             }
 
             if (currentCoin.CHANGE24HOUR !== '-') {
-              percent = currentCoin.CHANGE24HOURPCT;
+              percent = currentCoin.CHANGE24HOURPCT || '0%';
             }
 
             tabCoin.price.status = currentCoin.CHANGE || '-';
