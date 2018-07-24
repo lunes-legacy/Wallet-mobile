@@ -50,10 +50,7 @@ class LunesMarket extends Component {
   };
 
   componentDidMount() {
-    const {
-      requestHistoricData,
-      doAction,
-    } = this.props;
+    const { requestHistoricData, doAction } = this.props;
     requestHistoricData();
     doAction({ name: 'BTC' }); // pra conseguir chamar os valores no carregamento
     console.ignoredYellowBox = ['Setting a timer'];

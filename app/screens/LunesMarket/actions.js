@@ -93,8 +93,13 @@ async function getLunesPriceAction(dispatch) {
     LUNESData = LUNESData.data.currencies.filter(currency => {
       return currency.nome === 'LUNES';
     });
-    let lnsUsdValue = (dolarPrice.data.valores.USD.valor * LUNESData[0].ultPreco).toFixed(2);
-    let percent = (typeof LUNESData[0].percentChange !== 'undefined') ? LUNESData[0].percentChange : 0;
+    let lnsUsdValue = (
+      dolarPrice.data.valores.USD.valor * LUNESData[0].ultPreco
+    ).toFixed(2);
+    let percent =
+      typeof LUNESData[0].percentChange !== 'undefined'
+        ? LUNESData[0].percentChange
+        : 0;
     let change = 'up';
     if (percent < 0) {
       change = 'down';
