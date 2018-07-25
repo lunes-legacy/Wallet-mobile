@@ -12,14 +12,14 @@ export default {
   },
   STORAGE: {
     storedUser: 'storedUser',
-    versionNumber: 'VERSION_NUMBER_STORAGE'
+    versionNumber: 'VERSION_NUMBER_STORAGE',
   },
   SCREEN_NAMES: {
     pin: 'PIN',
     signin: 'Signin',
     main: 'Main',
     importSeed: 'ImportSeed',
-    intro: 'Introduction'
+    intro: 'Introduction',
   },
   PUBNUB: {
     channelDefault: 'Channel-192o23v9m',

@@ -19,7 +19,10 @@ const { height } = Dimensions.get('window');
 export default class Introduction extends React.Component {
   componentWillMount() {
     StatusBar.setHidden(true);
-    AsyncStorage.setItem(generalConstant.STORAGE.versionNumber, generalConstant.VERSION_NAME);
+    AsyncStorage.setItem(
+      generalConstant.STORAGE.versionNumber,
+      generalConstant.VERSION_NAME
+    );
   }
 
   renderSwiper() {

@@ -54,25 +54,26 @@ export default class Signin extends React.Component<{}> {
   }
 
   checkLoggedUser() {
-    AsyncStorage.getItem(generalConstant.STORAGE.versionNumber).then(versionValue => {
-      if (!versionValue || versionValue !== VersionNumber.appVersion) {
-        AsyncStorage.removeItem(generalConstant.STORAGE.storedUser);
-        Keychain.resetGenericPassword();
-        navigate(generalConstant.SCREEN_NAMES.intro);
-        return;
-      }
-
-      AsyncStorage.getItem(generalConstant.STORAGE.storedUser).then((storedUser: string) => {
-        if (storedUser) {
-          return this.props.redirectToPIN();
-        } else {
+    AsyncStorage.getItem(generalConstant.STORAGE.versionNumber).then(
+      versionValue => {
+        if (!versionValue || versionValue !== VersionNumber.appVersion) {
+          AsyncStorage.removeItem(generalConstant.STORAGE.storedUser);
+          Keychain.resetGenericPassword();
+          navigate(generalConstant.SCREEN_NAMES.intro);
           return;
         }
-      });
 
-    });
-
-
+        AsyncStorage.getItem(generalConstant.STORAGE.storedUser).then(
+          (storedUser: string) => {
+            if (storedUser) {
+              return this.props.redirectToPIN();
+            } else {
+              return;
+            }
+          }
+        );
+      }
+    );
   }
 
   networkConnectionChange = isConnected =>
