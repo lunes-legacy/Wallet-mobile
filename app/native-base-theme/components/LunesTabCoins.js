@@ -7,6 +7,7 @@ import BosonColors from '../variables/bosonColor';
 import LunesTabCoinsPrice from './LunesTabCoinsPrice';
 import LunesTabCoinsKPI from './LunesTabCoinsKPI';
 import { navigate } from '../../config/routes';
+import { numeral } from '../../utils/numeral';
 
 export default class LunesTabCoin extends React.Component {
   constructor() {
@@ -57,7 +58,9 @@ export default class LunesTabCoin extends React.Component {
             tabCoin.price.status = currentCoin.CHANGE || '-';
           }
 
-          tabCoin.price.percent = `${price} (${percent})`; // '0 (0%)'
+          tabCoin.price.percent = `${numeral(price).format('0,0.0000')} (${
+            percent
+          })`; // '0 (0%)'
 
           return (
             <View

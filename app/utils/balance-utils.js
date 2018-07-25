@@ -12,7 +12,7 @@ function getBalance(currentCoinSelected, balanceData) {
 function getIconCoin(currentCoinSelected) {
   switch (currentCoinSelected) {
     case 'BTC':
-      return 'https://res.cloudinary.com/luneswallet/image/upload/v1524831130/BitcoinCash-Symbol_afatgu.png';
+      return 'http://res.cloudinary.com/luneswallet/image/upload/c_scale,h_30,w_29/v1532550278/icon-btc-app_qbeoh1.png';
     case 'LNS':
       return 'http://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png';
     default:

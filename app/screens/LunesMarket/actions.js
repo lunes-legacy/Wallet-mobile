@@ -80,8 +80,20 @@ async function getLunesPriceAction(dispatch) {
       toSymbol,
       exchange: I18N.t('CURRENCY_EXCHANGE'),
     };
-    //const priceData = await LunesLib.coins.getPrice(queryObj);
 
+    // via exrates ...
+    const priceData = await LunesLib.coins.getPrice(queryObj);
+    let LUNESData = await axios.get(
+      `https://exrates.me/public/coinmarketcap/ticker`
+    );
+    LUNESData = LUNESData.data.LNS_BTC;
+
+    let lnsUsdValue = priceData[toSymbol] * LUNESData.last;
+    let percent = LUNESData.percentChange;
+
+    // ...............
+    // via newcash ...
+    /*
     let LUNESData = await axios.get(
       `https://broker.newc.com.br/api/trade/price`
     );
@@ -100,6 +112,9 @@ async function getLunesPriceAction(dispatch) {
       typeof LUNESData[0].percentChange !== 'undefined'
         ? LUNESData[0].percentChange
         : 0;
+    */
+    // ................
+
     let change = 'up';
     if (percent < 0) {
       change = 'down';
@@ -112,12 +127,8 @@ async function getLunesPriceAction(dispatch) {
     const currentPrice = CCC.convertValueToDisplay(tsym, lnsUsdValue);
     const displayPrice = `1 LUNES | ${currentPrice}`;
 
-    const randomTestValue = () => {
-      return `1 LUNES | $ ${Math.floor(Math.random() * 10)}`;
-    };
-
     const ticker = {
-      DISPLAYPRICE: displayPrice, //randomTestValue(),
+      DISPLAYPRICE: displayPrice,
       CURRENTPRICE: lnsUsdValue,
       CHANGE24HOUR: `$ ${lnsUsdValue}`,
       CHANGEHOURPCT: percent,

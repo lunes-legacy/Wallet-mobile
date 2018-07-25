@@ -75,7 +75,7 @@ export default {
   YOUR_WORDS: 'Palavra',
   PROFILE: 'Perfil',
   SEND_PAYMENT: 'Enviar Pagamento',
-  VALUE_CURRENCY_LABEL: 'Valor R$ BRL',
+  VALUE_CURRENCY_LABEL: 'Valor $ USD', //Valor R$ BRL
   PUT_WALLET_ADDRESS: 'Colar o endereço da carteira',
   SELECT_FORM_TO_SEND: 'Selecione a forma de envio',
   PASTE_HERE: 'cole aqui',
@@ -86,8 +86,8 @@ export default {
   ONE_MONTH: '1mês',
   ONE_YEAR: '1ano',
   ALL_TIME: 'Todo Período',
-  CURRENCY_USER: 'BRL',
-  CURRENCY_EXCHANGE: 'MercadoBitcoin',
+  CURRENCY_USER: 'USD', //BRL
+  CURRENCY_EXCHANGE: 'Bitstamp', //MercadoBitcoin
   UKNOWN: 'Erro desconhecido',
   WAITING_SMS_CONFIRMATION: 'Aguardando confirmação de código enviado via SMS',
   YOU_WILL_RECEIVE_CODE_SMS:
