@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { Component } from 'react';
+import axios from 'axios';
 import {
   AsyncStorage,
   Text,
@@ -21,6 +22,7 @@ import io from 'socket.io-client';
 
 const options = {
   pingTimeout: 85000,
+  pingInterval: 20000,
   transports: ['websocket'],
   allowUpgrades: false,
   cookie: false,
@@ -40,6 +42,7 @@ class LunesMarket extends Component {
     ];
     // 1. set url
     this.socket = io('https://streamer.cryptocompare.com/', options);
+
     // 2. emmit (connect)
     this.socket.emit('SubAdd', { subs: this.subscription });
   }
@@ -50,6 +53,11 @@ class LunesMarket extends Component {
   };
 
   componentDidMount() {
+    //const currencyTo = I18N.t('CURRENCY_USER');
+    //const url = `https://min-api.cryptocompare.com/data/price?fsym=${currencyTo}&tsyms=BTC,ETH,LTC`
+
+    //const res = await axios.get(url);
+
     const { requestHistoricData, doAction } = this.props;
     requestHistoricData();
     doAction({ name: 'BTC' }); // pra conseguir chamar os valores no carregamento
@@ -122,7 +130,7 @@ class LunesMarket extends Component {
       }
 
       // Fechando conexão para fazer a chamada apenas uma vez
-      this.socket.close();
+      //this.socket.close();
     });
   }
 

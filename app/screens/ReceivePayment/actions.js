@@ -33,6 +33,5 @@ export const requestValidPIN = () => dispatch => {
 };
 
 export const doAction = (user, balance, currentCoinSelected) => dispatch => {
-  dispatch(requestLoading());
   dispatch(selectCoin(currentCoinSelected));
 };

@@ -5,6 +5,8 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import { GetDefaultURIAvatar } from '../../utils/stringUtils';
 import styles from '../styles/SideMenu';
 import { navigate } from '../../config/routes';
+import generalConstant from '../../constants/general';
+import I18N from '../../i18n/i18n';
 
 class SideMenuAvatar extends Component {
   componentWillMount() {
@@ -54,6 +56,10 @@ class SideMenuAvatar extends Component {
             <Text style={styles.label.email}>{user.email}</Text>
           </View>
         </TouchableOpacity>
+
+        <Text style={{ fontSize: 9, textAlign: 'center', color: '#fff', marginTop: 5 }}>
+          {I18N.t('VERSION')} {generalConstant.VERSION_NAME}
+        </Text>
       </View>
     );
   }
