@@ -108,7 +108,7 @@ export default class SendPayment extends React.Component {
   }
 
   getValueTotal(valueParam) {
-    const value = valueParam;
+    let value = valueParam;
     if (!value || value === null || value === '') {
       value = 0;
     }
