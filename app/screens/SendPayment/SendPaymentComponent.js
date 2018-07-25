@@ -107,8 +107,9 @@ export default class SendPayment extends React.Component {
     }
   }
 
-  getValueTotal(value) {
-    if (!value || value == null || value == '') {
+  getValueTotal(valueParam) {
+    const value = valueParam;
+    if (!value || value === null || value === '') {
       value = 0;
     }
     const currentPrice = this.props.ticker[this.props.currentCoinSelected]
