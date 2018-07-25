@@ -33,6 +33,10 @@ target 'LunesMobileWallet' do
 
   pod 'SentryReactNative', :path => '../node_modules/react-native-sentry'
 
+  pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
+
+  pod 'react-native-version-number', :path => '../node_modules/react-native-version-number'
+
   target 'LunesMobileWalletTests' do
     inherit! :search_paths
     # Pods for testing

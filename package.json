@@ -60,6 +60,7 @@
     "react-native-svg-charts": "^2.1.0",
     "react-native-user-avatar": "^1.0.3",
     "react-native-vector-icons": "^4.6.0",
+    "react-native-version-number": "^0.3.4",
     "react-navigation": "^1.0.0-beta.22",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",

@@ -10,6 +10,8 @@ import {
   Platform,
   NetInfo,
 } from 'react-native';
+import * as Keychain from 'react-native-keychain';
+import VersionNumber from 'react-native-version-number';
 import { Container, Button, Text, Tab, Tabs } from 'native-base';
 import LunesLogo from 'lunesmobilewallet/app/native-base-theme/components/LunesLogo';
 import LunesLoginForm from 'lunesmobilewallet/app/native-base-theme/components/LunesLoginForm';
@@ -31,6 +33,7 @@ export default class Signin extends React.Component<{}> {
   componentDidMount() {
     this.props.redirectToIntroduction();
     this.checkLoggedUser();
+
     if (Platform.OS === 'android') {
       BackHandler.addEventListener('hardwareBackPress', () =>
         backButtonPressFunction()
@@ -51,13 +54,25 @@ export default class Signin extends React.Component<{}> {
   }
 
   checkLoggedUser() {
-    AsyncStorage.getItem('storedUser').then((storedUser: string) => {
-      if (storedUser) {
-        return this.props.redirectToPIN();
-      } else {
+    AsyncStorage.getItem(generalConstant.STORAGE.versionNumber).then(versionValue => {
+      if (!versionValue || versionValue !== VersionNumber.appVersion) {
+        AsyncStorage.removeItem(generalConstant.STORAGE.storedUser);
+        Keychain.resetGenericPassword();
+        navigate(generalConstant.SCREEN_NAMES.intro);
         return;
       }
+
+      AsyncStorage.getItem(generalConstant.STORAGE.storedUser).then((storedUser: string) => {
+        if (storedUser) {
+          return this.props.redirectToPIN();
+        } else {
+          return;
+        }
+      });
+
     });
+
+
   }
 
   networkConnectionChange = isConnected =>

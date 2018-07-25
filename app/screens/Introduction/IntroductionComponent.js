@@ -7,17 +7,19 @@ import {
   StyleSheet,
   Image,
   Dimensions,
+  AsyncStorage,
 } from 'react-native';
 import { Container } from 'native-base';
 import I18N from '../../i18n/i18n';
 import Swiper from './SwiperContainer';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
-
+import generalConstant from '../../constants/general';
 const { height } = Dimensions.get('window');
 
 export default class Introduction extends React.Component {
   componentWillMount() {
     StatusBar.setHidden(true);
+    AsyncStorage.setItem(generalConstant.STORAGE.versionNumber, generalConstant.VERSION_NAME);
   }
 
   renderSwiper() {

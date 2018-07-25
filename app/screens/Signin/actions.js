@@ -187,6 +187,7 @@ export const requestSignout = user => dispatch => {
     dispatch(signoutLoading());
     LunesLib.users.logout(user.accessToken);
     AsyncStorage.removeItem(GeneralConstants.STORAGE.storedUser);
+    AsyncStorage.removeItem('VERSION_CHECK');
     Keychain.resetGenericPassword();
     dispatch(signoutSuccess());
     dispatch(clearAllInfo());

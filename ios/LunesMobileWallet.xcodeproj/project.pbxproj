@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -90,6 +89,10 @@
 		DCA6BA33C6F749B8A2551F68 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D865AF18F1B426F99D5BA67 /* Roboto_medium.ttf */; };
 		E1997DF97C694FAFBE0D61DB /* analytics.png in Resources */ = {isa = PBXBuildFile; fileRef = C780877BAFE7494A8AC07250 /* analytics.png */; };
 		F45CF0C2810F4092B32AF55F /* transferencia-moedas.png in Resources */ = {isa = PBXBuildFile; fileRef = F985695F18FA433BAB4503B1 /* transferencia-moedas.png */; };
+		1B8DC18C089E453FB7A4416B /* icon-power-off.svg in Resources */ = {isa = PBXBuildFile; fileRef = 6FBC833897A7462282F63B8B /* icon-power-off.svg */; };
+		4A18CF0C1F974A82809BD7C7 /* icon-power.svg in Resources */ = {isa = PBXBuildFile; fileRef = E4F33BE4E73B4C1AB41261AE /* icon-power.svg */; };
+		A5DFF58918644D37AD06FF6E /* loading.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5C97F00B35CD4C0F9149023C /* loading.svg */; };
+		A952761DF8924B3F857DCFC8 /* lunes-token-coin-antigo.png in Resources */ = {isa = PBXBuildFile; fileRef = ED054BFD596744BE990EDC69 /* lunes-token-coin-antigo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -467,6 +470,10 @@
 		F985695F18FA433BAB4503B1 /* transferencia-moedas.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "transferencia-moedas.png"; path = "../app/assets/images/transferencia-moedas.png"; sourceTree = "<group>"; };
 		FA29E02489014A09A1B5E6F8 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		FD311F2A5AC44636907062F4 /* lunes-token-coin.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "lunes-token-coin.png"; path = "../app/assets/images/lunes-token-coin.png"; sourceTree = "<group>"; };
+		6FBC833897A7462282F63B8B /* icon-power-off.svg */ = {isa = PBXFileReference; name = "icon-power-off.svg"; path = "../app/assets/images/icon-power-off.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E4F33BE4E73B4C1AB41261AE /* icon-power.svg */ = {isa = PBXFileReference; name = "icon-power.svg"; path = "../app/assets/images/icon-power.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5C97F00B35CD4C0F9149023C /* loading.svg */ = {isa = PBXFileReference; name = "loading.svg"; path = "../app/assets/images/loading.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		ED054BFD596744BE990EDC69 /* lunes-token-coin-antigo.png */ = {isa = PBXFileReference; name = "lunes-token-coin-antigo.png"; path = "../app/assets/images/lunes-token-coin-antigo.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -780,6 +787,10 @@
 				22C53346EFCF46229C71A8F6 /* fontello.ttf */,
 				E4BCBDDE4BBD4EB395011376 /* fontello.woff */,
 				4A0A72C07DF143498631BF81 /* fontello.woff2 */,
+				6FBC833897A7462282F63B8B /* icon-power-off.svg */,
+				E4F33BE4E73B4C1AB41261AE /* icon-power.svg */,
+				5C97F00B35CD4C0F9149023C /* loading.svg */,
+				ED054BFD596744BE990EDC69 /* lunes-token-coin-antigo.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1355,6 +1366,10 @@
 				CA3CA8799AC543A6937328C5 /* fontello.ttf in Resources */,
 				B4DAA656A11046269BAEF0D3 /* fontello.woff in Resources */,
 				54CDD703DB7B4F3E81BF6983 /* fontello.woff2 in Resources */,
+				1B8DC18C089E453FB7A4416B /* icon-power-off.svg in Resources */,
+				4A18CF0C1F974A82809BD7C7 /* icon-power.svg in Resources */,
+				A5DFF58918644D37AD06FF6E /* loading.svg in Resources */,
+				A952761DF8924B3F857DCFC8 /* lunes-token-coin-antigo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

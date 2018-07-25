@@ -57,7 +57,13 @@ class SideMenuAvatar extends Component {
           </View>
         </TouchableOpacity>
 
-        <Text style={{ fontSize: 9, textAlign: 'center', color: '#fff', marginTop: 5 }}>
+        <Text
+          style={{
+            fontSize: 9,
+            textAlign: 'center',
+            color: '#fff',
+            marginTop: 5,
+          }}>
           {I18N.t('VERSION')} {generalConstant.VERSION_NAME}
         </Text>
       </View>

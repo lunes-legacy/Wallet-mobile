@@ -113,11 +113,11 @@ async function getLunesPriceAction(dispatch) {
     const displayPrice = `1 LUNES | ${currentPrice}`;
 
     const randomTestValue = () => {
-      return `1 LUNES | $ ${Math.floor(Math.random() * 10)}`
+      return `1 LUNES | $ ${Math.floor(Math.random() * 10)}`;
     };
 
     const ticker = {
-      DISPLAYPRICE: displayPrice,//randomTestValue(),
+      DISPLAYPRICE: displayPrice, //randomTestValue(),
       CURRENTPRICE: lnsUsdValue,
       CHANGE24HOUR: `$ ${lnsUsdValue}`,
       CHANGEHOURPCT: percent,
@@ -128,7 +128,6 @@ async function getLunesPriceAction(dispatch) {
 
     dispatch(priceUpdate(ticker));
     dispatch(tickerUpdate(ticker));
-
   } catch (error) {
     dispatch(requestFinished());
     throw error;

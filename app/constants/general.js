@@ -1,6 +1,7 @@
 export default {
   VERSION_CODE: '37',
   VERSION_NAME: '1.37',
+  VERSION_NUMBER_STORAGE: 'VERSION_NUMBER_STORAGE',
   TESTNET: false,
   PERIOD: {
     RANGE_1D: 'RANGE_1D',
@@ -11,12 +12,14 @@ export default {
   },
   STORAGE: {
     storedUser: 'storedUser',
+    versionNumber: 'VERSION_NUMBER_STORAGE'
   },
   SCREEN_NAMES: {
     pin: 'PIN',
     signin: 'Signin',
     main: 'Main',
     importSeed: 'ImportSeed',
+    intro: 'Introduction'
   },
   PUBNUB: {
     channelDefault: 'Channel-192o23v9m',

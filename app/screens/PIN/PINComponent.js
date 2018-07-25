@@ -8,6 +8,8 @@ import LunesLoading from '../../native-base-theme/components/LunesLoading';
 import LunesAlert from '../../native-base-theme/components/LunesAlert';
 import I18N from '../../i18n/i18n';
 import { navigate } from '../../config/routes';
+import generalConstant from '../../constants/general';
+import * as StoreSeed from '../../utils/store-seed';
 
 export default class PIN extends React.Component {
   renderLoading() {
