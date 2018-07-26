@@ -14,7 +14,7 @@ const LunesBalanceText = ({ balance, icon }) => (
   <View style={styles.container}>
     <View style={styles.containerInline}>
       <Image
-        style={{ width: 26, height: 25 }}
+        style={{ width: 23, height: 23 }}
         source={{
           uri: icon,
         }}

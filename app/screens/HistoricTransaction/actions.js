@@ -21,6 +21,10 @@ const selectCoin = currentCoinSelected => ({
   currentCoinSelected,
 });
 
+const clearHistoric = () => ({
+  type: types.CLEAR_HISTORIC,
+});
+
 async function _getHistoric(user, balance, currentCoinSelected, dispatch) {
   try {
     const address = balance[currentCoinSelected].address;
@@ -50,6 +54,7 @@ export const getHistoric = (user, balance, currentCoinSelected) => dispatch => {
 export const doAction = (user, balance, currentCoinSelected) => dispatch => {
   dispatch(requestLoading());
   dispatch(selectCoin(currentCoinSelected));
+  dispatch(clearHistoric());
   _getHistoric(user, balance, currentCoinSelected, dispatch).catch(error => {
     dispatch(requestFinished());
     console.log(error);

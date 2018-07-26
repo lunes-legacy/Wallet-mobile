@@ -90,8 +90,12 @@ export default class LeasingStart extends React.Component {
   }
 
   formatInputAmount = value => {
-    const rest = numeral(value).format('0,0.00000000');
-    this.setState(...this.state, { amount: rest });
+    //const rest = numeral(value).format('0,0.00000000');
+    if (value.length > 10) {
+      this.setState(...this.state, { amount: value.substr(0, 10) });
+    } else {
+      this.setState(...this.state, { amount: value });
+    }
   };
 
   render() {

@@ -5,6 +5,7 @@ import * as Keychain from 'react-native-keychain';
 import types from 'lunesmobilewallet/app/config/types';
 import { navigate } from 'lunesmobilewallet/app/config/routes';
 import GeneralConstants from '../../constants/general';
+import * as StoreSeed from '../../utils/store-seed';
 
 const signinLoading = () => ({
   type: types.SIGNIN_LOADING,
@@ -104,6 +105,10 @@ async function login(email, password, dispatch) {
   try {
     dispatch(signinLoading());
     const user = await LunesLib.users.login({ email, password });
+    StoreSeed.resetSeed();
+    if (user.wallet) {
+      delete user.wallet;
+    }
     AsyncStorage.setItem(
       GeneralConstants.STORAGE.storedUser,
       JSON.stringify(user)

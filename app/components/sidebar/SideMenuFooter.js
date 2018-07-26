@@ -41,7 +41,7 @@ class SideMenuFooter extends Component {
         <View style={styles2.footerContainer}>
           <View style={styles2.containerInline}>
             <Image
-              style={{ width: 26, height: 25 }}
+              style={{ width: 23, height: 23 }}
               source={{
                 uri: this.renderIconCoin(),
               }}

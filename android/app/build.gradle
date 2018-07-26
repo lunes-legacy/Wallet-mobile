@@ -103,8 +103,8 @@ android {
         applicationId "com.luneswallet"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 37
-        versionName "1.37"
+        versionCode 42
+        versionName "1.42"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }

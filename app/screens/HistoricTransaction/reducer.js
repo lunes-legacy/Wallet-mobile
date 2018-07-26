@@ -8,6 +8,8 @@ const initialState = {
 
 const historicTransactionReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.CLEAR_HISTORIC:
+      return { ...state, history: [] };
     case types.CLEAR_ALL_INFO:
       return initialState;
     case types.REQUEST_LOADING:

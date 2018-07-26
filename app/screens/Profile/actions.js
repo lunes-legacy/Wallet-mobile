@@ -82,6 +82,10 @@ export const requestUpdate = values => dispatch => {
       values.userInfo.homeAddress = values.updates.homeAddress;
     }
 
+    if (values.userInfo.wallet) {
+      delete values.userInfo.wallet;
+    }
+
     dispatch(storeUserProfile(values.userInfo));
     updateProfile(
       {

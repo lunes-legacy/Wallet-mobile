@@ -79,19 +79,23 @@ export default class HistoricTransaction extends React.Component {
   }
 
   renderItems() {
-    const grouped = _.groupBy(this.props.history, result => {
-      return moment(result.date).format(I18N.t('FORMAT_DATE'));
-    });
-    return Object.keys(grouped).map((item, index) => (
-      <View key={index} style={styles.containerItemTransaction}>
-        <View style={styles.roundedAreaTransactions}>
-          <Text style={styles.headTextGroup}>
-            {item} - {I18N.t('TRANSACTION')}(s): {grouped[item].length}
-          </Text>
+    if (this.props.history.length) {
+      const grouped = _.groupBy(this.props.history, result => {
+        return moment(result.date).format(I18N.t('FORMAT_DATE'));
+      });
+      return Object.keys(grouped).map((item, index) => (
+        <View key={index} style={styles.containerItemTransaction}>
+          <View style={styles.roundedAreaTransactions}>
+            <Text style={styles.headTextGroup}>
+              {item} - {I18N.t('TRANSACTION')}(s): {grouped[item].length}
+            </Text>
+          </View>
+          {this.renderSubItems(grouped[item])}
         </View>
-        {this.renderSubItems(grouped[item])}
-      </View>
-    ));
+      ));
+    } else {
+      return null;
+    }
   }
 
   getCurrentCoinName() {

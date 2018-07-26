@@ -12,7 +12,7 @@ function getBalance(currentCoinSelected, balanceData) {
 function getIconCoin(currentCoinSelected) {
   switch (currentCoinSelected) {
     case 'BTC':
-      return 'http://res.cloudinary.com/luneswallet/image/upload/c_scale,h_30,w_29/v1532550278/icon-btc-app_qbeoh1.png';
+      return 'http://res.cloudinary.com/luneswallet/image/upload/c_scale,h_20,w_20/v1532550278/icon-btc-app_qbeoh1.png';
     case 'LNS':
       return 'http://res.cloudinary.com/luneswallet/image/upload/v1519442468/icon-lunes_qhumiw.png';
     default:
@@ -38,7 +38,7 @@ async function prepareObjectWallet(seed, currentUser) {
     AsyncStorage.setItem('addressLunesUser', JSON.stringify(addressLNS));
     AsyncStorage.setItem('addressBitcoinUser', JSON.stringify(addressBTC));
 
-    if (!currentUserCloned.wallet) {
+    if (currentUserCloned) {
       currentUserCloned.wallet = {};
     }
 

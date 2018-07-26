@@ -58,7 +58,8 @@ async function generateAddressBySeedWords(
 
     getBalance(currentUser.wallet.coin, currentUser, dispatch).catch(error => {
       dispatch(requestFinished());
-      navigate(GeneralConstants.SCREEN_NAMES.main);
+      dispatch(showErrorOnImportSeed('ERROR_GENERATE_NEW_SEED'));
+      //navigate(GeneralConstants.SCREEN_NAMES.main);
     });
   } catch (error) {
     throw error;

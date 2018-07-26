@@ -35,7 +35,7 @@ async function generateAddress(currentUser, dispatch) {
       );
     } else {
       dispatch(requestFinished());
-      navigate(GeneralConstants.SCREEN_NAMES.importSeed);
+      navigate(GeneralConstants.SCREEN_NAMES.importSeed, { isShowMenu: false });
     }
   } catch (error) {
     throw error;
