@@ -15,7 +15,12 @@ const mapStateToProps = state => ({
   list: state.leasingReducer.list,
   resume: state.leasingReducer.resume,
   balance: state.auth.balance,
-  userBalance: (state.auth.balance && state.auth.balance.LNS && state.auth.balance.LNS.confirmed) ? state.auth.balance.LNS.confirmed : 0,
+  userBalance:
+    state.auth.balance &&
+    state.auth.balance.LNS &&
+    state.auth.balance.LNS.confirmed
+      ? state.auth.balance.LNS.confirmed
+      : 0,
   isShowError: state.leasingReducer.isShowError,
   isShowSuccess: state.leasingReducer.isShowSuccess,
 });

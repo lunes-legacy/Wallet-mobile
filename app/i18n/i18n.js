@@ -10,7 +10,7 @@ I18n.translations = {
   en,
   pt,
   es,
-  fr
+  fr,
 };
 
 export default I18n;
