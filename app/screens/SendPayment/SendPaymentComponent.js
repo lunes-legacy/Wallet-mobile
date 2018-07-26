@@ -96,7 +96,7 @@ export default class SendPayment extends React.Component {
     super(props);
     this.state = {
       showToast: false,
-      amountToSend: '0.00000000',
+      amountToSend: '',
       parcialValue: 0.0,
     };
   }
@@ -223,7 +223,7 @@ export default class SendPayment extends React.Component {
                   onChangeText={value => {
                     this.getValueTotal(value);
                   }}
-                  placeholder={I18n.t('typeHere')}
+                  placeholder="0.00000000" /* I18n.t('typeHere') */
                   underlineColorAndroid={'transparent'}
                   placeholderTextColor="rgba(255,255,255,0.7)"
                 />
