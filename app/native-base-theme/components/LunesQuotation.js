@@ -106,7 +106,12 @@ export default class LunesQuotation extends React.Component {
     }, 8000);
 
     return (
-      <View style={{ flex: 1 }}>
+      <View
+        style={{
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
         <Animated.Image
           style={{
             flex: 1,
@@ -119,7 +124,7 @@ export default class LunesQuotation extends React.Component {
           }}
           source={{ uri: this.renderImage() }}
         />
-        <View style={{ paddingTop: 80 }}>{this.renderContent()}</View>
+        <View>{this.renderContent()}</View>
       </View>
     );
   }

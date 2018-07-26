@@ -145,7 +145,7 @@ export default class LeasingStart extends React.Component {
               value={this.state.amount}
               onSubmitEditing={() => this.nodeaddress.focus()}
               returnKeyType={'next'}
-              keyboardType="numeric"
+              keyboardType="decimal-pad"
             />
           </View>
 

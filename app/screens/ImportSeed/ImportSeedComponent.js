@@ -1,12 +1,13 @@
 /* eslint-disable */
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Container } from 'native-base';
 import LunesImportSeed from '../../native-base-theme/components/LunesImportSeed';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
 import LunesAlert from '../../native-base-theme/components/LunesAlert';
 import I18N from '../../i18n/i18n';
 import { navigate } from '../../config/routes';
+import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 
 export default class ImportSeed extends React.Component {
   constructor(props) {
@@ -76,12 +77,29 @@ export default class ImportSeed extends React.Component {
     return '';
   }
 
+  renderHeader = () => {
+    return (
+      <View style={{ padding: 20 }}>
+        <Ionicons
+          color={'#fff'}
+          size={20}
+          name={'md-arrow-back'}
+          onPress={() => {
+            navigate('Main');
+          }}
+        />
+      </View>
+    );
+  };
+
   render() {
+    const showMenu = this.getAddressLNS() !== '' ? true : false;
     return (
       <Container>
         {this.props.loading ? this.renderLoading() : null}
         {this.renderSuccess()}
         {this.renderError()}
+        {showMenu ? this.renderHeader() : null}
         <LunesImportSeed
           address={this.getAddressLNS()}
           seedWords={this.props.seedWords}

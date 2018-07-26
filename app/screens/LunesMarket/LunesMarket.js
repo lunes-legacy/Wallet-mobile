@@ -102,8 +102,8 @@ class LunesMarket extends Component {
             );
 
             coinPairs[pair].CHANGE24HOURPCT = `${(
-              (coinPairs[pair].PRICE - coinPairs[pair].OPEN24HOUR) /
-              coinPairs[pair].OPEN24HOUR *
+              ((coinPairs[pair].PRICE - coinPairs[pair].OPEN24HOUR) /
+                coinPairs[pair].OPEN24HOUR) *
               100
             ).toFixed(2)}%`;
 

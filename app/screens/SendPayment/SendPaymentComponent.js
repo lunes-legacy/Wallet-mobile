@@ -218,7 +218,7 @@ export default class SendPayment extends React.Component {
                 <TextInput
                   style={styles.inputText}
                   maxLength={10}
-                  keyboardType="numeric"
+                  keyboardType="decimal-pad"
                   value={this.state.amountToSend}
                   onChangeText={value => {
                     this.getValueTotal(value);

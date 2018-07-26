@@ -9,6 +9,7 @@ import PhoneRecharges from 'lunesmobilewallet/app/screens/PhoneRecharges';
 import HistoricTransaction from 'lunesmobilewallet/app/screens/HistoricTransaction';
 import Leasing from 'lunesmobilewallet/app/screens/Leasing';
 import ImportSeed from 'lunesmobilewallet/app/screens/ImportSeed';
+import BosonColors from 'lunesmobilewallet/app/native-base-theme/variables/bosonColor';
 import Header from '../Header';
 import SideMenu from './SideMenu';
 
@@ -80,7 +81,15 @@ const LeasingStack = StackNavigator({
 const ImportSeedStack = StackNavigator({
   ImportSeed: {
     screen: ImportSeed,
-    navigationOptions: getStackNavOption,
+    navigationOptions: ({ navigation, screenProps }) => ({
+      title: screenProps.isShowMenu,
+      headerTintColor: '#fff',
+      headerStyle: {
+        backgroundColor: BosonColors.$bosonPrimary,
+        elevation: 0,
+      },
+      headerLeft: screenProps.isShowMenu ? generateDrawerHamburger : 'none',
+    }),
   },
 });
 
