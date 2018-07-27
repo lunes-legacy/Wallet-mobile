@@ -205,4 +205,5 @@ export default {
   CONFIRM_CANCEL_LEASE_TITLE: 'Cancel the leasing',
   CONFIRM_CANCEL_LEASE_TEXT: 'Do you confirm the cancel of leasing?',
   CANCEL: 'Cancel',
+  INSUFICIENT_BALANCE: 'Insufficient Funds'
 };

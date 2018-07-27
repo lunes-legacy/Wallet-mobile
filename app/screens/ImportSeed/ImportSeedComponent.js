@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Container } from 'native-base';
+import { Container, Header } from 'native-base';
 import LunesImportSeed from '../../native-base-theme/components/LunesImportSeed';
 import LunesLoading from '../../native-base-theme/components/LunesLoading';
 import LunesAlert from '../../native-base-theme/components/LunesAlert';
@@ -79,11 +79,12 @@ export default class ImportSeed extends React.Component {
 
   renderHeader = () => {
     return (
-      <View style={{ padding: 20 }}>
+      <View style={{ padding: 20, position: 'absolute', top: 0, left: 5 }}>
         <Ionicons
           color={'#fff'}
           size={20}
           name={'md-arrow-back'}
+          style={{ textAlign: 'left'}}
           onPress={() => {
             navigate('Main');
           }}

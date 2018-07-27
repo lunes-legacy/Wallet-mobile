@@ -10,11 +10,8 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
-import FontAwesomeIcon from 'react-native-vector-icons/dist/FontAwesome';
 import Entypo from 'react-native-vector-icons/dist/Entypo';
 import Ionicons from 'react-native-vector-icons/dist/Ionicons';
-import commonColor from './../variables/commonColor';
 import BosonColors from './../variables/bosonColor';
 import { LunesIconKey } from '../../native-base-theme/components/LunesCustomIcon';
 import I18N from '../../i18n/i18n';
@@ -279,7 +276,7 @@ export default class LunesPIN extends React.Component {
                 <Ionicons
                   name="ios-arrow-dropright-circle"
                   size={35}
-                  style={this.state.enablePIN ? styles.buttonEnabled : null}
+                  style={this.state.enablePIN ? styles.buttonEnabled : styles.buttonEnabled}
                 />
               </TouchableOpacity>
             </View>

@@ -3,22 +3,17 @@ import {
   Text,
   TextInput,
   View,
-  TouchableOpacity,
   StyleSheet,
   Dimensions,
-  Linking,
   StatusBar,
 } from 'react-native';
-import { Container, Item, Input, Toast, Root, Button } from 'native-base';
-import QRCode from 'react-native-qrcode';
+import { Container, Root, Button } from 'native-base';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import QRCodeScanner from 'react-native-qrcode-scanner';
 import FontAwesomeIcon from 'react-native-vector-icons/dist/FontAwesome';
 import SimpleLineIcon from 'react-native-vector-icons/dist/SimpleLineIcons';
 import BosonColors from '../../native-base-theme/variables/bosonColor';
-import LunesConfirmButton from '../../native-base-theme/components/LunesConfirmButton';
+import LunesGradientButton from '../../native-base-theme/components/LunesGradientButton';
 import LunesTabCoins from '../../native-base-theme/components/LunesTabCoins';
-import LunesPickerCountry from '../../native-base-theme/components/LunesPickerCountry';
 import { navigate } from '../../config/routes';
 import I18n from '../../i18n/i18n';
 import { MoneyClass } from '../../utils/moneyConvert';
@@ -153,6 +148,25 @@ export default class SendPayment extends React.Component {
     );
   }
 
+  renderButtonOptionSend() {
+    const { currentCoinSelected, balanceData } = this.props;
+    if (balanceData[currentCoinSelected] && parseFloat(balanceData[currentCoinSelected].confirmed) > 0) {
+      return (
+        <Button
+          rounded
+          block
+          success
+          onPress={() => {
+            this.redirectToQRCodeScreen();
+          }}>
+          <Text style={styles.text}>{I18n.t('optionsSent')}</Text>
+        </Button>
+      );
+    } else {
+      return <LunesGradientButton text={I18n.t('INSUFICIENT_BALANCE')} />;
+    }
+  }
+
   render() {
     return (
       <KeyboardAwareScrollView
@@ -249,15 +263,7 @@ export default class SendPayment extends React.Component {
                   styles.containerInner,
                   { width: Dimensions.get('window').width - 50 },
                 ]}>
-                <Button
-                  rounded
-                  block
-                  success
-                  onPress={() => {
-                    this.redirectToQRCodeScreen();
-                  }}>
-                  <Text style={styles.text}>{I18n.t('optionsSent')}</Text>
-                </Button>
+                {this.renderButtonOptionSend()}
               </View>
             </View>
           </Root>
