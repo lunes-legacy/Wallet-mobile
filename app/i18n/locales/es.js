@@ -57,5 +57,5 @@ export default {
   CONFIRMATION: 'Confirmação',
   CURRENCY_USER: 'EUR',
   CURRENCY_EXCHANGE: 'Kraken',
-  INSUFICIENT_BALANCE: 'Saldo Insuficiente'
+  INSUFICIENT_BALANCE: 'Saldo Insuficiente',
 };

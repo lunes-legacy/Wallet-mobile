@@ -84,7 +84,7 @@ export default class ImportSeed extends React.Component {
           color={'#fff'}
           size={20}
           name={'md-arrow-back'}
-          style={{ textAlign: 'left'}}
+          style={{ textAlign: 'left' }}
           onPress={() => {
             navigate('Main');
           }}

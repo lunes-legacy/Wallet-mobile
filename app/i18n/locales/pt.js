@@ -203,5 +203,5 @@ export default {
   CONFIRM_CANCEL_LEASE_TITLE: 'Cancelar o leasing',
   CONFIRM_CANCEL_LEASE_TEXT: 'Confirmar cancelamento de leasing?',
   CANCEL: 'Cancelar',
-  INSUFICIENT_BALANCE: 'Saldo Insuficiente'
+  INSUFICIENT_BALANCE: 'Saldo Insuficiente',
 };

@@ -150,7 +150,10 @@ export default class SendPayment extends React.Component {
 
   renderButtonOptionSend() {
     const { currentCoinSelected, balanceData } = this.props;
-    if (balanceData[currentCoinSelected] && parseFloat(balanceData[currentCoinSelected].confirmed) > 0) {
+    if (
+      balanceData[currentCoinSelected] &&
+      parseFloat(balanceData[currentCoinSelected].confirmed) > 0
+    ) {
       return (
         <Button
           rounded
@@ -162,9 +165,8 @@ export default class SendPayment extends React.Component {
           <Text style={styles.text}>{I18n.t('optionsSent')}</Text>
         </Button>
       );
-    } else {
-      return <LunesGradientButton text={I18n.t('INSUFICIENT_BALANCE')} />;
     }
+    return <LunesGradientButton text={I18n.t('INSUFICIENT_BALANCE')} />;
   }
 
   render() {

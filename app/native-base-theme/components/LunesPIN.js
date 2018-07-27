@@ -276,7 +276,11 @@ export default class LunesPIN extends React.Component {
                 <Ionicons
                   name="ios-arrow-dropright-circle"
                   size={35}
-                  style={this.state.enablePIN ? styles.buttonEnabled : styles.buttonEnabled}
+                  style={
+                    this.state.enablePIN
+                      ? styles.buttonEnabled
+                      : styles.buttonEnabled
+                  }
                 />
               </TouchableOpacity>
             </View>

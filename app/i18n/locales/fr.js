@@ -207,5 +207,5 @@ export default {
   CONFIRM_CANCEL_LEASE_TITLE: 'Annuler le  leasing',
   CONFIRM_CANCEL_LEASE_TEXT: "Confirmez-vous l'annulation de votre leasing?",
   CANCEL: 'Annuler',
-  INSUFICIENT_BALANCE: 'Solde Insuffisant'
+  INSUFICIENT_BALANCE: 'Solde Insuffisant',
 };
